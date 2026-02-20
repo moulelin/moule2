@@ -200,6 +200,8 @@ if __name__ == "__main__":
                         help="Temperature for token-level divergence weighting in distillation loss")
     parser.add_argument("--se_n_samples", type=int, default=8,
                         help="Number of teacher responses per prompt for semantic entropy estimation")
+    parser.add_argument("--se_cluster_model", type=str, default="Qwen/Qwen2.5-0.5B-Instruct",
+                        help="Small model for pairwise semantic equivalence judging in SE clustering")
     parser.add_argument("--teacher_micro_batch_size", type=int, default=2)
 
     # ============ Dataset ============

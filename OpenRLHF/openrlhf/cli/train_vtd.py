@@ -146,6 +146,7 @@ def train(args):
         vtd_distill_alpha=args.vtd_distill_alpha,
         vtd_distill_tau=args.vtd_distill_tau,
         se_n_samples=args.se_n_samples,
+        se_cluster_model=args.se_cluster_model,
         generation_temperature=args.generation_temperature,
         save_hf_ckpt=args.save_hf_ckpt,
         disable_ds_ckpt=args.disable_ds_ckpt,
@@ -227,6 +228,8 @@ if __name__ == "__main__":
                         help="Temperature for token-level divergence weighting in distillation loss")
     parser.add_argument("--se_n_samples", type=int, default=8,
                         help="Number of teacher responses per prompt for semantic entropy estimation")
+    parser.add_argument("--se_cluster_model", type=str, default="Qwen/Qwen2.5-0.5B-Instruct",
+                        help="Small model for pairwise semantic equivalence judging in SE clustering")
     parser.add_argument("--generation_temperature", type=float, default=0.7,
                         help="Temperature for on-policy sampling")
 

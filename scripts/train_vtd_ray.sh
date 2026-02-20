@@ -81,6 +81,7 @@ ray job submit --address="http://127.0.0.1:8265" \
    --n_samples_per_prompt 4 \
    --vtd_distill_alpha 5.0 \
    --se_n_samples 8 \
+   --se_cluster_model Qwen/Qwen2.5-0.5B-Instruct \
    --temperature 0.7 \
    --top_p 0.95 \
    --zero_stage 1 \

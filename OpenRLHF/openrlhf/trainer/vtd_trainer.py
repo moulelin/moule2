@@ -84,41 +84,7 @@ def verify_answer(response: str, ground_truth: str) -> bool:
     return normalize_answer(predicted) == normalize_answer(ground_truth)
 
 
-def compute_semantic_entropy_local(responses: list[str]) -> float:
-    """Compute normalized semantic entropy from teacher's N responses (local version).
-
-    Groups responses by semantic equivalence (same extracted answer),
-    then computes entropy over the cluster distribution.
-
-    Returns value in [0, 1]. 0 = all agree, 1 = maximum disagreement.
-    """
-    if not responses:
-        return 1.0
-    N = len(responses)
-    if N <= 1:
-        return 0.0
-
-    clusters = {}
-    for resp in responses:
-        answer = extract_answer(resp)
-        normalized = normalize_answer(answer) if answer else "__EMPTY__"
-        found = False
-        for key in list(clusters.keys()):
-            if normalized == key:
-                clusters[key] += 1
-                found = True
-                break
-        if not found:
-            clusters[normalized] = 1
-
-    entropy = 0.0
-    for count in clusters.values():
-        p = count / N
-        if p > 0:
-            entropy -= p * math.log(p)
-
-    max_entropy = math.log(N)
-    return entropy / max_entropy if max_entropy > 0 else 0.0
+from openrlhf.trainer.vtd_trainer_ray import SemanticCluster, semantic_entropy_to_weight
 
 
 class VtDTrainer(ABC):
@@ -160,6 +126,7 @@ class VtDTrainer(ABC):
         vtd_distill_alpha: float = 5.0,
         vtd_distill_tau: float = 1.0,
         se_n_samples: int = 8,
+        se_cluster_model: str = "Qwen/Qwen2.5-0.5B-Instruct",
         generation_temperature: float = 0.7,
         save_hf_ckpt: bool = False,
         disable_ds_ckpt: bool = False,
@@ -181,6 +148,7 @@ class VtDTrainer(ABC):
         self.max_gen_len = max_gen_len
         self.max_input_len = max_input_len
         self.se_n_samples = se_n_samples
+        self.semantic_cluster = SemanticCluster(model_name=se_cluster_model, device="cpu")
         self.generation_temperature = generation_temperature
         self.save_hf_ckpt = save_hf_ckpt
         self.disable_ds_ckpt = disable_ds_ckpt
@@ -393,8 +361,8 @@ class VtDTrainer(ABC):
                 )
                 se_weights = []
                 for responses in teacher_se_responses:
-                    se = compute_semantic_entropy_local(responses)
-                    se_weights.append(1.0 - se)  # high confidence → high weight
+                    se = self.semantic_cluster.compute_entropy(responses)
+                    se_weights.append(semantic_entropy_to_weight(se))
 
                 # ============ Step 3: SE-weighted distillation on all rollouts ============
                 distill_loss = torch.tensor(0.0, device=torch.cuda.current_device())

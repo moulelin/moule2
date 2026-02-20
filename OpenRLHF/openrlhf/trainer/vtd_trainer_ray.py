@@ -373,57 +373,140 @@ def verify_answer(response: str, ground_truth: str) -> bool:
     return math_equal(predicted, gt_stripped)
 
 
-# ============ Semantic Entropy ============
+# ============ Semantic Entropy (LLM-based Pairwise Clustering) ============
 
-def compute_semantic_entropy(responses: list[str], n_samples: int = None) -> float:
-    """Compute semantic entropy from teacher's N responses.
+PAIRWISE_SYSTEM = (
+    "You judge whether two math solutions arrive at the same final answer. "
+    "Reply ONLY \"YES\" or \"NO\"."
+)
 
-    Groups responses by semantic equivalence (same extracted answer after normalization),
-    then computes entropy over the cluster distribution.
+PAIRWISE_TEMPLATE = (
+    "Do these two solutions give the same final answer?\n\n"
+    "Solution A:\n{resp_a}\n\n"
+    "Solution B:\n{resp_b}"
+)
 
-    Args:
-        responses: list of N response strings from the teacher
-        n_samples: total number of samples (for normalization). If None, uses len(responses).
 
-    Returns:
-        Normalized semantic entropy in [0, 1].
-        0 = all responses agree (teacher confident)
-        1 = maximum disagreement (teacher uncertain)
+class SemanticCluster:
+    """Cluster teacher responses via pairwise LLM-based equivalence judging.
+
+    Uses a small (~0.5B) model to judge whether pairs of responses arrive at
+    the same final answer, then applies Union-Find to group them into clusters.
     """
-    if not responses:
-        return 1.0  # no responses = maximum uncertainty
 
-    N = n_samples or len(responses)
-    if N <= 1:
-        return 0.0
+    def __init__(self, model_name: str = "Qwen/Qwen2.5-0.5B-Instruct", device: str = "cpu"):
+        from transformers import AutoModelForCausalLM, AutoTokenizer as HFTokenizer
+        logger.info(f"[SemanticCluster] Loading {model_name} on {device}...")
+        self.tokenizer = HFTokenizer.from_pretrained(model_name, trust_remote_code=True)
+        self.model = AutoModelForCausalLM.from_pretrained(
+            model_name, torch_dtype=torch.bfloat16, trust_remote_code=True,
+        ).to(device).eval()
+        self.device = device
+        logger.info(f"[SemanticCluster] Model loaded ({sum(p.numel() for p in self.model.parameters())/1e6:.0f}M params)")
 
-    # Extract and normalize answers, group into semantic clusters
-    clusters = {}
-    for resp in responses:
-        answer = extract_answer(resp)
-        normalized = strip_string(answer) if answer else "__EMPTY__"
-        # Group semantically equivalent answers
-        found_cluster = False
-        for key in list(clusters.keys()):
-            if math_equal(normalized, key):
-                clusters[key] += 1
-                found_cluster = True
-                break
-        if not found_cluster:
-            clusters[normalized] = 1
+    @torch.no_grad()
+    def _judge_batch(self, pairs: list[tuple[str, str]]) -> list[bool]:
+        """Judge a batch of (resp_a, resp_b) pairs. Returns list of bools (equivalent or not)."""
+        if not pairs:
+            return []
 
-    # Compute entropy: H = -Σ p_c * log(p_c)
-    entropy = 0.0
-    for count in clusters.values():
-        p = count / N
-        if p > 0:
-            entropy -= p * math.log(p)
+        # Build chat messages for each pair
+        texts = []
+        for resp_a, resp_b in pairs:
+            messages = [
+                {"role": "system", "content": PAIRWISE_SYSTEM},
+                {"role": "user", "content": PAIRWISE_TEMPLATE.format(resp_a=resp_a, resp_b=resp_b)},
+            ]
+            text = self.tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+            texts.append(text)
 
-    # Normalize by max possible entropy log(N)
-    max_entropy = math.log(N)
-    if max_entropy > 0:
-        return entropy / max_entropy
-    return 0.0
+        # Tokenize as batch
+        inputs = self.tokenizer(
+            texts, return_tensors="pt", padding=True, truncation=True, max_length=2048,
+        ).to(self.device)
+
+        # Generate (only need 1-3 tokens: "YES" or "NO")
+        outputs = self.model.generate(
+            **inputs, max_new_tokens=3, do_sample=False, pad_token_id=self.tokenizer.pad_token_id,
+        )
+
+        # Parse results
+        results = []
+        for i, output in enumerate(outputs):
+            new_tokens = output[inputs["input_ids"].shape[1]:]
+            answer = self.tokenizer.decode(new_tokens, skip_special_tokens=True).strip().upper()
+            results.append(answer.startswith("YES"))
+
+        return results
+
+    def cluster_responses(self, responses: list[str]) -> list[list[int]]:
+        """Cluster responses using pairwise equivalence + Union-Find.
+
+        Returns list of clusters, each cluster is a list of response indices.
+        """
+        N = len(responses)
+        if N <= 1:
+            return [[i] for i in range(N)]
+
+        # Union-Find
+        parent = list(range(N))
+
+        def find(x):
+            while parent[x] != x:
+                parent[x] = parent[parent[x]]
+                x = parent[x]
+            return x
+
+        def union(a, b):
+            ra, rb = find(a), find(b)
+            if ra != rb:
+                parent[ra] = rb
+
+        # Build all pairs
+        pairs = []
+        pair_indices = []
+        for i in range(N):
+            for j in range(i + 1, N):
+                pairs.append((responses[i], responses[j]))
+                pair_indices.append((i, j))
+
+        # Batch judge all pairs at once
+        verdicts = self._judge_batch(pairs)
+
+        # Union equivalent responses
+        for (i, j), equiv in zip(pair_indices, verdicts):
+            if equiv:
+                union(i, j)
+
+        # Group by root
+        from collections import defaultdict
+        groups = defaultdict(list)
+        for i in range(N):
+            groups[find(i)].append(i)
+
+        return list(groups.values())
+
+    def compute_entropy(self, responses: list[str]) -> float:
+        """Compute normalized semantic entropy from teacher responses.
+
+        Returns value in [0, 1]. 0 = all agree, 1 = maximum disagreement.
+        """
+        if not responses:
+            return 1.0
+        N = len(responses)
+        if N <= 1:
+            return 0.0
+
+        clusters = self.cluster_responses(responses)
+
+        entropy = 0.0
+        for cluster in clusters:
+            p = len(cluster) / N
+            if p > 0:
+                entropy -= p * math.log(p)
+
+        max_entropy = math.log(N)
+        return entropy / max_entropy if max_entropy > 0 else 0.0
 
 
 def semantic_entropy_to_weight(se: float) -> float:
@@ -527,6 +610,8 @@ class VtDRayTrainer:
 
         # Semantic entropy config
         self.se_n_samples = getattr(args, "se_n_samples", 8)
+        se_model = getattr(args, "se_cluster_model", "Qwen/Qwen2.5-0.5B-Instruct")
+        self.semantic_cluster = SemanticCluster(model_name=se_model, device="cpu")
 
         # Tokenizer
         self.tokenizer = get_tokenizer(
@@ -771,7 +856,7 @@ class VtDRayTrainer:
                 se_weight_per_prompt = []
                 for i, ref in se_gen_refs:
                     teacher_responses = ray.get(ref)[0]  # [0] because we sent [prompt]
-                    se = compute_semantic_entropy(teacher_responses, self.se_n_samples)
+                    se = self.semantic_cluster.compute_entropy(teacher_responses)
                     se_w = semantic_entropy_to_weight(se)
                     se_per_prompt.append(se)
                     se_weight_per_prompt.append(se_w)
