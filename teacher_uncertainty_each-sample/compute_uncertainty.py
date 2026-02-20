@@ -21,8 +21,28 @@ import argparse
 import json
 import math
 import os
+
 import time
 from collections import defaultdict
+
+
+def extract_boxed(text):
+    """Extract content from the last \\boxed{...}, handling nested braces."""
+    idx = text.rfind("\\boxed{")
+    if idx == -1:
+        return None
+    start = idx + len("\\boxed{")
+    depth = 1
+    i = start
+    while i < len(text) and depth > 0:
+        if text[i] == "{":
+            depth += 1
+        elif text[i] == "}":
+            depth -= 1
+        i += 1
+    if depth == 0:
+        return text[start:i - 1].strip()
+    return None
 
 
 # ============ Pairwise Clustering via Small LLM ============
@@ -218,17 +238,36 @@ def main(args):
             # Step 2: Teacher generates N responses per prompt (vLLM, n=8)
             outputs = teacher_llm.generate(teacher_prompts, teacher_sampling)
 
-            # Collect N responses per prompt
-            all_responses = []
+            # Collect N responses per prompt, extract \boxed{} answers
+            all_answers = []  # extracted boxed answers for clustering
+            skip_flags = []   # True if sample should be skipped
             for output in outputs:
-                responses = [o.text for o in output.outputs]
-                all_responses.append(responses)
+                answers = []
+                skip = False
+                for o in output.outputs:
+                    ans = extract_boxed(o.text)
+                    if ans is None or len(ans) > 200:
+                        skip = True
+                        break
+                    answers.append(ans)
+                all_answers.append(answers)
+                skip_flags.append(skip)
 
-            # Step 3: Cluster + compute SE for all prompts in this batch
-            se_values = cluster.compute_entropy_batch(all_responses)
+            # Step 3: Cluster + compute SE (only for valid samples)
+            valid_answers = [a for a, s in zip(all_answers, skip_flags) if not s]
+            if valid_answers:
+                valid_se = cluster.compute_entropy_batch(valid_answers)
+            else:
+                valid_se = []
 
             # Step 4: Write results
-            for entry, se in zip(batch, se_values):
+            se_iter = iter(valid_se)
+            skipped_in_batch = 0
+            for entry, skip in zip(batch, skip_flags):
+                if skip:
+                    skipped_in_batch += 1
+                    continue
+                se = next(se_iter)
                 entry["se"] = round(se, 4)
                 entry["se_weight"] = round(1.0 - se, 4)
                 out_file.write(json.dumps(entry, ensure_ascii=False) + "\n")
@@ -243,6 +282,7 @@ def main(args):
                 f"[{progress}/{len(entries)}] "
                 f"Avg SE={avg_se:.3f} | "
                 f"Avg weight={1-avg_se:.3f} | "
+                f"Skipped: {skipped_in_batch} | "
                 f"Batch: {elapsed:.1f}s | "
                 f"Speed: {len(batch)/elapsed:.1f} samples/s"
             )

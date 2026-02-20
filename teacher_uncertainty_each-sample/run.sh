@@ -58,13 +58,16 @@ import json
 with open('$SCRIPT_DIR/evolved_with_se.jsonl') as f:
     ses = [json.loads(l)['se'] for l in f if l.strip()]
 n = len(ses)
-avg = sum(ses)/n
-low = sum(1 for s in ses if s < 0.1)
-mid = sum(1 for s in ses if 0.1 <= s < 0.5)
-high = sum(1 for s in ses if s >= 0.5)
-print(f'  Total: {n}')
-print(f'  Avg SE: {avg:.3f}, Avg weight: {1-avg:.3f}')
-print(f'  Confident (SE<0.1): {low} ({low/n:.1%})')
-print(f'  Moderate (0.1<=SE<0.5): {mid} ({mid/n:.1%})')
-print(f'  Uncertain (SE>=0.5): {high} ({high/n:.1%})')
+if n == 0:
+    print('  No samples produced — check for errors above.')
+else:
+    avg = sum(ses)/n
+    low = sum(1 for s in ses if s < 0.1)
+    mid = sum(1 for s in ses if 0.1 <= s < 0.5)
+    high = sum(1 for s in ses if s >= 0.5)
+    print(f'  Total: {n}')
+    print(f'  Avg SE: {avg:.3f}, Avg weight: {1-avg:.3f}')
+    print(f'  Confident (SE<0.1): {low} ({low/n:.1%})')
+    print(f'  Moderate (0.1<=SE<0.5): {mid} ({mid/n:.1%})')
+    print(f'  Uncertain (SE>=0.5): {high} ({high/n:.1%})')
 "
