@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\begin{document}
+
+\begin{table}[htbp]
+\centering
+\caption{Baseline accuracy (\%) of Qwen3 models on math competition benchmarks. pass@1 uses greedy decoding (temperature = 0); avg@16 uses temperature = 1.2, top\_p = 0.95, 16 samples per problem.}
+\label{tab:baseline}
+\begin{tabular}{lcccccccc}
+\toprule
+\multirow{2}{*}{\textbf{Model}} & \multicolumn{2}{c}{\textbf{AIME 2024}} & \multicolumn{2}{c}{\textbf{AIME 2025}} & \multicolumn{2}{c}{\textbf{HMMT 2025}} & \multicolumn{2}{c}{\textbf{AMO-Bench}} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9}
+ & pass@1 & avg@16 & pass@1 & avg@16 & pass@1 & avg@16 & pass@1 & avg@16 \\
+\midrule
+Qwen3-1.7B & -- & -- & -- & -- & -- & -- & -- & -- \\
+Qwen3-4B   & -- & -- & -- & -- & -- & -- & -- & -- \\
+Qwen3-8B   & -- & -- & -- & -- & -- & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}
