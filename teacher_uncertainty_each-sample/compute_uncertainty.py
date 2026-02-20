@@ -264,7 +264,7 @@ if __name__ == "__main__":
     parser.add_argument("--teacher_model", type=str, default="Qwen/Qwen3-8B")
     parser.add_argument("--tp", type=int, default=4, help="Tensor parallel for teacher")
     parser.add_argument("--max_model_len", type=int, default=4096)
-    parser.add_argument("--gpu_memory_utilization", type=float, default=0.80)
+    parser.add_argument("--gpu_memory_utilization", type=float, default=0.60)
 
     # Cluster model (pairwise judging)
     parser.add_argument("--cluster_model", type=str, default="Qwen/Qwen2.5-0.5B-Instruct")
