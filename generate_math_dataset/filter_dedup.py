@@ -103,18 +103,18 @@ def main(args):
 
     # ---- Length filter ----
     before = len(entries)
-    entries = [e for e in entries if args.min_len <= len(e["query"]) <= args.max_len]
+    entries = [e for e in entries if args.min_len <= len(e["question"]) <= args.max_len]
     print(f"Length filter: {before} -> {len(entries)} ({before - len(entries)} removed)")
 
     # ---- Solution filter ----
     before = len(entries)
-    entries = [e for e in entries if not is_likely_solution(e["query"])]
+    entries = [e for e in entries if not is_likely_solution(e["question"])]
     print(f"Solution filter: {before} -> {len(entries)} ({before - len(entries)} removed)")
 
     # ---- Problem check (optional soft filter) ----
     if args.require_problem_format:
         before = len(entries)
-        entries = [e for e in entries if is_likely_problem(e["query"])]
+        entries = [e for e in entries if is_likely_problem(e["question"])]
         print(f"Problem format filter: {before} -> {len(entries)} ({before - len(entries)} removed)")
 
     # ---- Near-dedup via MinHash LSH ----
@@ -124,7 +124,7 @@ def main(args):
         signatures = []
         shingle_sets = []
         for e in entries:
-            shingles = ngram_shingles(e["query"], n=args.ngram_size)
+            shingles = ngram_shingles(e["question"], n=args.ngram_size)
             sig = minhash_signature(shingles, num_hashes=args.num_hashes)
             signatures.append(sig)
             shingle_sets.append(shingles)
@@ -169,8 +169,8 @@ def main(args):
     train_output = args.output.replace(".jsonl", "_train.jsonl")
     with open(train_output, "w", encoding="utf-8") as f:
         for e in entries:
-            f.write(json.dumps({"query": e["query"]}, ensure_ascii=False) + "\n")
-    print(f"Training-ready (query only): {train_output}")
+            f.write(json.dumps({"question": e["question"]}, ensure_ascii=False) + "\n")
+    print(f"Training-ready (question only): {train_output}")
 
     print("Done!")
 

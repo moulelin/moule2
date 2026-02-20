@@ -7,8 +7,7 @@ source /anvil/scratch/x-qlan1/moule/train-env/bin/activate
 # ---- Paths ----
 SCRATCH=/anvil/scratch/x-qlan1/moule
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-OUTPUT_DIR="$SCRATCH/datasets/evolved_math_test"
-mkdir -p "$OUTPUT_DIR"
+OUTPUT_DIR="$SCRIPT_DIR"
 
 # ---- Storage ----
 export HF_HOME=$SCRATCH/hf_cache
@@ -65,6 +64,6 @@ head -5 "$OUTPUT_DIR/test_evolved.jsonl" | python3 -c "
 import sys, json
 for line in sys.stdin:
     d = json.loads(line)
-    print(f\"[{d['source']}|r{d['round']}|{d['strategy']}] {d['query'][:120]}...\")
+    print(f\"[r{d['round']}|{d['strategy']}] {d['question'][:120]}...\")
     print()
 "

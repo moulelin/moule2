@@ -212,7 +212,7 @@ def load_seeds_from_registry(dataset_names, local_files=None):
             with open(fpath, "r", encoding="utf-8") as f:
                 for line in f:
                     obj = json.loads(line.strip())
-                    text = obj.get("query") or obj.get("problem") or obj.get("question", "")
+                    text = obj.get("question") or obj.get("problem") or obj.get("query", "")
                     if len(text) >= 10:
                         all_seeds.append({
                             "text": text,
@@ -412,7 +412,7 @@ def main(args):
                     continue
 
                 entry = {
-                    "query": problem,
+                    "question": problem,
                     "source": seed_info["source"],
                     "difficulty": seed_info["difficulty"],
                     "strategy": strategy,
@@ -452,7 +452,7 @@ def main(args):
                         continue
 
                     entry = {
-                        "query": problem,
+                        "question": problem,
                         "source": info["source"],
                         "difficulty": info["difficulty"],
                         "strategy": strategy,
