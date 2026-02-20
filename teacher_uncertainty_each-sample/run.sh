@@ -17,13 +17,13 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # ============================================================
 # Offline teacher uncertainty computation
-#   Teacher: Qwen3-8B (TP=1, 1x H100)
-#   Cluster: Qwen2.5-0.5B-Instruct (shares GPU)
+#   Teacher: Qwen3-8B (TP=1, 1x H100, no thinking)
+#   Cluster: Qwen2.5-3B-Instruct (shares GPU, judges ambiguous pairs)
 #   Dataset: 45K samples from evolved_clean.jsonl
 #   N=8 responses per sample
 #
 #   Per sample: teacher generates 8 responses (vLLM, fast)
-#               → 0.5B judges 28 pairs → SE
+#               → extract \boxed{}, string-match + 3B judge → SE
 #
 #   Estimated time: ~1-2 hours
 # ============================================================
@@ -36,14 +36,14 @@ python3 "$SCRIPT_DIR/compute_uncertainty.py" \
     --teacher_model Qwen/Qwen3-8B \
     --tp 1 \
     --max_model_len 4096 \
-    --gpu_memory_utilization 0.60 \
-    --cluster_model Qwen/Qwen2.5-0.5B-Instruct \
+    --gpu_memory_utilization 0.65 \
+    --cluster_model Qwen/Qwen2.5-3B-Instruct \
     --n_samples 8 \
     --temperature 0.7 \
     --max_gen_tokens 1024 \
     --input "$SCRIPT_DIR/evolved_clean.jsonl" \
     --output "$SCRIPT_DIR/evolved_with_se.jsonl" \
-    --batch_size 128
+    --batch_size 32
 
 echo "=========================================="
 echo "Done!"

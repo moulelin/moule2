@@ -4,24 +4,24 @@ Offline computation of teacher uncertainty (Semantic Entropy) for each sample.
 Pipeline:
   1. Load dataset (evolved_clean.jsonl)
   2. For each question, teacher (Qwen3-8B via vLLM) generates N responses
-  3. A small 0.5B model judges pairwise equivalence → Union-Find clustering
+  3. Extract \\boxed{} answers; string-identical answers are auto-clustered,
+     then a 3B judge model resolves remaining ambiguous pairs
   4. Compute normalized SE per sample, store se_weight = 1 - SE
   5. Output dataset with "se" and "se_weight" fields appended
 
 Usage:
   python compute_uncertainty.py \
     --teacher_model Qwen/Qwen3-8B \
-    --cluster_model Qwen/Qwen2.5-0.5B-Instruct \
+    --cluster_model Qwen/Qwen2.5-3B-Instruct \
     --input evolved_clean.jsonl \
     --output evolved_with_se.jsonl \
-    --n_samples 8 --tp 4
+    --n_samples 8 --tp 1
 """
 
 import argparse
 import json
 import math
 import os
-
 import time
 from collections import defaultdict
 
@@ -45,24 +45,24 @@ def extract_boxed(text):
     return None
 
 
-# ============ Pairwise Clustering via Small LLM ============
+# ============ Hybrid Clustering: string match + LLM judge ============
 
 PAIRWISE_SYSTEM = (
-    "You judge whether two math solutions arrive at the same final answer. "
+    "You judge whether two math answers are equivalent. "
     'Reply ONLY "YES" or "NO".'
 )
 
 PAIRWISE_TEMPLATE = (
-    "Do these two solutions give the same final answer?\n\n"
-    "Solution A:\n{resp_a}\n\n"
-    "Solution B:\n{resp_b}"
+    "Are these two answers equivalent?\n\n"
+    "Answer A: {ans_a}\n\n"
+    "Answer B: {ans_b}"
 )
 
 
 class SemanticCluster:
-    """Pairwise LLM-based clustering for SE computation."""
+    """Hybrid clustering: exact string match + LLM judge for ambiguous pairs."""
 
-    def __init__(self, model_name, max_model_len=2048):
+    def __init__(self, model_name, max_model_len=2048, gpu_util=0.20):
         from vllm import LLM, SamplingParams
         from transformers import AutoTokenizer
 
@@ -71,7 +71,7 @@ class SemanticCluster:
             model=model_name,
             tensor_parallel_size=1,
             max_model_len=max_model_len,
-            gpu_memory_utilization=0.12,  # small model, leave room for teacher
+            gpu_memory_utilization=gpu_util,
             trust_remote_code=True,
             dtype="bfloat16",
         )
@@ -79,50 +79,43 @@ class SemanticCluster:
         self.sampling_params = SamplingParams(temperature=0.0, max_tokens=3)
         print(f"[Cluster] Ready.")
 
-    def _build_pair_prompt(self, resp_a, resp_b):
+    def _build_pair_prompt(self, ans_a, ans_b):
         messages = [
             {"role": "system", "content": PAIRWISE_SYSTEM},
-            {"role": "user", "content": PAIRWISE_TEMPLATE.format(resp_a=resp_a, resp_b=resp_b)},
+            {"role": "user", "content": PAIRWISE_TEMPLATE.format(ans_a=ans_a, ans_b=ans_b)},
         ]
         return self.tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
 
-    def compute_entropy_batch(self, all_responses: list[list[str]]) -> list[float]:
+    def compute_entropy_batch(self, all_answers: list[list[str]]) -> list[float]:
         """Compute SE for multiple prompts at once.
 
-        Args:
-            all_responses: list of N-response lists, one per prompt.
-                e.g. [[r1,r2,...,r8], [r1,r2,...,r8], ...]
-
-        Returns:
-            list of SE values, one per prompt.
+        Optimization: pairs with identical strings are auto-merged (no LLM call).
+        Only pairs with different strings go through the LLM judge.
         """
-        # Build ALL pair prompts across all prompts
+        # Build pair prompts ONLY for pairs with different strings
         pair_prompts = []
-        pair_meta = []  # (prompt_idx, i, j) for each pair
+        pair_meta = []  # (prompt_idx, i, j) for each LLM-judged pair
 
-        for prompt_idx, responses in enumerate(all_responses):
-            N = len(responses)
+        for prompt_idx, answers in enumerate(all_answers):
+            N = len(answers)
             for i in range(N):
                 for j in range(i + 1, N):
-                    pair_prompts.append(self._build_pair_prompt(responses[i], responses[j]))
-                    pair_meta.append((prompt_idx, i, j))
+                    if answers[i] != answers[j]:
+                        pair_prompts.append(self._build_pair_prompt(answers[i], answers[j]))
+                        pair_meta.append((prompt_idx, i, j))
 
-        if not pair_prompts:
-            return [1.0] * len(all_responses)
-
-        # Batch judge ALL pairs in one vLLM call
-        outputs = self.llm.generate(pair_prompts, self.sampling_params)
-
-        # Parse verdicts
-        verdicts = []
-        for output in outputs:
-            text = output.outputs[0].text.strip().upper()
-            verdicts.append(text.startswith("YES"))
+        # Batch judge ambiguous pairs
+        llm_verdicts = {}
+        if pair_prompts:
+            outputs = self.llm.generate(pair_prompts, self.sampling_params)
+            for (pidx, i, j), output in zip(pair_meta, outputs):
+                text = output.outputs[0].text.strip().upper()
+                llm_verdicts[(pidx, i, j)] = text.startswith("YES")
 
         # Union-Find per prompt
         results = []
-        for prompt_idx, responses in enumerate(all_responses):
-            N = len(responses)
+        for prompt_idx, answers in enumerate(all_answers):
+            N = len(answers)
             if N <= 1:
                 results.append(0.0)
                 continue
@@ -140,10 +133,15 @@ class SemanticCluster:
                 if ra != rb:
                     parent[ra] = rb
 
-            # Apply verdicts for this prompt
-            for (pidx, i, j), equiv in zip(pair_meta, verdicts):
-                if pidx == prompt_idx and equiv:
-                    union(i, j)
+            # Merge pairs
+            for i in range(N):
+                for j in range(i + 1, N):
+                    if answers[i] == answers[j]:
+                        # Identical strings → always merge
+                        union(i, j)
+                    elif llm_verdicts.get((prompt_idx, i, j), False):
+                        # LLM says equivalent → merge
+                        union(i, j)
 
             # Count clusters
             groups = defaultdict(int)
@@ -210,7 +208,7 @@ def main(args):
     )
 
     # ---- Init cluster model ----
-    cluster = SemanticCluster(args.cluster_model, max_model_len=2048)
+    cluster = SemanticCluster(args.cluster_model, max_model_len=2048, gpu_util=0.20)
 
     # ---- Process in batches ----
     out_file = open(args.output, "a", encoding="utf-8")
@@ -313,12 +311,12 @@ if __name__ == "__main__":
 
     # Teacher model (generates N responses per question)
     parser.add_argument("--teacher_model", type=str, default="Qwen/Qwen3-8B")
-    parser.add_argument("--tp", type=int, default=4, help="Tensor parallel for teacher")
+    parser.add_argument("--tp", type=int, default=1, help="Tensor parallel for teacher")
     parser.add_argument("--max_model_len", type=int, default=4096)
-    parser.add_argument("--gpu_memory_utilization", type=float, default=0.60)
+    parser.add_argument("--gpu_memory_utilization", type=float, default=0.65)
 
     # Cluster model (pairwise judging)
-    parser.add_argument("--cluster_model", type=str, default="Qwen/Qwen2.5-0.5B-Instruct")
+    parser.add_argument("--cluster_model", type=str, default="Qwen/Qwen2.5-3B-Instruct")
 
     # SE sampling
     parser.add_argument("--n_samples", type=int, default=8, help="N responses per question")
