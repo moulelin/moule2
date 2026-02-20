@@ -407,6 +407,10 @@ class VtDDistillLoss(nn.Module):
          directing learning effort to the most informative positions.
 
     The final per-token weight is the product of both, applied to the cross-entropy loss.
+
+    Additionally supports per-sample semantic entropy weighting: when the teacher is
+    uncertain about a question (high semantic entropy across N sampled responses),
+    the distillation loss for that sample is downweighted.
     """
 
     def __init__(self, alpha: float = 5.0, tau: float = 1.0):
@@ -421,6 +425,7 @@ class VtDDistillLoss(nn.Module):
         teacher_topk_vals: torch.Tensor,
         teacher_topk_ids: torch.Tensor,
         loss_mask: torch.Tensor,
+        se_weights: torch.Tensor = None,
     ) -> torch.Tensor:
         """
         Args:
@@ -428,6 +433,8 @@ class VtDDistillLoss(nn.Module):
             teacher_topk_vals: (batch, seq_len, K) - teacher top-K logit values
             teacher_topk_ids: (batch, seq_len, K) - teacher top-K token indices
             loss_mask: (batch, seq_len) - 1 for response tokens, 0 for prompt/pad
+            se_weights: (batch,) - per-sample semantic entropy weight (1 = confident, 0 = uncertain).
+                        If None, all samples weighted equally.
         Returns:
             Weighted distillation loss scalar
         """
@@ -466,48 +473,12 @@ class VtDDistillLoss(nn.Module):
 
         w = w_conf * w_div  # (batch, seq_len)
 
+        # Apply per-sample semantic entropy weight
+        if se_weights is not None:
+            # se_weights: (batch,) → (batch, 1) for broadcasting with (batch, seq_len)
+            w = w * se_weights.unsqueeze(-1)
+
         return (kl * w * loss_mask).sum() / total
-
-
-class VtDContrastLoss(nn.Module):
-    """
-    DPO-style Contrastive Loss for VtD.
-    Applied to incorrect rollouts: contrasts chosen (correct) vs rejected (incorrect) responses.
-    Uses the student model itself as the implicit reward (no reference model needed since
-    we contrast on-policy samples).
-    """
-
-    def __init__(self, beta: float = 0.1):
-        super().__init__()
-        self.beta = beta
-
-    def forward(
-        self,
-        chosen_logps: torch.Tensor,
-        rejected_logps: torch.Tensor,
-        ref_chosen_logps: torch.Tensor,
-        ref_rejected_logps: torch.Tensor,
-    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
-        """
-        Args:
-            chosen_logps: (batch,) avg log prob of chosen (correct) responses
-            rejected_logps: (batch,) avg log prob of rejected (incorrect) responses
-            ref_chosen_logps: (batch,) reference model log probs for chosen
-            ref_rejected_logps: (batch,) reference model log probs for rejected
-        Returns:
-            loss, chosen_rewards, rejected_rewards
-        """
-        pi_logratios = chosen_logps - rejected_logps
-        ref_logratios = ref_chosen_logps - ref_rejected_logps
-        logits = pi_logratios - ref_logratios
-
-        losses = -F.logsigmoid(self.beta * logits)
-        loss = losses.mean()
-
-        chosen_rewards = self.beta * (chosen_logps - ref_chosen_logps).detach()
-        rejected_rewards = self.beta * (rejected_logps - ref_rejected_logps).detach()
-
-        return loss, chosen_rewards, rejected_rewards
 
 
 class PRMLoss(nn.Module):

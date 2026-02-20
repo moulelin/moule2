@@ -12,7 +12,6 @@ from .loss import (
     ValueLoss,
     VanillaKTOLoss,
     VtDDistillLoss,
-    VtDContrastLoss,
 )
 from .model import get_llm_for_sequence_regression
 
@@ -30,6 +29,5 @@ __all__ = [
     "ValueLoss",
     "VanillaKTOLoss",
     "VtDDistillLoss",
-    "VtDContrastLoss",
     "get_llm_for_sequence_regression",
 ]

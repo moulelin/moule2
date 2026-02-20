@@ -13,7 +13,7 @@ from ray.util.placement_group import placement_group
 
 from openrlhf.trainer.ray import create_vllm_engines
 from openrlhf.trainer.ray.launcher import RayActorGroup
-from openrlhf.trainer.ray.vtd_actor import VtDStudentActor, VtDTeacherActor, VtDRefActor
+from openrlhf.trainer.ray.vtd_actor import VtDStudentActor, VtDTeacherActor
 from openrlhf.trainer.vtd_trainer_ray import VtDRayTrainer
 from openrlhf.utils import get_strategy
 
@@ -27,11 +27,7 @@ def train(args):
 
     # ============ Placement Groups ============
     pg = None
-    if args.colocate_all_models or args.colocate_student_ref:
-        assert (
-            args.student_num_nodes == args.ref_num_nodes
-            and args.student_num_gpus_per_node == args.ref_num_gpus_per_node
-        ), "Student and ref must have same GPU layout when colocated."
+    if args.colocate_all_models:
         bundles = [{"GPU": 1, "CPU": 1} for _ in range(args.student_num_nodes * args.student_num_gpus_per_node)]
         pg = placement_group(bundles, strategy="PACK")
         ray.get(pg.ready())
@@ -72,17 +68,7 @@ def train(args):
         num_gpus_per_actor=0.2 if pg else 1,
     )
 
-    # ============ Reference Model (frozen, for contrastive loss) ============
-    ref_model = RayActorGroup(
-        args.ref_num_nodes,
-        args.ref_num_gpus_per_node,
-        VtDRefActor,
-        pg=pg,
-        num_gpus_per_actor=0.2 if pg else 1,
-    )
-
-    # ============ Teacher Model (frozen, for distillation) ============
-    # When colocate_all_models, teacher also shares the same PG
+    # ============ Teacher Model (frozen, for distillation + SE sampling) ============
     pg_teacher = pg if args.colocate_all_models else None
     teacher_model = RayActorGroup(
         args.teacher_num_nodes,
@@ -98,7 +84,6 @@ def train(args):
         strategy,
         student_model,
         teacher_model,
-        ref_model,
         vllm_engines,
         temperature=args.temperature,
         top_p=args.top_p,
@@ -109,7 +94,6 @@ def train(args):
     # ============ Init Models ============
     refs = []
     refs.extend(student_model.async_init_model_from_pretrained(strategy, args.pretrain, max_steps, vllm_engines))
-    refs.extend(ref_model.async_init_model_from_pretrained(strategy, args.pretrain))
     refs.extend(teacher_model.async_init_model_from_pretrained(strategy, args.teacher_model))
     ray.get(refs)
 
@@ -128,12 +112,8 @@ if __name__ == "__main__":
     parser.add_argument("--student_num_gpus_per_node", type=int, default=4)
     parser.add_argument("--teacher_num_nodes", type=int, default=1)
     parser.add_argument("--teacher_num_gpus_per_node", type=int, default=4)
-    parser.add_argument("--ref_num_nodes", type=int, default=1)
-    parser.add_argument("--ref_num_gpus_per_node", type=int, default=4)
-    parser.add_argument("--colocate_student_ref", action="store_true", default=False,
-                        help="Colocate student and reference model on same GPUs")
     parser.add_argument("--colocate_all_models", action="store_true", default=False,
-                        help="Colocate all models (Student, Teacher, Ref, vLLM) on same GPUs. Use with --vllm_enable_sleep.")
+                        help="Colocate all models (Student, Teacher, vLLM) on same GPUs. Use with --vllm_enable_sleep.")
 
     # ============ vLLM ============
     parser.add_argument("--vllm_num_engines", type=int, default=4)
@@ -218,10 +198,9 @@ if __name__ == "__main__":
     parser.add_argument("--vtd_distill_alpha", type=float, default=5.0)
     parser.add_argument("--vtd_distill_tau", type=float, default=1.0,
                         help="Temperature for token-level divergence weighting in distillation loss")
-    parser.add_argument("--vtd_contrast_beta", type=float, default=0.1)
+    parser.add_argument("--se_n_samples", type=int, default=8,
+                        help="Number of teacher responses per prompt for semantic entropy estimation")
     parser.add_argument("--teacher_micro_batch_size", type=int, default=2)
-    parser.add_argument("--teacher_generate", action="store_true", default=True)
-    parser.add_argument("--no_teacher_generate", action="store_false", dest="teacher_generate")
 
     # ============ Dataset ============
     parser.add_argument("--prompt_data", type=str, required=True)
@@ -263,7 +242,6 @@ if __name__ == "__main__":
         args.input_template = None
 
     if args.colocate_all_models:
-        args.colocate_student_ref = True  # implied
         if args.vllm_enable_sleep is False and args.vllm_num_engines and args.vllm_num_engines > 0:
             print("[Warning] --colocate_all_models with vLLM requires --vllm_enable_sleep for memory sharing")
 

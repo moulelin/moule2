@@ -4,15 +4,16 @@ VtD Ray Trainer — Single controller orchestrating multi-node VtD training.
 Architecture:
   - vLLM engines: fast on-policy generation from student
   - Student (VtDStudentActor): trainable, VtD loss optimization
-  - Teacher (VtDTeacherActor): frozen, provides logits for distillation
-  - Reference (ReferenceModelActor): frozen, baseline for contrastive loss
+  - Teacher (VtDTeacherActor): frozen, provides logits for distillation + SE sampling
 
-VtD Training Logic:
-  For each prompt, student generates K responses, verified against label:
-  - Correct (matches label) → Distillation: teacher logits on student's correct response
-  - Incorrect (doesn't match label) → DPO: chosen = reference CoT, rejected = student incorrect
-
-  When no reference CoT (--output_key not set), contrastive uses student correct as chosen.
+VtD Training Logic (Semantic Entropy weighted):
+  For each prompt:
+  1. Student generates K responses, verified against label
+  2. Teacher generates N responses for semantic entropy estimation
+  3. Semantic entropy measures teacher uncertainty per prompt
+  4. All student responses → distillation with teacher logits, weighted by (1 - normalized SE)
+     - Low SE (teacher confident) → high distillation weight
+     - High SE (teacher uncertain) → low distillation weight
 """
 
 import json
@@ -372,6 +373,69 @@ def verify_answer(response: str, ground_truth: str) -> bool:
     return math_equal(predicted, gt_stripped)
 
 
+# ============ Semantic Entropy ============
+
+def compute_semantic_entropy(responses: list[str], n_samples: int = None) -> float:
+    """Compute semantic entropy from teacher's N responses.
+
+    Groups responses by semantic equivalence (same extracted answer after normalization),
+    then computes entropy over the cluster distribution.
+
+    Args:
+        responses: list of N response strings from the teacher
+        n_samples: total number of samples (for normalization). If None, uses len(responses).
+
+    Returns:
+        Normalized semantic entropy in [0, 1].
+        0 = all responses agree (teacher confident)
+        1 = maximum disagreement (teacher uncertain)
+    """
+    if not responses:
+        return 1.0  # no responses = maximum uncertainty
+
+    N = n_samples or len(responses)
+    if N <= 1:
+        return 0.0
+
+    # Extract and normalize answers, group into semantic clusters
+    clusters = {}
+    for resp in responses:
+        answer = extract_answer(resp)
+        normalized = strip_string(answer) if answer else "__EMPTY__"
+        # Group semantically equivalent answers
+        found_cluster = False
+        for key in list(clusters.keys()):
+            if math_equal(normalized, key):
+                clusters[key] += 1
+                found_cluster = True
+                break
+        if not found_cluster:
+            clusters[normalized] = 1
+
+    # Compute entropy: H = -Σ p_c * log(p_c)
+    entropy = 0.0
+    for count in clusters.values():
+        p = count / N
+        if p > 0:
+            entropy -= p * math.log(p)
+
+    # Normalize by max possible entropy log(N)
+    max_entropy = math.log(N)
+    if max_entropy > 0:
+        return entropy / max_entropy
+    return 0.0
+
+
+def semantic_entropy_to_weight(se: float) -> float:
+    """Convert normalized semantic entropy to a distillation weight.
+
+    weight = 1 - se
+    - Teacher confident (se ≈ 0) → weight ≈ 1 (full distillation)
+    - Teacher uncertain (se ≈ 1) → weight ≈ 0 (skip distillation)
+    """
+    return 1.0 - se
+
+
 # ============ Dataset Preparation ============
 
 def prepare_vtd_datasets(strategy, tokenizer):
@@ -409,18 +473,13 @@ def prepare_vtd_datasets(strategy, tokenizer):
         )
 
     n_samples = getattr(args, "n_samples_per_prompt", 4)
-    # Each correct sample → 1/micro_bs backward calls (batched distill).
-    # Each incorrect sample → 1 backward call (one-by-one contrast).
-    # With unknown accuracy p, worst-case backward calls per sample ≈ 1 (p→0).
-    # Conservative estimate: assume all samples are contrast (1 backward each),
-    # which gives an upper bound on weight updates. Using 2× original formula
-    # covers the typical range (accuracy 0-30% → ratio 1.7-2.0×).
+    # All samples go through distillation (no separate contrast path).
+    # Each micro-batch of micro_bs samples = 1 backward call per rank.
     total_samples = len(train_dataset) * n_samples * args.num_episodes * args.max_epochs
     micro_bs = getattr(args, "micro_train_batch_size", 2)
     world_size = args.student_num_nodes * args.student_num_gpus_per_node
     accum_steps = args.train_batch_size // micro_bs // world_size
-    # Upper bound: every sample = 1 backward call per rank
-    max_steps = total_samples // world_size // accum_steps
+    max_steps = total_samples // world_size // micro_bs // accum_steps
     return train_dataloader, eval_dataloader, max_steps
 
 
@@ -434,9 +493,8 @@ class VtDRayTrainer:
     Orchestrates:
     1. On-policy generation via vLLM
     2. Answer verification (label matching)
-    3. Distillation on student correct responses (teacher logits)
-    4. DPO: chosen = reference CoT > student correct > teacher generate,
-            rejected = student incorrect
+    3. Teacher N-response sampling for semantic entropy estimation
+    4. Distillation on all student responses (teacher logits), weighted by SE
     5. Student model VtD training step
     6. Weight sync back to vLLM
     """
@@ -447,7 +505,6 @@ class VtDRayTrainer:
         strategy: DeepspeedStrategy,
         student_model_group: RayActorGroup,
         teacher_model_group: RayActorGroup,
-        ref_model_group: RayActorGroup,
         vllm_engines,
         **generate_kwargs,
     ):
@@ -462,12 +519,14 @@ class VtDRayTrainer:
 
         self.student_model_group = student_model_group
         self.teacher_model_group = teacher_model_group
-        self.ref_model_group = ref_model_group
         self.vllm_engines = vllm_engines
         self.generate_kwargs = generate_kwargs
 
         # Whether we have reference CoT for guided distillation
         self.use_reference_cot = bool(getattr(args, "output_key", None))
+
+        # Semantic entropy config
+        self.se_n_samples = getattr(args, "se_n_samples", 8)
 
         # Tokenizer
         self.tokenizer = get_tokenizer(
@@ -497,7 +556,7 @@ class VtDRayTrainer:
             f.write(f"VtD Training Log - {datetime.now().isoformat()}\n")
             f.write(f"Student: {pretrain}, Teacher: {args.teacher_model}\n")
             f.write(f"CoT-guided: {self.use_reference_cot}\n")
-            f.write(f"Config: K={self.n_samples_per_prompt}, alpha={args.vtd_distill_alpha}, beta={args.vtd_contrast_beta}\n")
+            f.write(f"Config: K={self.n_samples_per_prompt}, alpha={args.vtd_distill_alpha}, SE_N={self.se_n_samples}\n")
             f.write("=" * 80 + "\n")
         logger.info(f"Metrics log file: {self.log_file}")
 
@@ -630,22 +689,17 @@ class VtDRayTrainer:
         return self._tokenize_sequence(teacher_prompt, response)
 
     def fit(self):
-        """Main VtD training loop (STAR-style: batch rollout → collect buffer → train).
+        """Main VtD training loop (semantic-entropy weighted distillation).
 
         For each rollout batch of prompts:
         1. vLLM generates n_samples_per_prompt responses per prompt
         2. Verify against labels → correct / incorrect
-        3. Collect distillation buffer (correct + teacher logits) and
-           contrastive buffer (chosen/rejected sequences + ref logps)
-        4. Student trains from buffers in micro-batches (DeepSpeed handles accumulation)
-        5. Sync weights to vLLM
+        3. Teacher generates N responses per prompt → compute semantic entropy
+        4. Collect distillation buffer (all responses + teacher logits + SE weights)
+        5. Student trains from buffers in micro-batches (DeepSpeed handles accumulation)
+        6. Sync weights to vLLM
         """
         global_step = 0
-
-        # Baseline evaluation before any training
-        # if self.eval_dataloader:
-        #     logger.info("========== 基线评估 (步骤 0) ==========")
-        #     self._evaluate(global_step)
 
         for episode in range(self.args.num_episodes):
             pbar = tqdm(
@@ -658,12 +712,8 @@ class VtDRayTrainer:
 
                 # ============ Phase 1: Generate ============
                 logger.info("========== 阶段1: 学生模型采样生成 ==========")
-                # When colocating all models, Teacher/Ref → CPU before vLLM wakes up,
-                # so vLLM has maximum VRAM headroom for KV cache during generation.
-                # vLLM wake/sleep is managed internally by _generate_with_vllm.
                 if getattr(self.args, "colocate_all_models", False):
                     ray.get(self.teacher_model_group.async_run_method("offload_states"))
-                    ray.get(self.ref_model_group.async_run_method("offload_states"))
 
                 student_responses = self._generate(prompts, labels)
                 phase1_time = time.time() - start_time
@@ -692,21 +742,48 @@ class VtDRayTrainer:
                     f"正确 {total_correct}/{total} ({batch_acc:.1%})"
                 )
 
-                # ============ Phase 2: Collect buffers ============
-                logger.info("========== 阶段2: 收集教师logits与参考模型logps ==========")
-                # vLLM is now sleeping; Teacher/Ref reload to GPU for logit collection.
+                # ============ Phase 2: Collect teacher logits + Semantic Entropy ============
+                logger.info("========== 阶段2: 教师语义熵采样 + logits收集 ==========")
                 if getattr(self.args, "colocate_all_models", False):
                     ray.get(self.teacher_model_group.async_run_method("reload_states"))
-                    ray.get(self.ref_model_group.async_run_method("reload_states"))
 
                 phase2_start = time.time()
+                teacher_actors = self.teacher_model_group._actor_handlers
+                num_teacher = len(teacher_actors)
 
-                # ---- 2a: Collect ALL student responses for answer-aware distillation ----
-                # With answer-aware teacher (ref CoT + label in system prompt),
-                # distillation is meaningful for BOTH correct and incorrect responses:
-                #   - Correct: teacher reinforces correct reasoning
-                #   - Incorrect: teacher logits push student toward correct tokens
-                # Incorrect responses additionally participate in contrastive learning.
+                # ---- 2a: Teacher generates N responses per prompt for semantic entropy ----
+                se_gen_refs = []
+                for idx, i in enumerate(range(len(prompts))):
+                    teacher_prompt = self._build_teacher_prompt(
+                        raw_inputs[i], labels[i], reference_outputs[i]
+                    )
+                    actor_idx = idx % num_teacher
+                    ref = teacher_actors[actor_idx].batch_generate.remote(
+                        [teacher_prompt],
+                        num_samples=self.se_n_samples,
+                        temperature=self.generate_kwargs.get("temperature", 0.7),
+                        top_p=self.generate_kwargs.get("top_p", 0.95),
+                    )
+                    se_gen_refs.append((i, ref))
+
+                # Collect SE responses and compute per-prompt semantic entropy
+                se_per_prompt = []
+                se_weight_per_prompt = []
+                for i, ref in se_gen_refs:
+                    teacher_responses = ray.get(ref)[0]  # [0] because we sent [prompt]
+                    se = compute_semantic_entropy(teacher_responses, self.se_n_samples)
+                    se_w = semantic_entropy_to_weight(se)
+                    se_per_prompt.append(se)
+                    se_weight_per_prompt.append(se_w)
+
+                avg_se = sum(se_per_prompt) / len(se_per_prompt) if se_per_prompt else 0.0
+                avg_se_w = sum(se_weight_per_prompt) / len(se_weight_per_prompt) if se_weight_per_prompt else 1.0
+                logger.info(
+                    f"[阶段2] 语义熵: 平均 SE={avg_se:.3f}, 平均权重={avg_se_w:.3f} "
+                    f"(N={self.se_n_samples} 采样/提示)"
+                )
+
+                # ---- 2b: Collect ALL student responses for distillation ----
                 all_student_distill_ids = []
                 all_student_distill_masks = []
                 all_student_distill_loss_masks = []
@@ -714,11 +791,11 @@ class VtDRayTrainer:
                 all_teacher_distill_masks = []
                 all_teacher_prompt_lens = []
                 all_student_prompt_lens = []
+                all_se_weights = []  # per-sample SE weight (same for all responses of same prompt)
                 distill_prompt_indices = []
                 for i, prompt in enumerate(prompts):
                     all_responses = batch_correct[i] + batch_incorrect[i]
                     for resp in all_responses:
-                        # Student tokenization (original prompt)
                         s_ids, s_mask, s_plen = self._tokenize_sequence(prompt, resp)
                         s_seq_len = s_ids.shape[1]
                         loss_mask = torch.zeros(1, s_seq_len)
@@ -729,7 +806,6 @@ class VtDRayTrainer:
                         all_student_distill_loss_masks.append(loss_mask)
                         all_student_prompt_lens.append(s_plen)
 
-                        # Teacher tokenization (prompt with ref CoT + label in system prompt)
                         t_ids, t_mask, t_plen = self._tokenize_teacher_sequence(
                             raw_inputs[i], labels[i], reference_outputs[i], resp
                         )
@@ -737,98 +813,26 @@ class VtDRayTrainer:
                         all_teacher_distill_masks.append(t_mask)
                         all_teacher_prompt_lens.append(t_plen)
 
+                        all_se_weights.append(se_weight_per_prompt[i])
                         distill_prompt_indices.append(i)
 
                 total_distill_fired = len(all_student_distill_ids)
                 logger.info(
-                    f"[阶段2] 收集到 {total_distill_fired} 条序列 "
-                    f"(正确 {total_correct} + 错误 {total_incorrect}), "
+                    f"[阶段2] 收集到 {total_distill_fired} 条序列, "
                     f"准备批量教师前向 (answer-aware)"
                 )
 
-                # ---- 2b: 对比缓冲收集 (多GPU并行) ----
-                teacher_actors = self.teacher_model_group._actor_handlers
-                ref_actors = self.ref_model_group._actor_handlers
-                num_teacher = len(teacher_actors)
-                num_ref = len(ref_actors)
-
-                # 步骤1: 确定每个 prompt 的 chosen response
-                chosen_map = {}  # prompt_idx -> chosen_resp
-                needs_teacher_gen = []  # prompt indices that need teacher generation
-                for i, prompt in enumerate(prompts):
-                    if not batch_incorrect[i]:
-                        continue
-                    if batch_correct[i]:
-                        chosen_map[i] = batch_correct[i][0]
-                    else:
-                        # 全错 — 需要 teacher 生成 chosen response
-                        needs_teacher_gen.append(i)
-
-                # Teacher 生成 chosen (answer-aware prompt, 并行分发到多个 teacher actor)
-                if needs_teacher_gen:
-                    gen_refs = []
-                    for idx, i in enumerate(needs_teacher_gen):
-                        teacher_prompt = self._build_teacher_prompt(
-                            raw_inputs[i], labels[i], reference_outputs[i]
-                        )
-                        actor_idx = idx % num_teacher
-                        ref = teacher_actors[actor_idx].generate.remote(
-                            teacher_prompt, temperature=0.7, top_p=0.95
-                        )
-                        gen_refs.append((i, ref))
-                    for i, ref in gen_refs:
-                        chosen_map[i] = ray.get(ref)
-                    logger.info(
-                        f"[阶段2] {len(needs_teacher_gen)} 个全错提示由 teacher 生成 chosen"
-                    )
-
-                # 步骤3: 参考模型 logps — 分发到多个GPU并行 (round-robin)
-                ref_call_counter = 0
-                contrast_pending_per_prompt = []
-                total_contrast_fired = 0
-                for i, prompt in enumerate(prompts):
-                    if not batch_incorrect[i] or i not in chosen_map:
-                        contrast_pending_per_prompt.append([])
-                        continue
-
-                    chosen_resp = chosen_map[i]
-                    chosen_ids, chosen_mask, chosen_plen = self._tokenize_sequence(prompt, chosen_resp)
-                    ref_chosen_ref = ref_actors[ref_call_counter % num_ref].compute_logps.remote(
-                        chosen_ids, chosen_mask, chosen_plen
-                    )
-                    ref_call_counter += 1
-
-                    prompt_pending = []
-                    for rejected_resp in batch_incorrect[i]:
-                        rejected_ids, rejected_mask, rejected_plen = self._tokenize_sequence(
-                            prompt, rejected_resp
-                        )
-                        ref_rejected_ref = ref_actors[ref_call_counter % num_ref].compute_logps.remote(
-                            rejected_ids, rejected_mask, rejected_plen
-                        )
-                        ref_call_counter += 1
-                        prompt_pending.append((
-                            chosen_ids, chosen_mask, chosen_plen,
-                            rejected_ids, rejected_mask, rejected_plen,
-                            ref_chosen_ref, ref_rejected_ref,
-                        ))
-                        total_contrast_fired += 1
-                    contrast_pending_per_prompt.append(prompt_pending)
-                logger.info(f"[阶段2] 参考模型 logps: {total_contrast_fired} 个调用, 分发到 {num_ref} 个GPU")
-
-                # ---- 批量教师前向 (蒸馏, answer-aware) — 分发到多个GPU并行 ----
+                # ---- 2c: Batch teacher forward for logits (distributed across GPUs) ----
                 if total_distill_fired > 0:
-                    # 将 teacher 序列均分到各 teacher actor (round-robin 分组)
                     per_actor_ids = [[] for _ in range(num_teacher)]
                     per_actor_masks = [[] for _ in range(num_teacher)]
-                    per_actor_indices = [[] for _ in range(num_teacher)]  # 原始下标
+                    per_actor_indices = [[] for _ in range(num_teacher)]
                     for idx in range(total_distill_fired):
                         actor_idx = idx % num_teacher
                         per_actor_ids[actor_idx].append(all_teacher_distill_ids[idx])
                         per_actor_masks[actor_idx].append(all_teacher_distill_masks[idx])
                         per_actor_indices[actor_idx].append(idx)
 
-                    # 异步发起所有 actor 的 batch_get_logits
                     teacher_ray_refs = []
                     for a in range(num_teacher):
                         if per_actor_ids[a]:
@@ -842,18 +846,16 @@ class VtDRayTrainer:
                         f"分发到 {len(teacher_ray_refs)}/{num_teacher} 个GPU"
                     )
 
-                    # 收集结果, 按原始下标还原顺序
                     all_teacher_results = [None] * total_distill_fired
                     for a, ref in teacher_ray_refs:
                         results = ray.get(ref)
                         for local_idx, global_idx in enumerate(per_actor_indices[a]):
                             all_teacher_results[global_idx] = results[local_idx]
-                        logger.info(
-                            f"[阶段2] 教师GPU {a} 完成: {len(results)} 条序列"
-                        )
+                        logger.info(f"[阶段2] 教师GPU {a} 完成: {len(results)} 条序列")
                 else:
                     all_teacher_results = []
 
+                # ---- Build distill items with SE weights ----
                 distill_per_prompt = [[] for _ in prompts]
                 for idx in range(total_distill_fired):
                     prompt_idx = distill_prompt_indices[idx]
@@ -864,112 +866,62 @@ class VtDRayTrainer:
                     s_seq_len = s_ids.shape[1]
                     top_k = t_topk_vals.shape[-1]
 
-                    # Extract teacher response-token logits and realign to student positions.
-                    # Teacher response logits start at t_plen; student response starts at s_plen.
-                    # Both have the same response tokens, so response_len is the same.
-                    t_response_vals = t_topk_vals[:, t_plen:, :]  # (1, response_len, K)
+                    t_response_vals = t_topk_vals[:, t_plen:, :]
                     t_response_ids = t_topk_ids[:, t_plen:, :]
                     response_len = t_response_vals.shape[1]
 
-                    # Create student-aligned teacher logits (zeros at prompt positions)
                     aligned_vals = torch.zeros(1, s_seq_len, top_k, dtype=t_topk_vals.dtype)
                     aligned_ids = torch.zeros(1, s_seq_len, top_k, dtype=t_topk_ids.dtype)
-                    # Place teacher response logits at student response positions
                     actual_len = min(response_len, s_seq_len - s_plen)
                     aligned_vals[:, s_plen:s_plen + actual_len, :] = t_response_vals[:, :actual_len, :]
                     aligned_ids[:, s_plen:s_plen + actual_len, :] = t_response_ids[:, :actual_len, :]
 
+                    # Include SE weight as 6th element
                     distill_per_prompt[prompt_idx].append((
                         s_ids, all_student_distill_masks[idx],
                         all_student_distill_loss_masks[idx], aligned_vals, aligned_ids,
+                        all_se_weights[idx],
                     ))
-                logger.info(f"[阶段2] 批量教师前向完成 (answer-aware): {total_distill_fired} 条序列")
-
-                # ---- 收集对比结果 ----
-                contrast_per_prompt = []
-                gathered = 0
-                for prompt_pending in contrast_pending_per_prompt:
-                    items = []
-                    for item in prompt_pending:
-                        chosen_ids, chosen_mask, chosen_plen = item[0], item[1], item[2]
-                        rejected_ids, rejected_mask, rejected_plen = item[3], item[4], item[5]
-                        ref_chosen_logp = ray.get(item[6])
-                        ref_rejected_logp = ray.get(item[7])
-                        items.append((
-                            chosen_ids, chosen_mask, chosen_plen,
-                            rejected_ids, rejected_mask, rejected_plen,
-                            ref_chosen_logp, ref_rejected_logp,
-                        ))
-                        gathered += 1
-                        if gathered % 50 == 0:
-                            logger.info(f"[阶段2] 已收集参考模型 logps: {gathered}/{total_contrast_fired}")
-                    contrast_per_prompt.append(items)
 
                 total_distill = sum(len(p) for p in distill_per_prompt)
-                total_contrast = sum(len(p) for p in contrast_per_prompt)
                 phase2_time = time.time() - phase2_start
                 logger.info(
-                    f"[阶段2] 完成: {total_distill} 条蒸馏 + {total_contrast} 条对比样本, "
+                    f"[阶段2] 完成: {total_distill} 条蒸馏样本 (SE加权), "
                     f"共 {len(prompts)} 个提示 (耗时 {phase2_time:.1f}s)"
                 )
 
                 # ============ Phase 3: Train from buffers ============
-                logger.info("========== 阶段3: 学生模型训练 (蒸馏+对比) ==========")
+                logger.info("========== 阶段3: 学生模型训练 (SE加权蒸馏) ==========")
                 phase3_start = time.time()
-                # Adaptive Loss Balancing: scale distillation and contrastive weights
-                # based on current batch accuracy. When accuracy is low (many errors),
-                # contrastive learning dominates; when accuracy is high, distillation
-                # dominates. This turns the implicit curriculum into an explicit one.
-                batch_accuracy = total_correct / total if total > 0 else 0.0
-                lambda_distill = batch_accuracy       # high accuracy → strong distillation
-                lambda_contrast = 1.0 - batch_accuracy  # low accuracy → strong contrastive
 
                 if getattr(self.args, "colocate_all_models", False):
-                    # Teacher/Ref → CPU so all 4 GPUs are free for student training
                     ray.get(self.teacher_model_group.async_run_method("offload_states"))
-                    ray.get(self.ref_model_group.async_run_method("offload_states"))
 
                 if self.args.deepspeed_enable_sleep:
-                    # Student → GPU (reload DeepSpeed optimizer states; requires ZeRO-3
-                    # or DeepSpeed > 0.17.5 for ZeRO-1)
                     ray.get(self.student_model_group.async_run_method("reload_states"))
 
                 # Flatten per-prompt lists into flat lists for distributed data sharding.
-                # Each student rank selects rank::world_size items inside vtd_train.
                 distill_flat = [item for plist in distill_per_prompt for item in plist]
-                contrast_flat = [item for plist in contrast_per_prompt for item in plist]
                 world_size = self.args.student_num_nodes * self.args.student_num_gpus_per_node
                 micro_bs = self.args.micro_train_batch_size
 
-                # Pad distill to multiple of world_size * micro_bs (one chunk per rank)
+                # Pad distill to multiple of world_size * micro_bs
                 d_chunk = world_size * micro_bs
                 if distill_flat:
                     n_pad = (-len(distill_flat)) % d_chunk
                     distill_flat.extend([None] * n_pad)
                 else:
-                    distill_flat = [None] * d_chunk  # keep step counter alive
-
-                # Pad contrast to multiple of world_size
-                if contrast_flat:
-                    n_pad = (-len(contrast_flat)) % world_size
-                    contrast_flat.extend([None] * n_pad)
-                else:
-                    contrast_flat = [None] * world_size  # keep step counter alive
+                    distill_flat = [None] * d_chunk
 
                 logger.info(
                     f"[阶段3] 蒸馏样本={len(distill_flat)} "
                     f"(有效 {sum(x is not None for x in distill_flat)}), "
-                    f"对比样本={len(contrast_flat)} "
-                    f"(有效 {sum(x is not None for x in contrast_flat)}), "
                     f"world_size={world_size}"
                 )
 
                 train_refs = self.student_model_group.async_run_method(
                     "vtd_train",
                     distill_items_flat=distill_flat,
-                    contrast_items_flat=contrast_flat,
-                    lambda_distill=lambda_distill,
-                    lambda_contrast=lambda_contrast,
                 )
                 status = ray.get(train_refs)[0]
 
@@ -995,7 +947,8 @@ class VtDRayTrainer:
                 status["num_correct"] = total_correct
                 status["num_incorrect"] = total_incorrect
                 status["num_distill_items"] = total_distill
-                status["num_contrast_items"] = total_contrast
+                status["avg_semantic_entropy"] = avg_se
+                status["avg_se_weight"] = avg_se_w
                 status["step_time"] = step_time
                 status["phase1_generate_time"] = phase1_time
                 status["phase2_collect_time"] = phase2_time

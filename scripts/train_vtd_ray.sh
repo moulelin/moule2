@@ -28,10 +28,10 @@ export NCCL_SOCKET_IFNAME=ib1
 # ---- vLLM uses sync LLM() engine (no VLLM_USE_V1 needed) ----
 
 # ============================================================
-# VtD Ray Training — 1 Node × 4 H100 GPUs
-# Phase 1 (Generate):  vLLM×4 active (student/teacher/ref sleep to CPU)
-# Phase 2 (Collect):   vLLM sleeps; Teacher×4 + Ref×4 wake for logit collection (多GPU并行)
-# Phase 3 (Train):     Teacher/Ref sleep; Student×4 wake for ZeRO-1 distributed training
+# VtD Ray Training — 1 Node × 4 H100 GPUs (SE-weighted distillation)
+# Phase 1 (Generate):  vLLM×4 active (teacher sleeps to CPU)
+# Phase 2 (Collect):   vLLM sleeps; Teacher×4 wake for SE sampling + logit collection
+# Phase 3 (Train):     Teacher sleep; Student×4 wake for ZeRO-1 distributed training
 # Phase 4 (Sync):      vLLM wakes briefly for weight broadcast, then sleeps
 # ============================================================
 
@@ -60,9 +60,7 @@ ray job submit --address="http://127.0.0.1:8265" \
    --student_num_gpus_per_node 4 \
    --teacher_num_nodes 1 \
    --teacher_num_gpus_per_node 4 \
-   --ref_num_nodes 1 \
    --output_key answer \
-   --ref_num_gpus_per_node 4 \
    --colocate_all_models \
    --vllm_num_engines 4 \
    --vllm_tensor_parallel_size 1 \
@@ -82,10 +80,9 @@ ray job submit --address="http://127.0.0.1:8265" \
    --max_samples 10000 \
    --n_samples_per_prompt 4 \
    --vtd_distill_alpha 5.0 \
-   --vtd_contrast_beta 0.1 \
+   --se_n_samples 8 \
    --temperature 0.7 \
    --top_p 0.95 \
-   --teacher_generate \
    --zero_stage 1 \
    --deepspeed_enable_sleep \
    --packing_samples \

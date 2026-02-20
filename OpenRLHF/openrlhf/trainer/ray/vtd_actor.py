@@ -2,7 +2,7 @@
 VtD (Verify-then-Distill) Ray Actor for Student Model Training.
 
 This actor manages the student model, handles VtD training steps
-(distillation on correct rollouts + contrastive learning on incorrect rollouts),
+(semantic-entropy-weighted distillation on all rollouts),
 and syncs weights to vLLM engines.
 """
 
@@ -20,7 +20,7 @@ from torch.optim import Optimizer
 from tqdm import tqdm
 from transformers.trainer import get_scheduler
 
-from openrlhf.models import Actor, VtDContrastLoss, VtDDistillLoss
+from openrlhf.models import Actor, VtDDistillLoss
 from openrlhf.models.utils import masked_mean
 from openrlhf.utils import get_tokenizer
 from openrlhf.utils.deepspeed import DeepspeedStrategy
@@ -99,7 +99,6 @@ class VtDStudentActor(BaseModelActor):
             alpha=getattr(args, "vtd_distill_alpha", 5.0),
             tau=getattr(args, "vtd_distill_tau", 1.0),
         )
-        self.contrast_loss_fn = VtDContrastLoss(beta=getattr(args, "vtd_contrast_beta", 0.1))
         self.max_gen_len = getattr(args, "max_gen_len", 1024)
         self.max_input_len = getattr(args, "max_input_len", 512)
 
@@ -204,32 +203,9 @@ class VtDStudentActor(BaseModelActor):
             padded.append(t)
         return torch.cat(padded, dim=0)
 
-    def _compute_logps_with_grad(self, input_ids, attention_mask, prompt_len):
-        """Compute average log prob WITH gradient (for contrastive DPO loss)."""
-        output = self.actor(input_ids, attention_mask=attention_mask, return_output=True)
-        logits = output["logits"]
-
-        shift_logits = logits[:, :-1, :]
-        shift_labels = input_ids[:, 1:]
-        log_probs = F.log_softmax(shift_logits, dim=-1, dtype=torch.float32)
-        token_logps = log_probs.gather(-1, shift_labels.unsqueeze(-1)).squeeze(-1)
-
-        response_mask = torch.zeros_like(token_logps)
-        response_mask[:, prompt_len - 1:] = 1.0
-        shift_attention = attention_mask[:, 1:]
-        response_mask = response_mask * shift_attention
-
-        num_tokens = response_mask.sum()
-        if num_tokens > 0:
-            return (token_logps * response_mask).sum() / num_tokens
-        return (logits * 0.0).sum()
-
     def vtd_train(
         self,
         distill_items_flat: list,
-        contrast_items_flat: list,
-        lambda_distill: float,
-        lambda_contrast: float,
     ) -> Dict[str, float]:
         """Train from flat collected buffers with rank-based data sharding.
 
@@ -237,16 +213,14 @@ class VtDStudentActor(BaseModelActor):
         enabling true data parallelism across all student GPUs. Items padded with None ensure
         all ranks make identical backward+step calls → DeepSpeed allreduce stays in sync.
 
-        Distillation items are processed in micro_bs batches; contrastive items one-by-one
-        (live student forward with gradient). None items trigger a zero-loss backward to
-        advance DeepSpeed's internal accumulation counter without updating weights.
+        Distillation items are processed in micro_bs batches. Each item includes a per-sample
+        semantic entropy weight from the teacher's N-response sampling. None items trigger a
+        zero-loss backward to advance DeepSpeed's internal accumulation counter.
 
         Args:
-            distill_items_flat: flat list of (input_ids, attn, loss_mask, topk_vals, topk_ids)
+            distill_items_flat: flat list of (input_ids, attn, loss_mask, topk_vals, topk_ids, se_weight)
                 or None, padded to multiple of world_size * micro_bs.
-            contrast_items_flat: flat list of (chosen_ids, chosen_mask, chosen_plen,
-                rejected_ids, rejected_mask, rejected_plen, ref_chosen_logp, ref_rejected_logp)
-                or None, padded to multiple of world_size.
+                se_weight is a float in [0, 1] representing teacher confidence (1 - normalized SE).
         """
         import time as _time
         self.actor.train()
@@ -259,24 +233,17 @@ class VtDStudentActor(BaseModelActor):
 
         # Each rank takes its stride slice (round-robin data sharding)
         distill_shard = distill_items_flat[rank::world_size]
-        contrast_shard = contrast_items_flat[rank::world_size]
 
         n_real_distill = sum(1 for x in distill_shard if x is not None)
-        n_real_contrast = sum(1 for x in contrast_shard if x is not None)
         logger.info(
             f"[vtd_train rank={rank}/{world_size}] "
             f"distill={n_real_distill}/{len(distill_shard)} "
-            f"contrast={n_real_contrast}/{len(contrast_shard)} "
-            f"micro_bs={micro_bs} accum_steps={accum_steps} "
-            f"λ_d={lambda_distill:.2f} λ_c={lambda_contrast:.2f}"
+            f"micro_bs={micro_bs} accum_steps={accum_steps}"
         )
 
         distill_loss_val = 0.0
-        contrast_loss_val = 0.0
-        chosen_reward_val = 0.0
-        rejected_reward_val = 0.0
+        se_weight_sum = 0.0
         n_distill_steps = 0
-        n_contrast_steps = 0
         total_backward_steps = 0
         n_weight_updates = 0
 
@@ -296,12 +263,14 @@ class VtDStudentActor(BaseModelActor):
                 masks = [x[2] for x in real]
                 tvals = [x[3] for x in real]
                 tids  = [x[4] for x in real]
+                se_ws = [x[5] for x in real]  # per-sample SE weights
 
                 seq_batch   = self._pad_and_batch(seqs,  pad_value=0).to(device)
                 attn_batch  = self._pad_and_batch(attns, pad_value=0).to(device)
                 mask_batch  = self._pad_and_batch(masks, pad_value=0).to(device)
                 tvals_batch = self._pad_and_batch(tvals, pad_value=0).to(device)
                 tids_batch  = self._pad_and_batch(tids,  pad_value=0).to(device)
+                se_w_batch  = torch.tensor(se_ws, dtype=torch.float32, device=device)
 
                 student_output = self.actor(seq_batch, attention_mask=attn_batch, return_output=True)
                 student_logits = student_output["logits"][:, :-1, :]
@@ -310,9 +279,11 @@ class VtDStudentActor(BaseModelActor):
                     tvals_batch[:, :-1, :],
                     tids_batch[:, :-1, :],
                     mask_batch[:, 1:],
+                    se_weights=se_w_batch,
                 )
-                self.strategy.backward(lambda_distill * loss, self.actor, self.actor_optim)
+                self.strategy.backward(loss, self.actor, self.actor_optim)
                 distill_loss_val += loss.item()
+                se_weight_sum += se_w_batch.mean().item()
                 n_distill_steps += 1
             else:
                 # Padding chunk: zero-loss backward to keep allreduce step counter in sync
@@ -325,52 +296,7 @@ class VtDStudentActor(BaseModelActor):
                 n_weight_updates += 1
             logger.info(f"[蒸馏训练 rank={rank}] 微批次 {chunk_idx + 1}/{distill_num_chunks} 完成 ({end}/{distill_total} 条样本, loss={distill_loss_val / max(n_distill_steps, 1):.4f})")
 
-        # ---- Contrastive: process shard one by one ----
-        contrast_total = len(contrast_shard)
-        for contrast_idx, item in enumerate(contrast_shard):
-            if item is not None:
-                chosen_ids    = item[0].to(device)
-                chosen_mask   = item[1].to(device)
-                chosen_plen   = item[2]
-                rejected_ids  = item[3].to(device)
-                rejected_mask = item[4].to(device)
-                rejected_plen = item[5]
-                ref_chosen_logp   = item[6]
-                ref_rejected_logp = item[7]
-
-                s_chosen   = self._compute_logps_with_grad(chosen_ids,   chosen_mask,   chosen_plen)
-                s_rejected = self._compute_logps_with_grad(rejected_ids, rejected_mask, rejected_plen)
-
-                contrast_loss, chosen_rewards, rejected_rewards = self.contrast_loss_fn(
-                    s_chosen.unsqueeze(0),
-                    s_rejected.unsqueeze(0),
-                    ref_chosen_logp.unsqueeze(0).to(device) if torch.is_tensor(ref_chosen_logp)
-                        else torch.tensor([ref_chosen_logp], device=device),
-                    ref_rejected_logp.unsqueeze(0).to(device) if torch.is_tensor(ref_rejected_logp)
-                        else torch.tensor([ref_rejected_logp], device=device),
-                )
-                self.strategy.backward(lambda_contrast * contrast_loss, self.actor, self.actor_optim)
-                contrast_loss_val   += contrast_loss.item()
-                chosen_reward_val   += chosen_rewards.mean().item()
-                rejected_reward_val += rejected_rewards.mean().item()
-                n_contrast_steps    += 1
-            else:
-                # Padding item: zero-loss backward
-                zero_loss = next(self.actor.parameters()).sum() * 0.0
-                self.strategy.backward(zero_loss, self.actor, self.actor_optim)
-
-            self.strategy.optimizer_step(self.actor_optim, self.actor, self.actor_scheduler, name="actor")
-            total_backward_steps += 1
-            if total_backward_steps % accum_steps == 0:
-                n_weight_updates += 1
-            if (contrast_idx + 1) % 10 == 0 or contrast_idx + 1 == contrast_total:
-                logger.info(f"[对比训练 rank={rank}] {contrast_idx + 1}/{contrast_total} 条样本完成 (loss={contrast_loss_val / max(n_contrast_steps, 1):.4f})")
-
         # ---- Flush remaining accumulated gradients ----
-        # Ensure total_backward_steps is a multiple of accum_steps so that
-        # DeepSpeed's internal micro_steps counter resets to 0. Without this,
-        # leftover gradients leak into the next vtd_train call (stale off-policy
-        # gradients contaminate the first weight update of the next step).
         remainder = total_backward_steps % accum_steps
         if remainder > 0:
             pad_steps = accum_steps - remainder
@@ -389,19 +315,14 @@ class VtDStudentActor(BaseModelActor):
             f"lr={self.actor_scheduler.get_last_lr()[0]:.2e}, 耗时 {total_time:.1f}s"
         )
 
-        avg_distill  = distill_loss_val  / n_distill_steps  if n_distill_steps  > 0 else 0.0
-        avg_contrast = contrast_loss_val / n_contrast_steps if n_contrast_steps > 0 else 0.0
+        avg_distill = distill_loss_val / n_distill_steps if n_distill_steps > 0 else 0.0
+        avg_se_weight = se_weight_sum / n_distill_steps if n_distill_steps > 0 else 0.0
         return {
-            "vtd_loss":         lambda_distill * avg_distill + lambda_contrast * avg_contrast,
+            "vtd_loss":         avg_distill,
             "distill_loss":     avg_distill,
-            "contrast_loss":    avg_contrast,
-            "lambda_distill":   lambda_distill,
-            "lambda_contrast":  lambda_contrast,
-            "chosen_reward":    chosen_reward_val   / n_contrast_steps if n_contrast_steps > 0 else 0.0,
-            "rejected_reward":  rejected_reward_val / n_contrast_steps if n_contrast_steps > 0 else 0.0,
+            "avg_se_weight":    avg_se_weight,
             "actor_lr":         self.actor_scheduler.get_last_lr()[0],
             "n_distill_steps":  n_distill_steps,
-            "n_contrast_steps": n_contrast_steps,
             "n_weight_updates": n_weight_updates,
         }
 
@@ -577,78 +498,6 @@ class VtDStudentActor(BaseModelActor):
 
 
 @ray.remote(num_gpus=1)
-class VtDRefActor:
-    """Lightweight ref model actor — no DeepSpeed, just plain HuggingFace bf16 inference.
-
-    ReferenceModelActor from launcher.py uses deepspeed.initialize() which creates
-    unnecessary overhead (~20 GB extra) for a frozen 1.7B model that only does inference.
-    This actor loads the model directly with transformers, saving significant GPU memory.
-    """
-
-    def __init__(self, world_size, rank, master_addr, master_port):
-        """Compatible with RayActorGroup constructor signature."""
-        pass
-
-    def get_master_addr_port(self):
-        return None, None
-
-    def init_model_from_pretrained(self, strategy, pretrain):
-        from transformers import AutoModelForCausalLM
-
-        # Ray sets CUDA_VISIBLE_DEVICES per actor, so the assigned GPU is always
-        # visible as cuda:0 regardless of its physical ID.
-        self.device = torch.device("cuda:0")
-        self.model = AutoModelForCausalLM.from_pretrained(
-            pretrain,
-            torch_dtype=torch.bfloat16,
-            attn_implementation=getattr(strategy.args, "attn_implementation", "eager"),
-        ).to(self.device)
-        self.model.eval()
-        for param in self.model.parameters():
-            param.requires_grad = False
-        logger.info(f"VtDRefActor loaded {pretrain} on {self.device} (bf16, no DeepSpeed)")
-
-    def compute_logps(self, input_ids, attention_mask, prompt_len):
-        """Compute average log prob over response tokens."""
-        input_ids = input_ids.to(self.device)
-        attention_mask = attention_mask.to(self.device)
-
-        with torch.no_grad():
-            output = self.model(input_ids, attention_mask=attention_mask)
-            logits = output.logits
-
-        shift_logits = logits[:, :-1, :]
-        shift_labels = input_ids[:, 1:]
-        log_probs = F.log_softmax(shift_logits, dim=-1, dtype=torch.float32)
-        token_logps = log_probs.gather(-1, shift_labels.unsqueeze(-1)).squeeze(-1)
-
-        response_mask = torch.zeros_like(token_logps)
-        response_mask[:, prompt_len - 1:] = 1.0
-        shift_attention = attention_mask[:, 1:]
-        response_mask = response_mask * shift_attention
-
-        num_tokens = response_mask.sum()
-        if num_tokens > 0:
-            avg_logp = (token_logps * response_mask).sum() / num_tokens
-        else:
-            avg_logp = torch.tensor(0.0, device=self.device)
-
-        return avg_logp.cpu()
-
-    def offload_states(self):
-        """Move HF model to CPU to free GPU memory (Phase 1: vLLM generation)."""
-        self.model.to("cpu")
-        torch.cuda.empty_cache()
-
-    def reload_states(self):
-        """Reload HF model back to GPU (Phase 2: logit collection)."""
-        self.model.to(self.device)  # self.device is always cuda:0 (Ray manages CUDA_VISIBLE_DEVICES)
-
-    def empty_cache(self):
-        torch.cuda.empty_cache()
-
-
-@ray.remote(num_gpus=1)
 class VtDTeacherActor(BaseModelActor):
     """Ray actor wrapping the frozen teacher model for VtD distillation."""
 
@@ -716,6 +565,48 @@ class VtDTeacherActor(BaseModelActor):
         )
         response_ids = outputs[0][prompt_len:]
         return self.tokenizer.decode(response_ids, skip_special_tokens=True)
+
+    @torch.no_grad()
+    def batch_generate(self, prompts: list[str], num_samples: int = 8,
+                       temperature: float = 0.7, top_p: float = 0.95,
+                       max_new_tokens: int = None) -> list[list[str]]:
+        """Generate multiple responses per prompt for semantic entropy estimation.
+
+        Args:
+            prompts: list of prompt strings
+            num_samples: N responses per prompt
+            temperature: sampling temperature
+            top_p: nucleus sampling threshold
+            max_new_tokens: max generation length
+
+        Returns:
+            list of lists, each inner list has num_samples response strings.
+        """
+        if max_new_tokens is None:
+            max_new_tokens = self.max_gen_len
+        device = torch.cuda.current_device()
+        actor_obj = self.model.module if hasattr(self.model, "module") else self.model
+        hf_model = actor_obj.model if hasattr(actor_obj, "model") else actor_obj
+
+        all_responses = []
+        for prompt in prompts:
+            inputs = self.tokenizer(prompt, return_tensors="pt", truncation=True,
+                                    max_length=self.max_input_len).to(device)
+            prompt_len = inputs["input_ids"].shape[1]
+            responses = []
+            for _ in range(num_samples):
+                outputs = hf_model.generate(
+                    **inputs,
+                    max_new_tokens=max_new_tokens,
+                    temperature=temperature,
+                    top_p=top_p,
+                    do_sample=True,
+                    pad_token_id=self.tokenizer.pad_token_id,
+                )
+                response_ids = outputs[0][prompt_len:]
+                responses.append(self.tokenizer.decode(response_ids, skip_special_tokens=True))
+            all_responses.append(responses)
+        return all_responses
 
     def get_logits(self, input_ids, attention_mask, top_k: int = 512):
         """Get teacher top-K logits for distillation (memory-efficient)."""

@@ -42,17 +42,6 @@ def train(args):
     if args.teacher_offload:
         teacher_model._offload = True
 
-    # ---- Reference model (frozen copy of student, for contrastive loss) ----
-    ref_model = Actor(
-        args.pretrain,
-        attn_implementation=args.attn_implementation,
-        param_dtype=args.param_dtype,
-        load_in_4bit=args.load_in_4bit,
-        ds_config=strategy.get_ds_eval_config(offload=args.ref_offload),
-    )
-    if args.ref_offload:
-        ref_model._offload = True
-
     # configure tokenizer
     tokenizer = get_tokenizer(args.pretrain, model.model, "left", strategy, use_fast=not args.disable_fast_tokenizer)
     # Ensure pad token exists
@@ -126,8 +115,8 @@ def train(args):
         )
 
     # prepare models with strategy (DeepSpeed wrapping)
-    ((model, optim, scheduler), teacher_model, ref_model) = strategy.prepare(
-        (model, optim, scheduler), teacher_model, ref_model
+    ((model, optim, scheduler), teacher_model) = strategy.prepare(
+        (model, optim, scheduler), teacher_model
     )
 
     # load checkpoint
@@ -143,7 +132,6 @@ def train(args):
     trainer = VtDTrainer(
         model=model,
         teacher_model=teacher_model,
-        ref_model=ref_model,
         strategy=strategy,
         optim=optim,
         tokenizer=tokenizer,
@@ -157,8 +145,7 @@ def train(args):
         max_input_len=args.max_input_len,
         vtd_distill_alpha=args.vtd_distill_alpha,
         vtd_distill_tau=args.vtd_distill_tau,
-        vtd_contrast_beta=args.vtd_contrast_beta,
-        teacher_generate=args.teacher_generate,
+        se_n_samples=args.se_n_samples,
         generation_temperature=args.generation_temperature,
         save_hf_ckpt=args.save_hf_ckpt,
         disable_ds_ckpt=args.disable_ds_ckpt,
@@ -219,7 +206,6 @@ if __name__ == "__main__":
     parser.add_argument("--pretrain", type=str, required=True, help="Student model path")
     parser.add_argument("--teacher_model", type=str, required=True, help="Teacher model path")
     parser.add_argument("--teacher_offload", action="store_true", default=False)
-    parser.add_argument("--ref_offload", action="store_true", default=False)
 
     # ============ VtD Hyperparameters ============
     parser.add_argument("--max_epochs", type=int, default=1)
@@ -239,11 +225,8 @@ if __name__ == "__main__":
                         help="Temperature for entropy-gap weighting in distillation")
     parser.add_argument("--vtd_distill_tau", type=float, default=1.0,
                         help="Temperature for token-level divergence weighting in distillation loss")
-    parser.add_argument("--vtd_contrast_beta", type=float, default=0.1,
-                        help="Beta for DPO-style contrastive loss")
-    parser.add_argument("--teacher_generate", action="store_true", default=True,
-                        help="Use teacher to generate chosen when D+ is empty")
-    parser.add_argument("--no_teacher_generate", action="store_false", dest="teacher_generate")
+    parser.add_argument("--se_n_samples", type=int, default=8,
+                        help="Number of teacher responses per prompt for semantic entropy estimation")
     parser.add_argument("--generation_temperature", type=float, default=0.7,
                         help="Temperature for on-policy sampling")
 

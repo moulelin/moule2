@@ -1,3 +1,4 @@
+import math
 import os
 import re
 from abc import ABC
@@ -8,7 +9,7 @@ import torch.nn.functional as F
 from torch.optim import Optimizer
 from tqdm import tqdm
 
-from openrlhf.models import VtDDistillLoss, VtDContrastLoss
+from openrlhf.models import VtDDistillLoss
 from openrlhf.models.utils import log_probs_from_logits, masked_mean
 from openrlhf.utils.distributed_sampler import DistributedSampler
 
@@ -83,18 +84,54 @@ def verify_answer(response: str, ground_truth: str) -> bool:
     return normalize_answer(predicted) == normalize_answer(ground_truth)
 
 
+def compute_semantic_entropy_local(responses: list[str]) -> float:
+    """Compute normalized semantic entropy from teacher's N responses (local version).
+
+    Groups responses by semantic equivalence (same extracted answer),
+    then computes entropy over the cluster distribution.
+
+    Returns value in [0, 1]. 0 = all agree, 1 = maximum disagreement.
+    """
+    if not responses:
+        return 1.0
+    N = len(responses)
+    if N <= 1:
+        return 0.0
+
+    clusters = {}
+    for resp in responses:
+        answer = extract_answer(resp)
+        normalized = normalize_answer(answer) if answer else "__EMPTY__"
+        found = False
+        for key in list(clusters.keys()):
+            if normalized == key:
+                clusters[key] += 1
+                found = True
+                break
+        if not found:
+            clusters[normalized] = 1
+
+    entropy = 0.0
+    for count in clusters.values():
+        p = count / N
+        if p > 0:
+            entropy -= p * math.log(p)
+
+    max_entropy = math.log(N)
+    return entropy / max_entropy if max_entropy > 0 else 0.0
+
+
 class VtDTrainer(ABC):
     """
-    Trainer for Verify-then-Distill (VtD).
+    Trainer for Verify-then-Distill (VtD) with Semantic Entropy weighting.
 
-    Implements on-policy sampling with verification-guided dual objectives:
-    - Correct rollouts: confidence-weighted distillation from teacher
-    - Incorrect rollouts: DPO-style contrastive learning
+    Implements on-policy sampling with semantic-entropy-weighted distillation:
+    - Teacher generates N responses per prompt → compute semantic entropy
+    - All student rollouts → distillation weighted by teacher confidence (1 - SE)
 
     Args:
         model: Student model to train
-        teacher_model: Teacher model for distillation guidance
-        ref_model: Reference model for contrastive loss (frozen copy of initial student)
+        teacher_model: Teacher model for distillation guidance + SE sampling
         strategy: Training strategy (DeepSpeed)
         optim: Optimizer
         tokenizer: Tokenizer
@@ -102,15 +139,13 @@ class VtDTrainer(ABC):
         num_samples_per_prompt: K - number of rollouts per prompt
         max_gen_len: Maximum generation length
         vtd_distill_alpha: Temperature for entropy-gap weighting
-        vtd_contrast_beta: Beta coefficient for DPO-style contrastive loss
-        teacher_generate: Whether teacher generates chosen responses when D+ is empty
+        se_n_samples: Number of teacher responses for semantic entropy estimation
     """
 
     def __init__(
         self,
         model,
         teacher_model,
-        ref_model,
         strategy,
         optim: Optimizer,
         tokenizer,
@@ -124,8 +159,7 @@ class VtDTrainer(ABC):
         max_input_len: int = 512,
         vtd_distill_alpha: float = 5.0,
         vtd_distill_tau: float = 1.0,
-        vtd_contrast_beta: float = 0.1,
-        teacher_generate: bool = True,
+        se_n_samples: int = 8,
         generation_temperature: float = 0.7,
         save_hf_ckpt: bool = False,
         disable_ds_ckpt: bool = False,
@@ -134,7 +168,6 @@ class VtDTrainer(ABC):
         self.strategy = strategy
         self.model = model
         self.teacher_model = teacher_model
-        self.ref_model = ref_model
         self.optimizer = optim
         self.tokenizer = tokenizer
         self.prompt_dataloader = prompt_dataloader
@@ -147,14 +180,13 @@ class VtDTrainer(ABC):
         self.num_samples_per_prompt = num_samples_per_prompt
         self.max_gen_len = max_gen_len
         self.max_input_len = max_input_len
-        self.teacher_generate = teacher_generate
+        self.se_n_samples = se_n_samples
         self.generation_temperature = generation_temperature
         self.save_hf_ckpt = save_hf_ckpt
         self.disable_ds_ckpt = disable_ds_ckpt
 
         # Loss functions
         self.distill_loss_fn = VtDDistillLoss(alpha=vtd_distill_alpha, tau=vtd_distill_tau)
-        self.contrast_loss_fn = VtDContrastLoss(beta=vtd_contrast_beta)
 
         # Logging
         self._wandb = None
@@ -192,7 +224,7 @@ class VtDTrainer(ABC):
             self.log_file = log_path
             with open(self.log_file, "w") as f:
                 f.write(f"VtD Training Log - {datetime.now().isoformat()}\n")
-                f.write(f"Config: K={num_samples_per_prompt}, alpha={vtd_distill_alpha}, beta={vtd_contrast_beta}\n")
+                f.write(f"Config: K={num_samples_per_prompt}, alpha={vtd_distill_alpha}, SE_N={se_n_samples}\n")
                 f.write("=" * 80 + "\n")
 
     def _log_to_file(self, global_step, logs_dict, prefix="train"):
@@ -247,72 +279,26 @@ class VtDTrainer(ABC):
 
         return all_responses
 
-    def _compute_sequence_logps(self, model, prompt: str, response: str) -> tuple[torch.Tensor, torch.Tensor, int]:
-        """Compute per-token log probs for a prompt+response and return (logits, log_probs_sum, prompt_len).
-
-        Returns:
-            logits: (1, seq_len, vocab_size)
-            avg_logp: scalar tensor - average log prob over response tokens
-            prompt_len: length of prompt in tokens
-        """
-        # Tokenize prompt to get prompt length
-        prompt_tokens = self.tokenizer(
-            prompt, return_tensors="pt", max_length=self.max_input_len,
-            truncation=True, add_special_tokens=False,
-        )
-        prompt_len = prompt_tokens["input_ids"].shape[1]
-
-        # Tokenize full sequence
-        full_text = prompt + response
-        if not full_text.endswith(self.tokenizer.eos_token):
-            full_text += self.tokenizer.eos_token
-        tokens = self.tokenizer(
-            full_text, return_tensors="pt",
-            max_length=self.max_input_len + self.max_gen_len,
-            truncation=True, add_special_tokens=False,
-        )
-        input_ids = tokens["input_ids"].to(torch.cuda.current_device())
-        attention_mask = tokens["attention_mask"].to(torch.cuda.current_device())
-
-        output = model(input_ids, attention_mask=attention_mask, return_output=True)
-        logits = output["logits"]  # (1, seq_len, vocab)
-
-        # Compute per-token log probs
-        shift_logits = logits[:, :-1, :]
-        shift_labels = input_ids[:, 1:]
-
-        log_probs = F.log_softmax(shift_logits, dim=-1, dtype=torch.float32)
-        token_logps = log_probs.gather(-1, shift_labels.unsqueeze(-1)).squeeze(-1)  # (1, seq_len-1)
-
-        # Mask: only response tokens (after prompt)
-        response_mask = torch.zeros_like(token_logps)
-        response_start = prompt_len - 1  # shifted by 1 due to shift_logits
-        response_mask[:, response_start:] = 1.0
-        # Also mask padding
-        shift_attention = attention_mask[:, 1:]
-        response_mask = response_mask * shift_attention
-
-        num_response_tokens = response_mask.sum()
-        if num_response_tokens > 0:
-            avg_logp = (token_logps * response_mask).sum() / num_response_tokens
-        else:
-            avg_logp = torch.tensor(0.0, device=input_ids.device)
-
-        return logits, avg_logp, prompt_len
-
     def _compute_distill_loss_for_batch(
-        self, prompts: list[str], correct_responses: list[list[str]]
+        self, prompts: list[str], responses_per_prompt: list[list[str]],
+        se_weights: list[float] = None,
     ) -> torch.Tensor:
-        """Compute confidence-weighted distillation loss for correct rollouts."""
+        """Compute SE-weighted distillation loss for all rollouts.
+
+        Args:
+            prompts: list of prompt strings
+            responses_per_prompt: list of lists of response strings per prompt
+            se_weights: per-prompt semantic entropy weights (1 = confident, 0 = uncertain)
+        """
         total_loss = torch.tensor(0.0, device=torch.cuda.current_device())
         count = 0
 
         self.model.train()
         self.teacher_model.eval()
 
-        for prompt, responses in zip(prompts, correct_responses):
+        for p_idx, (prompt, responses) in enumerate(zip(prompts, responses_per_prompt)):
+            se_w = se_weights[p_idx] if se_weights is not None else 1.0
             for response in responses:
-                # Tokenize full sequence
                 full_text = prompt + response
                 if not full_text.endswith(self.tokenizer.eos_token):
                     full_text += self.tokenizer.eos_token
@@ -324,23 +310,19 @@ class VtDTrainer(ABC):
                 input_ids = tokens["input_ids"].to(torch.cuda.current_device())
                 attention_mask = tokens["attention_mask"].to(torch.cuda.current_device())
 
-                # Get prompt length for loss mask
                 prompt_tokens = self.tokenizer(
                     prompt, return_tensors="pt", max_length=self.max_input_len,
                     truncation=True, add_special_tokens=False,
                 )
                 prompt_len = prompt_tokens["input_ids"].shape[1]
 
-                # Student forward
                 student_output = self.model(input_ids, attention_mask=attention_mask, return_output=True)
-                student_logits = student_output["logits"][:, :-1, :]  # (1, seq_len-1, vocab)
+                student_logits = student_output["logits"][:, :-1, :]
 
-                # Teacher forward
                 with torch.no_grad():
                     teacher_output = self.teacher_model(input_ids, attention_mask=attention_mask, return_output=True)
                     teacher_logits = teacher_output["logits"][:, :-1, :]
 
-                # Loss mask: only response tokens
                 seq_len = student_logits.shape[1]
                 loss_mask = torch.zeros(1, seq_len, device=input_ids.device)
                 loss_mask[:, prompt_len - 1:] = 1.0
@@ -348,59 +330,12 @@ class VtDTrainer(ABC):
                 loss_mask = loss_mask * shift_attention[:, :seq_len]
 
                 loss = self.distill_loss_fn(student_logits, teacher_logits, loss_mask)
-                total_loss = total_loss + loss
+                total_loss = total_loss + se_w * loss
                 count += 1
 
         if count > 0:
             return total_loss / count
         return total_loss
-
-    def _compute_contrast_loss_for_batch(
-        self,
-        prompts: list[str],
-        chosen_responses: list[str],
-        rejected_responses: list[list[str]],
-    ) -> tuple[torch.Tensor, float, float]:
-        """Compute contrastive loss for incorrect rollouts.
-
-        For each prompt, contrasts a chosen response against each rejected response.
-        """
-        all_chosen_logps = []
-        all_rejected_logps = []
-        all_ref_chosen_logps = []
-        all_ref_rejected_logps = []
-
-        self.model.train()
-
-        for prompt, chosen, rejecteds in zip(prompts, chosen_responses, rejected_responses):
-            # Compute chosen log probs
-            _, chosen_logp, _ = self._compute_sequence_logps(self.model, prompt, chosen)
-            with torch.no_grad():
-                _, ref_chosen_logp, _ = self._compute_sequence_logps(self.ref_model, prompt, chosen)
-
-            for rejected in rejecteds:
-                _, rejected_logp, _ = self._compute_sequence_logps(self.model, prompt, rejected)
-                with torch.no_grad():
-                    _, ref_rejected_logp, _ = self._compute_sequence_logps(self.ref_model, prompt, rejected)
-
-                all_chosen_logps.append(chosen_logp)
-                all_rejected_logps.append(rejected_logp)
-                all_ref_chosen_logps.append(ref_chosen_logp)
-                all_ref_rejected_logps.append(ref_rejected_logp)
-
-        if not all_chosen_logps:
-            zero = torch.tensor(0.0, device=torch.cuda.current_device())
-            return zero, 0.0, 0.0
-
-        chosen_logps = torch.stack(all_chosen_logps)
-        rejected_logps = torch.stack(all_rejected_logps)
-        ref_chosen_logps = torch.stack(all_ref_chosen_logps)
-        ref_rejected_logps = torch.stack(all_ref_rejected_logps)
-
-        loss, chosen_rewards, rejected_rewards = self.contrast_loss_fn(
-            chosen_logps, rejected_logps, ref_chosen_logps, ref_rejected_logps
-        )
-        return loss, chosen_rewards.mean().item(), rejected_rewards.mean().item()
 
     def fit(self, args, consumed_samples=0, num_update_steps_per_epoch=None):
         if args.eval_steps == -1:
@@ -434,12 +369,8 @@ class VtDTrainer(ABC):
                     self.model, prompts, num_samples=self.num_samples_per_prompt
                 )
 
-                # Classify into correct (D+) and incorrect (D-)
-                # Per-prompt: lists of correct and incorrect responses
-                batch_correct = []  # list of lists
-                batch_incorrect = []  # list of lists
-                batch_has_correct = []  # whether this prompt has any correct response
-
+                batch_correct = []
+                batch_incorrect = []
                 total_correct = 0
                 total_incorrect = 0
 
@@ -451,74 +382,39 @@ class VtDTrainer(ABC):
                             correct.append(resp)
                         else:
                             incorrect.append(resp)
-
                     batch_correct.append(correct)
                     batch_incorrect.append(incorrect)
-                    batch_has_correct.append(len(correct) > 0)
                     total_correct += len(correct)
                     total_incorrect += len(incorrect)
 
-                # ============ Step 2: Compute losses ============
+                # ============ Step 2: Teacher SE sampling ============
+                teacher_se_responses = self._generate_responses(
+                    self.teacher_model, prompts, num_samples=self.se_n_samples
+                )
+                se_weights = []
+                for responses in teacher_se_responses:
+                    se = compute_semantic_entropy_local(responses)
+                    se_weights.append(1.0 - se)  # high confidence → high weight
+
+                # ============ Step 3: SE-weighted distillation on all rollouts ============
                 distill_loss = torch.tensor(0.0, device=torch.cuda.current_device())
-                contrast_loss = torch.tensor(0.0, device=torch.cuda.current_device())
-                contrast_chosen_reward = 0.0
-                contrast_rejected_reward = 0.0
 
-                # --- Distillation loss on correct rollouts ---
-                distill_prompts = []
-                distill_correct_responses = []
+                all_prompts = []
+                all_responses = []
+                all_se_weights = []
                 for i, prompt in enumerate(prompts):
-                    if batch_correct[i]:
-                        distill_prompts.append(prompt)
-                        distill_correct_responses.append(batch_correct[i])
+                    responses = batch_correct[i] + batch_incorrect[i]
+                    if responses:
+                        all_prompts.append(prompt)
+                        all_responses.append(responses)
+                        all_se_weights.append(se_weights[i])
 
-                if distill_prompts:
+                if all_prompts:
                     distill_loss = self._compute_distill_loss_for_batch(
-                        distill_prompts, distill_correct_responses
+                        all_prompts, all_responses, all_se_weights
                     )
 
-                # --- Contrastive loss on incorrect rollouts ---
-                contrast_prompts = []
-                contrast_chosen = []
-                contrast_rejected = []
-
-                for i, prompt in enumerate(prompts):
-                    if not batch_incorrect[i]:
-                        continue  # No incorrect rollouts for this prompt
-
-                    # Determine chosen response
-                    if batch_correct[i]:
-                        # Use student's own correct response
-                        chosen = batch_correct[i][0]
-                    elif self.teacher_generate:
-                        # Generate from teacher
-                        teacher_responses = self._generate_responses(
-                            self.teacher_model, [prompt], num_samples=1
-                        )
-                        chosen = teacher_responses[0][0]
-                    else:
-                        continue  # Skip if no chosen available
-
-                    contrast_prompts.append(prompt)
-                    contrast_chosen.append(chosen)
-                    contrast_rejected.append(batch_incorrect[i])
-
-                if contrast_prompts:
-                    contrast_loss, contrast_chosen_reward, contrast_rejected_reward = \
-                        self._compute_contrast_loss_for_batch(
-                            contrast_prompts, contrast_chosen, contrast_rejected
-                        )
-
-                # ============ Step 3: Adaptive weighting ============
-                total = total_correct + total_incorrect
-                if total > 0:
-                    lambda_1 = total_correct / total
-                    lambda_2 = total_incorrect / total
-                else:
-                    lambda_1 = 0.5
-                    lambda_2 = 0.5
-
-                loss = lambda_1 * distill_loss + lambda_2 * contrast_loss
+                loss = distill_loss
 
                 # ============ Step 4: Backward + Update ============
                 self.model.train()
@@ -526,18 +422,17 @@ class VtDTrainer(ABC):
                 self.strategy.optimizer_step(self.optimizer, self.model, self.scheduler)
 
                 # ============ Logging ============
+                total = total_correct + total_incorrect
                 accuracy = total_correct / (total if total > 0 else 1)
+                avg_se_weight = sum(se_weights) / len(se_weights) if se_weights else 1.0
                 logs_dict = {
                     "loss": loss.item(),
                     "distill_loss": distill_loss.item(),
-                    "contrast_loss": contrast_loss.item(),
-                    "lambda_distill": lambda_1,
-                    "lambda_contrast": lambda_2,
                     "accuracy": accuracy,
                     "num_correct": total_correct,
                     "num_incorrect": total_incorrect,
-                    "contrast_chosen_reward": contrast_chosen_reward,
-                    "contrast_rejected_reward": contrast_rejected_reward,
+                    "avg_se_weight": avg_se_weight,
+                    "avg_semantic_entropy": 1.0 - avg_se_weight,
                 }
                 if self.scheduler:
                     logs_dict["lr"] = self.scheduler.get_last_lr()[0]
