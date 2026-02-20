@@ -349,14 +349,10 @@ def main(args):
     for diff, cnt in sorted(diff_counts.items()):
         print(f"  {diff}: {cnt}")
 
-    # ---- Resume support ----
-    existing = get_existing_count(args.output)
-    if existing > 0:
-        print(f"\nFound {existing} existing entries, resuming...")
-        all_seeds = all_seeds[existing:]
-        if not all_seeds:
-            print("All seeds already processed!")
-            return
+    # ---- Clean previous output ----
+    if os.path.exists(args.output):
+        print(f"\nRemoving previous output: {args.output}")
+        os.remove(args.output)
 
     print(f"\nSeeds to process: {len(all_seeds)}")
 
