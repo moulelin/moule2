@@ -36,7 +36,7 @@ python3 "$SCRIPT_DIR/compute_uncertainty.py" \
     --teacher_model Qwen/Qwen3-8B \
     --tp 1 \
     --max_model_len 4096 \
-    --gpu_memory_utilization 0.80 \
+    --gpu_memory_utilization 0.60 \
     --cluster_model Qwen/Qwen2.5-0.5B-Instruct \
     --n_samples 8 \
     --temperature 0.7 \

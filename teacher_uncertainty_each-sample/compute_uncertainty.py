@@ -51,7 +51,7 @@ class SemanticCluster:
             model=model_name,
             tensor_parallel_size=1,
             max_model_len=max_model_len,
-            gpu_memory_utilization=0.15,  # small model, leave room for teacher
+            gpu_memory_utilization=0.12,  # small model, leave room for teacher
             trust_remote_code=True,
             dtype="bfloat16",
         )
