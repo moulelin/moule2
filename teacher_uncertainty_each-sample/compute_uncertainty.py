@@ -239,15 +239,15 @@ def main(args):
 
             # Debug: dump first batch teacher outputs
             
-            debug_path = os.path.join(os.path.dirname(args.output), "debug_teacher_outputs.jsonl")
-            with open(debug_path, "a", encoding="utf-8") as df:
-                for entry_d, output_d in zip(batch, outputs):
-                    df.write(json.dumps({
-                        "question": entry_d["question"],
-                        "responses": [o.text for o in output_d.outputs],
-                        "boxed": [extract_boxed(o.text) for o in output_d.outputs],
-                    }, ensure_ascii=False) + "\n")
-            print(f"[Debug] First batch teacher outputs written to {debug_path}")
+            # debug_path = os.path.join(os.path.dirname(args.output), "debug_teacher_outputs.jsonl")
+            # with open(debug_path, "a", encoding="utf-8") as df:
+            #     for entry_d, output_d in zip(batch, outputs):
+            #         df.write(json.dumps({
+            #             "question": entry_d["question"],
+            #             "responses": [o.text for o in output_d.outputs],
+            #             "boxed": [extract_boxed(o.text) for o in output_d.outputs],
+            #         }, ensure_ascii=False) + "\n")
+            # print(f"[Debug] First batch teacher outputs written to {debug_path}")
 
             # Collect N responses per prompt, extract \boxed{} answers
             all_answers = []  # extracted boxed answers for clustering
