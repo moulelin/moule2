@@ -238,20 +238,30 @@ def main(args):
             # Step 2: Teacher generates N responses per prompt (vLLM, n=8)
             outputs = teacher_llm.generate(teacher_prompts, teacher_sampling)
 
+            # Debug: dump first batch teacher outputs
+            if batch_start == 0:
+                debug_path = os.path.join(os.path.dirname(args.output), "debug_teacher_outputs.jsonl")
+                with open(debug_path, "w", encoding="utf-8") as df:
+                    for entry_d, output_d in zip(batch, outputs):
+                        df.write(json.dumps({
+                            "question": entry_d["question"],
+                            "responses": [o.text for o in output_d.outputs],
+                            "boxed": [extract_boxed(o.text) for o in output_d.outputs],
+                        }, ensure_ascii=False) + "\n")
+                print(f"[Debug] First batch teacher outputs written to {debug_path}")
+            input()
             # Collect N responses per prompt, extract \boxed{} answers
             all_answers = []  # extracted boxed answers for clustering
             skip_flags = []   # True if sample should be skipped
             for output in outputs:
                 answers = []
-                skip = False
                 for o in output.outputs:
                     ans = extract_boxed(o.text)
-                    if ans is None or len(ans) > 200:
-                        skip = True
-                        break
-                    answers.append(ans)
+                    if ans is not None and len(ans) <= 200:
+                        answers.append(ans)
+                # Need at least 2 valid answers to compute SE
                 all_answers.append(answers)
-                skip_flags.append(skip)
+                skip_flags.append(len(answers) < 2)
 
             # Step 3: Cluster + compute SE (only for valid samples)
             valid_answers = [a for a, s in zip(all_answers, skip_flags) if not s]
@@ -312,7 +322,7 @@ if __name__ == "__main__":
     # SE sampling
     parser.add_argument("--n_samples", type=int, default=8, help="N responses per question")
     parser.add_argument("--temperature", type=float, default=0.7)
-    parser.add_argument("--max_gen_tokens", type=int, default=1024)
+    parser.add_argument("--max_gen_tokens", type=int, default=2048)
 
     # IO
     parser.add_argument("--input", type=str, default="evolved_clean.jsonl")
