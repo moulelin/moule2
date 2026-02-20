@@ -231,7 +231,8 @@ def main(args):
                     {"role": "user", "content": question},
                 ]
                 text = teacher_tokenizer.apply_chat_template(
-                    messages, tokenize=False, add_generation_prompt=True
+                    messages, tokenize=False, add_generation_prompt=True,
+                    enable_thinking=False,
                 )
                 teacher_prompts.append(text)
 
@@ -249,7 +250,7 @@ def main(args):
                             "boxed": [extract_boxed(o.text) for o in output_d.outputs],
                         }, ensure_ascii=False) + "\n")
                 print(f"[Debug] First batch teacher outputs written to {debug_path}")
-            input()
+
             # Collect N responses per prompt, extract \boxed{} answers
             all_answers = []  # extracted boxed answers for clustering
             skip_flags = []   # True if sample should be skipped
@@ -322,7 +323,7 @@ if __name__ == "__main__":
     # SE sampling
     parser.add_argument("--n_samples", type=int, default=8, help="N responses per question")
     parser.add_argument("--temperature", type=float, default=0.7)
-    parser.add_argument("--max_gen_tokens", type=int, default=2048)
+    parser.add_argument("--max_gen_tokens", type=int, default=1024)
 
     # IO
     parser.add_argument("--input", type=str, default="evolved_clean.jsonl")

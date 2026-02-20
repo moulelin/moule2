@@ -40,7 +40,7 @@ python3 "$SCRIPT_DIR/compute_uncertainty.py" \
     --cluster_model Qwen/Qwen2.5-0.5B-Instruct \
     --n_samples 8 \
     --temperature 0.7 \
-    --max_gen_tokens 2048 \
+    --max_gen_tokens 1024 \
     --input "$SCRIPT_DIR/evolved_clean.jsonl" \
     --output "$SCRIPT_DIR/evolved_with_se.jsonl" \
     --batch_size 128
