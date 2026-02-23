@@ -86,10 +86,15 @@ def blending_datasets(
                 data = load_dataset(dataset_name, data_dir=data_dir)
                 strategy.print(f"loaded {dataset_name} from files")
 
-        # Select dataset
+        # Select dataset split
         if dataset_split and dataset_split in data:
             data = data[dataset_split]
-        data = data.select(range(min(max_count, len(data))))
+        elif hasattr(data, "keys"):
+            # DatasetDict but requested split not found — use first available split
+            first_split = list(data.keys())[0]
+            strategy.print(f"[Warning] split '{dataset_split}' not in {list(data.keys())}, using '{first_split}'")
+            data = data[first_split]
+        data = data.select(range(min(int(max_count), len(data))))
         data_list.append(data)
 
     # merge datasets

@@ -1,0 +1,35 @@
+Eval at step 1
+Dataset: HuggingFaceH4/aime_2024
+Model: Qwen/Qwen3-1.7B
+Greedy Accuracy: 0/30 = 0.00%
+============================================================
+[X] #  0  gt=204  pred=96
+[X] #  1  gt=113  pred=-22
+[X] #  2  gt=371  pred=256
+[X] #  3  gt=385  pred=2
+[X] #  4  gt=110  pred=2
+[X] #  5  gt=104  pred=0
+[X] #  6  gt=721  pred=4
+[X] #  7  gt=025  pred=10
+[X] #  8  gt=809  pred=5
+[X] #  9  gt=116  pred=11
+[X] # 10  gt=104  pred=17
+[X] # 11  gt=294  pred=1
+[X] # 12  gt=540  pred=432
+[X] # 13  gt=197  pred=2
+[X] # 14  gt=480  pred=4
+[X] # 15  gt=073  pred=234
+[X] # 16  gt=468  pred=13
+[X] # 17  gt=601  pred=100
+[X] # 18  gt=023  pred=1
+[X] # 19  gt=321  pred=13
+[X] # 20  gt=211  pred=2
+[X] # 21  gt=315  pred=60
+[X] # 22  gt=236  pred=30
+[X] # 23  gt=045  pred=999
+[X] # 24  gt=033  pred=25
+[X] # 25  gt=080  pred=0
+[X] # 26  gt=055  pred=2024
+[X] # 27  gt=699  pred=2
+[X] # 28  gt=127  pred=6
+[X] # 29  gt=902  pred=2

@@ -3,8 +3,8 @@ set -x
 
 source /anvil/scratch/x-qlan1/moule/train-env/bin/activate
 
-SCRATCH=/anvil/scratch/x-qlan1/moule
-SCRIPT_DIR=/home/x-qlan1/code/moule/scripts/eval
+SCRATCH=/anvil/scratch/x-qlan1/moule2
+SCRIPT_DIR=/home/x-qlan1/code/moule2/scripts/eval
 
 export HF_HOME=$SCRATCH/hf_cache
 export HF_DATASETS_CACHE=$SCRATCH/hf_cache/datasets
@@ -16,9 +16,7 @@ OUTPUT_DIR=$SCRATCH/eval_results
 mkdir -p $OUTPUT_DIR
 
 MODELS=(
-    "Qwen/Qwen3-1.7B"
-    "Qwen/Qwen3-4B"
-    "Qwen/Qwen3-8B"
+    "/anvil/scratch/x-qlan1/moule/checkpoint/qwen3-1.7b-vtd-ray-evolved/checkpoints/global_step21_hf"
 )
 
 for MODEL in "${MODELS[@]}"; do
@@ -27,16 +25,16 @@ for MODEL in "${MODELS[@]}"; do
     echo "============================================================"
 
     # ---- pass@1 (greedy) ----
-    python3 "$SCRIPT_DIR/eval_aime25.py" \
-        --model "$MODEL" \
-        --mode greedy \
-        --max_tokens 38000 \
-        --max_model_len 40960 \
-        --tp 2 \
-        --gpu_memory_utilization 0.9 \
-        --output_dir "$OUTPUT_DIR"
+    # python3 "$SCRIPT_DIR/eval_aime25.py" \
+    #     --model "$MODEL" \
+    #     --mode greedy \
+    #     --max_tokens 38000 \
+    #     --max_model_len 40960 \
+    #     --tp 2 \
+    #     --gpu_memory_utilization 0.9 \
+    #     --output_dir "$OUTPUT_DIR"
 
-    # ---- avg@16 ----
+    # # ---- avg@16 ----
     python3 "$SCRIPT_DIR/eval_aime25.py" \
         --model "$MODEL" \
         --mode average \
@@ -48,4 +46,6 @@ for MODEL in "${MODELS[@]}"; do
         --tp 2 \
         --gpu_memory_utilization 0.9 \
         --output_dir "$OUTPUT_DIR"
+
+    
 done

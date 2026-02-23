@@ -50,10 +50,13 @@ def majority_vote(answers: list[str]) -> str:
 
 
 def evaluate(args):
-    ds = load_dataset(HF_REPO, split=SPLIT)
+    ds1 = load_dataset(HF_REPO, "AIME2025-I", split=SPLIT)
+    ds2 = load_dataset(HF_REPO, "AIME2025-II", split=SPLIT)
+    from datasets import concatenate_datasets
+    ds = concatenate_datasets([ds1, ds2])
     problems = [row[PROBLEM_KEY] for row in ds]
     answers = [str(row[ANSWER_KEY]) for row in ds]
-    print(f"Dataset: {DATASET_NAME} ({HF_REPO}), {len(problems)} problems")
+    print(f"Dataset: {DATASET_NAME} ({HF_REPO}), {len(problems)} problems (I={len(ds1)}, II={len(ds2)})")
 
     tokenizer = AutoTokenizer.from_pretrained(args.model, trust_remote_code=True)
     prompts = build_prompts(problems, tokenizer, num_shots=args.num_shots)

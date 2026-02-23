@@ -481,6 +481,62 @@ class VtDDistillLoss(nn.Module):
         return (kl * w * loss_mask).sum() / total
 
 
+class SimpleKDLoss(nn.Module):
+    """
+    Standard on-policy KL divergence distillation loss.
+
+    Supports two modes:
+    - Full logits: teacher_logits is (batch, seq_len, vocab_size)
+    - Top-K logits: teacher_topk_vals is (batch, seq_len, K), teacher_topk_ids is (batch, seq_len, K)
+
+    Loss = -sum_v p_teacher(v) * log p_student(v)  (cross-entropy, equivalent to KL up to constant)
+    averaged over response tokens, with optional per-sample SE weighting.
+    """
+
+    def __init__(self):
+        super().__init__()
+
+    def forward(
+        self,
+        student_logits: torch.Tensor,
+        loss_mask: torch.Tensor,
+        teacher_logits: torch.Tensor = None,
+        teacher_topk_vals: torch.Tensor = None,
+        teacher_topk_ids: torch.Tensor = None,
+        se_weights: torch.Tensor = None,
+    ) -> torch.Tensor:
+        """
+        Args:
+            student_logits: (batch, seq_len, vocab_size)
+            loss_mask: (batch, seq_len) - 1 for response tokens, 0 for prompt/pad
+            teacher_logits: (batch, seq_len, vocab_size) - full mode
+            teacher_topk_vals: (batch, seq_len, K) - top-K mode
+            teacher_topk_ids: (batch, seq_len, K) - top-K mode
+            se_weights: (batch,) - optional per-sample weight
+        """
+        total = loss_mask.sum()
+        if total == 0:
+            return (student_logits * 0.0).sum()
+
+        if teacher_topk_vals is not None and teacher_topk_ids is not None:
+            # Top-K mode: teacher softmax over K, student gather at K positions
+            t_probs = F.softmax(teacher_topk_vals, dim=-1, dtype=torch.float32)  # (batch, seq, K)
+            s_logprobs_full = F.log_softmax(student_logits, dim=-1, dtype=torch.float32)
+            s_logprobs = torch.gather(s_logprobs_full, -1, teacher_topk_ids)  # (batch, seq, K)
+            ce_per_token = -torch.sum(t_probs * s_logprobs, dim=-1)  # (batch, seq)
+        else:
+            # Full logits mode
+            t_probs = F.softmax(teacher_logits, dim=-1, dtype=torch.float32)
+            s_logprobs = F.log_softmax(student_logits, dim=-1, dtype=torch.float32)
+            ce_per_token = -torch.sum(t_probs * s_logprobs, dim=-1)  # (batch, seq)
+
+        # Apply per-sample SE weight
+        if se_weights is not None:
+            ce_per_token = ce_per_token * se_weights.unsqueeze(-1)
+
+        return (ce_per_token * loss_mask).sum() / total
+
+
 class PRMLoss(nn.Module):
     """
     Process Reward Model Loss

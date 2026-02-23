@@ -1,0 +1,93 @@
++ source /anvil/scratch/x-qlan1/moule/train-env/bin/activate
+++ '[' -z '' ']'
+++ '[' -n x ']'
+++ SCRIPT_PATH=/anvil/scratch/x-qlan1/moule/train-env/bin/activate
+++ '[' /anvil/scratch/x-qlan1/moule/train-env/bin/activate = /var/spool/slurm/job15361459/slurm_script ']'
+++ deactivate nondestructive
+++ unset -f pydoc
+++ '[' -z '' ']'
+++ '[' -z '' ']'
+++ hash -r
+++ '[' -z '' ']'
+++ unset VIRTUAL_ENV
+++ unset VIRTUAL_ENV_PROMPT
+++ '[' '!' nondestructive = nondestructive ']'
+++ VIRTUAL_ENV=/anvil/scratch/x-qlan1/moule/train-env
+++ '[' linux-gnu = cygwin ']'
+++ '[' linux-gnu = msys ']'
+++ export VIRTUAL_ENV
+++ '[' -z '' ']'
+++ unset SCRIPT_PATH
+++ _OLD_VIRTUAL_PATH=/home/x-qlan1/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/x-qlan1/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/x-qlan1/.vscode-server/cli/servers/Stable-c3a26841a84f20dfe0850d0a5a9bd01da4f003ea/server/bin/remote-cli:/home/x-qlan1/miniconda3/bin:/home/x-qlan1/miniconda3/condabin:/apps/anvil/external/apps/xalt2/xalt/xalt/bin:/apps/spack/anvil/apps/openmpi/4.0.6-gcc-11.2.0-3navcwb/bin:/apps/spack/anvil/apps/numactl/2.0.14-gcc-11.2.0-wrjotmv/bin:/apps/spack/anvil/apps/libfabric/1.12.0-gcc-8.4.1-xj6lmd4/bin:/apps/spack/anvil/apps/gcc/11.2.0-gcc-8.4.1-qjtdkvs/bin:/home/x-qlan1/bin:/home/x-qlan1/.local/bin:/usr/libexec/gsissh/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/usr/site/rcac/sbin:/usr/site/rcac/bin:/usr/site/rcac/scripts:/opt/thinlinc/bin:/opt/thinlinc/sbin:/home/x-qlan1/.vscode-server/extensions/ms-python.debugpy-2025.18.0-linux-x64/bundled/scripts/noConfigScripts
+++ PATH=/anvil/scratch/x-qlan1/moule/train-env/bin:/home/x-qlan1/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/x-qlan1/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/x-qlan1/.vscode-server/cli/servers/Stable-c3a26841a84f20dfe0850d0a5a9bd01da4f003ea/server/bin/remote-cli:/home/x-qlan1/miniconda3/bin:/home/x-qlan1/miniconda3/condabin:/apps/anvil/external/apps/xalt2/xalt/xalt/bin:/apps/spack/anvil/apps/openmpi/4.0.6-gcc-11.2.0-3navcwb/bin:/apps/spack/anvil/apps/numactl/2.0.14-gcc-11.2.0-wrjotmv/bin:/apps/spack/anvil/apps/libfabric/1.12.0-gcc-8.4.1-xj6lmd4/bin:/apps/spack/anvil/apps/gcc/11.2.0-gcc-8.4.1-qjtdkvs/bin:/home/x-qlan1/bin:/home/x-qlan1/.local/bin:/usr/libexec/gsissh/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/usr/site/rcac/sbin:/usr/site/rcac/bin:/usr/site/rcac/scripts:/opt/thinlinc/bin:/opt/thinlinc/sbin:/home/x-qlan1/.vscode-server/extensions/ms-python.debugpy-2025.18.0-linux-x64/bundled/scripts/noConfigScripts
+++ export PATH
+++ '[' x '!=' x ']'
++++ basename /anvil/scratch/x-qlan1/moule/train-env
+++ VIRTUAL_ENV_PROMPT=train-env
+++ export VIRTUAL_ENV_PROMPT
+++ '[' -z '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ PS1='(train-env) '
+++ export PS1
+++ alias pydoc
+++ true
+++ hash -r
++ SCRATCH=/anvil/scratch/x-qlan1/moule
++ export HF_HOME=/anvil/scratch/x-qlan1/moule/hf_cache
++ HF_HOME=/anvil/scratch/x-qlan1/moule/hf_cache
++ export HF_DATASETS_CACHE=/anvil/scratch/x-qlan1/moule/hf_cache/datasets
++ HF_DATASETS_CACHE=/anvil/scratch/x-qlan1/moule/hf_cache/datasets
++ export TRANSFORMERS_CACHE=/anvil/scratch/x-qlan1/moule/hf_cache
++ TRANSFORMERS_CACHE=/anvil/scratch/x-qlan1/moule/hf_cache
++ export LD_PRELOAD=/home/x-qlan1/miniconda3/lib/libstdc++.so.6
++ LD_PRELOAD=/home/x-qlan1/miniconda3/lib/libstdc++.so.6
++++ dirname /var/spool/slurm/job15361459/slurm_script
+++ cd /var/spool/slurm/job15361459
+++ pwd
++ SCRIPT_DIR=/var/spool/slurm/job15361459
++ echo ==========================================
+==========================================
++ echo 'Computing teacher uncertainty (SE)'
+Computing teacher uncertainty (SE)
++ echo ==========================================
+==========================================
++ python3 /var/spool/slurm/job15361459/compute_uncertainty.py --teacher_model Qwen/Qwen3-8B --tp 1 --max_model_len 4096 --gpu_memory_utilization 0.65 --cluster_model Qwen/Qwen2.5-3B-Instruct --n_samples 8 --temperature 0.7 --max_gen_tokens 1024 --input /var/spool/slurm/job15361459/evolved_clean.jsonl --output /var/spool/slurm/job15361459/evolved_with_se.jsonl --batch_size 32
+python3: can't open file '/var/spool/slurm/job15361459/compute_uncertainty.py': [Errno 2] No such file or directory
++ echo ==========================================
+==========================================
++ echo 'Done!'
+Done!
++ echo ==========================================
+==========================================
++ echo 'Output: /var/spool/slurm/job15361459/evolved_with_se.jsonl'
+Output: /var/spool/slurm/job15361459/evolved_with_se.jsonl
+++ wc -l
+/var/spool/slurm/job15361459/slurm_script: line 52: /var/spool/slurm/job15361459/evolved_with_se.jsonl: No such file or directory
++ echo 'Count:  '
+Count:  
++ echo ''
+
++ echo 'SE distribution:'
+SE distribution:
++ python3 -c '
+import json
+with open('\''/var/spool/slurm/job15361459/evolved_with_se.jsonl'\'') as f:
+    ses = [json.loads(l)['\''se'\''] for l in f if l.strip()]
+n = len(ses)
+if n == 0:
+    print('\''  No samples produced — check for errors above.'\'')
+else:
+    avg = sum(ses)/n
+    low = sum(1 for s in ses if s < 0.1)
+    mid = sum(1 for s in ses if 0.1 <= s < 0.5)
+    high = sum(1 for s in ses if s >= 0.5)
+    print(f'\''  Total: {n}'\'')
+    print(f'\''  Avg SE: {avg:.3f}, Avg weight: {1-avg:.3f}'\'')
+    print(f'\''  Confident (SE<0.1): {low} ({low/n:.1%})'\'')
+    print(f'\''  Moderate (0.1<=SE<0.5): {mid} ({mid/n:.1%})'\'')
+    print(f'\''  Uncertain (SE>=0.5): {high} ({high/n:.1%})'\'')
+'
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/var/spool/slurm/job15361459/evolved_with_se.jsonl'

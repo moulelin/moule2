@@ -10,10 +10,10 @@ mkdir -p $LOG_DIR
 sbatch \
     --partition=ai \
     --nodes=1 \
-    --ntasks=32 \
+    --ntasks=1 \
     --gres=gpu:1 \
     --account=cis250976-ai \
-    --time=02:00:00 \
+    --time=03:00:00 \
     --job-name=se_compute \
     --output=$LOG_DIR/se_%j.log \
     --error=$LOG_DIR/se_%j.log \

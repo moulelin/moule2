@@ -20,7 +20,7 @@ from torch.optim import Optimizer
 from tqdm import tqdm
 from transformers.trainer import get_scheduler
 
-from openrlhf.models import Actor, VtDDistillLoss
+from openrlhf.models import Actor, SimpleKDLoss
 from openrlhf.models.utils import masked_mean
 from openrlhf.utils import get_tokenizer
 from openrlhf.utils.deepspeed import DeepspeedStrategy
@@ -95,10 +95,7 @@ class VtDStudentActor(BaseModelActor):
         )
 
         # Loss functions
-        self.distill_loss_fn = VtDDistillLoss(
-            alpha=getattr(args, "vtd_distill_alpha", 5.0),
-            tau=getattr(args, "vtd_distill_tau", 1.0),
-        )
+        self.distill_loss_fn = SimpleKDLoss()
         self.max_gen_len = getattr(args, "max_gen_len", 1024)
         self.max_input_len = getattr(args, "max_input_len", 512)
 
@@ -218,7 +215,7 @@ class VtDStudentActor(BaseModelActor):
         zero-loss backward to advance DeepSpeed's internal accumulation counter.
 
         Args:
-            distill_items_flat: flat list of (input_ids, attn, loss_mask, topk_vals, topk_ids, se_weight)
+            distill_items_flat: flat list of (input_ids, attn, loss_mask, teacher_logits, se_weight)
                 or None, padded to multiple of world_size * micro_bs.
                 se_weight is a float in [0, 1] representing teacher confidence (1 - normalized SE).
         """
@@ -258,29 +255,50 @@ class VtDStudentActor(BaseModelActor):
             real = [x for x in chunk if x is not None]
 
             if real:
+                # Detect format: 6-tuple = top-K, 5-tuple = full logits
+                use_topk = len(real[0]) == 6
                 seqs  = [x[0] for x in real]
                 attns = [x[1] for x in real]
                 masks = [x[2] for x in real]
-                tvals = [x[3] for x in real]
-                tids  = [x[4] for x in real]
-                se_ws = [x[5] for x in real]  # per-sample SE weights
 
-                seq_batch   = self._pad_and_batch(seqs,  pad_value=0).to(device)
-                attn_batch  = self._pad_and_batch(attns, pad_value=0).to(device)
-                mask_batch  = self._pad_and_batch(masks, pad_value=0).to(device)
-                tvals_batch = self._pad_and_batch(tvals, pad_value=0).to(device)
-                tids_batch  = self._pad_and_batch(tids,  pad_value=0).to(device)
-                se_w_batch  = torch.tensor(se_ws, dtype=torch.float32, device=device)
+                seq_batch  = self._pad_and_batch(seqs,  pad_value=0).to(device)
+                attn_batch = self._pad_and_batch(attns, pad_value=0).to(device)
+                mask_batch = self._pad_and_batch(masks, pad_value=0).to(device)
+
+                if use_topk:
+                    # 6-tuple: (s_ids, s_mask, loss_mask, topk_vals, topk_ids, se_weight)
+                    t_vals_list = [x[3] for x in real]
+                    t_ids_list  = [x[4] for x in real]
+                    se_ws       = [x[5] for x in real]
+                    t_vals_batch = self._pad_and_batch(t_vals_list, pad_value=0).to(device)
+                    t_ids_batch  = self._pad_and_batch(t_ids_list,  pad_value=0).to(device)
+                else:
+                    # 5-tuple: (s_ids, s_mask, loss_mask, teacher_logits, se_weight)
+                    t_logits_list = [x[3] for x in real]
+                    se_ws         = [x[4] for x in real]
+                    t_logits_batch = self._pad_and_batch(t_logits_list, pad_value=0).to(device)
+
+                se_w_batch = torch.tensor(se_ws, dtype=torch.float32, device=device)
 
                 student_output = self.actor(seq_batch, attention_mask=attn_batch, return_output=True)
                 student_logits = student_output["logits"][:, :-1, :]
-                loss = self.distill_loss_fn(
-                    student_logits,
-                    tvals_batch[:, :-1, :],
-                    tids_batch[:, :-1, :],
-                    mask_batch[:, 1:],
-                    se_weights=se_w_batch,
-                )
+
+                if use_topk:
+                    loss = self.distill_loss_fn(
+                        student_logits,
+                        mask_batch[:, 1:],
+                        teacher_topk_vals=t_vals_batch[:, :-1, :],
+                        teacher_topk_ids=t_ids_batch[:, :-1, :],
+                        se_weights=se_w_batch,
+                    )
+                else:
+                    loss = self.distill_loss_fn(
+                        student_logits,
+                        mask_batch[:, 1:],
+                        teacher_logits=t_logits_batch[:, :-1, :],
+                        se_weights=se_w_batch,
+                    )
+
                 self.strategy.backward(loss, self.actor, self.actor_optim)
                 distill_loss_val += loss.item()
                 se_weight_sum += se_w_batch.mean().item()
@@ -608,8 +626,15 @@ class VtDTeacherActor(BaseModelActor):
             all_responses.append(responses)
         return all_responses
 
-    def get_logits(self, input_ids, attention_mask, top_k: int = 512):
-        """Get teacher top-K logits for distillation (memory-efficient)."""
+    def get_logits(self, input_ids, attention_mask, topk=0):
+        """Get teacher logits for distillation.
+
+        Args:
+            topk: 0 = full logits, >0 = top-K logits.
+        Returns:
+            topk>0: (topk_vals, topk_ids) each (1, seq_len, K)
+            topk=0: full logits (1, seq_len, vocab_size)
+        """
         device = torch.cuda.current_device()
         with torch.no_grad():
             output = self.model(
@@ -618,16 +643,26 @@ class VtDTeacherActor(BaseModelActor):
                 return_output=True,
             )
             logits = output["logits"]  # (1, seq_len, vocab_size)
-            # Keep only top-K logits, set rest to -inf
-            topk_vals, topk_ids = logits.topk(top_k, dim=-1)
-        return topk_vals.cpu(), topk_ids.cpu()
+            if topk > 0:
+                topk_vals, topk_ids = torch.topk(logits, topk, dim=-1)
+                return topk_vals.cpu(), topk_ids.cpu()
+            else:
+                return logits.cpu()
 
-    def batch_get_logits(self, input_ids_list, attention_mask_list, top_k=512, micro_batch_size=4):
-        """Batch get teacher top-K logits with micro-batching to prevent OOM."""
+    def batch_get_logits(self, input_ids_list, attention_mask_list, micro_batch_size=4, topk=0):
+        """Batch get teacher logits with micro-batching to prevent OOM.
+
+        Args:
+            topk: 0 = full logits, >0 = top-K logits.
+        Returns:
+            topk>0: list of (topk_vals, topk_ids) tuples
+            topk=0: list of full logit tensors
+        """
         device = torch.cuda.current_device()
         total = len(input_ids_list)
         num_batches = (total + micro_batch_size - 1) // micro_batch_size
-        logger.info(f"[教师前向] 共 {total} 条序列, micro_batch_size={micro_batch_size}, 共 {num_batches} 个微批次")
+        mode_str = f"topk={topk}" if topk > 0 else "full"
+        logger.info(f"[教师前向] 共 {total} 条序列, micro_batch_size={micro_batch_size}, {mode_str}, 共 {num_batches} 个微批次")
         results = []
 
         for batch_idx, start in enumerate(range(0, total, micro_batch_size)):
@@ -651,16 +686,18 @@ class VtDTeacherActor(BaseModelActor):
                     attention_mask=padded_mask.to(device),
                     return_output=True,
                 )
-                logits = output["logits"]
-                topk_vals, topk_ids = logits.topk(top_k, dim=-1)
+                logits = output["logits"]  # (bs, max_len, vocab_size)
 
             # Split back, trim padding, move to CPU
-            for i, ids in enumerate(batch_ids):
-                seq_len = ids.shape[1]
-                results.append((
-                    topk_vals[i : i + 1, :seq_len, :].cpu(),
-                    topk_ids[i : i + 1, :seq_len, :].cpu(),
-                ))
+            if topk > 0:
+                topk_vals, topk_ids = torch.topk(logits, topk, dim=-1)
+                for i, ids in enumerate(batch_ids):
+                    seq_len = ids.shape[1]
+                    results.append((topk_vals[i:i+1, :seq_len, :].cpu(), topk_ids[i:i+1, :seq_len, :].cpu()))
+            else:
+                for i, ids in enumerate(batch_ids):
+                    seq_len = ids.shape[1]
+                    results.append(logits[i:i+1, :seq_len, :].cpu())
 
             logger.info(f"[教师前向] 微批次 {batch_idx + 1}/{num_batches} 完成 ({end}/{total} 条序列)")
 
