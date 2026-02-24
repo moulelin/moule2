@@ -1,53 +1,60 @@
-\section{Method: Token-level Contrastive Distillation}
+\section{Method}
 \label{sec:method}
 
-\subsection{Problem Setup}
+We propose UOPD, a two-phase framework for uncertainty-calibrated on-policy distillation. In the first phase, we estimate the teacher's epistemic uncertainty for each training prompt by computing semantic entropy over multiple teacher rollouts. This computation is performed entirely offline before training begins, producing a per-prompt uncertainty weight that is stored alongside the training data. In the second phase, the student is trained on-policy with token-level distillation from the teacher, where each sample's contribution to the loss is calibrated by its precomputed uncertainty weight.
 
-We consider distilling a large teacher model $p_T$ into a smaller student model $p_S^\theta$ for mathematical reasoning tasks. Given a dataset of questions $\{x_i\}$ and ground-truth answers $\{a_i\}$, our goal is to train the student to generate correct reasoning traces $y$ (chain-of-thought) that lead to the correct answer.
+The key advantage of this design is the separation of uncertainty estimation from training. Because semantic entropy is computed once before the training loop, UOPD introduces zero additional overhead during training while still enabling uncertainty-aware distillation. We describe each component in detail below.
 
-\subsection{On-policy Generation with Verification}
+\subsection{Offline Semantic Entropy Estimation}
+\label{sec:offline_se}
 
-For each question $x$, we generate $K$ reasoning traces from the current student policy:
-\[
-\{y^{(1)}, \ldots, y^{(K)}\} \sim p_S^\theta(\cdot | x)
-\]
+Given a training set of prompts $\{x_i\}_{i=1}^M$, we first estimate the teacher's epistemic uncertainty per prompt. For each prompt $x_i$, we sample $N$ responses from the teacher $\{y_1^T, \ldots, y_N^T\} \sim p_T(\cdot \mid x_i)$, recording each response's sequence log-probability $\log p_T(y_n^T \mid x_i)$ and token count $|y_n^T|$.
 
-Each trace is verified by extracting the final answer and comparing with ground-truth:
-\[
-\text{verify}(y^{(k)}, a) \in \{\text{correct}, \text{incorrect}\}
-\]
+\textbf{Semantic clustering.}
+As discussed in Section~\ref{sec:preliminary}, responses such as \emph{``London''}, \emph{``London is the capital of the UK''}, and \emph{``The UK's capital is London''} are semantically identical but produce large token-level divergence. To prevent this aleatoric variation from inflating uncertainty estimates, we extract the final answer from each teacher response and cluster semantically equivalent answers into equivalence classes $\mathcal{C} = \{c_1, \ldots, c_J\}$. Two answers are placed in the same cluster only if one can be derived from the other, i.e., they express the same meaning in different surface forms (e.g., $\frac{1}{2}$ and $0.5$, or $x=3$ and $3$). Answers that match as exact strings are merged directly. For non-matching pairs, a Qwen-4B judge \citep{qwen3} determines pairwise semantic equivalence, and all judgments are resolved into clusters with a Union-Find algorithm.
 
-This yields two sets per question: correct traces $\mathcal{C}_x$ and incorrect traces $\mathcal{I}_x$.
+\textbf{Intra-cluster vs.\ inter-cluster entropy.}
+This clustering decomposes the total entropy of teacher outputs into two interpretable components. \emph{Intra-cluster entropy} captures the lexical diversity \emph{within} a semantic equivalence class. A cluster containing ``$0.5$'', ``$\frac{1}{2}$'', and ``the answer is one half'' has high intra-cluster entropy, reflecting the teacher's expressive richness rather than genuine confusion. This variation is aleatoric and should not be penalized. \emph{Inter-cluster entropy}, by contrast, measures the spread of probability mass \emph{across} semantically distinct answer classes. When the teacher assigns substantial mass to multiple contradictory clusters (e.g., both ``$3$'' and ``$5$'' for the same prompt), inter-cluster entropy is high, signaling epistemic uncertainty. Our semantic entropy $H_{\text{sem}}$ captures precisely the inter-cluster component by collapsing all within-cluster variation before computing entropy.
 
-\subsection{Dual Learning Objectives}
+\textbf{Probability-weighted semantic entropy.}
+Each response's log-probability is first length-normalized to avoid penalizing longer outputs. The probability mass of semantic class $c$ is then computed as
+\begin{equation}
+    p(c \mid x_i) = \frac{\sum_{n \in c} \exp\!\left(\log p_T(y_n^T \mid x_i) \;/\; |y_n^T|\right)}{\sum_{n=1}^{N} \exp\!\left(\log p_T(y_n^T \mid x_i) \;/\; |y_n^T|\right)},
+\end{equation}
+and the semantic entropy is
+\begin{equation}
+    H_{\text{sem}}(x_i) = -\sum_{c \in \mathcal{C}} p(c \mid x_i) \log p(c \mid x_i).
+\end{equation}
+We normalize by the maximum possible entropy to obtain a value in $[0, 1]$ and define the per-prompt distillation weight as
+\begin{equation}
+    w_{\text{se}}(x_i) = 1 - \frac{H_{\text{sem}}(x_i)}{\log N}.
+\end{equation}
+A weight near 1 indicates that the teacher consistently agrees on the same semantic answer (low epistemic uncertainty), while a weight near 0 indicates contradictory responses across clusters (high epistemic uncertainty). These weights are precomputed and stored with the training data.
 
-\paragraph{Distillation on Correct Traces.}
-For verified correct reasoning, we perform token-level knowledge distillation. Given teacher logits $z_T(y_{<t}, x)$ and student logits $z_S^\theta(y_{<t}, x)$ at position $t$, we minimize:
-\[
-\mathcal{L}_{\text{distill}}(\theta) = \mathbb{E}_{x, y \in \mathcal{C}_x} \left[ \frac{1}{|y|} \sum_{t=1}^{|y|} D_{\text{KL}}\left( \sigma(z_T/\tau) \| \sigma(z_S^\theta/\tau) \right) \right]
-\]
-where $\sigma$ is softmax, $\tau$ is temperature, and we use top-$k$ truncation of teacher logits for memory efficiency.
+\subsection{Uncertainty-Calibrated On-Policy Distillation}
+\label{sec:distill}
 
-\paragraph{Contrastive Learning on Errors.}
-For incorrect traces, we apply DPO-style contrastive loss. The "chosen" response $y_c$ is either (1) reference chain-of-thought if available, (2) student's own correct trace if any, or (3) teacher-generated trace. The "rejected" response $y_r$ is the student's incorrect trace:
-\[
-\mathcal{L}_{\text{contrast}}(\theta) = -\mathbb{E}_{x, y_r \in \mathcal{I}_x} \left[ \log \sigma \left( \beta \left( \log \frac{p_S^\theta(y_c|x)}{p_{\text{ref}}(y_c|x)} - \log \frac{p_S^\theta(y_r|x)}{p_{\text{ref}}(y_r|x)} \right) \right) \right]
-\]
-where $p_{\text{ref}}$ is a reference model (frozen copy of student) and $\beta$ controls the strength of the KL penalty.
+At each training step, the student generates $K$ responses per prompt from its current policy $\{y^{(1)}, \ldots, y^{(K)}\} \sim p_S(\cdot \mid x; \theta_S)$. For each student-generated response $y$, the frozen teacher provides its top-$k$ logit values and corresponding token indices at every position, reducing memory and communication from the full vocabulary size $V$ to $k \ll V$.
 
-\subsection{Combined Training Objective}
+The token-level distillation loss at position $t$ is the cross-entropy between the teacher's and student's distributions over the top-$k$ tokens
+\begin{equation}
+    \ell_t = -\sum_{j=1}^{k} \tilde{p}_T(v_j \mid x, y_{<t}) \log p_S(v_j \mid x, y_{<t}; \theta_S),
+\end{equation}
+where $\tilde{p}_T$ denotes the teacher's probability renormalized over the top-$k$ tokens and $\{v_1, \ldots, v_k\}$ are the teacher's top-$k$ token indices.
 
-The final loss combines both objectives:
-\[
-\mathcal{L}(\theta) = \alpha \cdot \mathcal{L}_{\text{distill}}(\theta) + (1-\alpha) \cdot \mathcal{L}_{\text{contrast}}(\theta)
-\]
-where $\alpha$ controls the relative weight between distillation and contrastive learning.
+The standard on-policy distillation objective averages $\ell_t$ uniformly over all response tokens, treating every prompt equally regardless of teacher reliability. UOPD instead calibrates each sample's contribution by its precomputed semantic entropy weight $w_{\text{se}}(x)$. For a prompt $x$ and student-generated response $y$, the uncertainty-calibrated loss is
+\begin{equation}
+    \mathcal{L}(x, y; \theta_S) = \frac{w_{\text{se}}(x)}{\sum_t \mathbb{1}[t \in \text{resp}]} \sum_{t \in \text{resp}} \ell_t,
+    \label{eq:uopd_loss}
+\end{equation}
+where the sum runs over response token positions (excluding the prompt). When the teacher is confident about a prompt ($w_{\text{se}} \approx 1$), the student receives the full distillation signal. When the teacher is uncertain ($w_{\text{se}} \approx 0$), the loss is suppressed, preventing the propagation of erroneous teacher guidance.
 
-\subsection{Memory-Efficient Implementation}
+\subsection{Overall Training Objective}
+\label{sec:objective}
 
-To handle large vocabulary sizes (151,936 for Qwen), we employ:
-\begin{itemize}
-    \item \textbf{Top-K teacher logits}: Store only top-512 logits from teacher, reducing memory by 300×
-    \item \textbf{Token-by-token processing}: Compute distillation loss incrementally to avoid materializing full distributions
-    \item \textbf{vLLM for generation}: Use vLLM engines with continuous batching for efficient on-policy sampling
-\end{itemize}
+The full training objective averages over all prompts and their $K$ on-policy rollouts
+\begin{equation}
+    \mathcal{L}_{\text{UOPD}}(\theta_S) = \frac{1}{|\mathcal{D}|} \sum_{x \in \mathcal{D}} \frac{1}{K} \sum_{j=1}^{K} \mathcal{L}(x, y^{(j)}; \theta_S).
+\end{equation}
+
+At each training step, the updated student weights are synchronized back to the vLLM generation engines, ensuring that the next round of rollouts reflects the latest policy. This on-policy loop continues until convergence.

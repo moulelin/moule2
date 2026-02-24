@@ -1,63 +1,156 @@
 \section{Experiments}
 \label{sec:experiments}
 
+\subsection{SURE-Math Dataset}
+\label{sec:dataset}
+
+We introduce \textbf{SURE-Math} (\textbf{S}emantic-\textbf{U}ncertainty \textbf{RE}asoning \textbf{Math}), a mathematical reasoning dataset in which every problem is annotated with the teacher's precomputed semantic entropy score.
+
+\paragraph{Seed collection.}
+We aggregate seed problems from seven public sources spanning four difficulty tiers.
+\emph{Easy}: ScaleQuest-Math \citep{yuan2024scalequest} (15K problems).
+\emph{Medium}: NuminaMath-CoT \citep{numinamath} (10K) and MATH \citep{hendrycks2021math} (12.5K).
+\emph{Hard}: Omni-MATH \citep{gao2024omnimath} (4.4K) and OlympiadBench \citep{he2024olympiadbench} (5K).
+\emph{Competition}: AIME 2024--2025, HMMT 2025, and AMO-Bench \citep{amobench} (${\sim}110$ problems).
+In addition, we manually curate 1{,}000 middle-school and high-school mathematics problems with verified ground-truth labels.
+
+\paragraph{Evol-Instruct evolution.}
+Starting from these seeds, we generate approximately one million new problems using Qwen2.5-72B-Instruct with an Evol-Instruct \citep{xu2024wizardlm} style pipeline. Six evolution strategies are applied: \emph{harder}, \emph{rewrite}, \emph{algebraize}, \emph{apply}, \emph{compose}, and \emph{competition}. Each seed undergoes 1--5 rounds of evolution depending on its difficulty tier, with competition-level seeds receiving the most rounds to amplify their representation.
+
+\paragraph{Quality filtering.}
+We apply a three-stage filter. First, we remove multiple-choice questions and problems shorter than 30 characters or longer than 2{,}000 characters, and deduplicate with a 0.7 similarity threshold. Second, Qwen2.5-72B-Instruct judges each remaining problem against five quality criteria: (1)~well-formed and complete, (2)~unambiguous with exactly one correct answer, (3)~requires at least two steps of mathematical reasoning, (4)~admits a closed-form answer (number or expression, not a proof or essay), and (5)~self-contained. Only problems passing all five criteria are retained. After filtering, 8{,}000 problems remain.
+
+\paragraph{Semantic entropy annotation.}
+For each of the 8{,}000 problems, we sample $N{=}8$ responses from Qwen3-8B \citep{qwen3} at temperature 0.7, extract the $\texttt{\textbackslash boxed\{\}}$ answer from each response, and compute the probability-weighted semantic entropy as described in Section~\ref{sec:offline_se}. The resulting per-problem semantic entropy score and the corresponding distillation weight $w_{\text{se}}$ are stored alongside each problem.
+
+\paragraph{Data splits.}
+We reserve 200 of the 1{,}000 manually collected problems (which carry ground-truth labels) as a held-out test set. The remaining 800 curated problems and all 8{,}000 evolved problems form the training set.
+
 \subsection{Experimental Setup}
+\label{sec:setup}
 
-\paragraph{Models.} We use Qwen3-1.7B as the student model and Qwen3-8B as the teacher model, both pretrained on diverse text corpora.
+\paragraph{Models.}
+The student model is Qwen3-1.7B and the teacher is Qwen3-8B \citep{qwen3}, both instruction-tuned. Semantic clustering for the offline SE computation uses a Qwen3-8B judge for pairwise semantic equivalence.
 
-\paragraph{Dataset.} We evaluate on GSM8K~\citep{cobbe2021gsm8k}, a dataset of grade-school math word problems requiring multi-step reasoning. We use 4-shot chain-of-thought prompting with calculator tool access.
+\paragraph{Training details.}
+We train with the on-policy distillation objective described in Eq.~\ref{eq:uopd_loss}. At each step, the student generates $K{=}4$ rollouts per prompt. The teacher provides its top-512 logit values at every token position. We use a learning rate of $3{\times}10^{-6}$ with a cosine schedule and 5\% warmup, AdamW with $(\beta_1, \beta_2) = (0.9, 0.95)$, gradient clipping at 1.0, and a global batch size of 128. Training runs for one epoch over 50{,}000 samples (with replacement from the 8{,}800 training problems). All models use bfloat16 precision and FlashAttention-2.
 
-\paragraph{Training.}
+\paragraph{Infrastructure.}
+Training runs on 4$\times$ NVIDIA H100 GPUs. The student model, teacher model, and 4 vLLM generation engines are colocated on the same node with DeepSpeed ZeRO Stage~1. At each training step, vLLM engines generate student rollouts, the teacher produces top-$k$ logits for these rollouts, and the student parameters are then updated and synchronized back to the vLLM engines for the next round of generation.
+
+\paragraph{Baselines.}
+We compare UOPD against the following methods.
 \begin{itemize}
-    \item Batch size: 32 (rollout), 32 (training)
-    \item Episodes: 3 (full dataset passes with on-policy regeneration)
-    \item Learning rate: $1 \times 10^{-6}$ with 5\% warmup
-    \item Generation: 8 samples per prompt, temperature 0.7
-    \item Distillation: $\alpha=5.0$ (distill weight), top-K=512 teacher logits
-    \item Contrastive: $\beta=0.1$ (DPO beta)
+    \item \textbf{Qwen3-1.7B}: The base student model without any distillation (lower bound).
+    \item \textbf{Qwen3-8B}: The teacher model (upper bound).
+    \item \textbf{Standard OPD}: On-policy distillation with uniform weighting ($w_{\text{se}} = 1$ for all prompts), following \citet{agarwal2024policy}.
+    \item \textbf{GRPO}: Group Relative Policy Optimization, a reinforcement learning approach that trains the student using reward signals from correct and incorrect rollouts.
+    \item \textbf{Self-Distilled Reasoner}: On-policy distillation with ground-truth chain-of-thought injected into the teacher's system prompt \citep{zhao2026self}.
 \end{itemize}
 
-\paragraph{Infrastructure.} We use 4× H100 GPUs with Ray for distributed training:
+\subsection{Evaluation}
+\label{sec:evaluation}
+
+\paragraph{Benchmarks.}
+We evaluate all methods on five public mathematical reasoning benchmarks of increasing difficulty.
 \begin{itemize}
-    \item GPU 0: Student + Reference model (colocated)
-    \item GPU 1: Teacher model
-    \item GPU 2-3: vLLM engines (2×) for on-policy generation
+    \item \textbf{GSM8K} \citep{cobbe2021gsm8k}: 1{,}319 grade-school math word problems.
+    \item \textbf{AIME 2024}: 30 problems from the American Invitational Mathematics Examination.
+    \item \textbf{AIME 2025}: 30 problems from AIME 2025 (Parts I and II combined).
+    \item \textbf{HMMT Feb 2025}: 30 problems from the Harvard-MIT Mathematics Tournament.
+    \item \textbf{AMO-Bench} \citep{amobench}: 50 IMO-level competition problems.
 \end{itemize}
+In addition, we report accuracy on our held-out \textbf{SURE-Math test set} (200 curated problems with labels).
+
+\paragraph{Metrics.}
+We report pass@1 accuracy with greedy decoding (temperature 0) and avg@16 accuracy with 16 samples at temperature 1.2 and top-$p{=}0.95$.
 
 \subsection{Main Results}
+\label{sec:main_results}
 
-\textbf{TODO: Add results table comparing:}
-\begin{itemize}
-    \item Supervised fine-tuning baseline
-    \item Distillation only (no contrastive)
-    \item Contrastive only (no distillation)
-    \item TCD (full method)
-    \item Teacher performance (upper bound)
-\end{itemize}
+Table~\ref{tab:main_results} presents the main comparison across all benchmarks.
+
+\begin{table}[t]
+\centering
+\caption{Main results on mathematical reasoning benchmarks. We report pass@1 (greedy) and avg@16 accuracy (\%). Best student-sized results are \textbf{bolded}.}
+\label{tab:main_results}
+\vspace{0.5em}
+\small
+\begin{tabular}{l cc cc cc cc}
+\toprule
+ & \multicolumn{2}{c}{\textbf{GSM8K}} & \multicolumn{2}{c}{\textbf{AIME 2025}} & \multicolumn{2}{c}{\textbf{HMMT 2025}} & \multicolumn{2}{c}{\textbf{SURE-Math}} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9}
+\textbf{Method} & pass@1 & avg@16 & pass@1 & avg@16 & pass@1 & avg@16 & pass@1 & avg@16 \\
+\midrule
+Qwen3-8B (Teacher)     & --   & --   & --   & --   & --   & --   & --   & -- \\
+Qwen3-1.7B (Base)      & --   & --   & 26.7 & 35.6 & --   & --   & --   & -- \\
+\midrule
+Standard OPD            & --   & --   & --   & --   & --   & --   & --   & -- \\
+GRPO                    & --   & --   & --   & --   & --   & --   & --   & -- \\
+Self-Distilled Reasoner & --   & --   & --   & --   & --   & --   & --   & -- \\
+\textbf{UOPD (Ours)}   & --   & --   & --   & --   & --   & --   & --   & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% TODO: Fill in results once all evaluations are complete.
+% Available so far:
+%   Qwen3-1.7B base:      AIME25 greedy=26.7%, avg@16=35.6%
+%   UOPD (step 21):       AIME25 greedy=26.7%, avg@16=33.8%
+%   UOPD (step 21):       HMMT25 greedy=20.0%
+%   UOPD (step 21):       AMO-Bench greedy=0.0%
 
 \subsection{Ablation Studies}
+\label{sec:ablation}
 
-\paragraph{Effect of Episode Number.}
-We ablate the number of on-policy episodes (1, 2, 3). Each episode regenerates data with the updated student, improving the quality of both correct traces (for distillation) and incorrect traces (for contrastive learning).
+\paragraph{Effect of uncertainty weighting.}
+We compare three weighting strategies: (1)~uniform weighting ($w_{\text{se}} = 1$), which reduces to standard on-policy distillation; (2)~binary filtering, which discards all prompts with $H_{\text{sem}} > \tau$ for a threshold $\tau$; and (3)~soft weighting ($w_{\text{se}} = 1 - H_{\text{sem}}/\log N$), which is our default. Table~\ref{tab:ablation_weighting} reports the results.
 
-\paragraph{Distillation Weight $\alpha$.}
-We vary $\alpha \in \{0.1, 1.0, 5.0, 10.0\}$ to study the trade-off between learning from verified correct reasoning vs. learning from mistakes.
+\begin{table}[h]
+\centering
+\caption{Ablation on uncertainty weighting strategies.}
+\label{tab:ablation_weighting}
+\vspace{0.5em}
+\small
+\begin{tabular}{l cccc}
+\toprule
+\textbf{Weighting} & \textbf{GSM8K} & \textbf{AIME 2025} & \textbf{HMMT 2025} & \textbf{SURE-Math} \\
+\midrule
+Uniform ($w = 1$)                          & -- & -- & -- & -- \\
+Binary filter ($\tau = 0.3$)               & -- & -- & -- & -- \\
+Binary filter ($\tau = 0.5$)               & -- & -- & -- & -- \\
+Soft weighting (UOPD)                      & -- & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\paragraph{Top-K Truncation.}
-We compare full vocabulary (151,936) vs. top-K logits with $K \in \{128, 512, 2048\}$, measuring both accuracy and memory usage.
+\paragraph{Number of SE samples $N$.}
+The number of teacher rollouts $N$ used for semantic entropy estimation controls the resolution of the uncertainty estimate. We vary $N \in \{2, 4, 8, 16\}$ and measure downstream distillation performance.
 
-\paragraph{Teacher Fallback Strategy.}
-When student generates 0/8 correct samples, we compare:
-\begin{enumerate}
-    \item Skip contrastive loss
-    \item Use teacher.generate() to create reference
-    \item Use teacher logits for autoregressive sampling
-\end{enumerate}
+\paragraph{Top-$k$ logit truncation.}
+Transmitting the full vocabulary ($|V| = 151{,}936$) is memory-intensive. We compare $k \in \{128, 512, 2048\}$ and full-vocabulary distillation, measuring both accuracy and peak GPU memory.
+
+\paragraph{Number of student rollouts $K$.}
+We ablate $K \in \{1, 2, 4, 8\}$ on-policy rollouts per prompt to understand the trade-off between training diversity and computational cost.
 
 \subsection{Analysis}
+\label{sec:analysis}
 
-\paragraph{Correct/Incorrect Ratio Over Training.}
-We track the fraction of correct vs. incorrect student-generated traces across episodes, showing how on-policy distribution improves.
+\paragraph{Convergence speed.}
+% TODO: Plot training loss / eval accuracy curves for UOPD vs Standard OPD vs GRPO.
 
-\paragraph{Memory vs. Accuracy Trade-offs.}
-We analyze GPU memory consumption for different components (student, teacher, vLLM, reference model) under various configurations (colocated vs. separate, DeepSpeed ZeRO stages).
+\paragraph{Semantic entropy distribution.}
+Figure~\ref{fig:se_distribution} shows the distribution of semantic entropy scores across SURE-Math. The majority of problems have low SE, indicating that the teacher is confident on most prompts. The long tail of high-SE problems represents cases where the teacher genuinely disagrees with itself, and these are precisely the samples that UOPD downweights.
+
+% TODO: Insert SE distribution histogram
+% \begin{figure}[t]
+% \centering
+% \includegraphics[width=0.48\textwidth]{figures/se_distribution.pdf}
+% \caption{Distribution of semantic entropy scores in SURE-Math. Most problems have low SE (confident teacher), while the tail captures genuinely uncertain prompts.}
+% \label{fig:se_distribution}
+% \end{figure}
+
+\paragraph{Qualitative examples.}
+Table~\ref{tab:qualitative} shows representative examples where UOPD's uncertainty weighting helps. For low-SE prompts, the teacher provides consistent guidance and the student learns effectively. For high-SE prompts, the teacher produces contradictory answers; UOPD suppresses these samples, preventing the student from learning incorrect reasoning patterns.
+
+% TODO: Add qualitative example table

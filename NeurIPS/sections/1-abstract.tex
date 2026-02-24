@@ -1,11 +1,11 @@
 \begin{abstract}
-On-policy distillation trains a student on its own outputs with teacher feedback to avoid the train-inference distribution mismatch present in standard distillation. 
+On-policy distillation trains a student on its own outputs with teacher feedback to avoid the train-inference distribution mismatch present in standard distillation.
 %
-However, it typically ignores the ground-truth labels and reference solutions available in reasoning datasets during the post-training. 
+However, a fundamental underexplored challenge is that the teacher itself is imperfect; consequently, naively imitating erroneous teacher outputs propagates mistakes into the student.
 %
-We introduce a verification-driven contrastive learning that explicitly exploits these reference labels. By evaluating student responses against ground-truth, we strategically pair suboptimal generations with expert reference solutions to form robust contrastive learning pairs.
+Prior work such as Self-Distilled Reasoner \citep{zhao2026self} mitigates this by injecting ground-truth chain-of-thought solutions into the teacher's system prompt to guarantee the teacher with correct reasoning. But this approach depends on labeled data that is unavailable in many practical settings.
 %
-Combined with token-level teacher distillation on verified correct outputs, this prompts the student to simultaneously refine its successful reasoning and correct its failures within a unified on-policy loop.
+We introduce \textbf{UOPD} (\textbf{U}ncertainty-calibrated \textbf{O}n-\textbf{P}olicy \textbf{D}istillation), a framework that addresses teacher errors without ground-truth supervision. Teacher reliability is estimated offline by computing its \textbf{uncertainty}, and the distillation objective is reweighted inversely proportional to the teacher’s uncertainty with no additional training cost. We further release \textbf{SURE-Math}, a dataset annotated with teacher semantic entropy scores.
 %
-We evaluate our method, \textbf{CORE} (Contrastive On-policy Reasoning Distillation), across mathematical reasoning, summarization, translation, and instruction tuning tasks. CORE converges faster and achieves state-of-the-art results compared to both GRPO and standard on-policy distillation.
+We evaluate UOPD across mathematical reasoning, summarization, translation, and instruction tuning tasks. UOPD converges faster and achieves state-of-the-art results compared to both GRPO and standard on-policy distillation.
 \end{abstract}

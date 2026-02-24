@@ -1,54 +1,81 @@
 \begin{thebibliography}{10}
 
-\bibitem{comanici2025gemini}
-Gheorghe Comanici, Eric Bieber, Mike Schaekermann, Ice Pasupat, Noveen Sachdeva, Inderjit Dhillon, Marcel Blistein, Ori Ram, Dan Zhang, Evan Rosen, et~al.
-\newblock Gemini 2.5: Pushing the frontier with advanced reasoning, multimodality, long context, and next generation agentic capabilities.
-\newblock {\em arXiv preprint arXiv:2507.06261}, 2025.
-
-\bibitem{jia2025satellite}
-Xiao Jia, Di~Zhou, Min Sheng, Yan Shi, Sijing Ji, and Jiandong Li.
-\newblock Satellite computing network construction: Optimal computing node deployment in multi-layer leo mega-constellations.
-\newblock {\em IEEE Transactions on Communications}, 74:1747--1761, 2025.
-
-\bibitem{tao2025adaptive}
-Yihong Tao, Bo~Lei, Haoyang Shi, Jingkai Chen, and Xing Zhang.
-\newblock Adaptive multi-layer deployment for a digital-twin-empowered satellite-terrestrial integrated network.
-\newblock {\em Frontiers of Information Technology \& Electronic Engineering}, 26(2):246--259, 2025.
-
-\bibitem{zhao2025survey}
-Jingyuan Zhao, Yuyan Wu, Rui Deng, Susu Xu, Jinpeng Gao, and Andrew Burke.
-\newblock A survey of autonomous driving from a deep learning perspective.
-\newblock {\em ACM Computing Surveys}, 57(10):1--60, 2025.
-
-\bibitem{feng2025survey}
-Tuo Feng, Wenguan Wang, and Yi~Yang.
-\newblock A survey of world models for autonomous driving.
-\newblock {\em arXiv preprint arXiv:2501.11260}, 2025.
-
-\bibitem{mansourian2025comprehensive}
-Amir~M Mansourian, Rozhan Ahmadi, Masoud Ghafouri, Amir~Mohammad Babaei, Elaheh~Badali Golezani, Zeynab~Yasamani Ghamchi, Vida Ramezanian, Alireza Taherian, Kimia Dinashi, Amirali Miri, et~al.
-\newblock A comprehensive survey on knowledge distillation.
-\newblock {\em arXiv preprint arXiv:2503.12067}, 2025.
-
-\bibitem{fang2026knowledge}
-Luyang Fang, Xiaowei Yu, Jiazhang Cai, Yongkai Chen, Shushan Wu, Zhengliang Liu, Zhenyuan Yang, Haoran Lu, Xilin Gong, Yufang Liu, et~al.
-\newblock Knowledge distillation and dataset distillation of large language models: Emerging trends, challenges, and future directions.
-\newblock {\em Artificial Intelligence Review}, 59(1):17, 2026.
-
 \bibitem{zhao2026self}
 Siyan Zhao, Zhihui Xie, Mengchen Liu, Jing Huang, Guan Pang, Feiyu Chen, and Aditya Grover.
 \newblock Self-distilled reasoner: On-policy self-distillation for large language models.
 \newblock {\em arXiv preprint arXiv:2601.18734}, 2026.
+
+\bibitem{hinton2015distilling}
+Geoffrey Hinton, Oriol Vinyals, and Jeff Dean.
+\newblock Distilling the knowledge in a neural network.
+\newblock {\em arXiv preprint arXiv:1503.02531}, 2015.
 
 \bibitem{agarwal2024policy}
 Rishabh Agarwal, Nino Vieillard, Yongchao Zhou, Piotr Stanczyk, Sabela Ramos, Matthieu Geist, and Olivier Bachem.
 \newblock On-policy distillation of language models: Learning from self-generated mistakes.
 \newblock In {\em International Conference on Learning Representations (ICLR)}, 2024.
 
-\bibitem{hinton2015distilling}
-Geoffrey Hinton, Oriol Vinyals, and Jeff Dean.
-\newblock Distilling the knowledge in a neural network.
-\newblock {\em arXiv preprint arXiv:1503.02531}, 2015.
+\bibitem{wei2022chain}
+Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Fei Xia, Ed~Chi, Quoc~V Le, and Denny Zhou.
+\newblock Chain-of-thought prompting elicits reasoning in large language models.
+\newblock {\em Advances in Neural Information Processing Systems}, 35:24824--24837, 2022.
+
+\bibitem{kendall2017uncertainties}
+Alex Kendall and Yarin Gal.
+\newblock What uncertainties do we need in bayesian deep learning for computer vision?
+\newblock In {\em Advances in Neural Information Processing Systems}, 2017.
+
+\bibitem{kuhn2023semantic}
+Lorenz Kuhn, Yarin Gal, and Sebastian Farquhar.
+\newblock Semantic uncertainty: Linguistic invariances for uncertainty estimation in natural language generation.
+\newblock In {\em International Conference on Learning Representations (ICLR)}, 2023.
+
+\bibitem{qwen3}
+An~Yang, Anfeng Yang, Baosong Yang, et~al.
+\newblock Qwen3 technical report.
+\newblock {\em arXiv preprint arXiv:2505.09388}, 2025.
+
+\bibitem{yuan2024scalequest}
+Zhengyang Yuan, Jiawei Liu, Boyuan Zi, Hao Ning, Kai Zheng, Minghao Chen, et~al.
+\newblock Scalequest: Scalable data synthesis for mathematical reasoning.
+\newblock In {\em International Conference on Learning Representations (ICLR)}, 2025.
+
+\bibitem{numinamath}
+{AI-MO Team}.
+\newblock Numinamath-cot: A large-scale mathematical reasoning dataset with chain-of-thought annotations.
+\newblock 2024.
+\newblock \url{https://huggingface.co/datasets/AI-MO/NuminaMath-CoT}.
+
+\bibitem{hendrycks2021math}
+Dan Hendrycks, Collin Burns, Saurav Kadavath, Akul Arora, Steven Basart, Eric Tang, Dawn Song, and Jacob Steinhardt.
+\newblock Measuring mathematical problem solving with the {MATH} dataset.
+\newblock In {\em Advances in Neural Information Processing Systems}, 2021.
+
+\bibitem{gao2024omnimath}
+Bofei Gao, Feifan Song, Zhe Yang, Zefan Cai, Yibo Miao, Qingxiu Dong, Lei Li, Chenghao Ma, Liang Chen, Runxin Xu, et~al.
+\newblock Omni-math: A universal olympiad level mathematic benchmark for large language models.
+\newblock {\em arXiv preprint arXiv:2410.07985}, 2024.
+
+\bibitem{he2024olympiadbench}
+Chaoqun He, Renjie Luo, Yuzhuo Bai, Shengding Hu, Zhen~Leng Thai, Junhao Shen, Jinyi Hu, Xu~Han, Yujie Huang, Yuxiang Zhang, et~al.
+\newblock Olympiadbench: A challenging benchmark for promoting agi with olympiad-level bilingual multimodal scientific problems.
+\newblock {\em arXiv preprint arXiv:2402.14008}, 2024.
+
+\bibitem{amobench}
+{Meituan Longcat Team}.
+\newblock Amo-bench: Assessing mathematical olympiad problem solving for large language models.
+\newblock 2025.
+\newblock \url{https://huggingface.co/datasets/meituan-longcat/AMO-Bench}.
+
+\bibitem{xu2024wizardlm}
+Can Xu, Qingfeng Sun, Kai Zheng, Xiubo Geng, Pu~Zhao, Jiazhan Feng, Chongyang Tao, and Daxin Jiang.
+\newblock Wizardlm: Empowering large language models to follow complex instructions.
+\newblock In {\em International Conference on Learning Representations (ICLR)}, 2024.
+
+\bibitem{cobbe2021gsm8k}
+Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, Mark Chen, Heewoo Jun, Lukasz Kaiser, Matthias Plappert, Jerry Tworek, Jacob Hilton, Reiichiro Nakano, et~al.
+\newblock Training verifiers to solve math word problems.
+\newblock {\em arXiv preprint arXiv:2110.14168}, 2021.
 
 \bibitem{sanh2019distilbert}
 Victor Sanh, Lysandre Debut, Julien Chaumond, and Thomas Wolf.
@@ -64,10 +91,5 @@ Yoon Kim and Alexander~M Rush.
 Rafael Rafailov, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher~D Manning, and Chelsea Finn.
 \newblock Direct preference optimization: Your language model is secretly a reward model.
 \newblock {\em Advances in Neural Information Processing Systems}, 36, 2023.
-
-\bibitem{cobbe2021gsm8k}
-Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, Mark Chen, Heewoo Jun, Lukasz Kaiser, Matthias Plappert, Jerry Tworek, Jacob Hilton, Reiichiro Nakano, et~al.
-\newblock Training verifiers to solve math word problems.
-\newblock {\em arXiv preprint arXiv:2110.14168}, 2021.
 
 \end{thebibliography}

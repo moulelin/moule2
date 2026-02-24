@@ -1,0 +1,42 @@
+\section{Preliminary}
+\label{sec:preliminary}
+
+\subsection{On-Policy Knowledge Distillation}
+
+Standard knowledge distillation \citep{hinton2015distilling} trains a student model $p_S(\cdot;\theta_S)$ to minimize the KL divergence from a frozen teacher $p_T$ on a fixed dataset $\mathcal{D}$:
+\begin{equation}
+    \mathcal{L}_{\text{KD}}(\theta_S) = \mathbb{E}_{x \sim \mathcal{D}} \left[ \mathrm{KL}\!\left(p_T(\cdot \mid x) \;\|\; p_S(\cdot \mid x;\theta_S)\right) \right].
+\end{equation}
+This offline objective suffers from a train-inference distribution mismatch: during training the student observes token-level distributions conditioned on dataset prefixes, whereas at inference it must generate from its own previously predicted tokens.
+%
+On-policy distillation \citep{agarwal2024policy} resolves this by generating training sequences from the student itself:
+\begin{equation}
+    \mathcal{L}_{\text{OPD}}(\theta_S) = \mathbb{E}_{x \sim \mathcal{D}}\; \mathbb{E}_{y \sim p_S(\cdot \mid x;\theta_S)} \left[ \sum_{t=1}^{|y|} \mathrm{KL}\!\left(p_T(\cdot \mid x, y_{<t}) \;\|\; p_S(\cdot \mid x, y_{<t};\theta_S)\right) \right].
+\end{equation}
+Since the training distribution now matches the inference distribution, on-policy distillation substantially reduces compounding errors in chain-of-thought reasoning \citep{wei2022chain}.
+
+\subsection{Uncertainty in LLMs}
+
+Uncertainty in language model outputs can be decomposed into two fundamentally distinct sources \citep{kendall2017uncertainties}.
+%
+\textbf{Aleatoric uncertainty} is irreducible and arises from the inherent ambiguity of natural language, where the same meaning can be expressed in infinitely many surface forms.
+%
+Consider the prompt \emph{``What is the capital of the UK?''} Given this question, the responses \emph{``London''}, \emph{``London is the capital of the UK''}, and \emph{``The UK's capital is London''} are semantically identical, while their token-level divergence is large.
+%
+A teacher that consistently produces such paraphrases is not making errors; it is exhibiting natural lexical variation.
+%
+Penalising this variation at the token level conflates surface diversity with genuine unreliability.
+
+\textbf{Epistemic uncertainty}, by contrast, reflects the teacher's \emph{lack of knowledge}. It arises when the teacher generates contradictory answers across samples, indicating that it does not reliably know the correct response to a given prompt.
+%
+Standard token-level objectives cannot distinguish these two sources, because both manifest as high distributional variance in the output space.
+
+Semantic entropy \citep{kuhn2023semantic} resolves this ambiguity by operating over \emph{meaning} rather than surface tokens.
+%
+Responses are first clustered into semantic equivalence classes $\mathcal{C}$, and entropy is computed over the resulting distribution
+\begin{equation}
+    H_{\text{sem}}(x) = -\sum_{c \in \mathcal{C}} p(c \mid x) \log p(c \mid x), \quad p(c \mid x) \propto \sum_{y \in c} p_T(y \mid x).
+\end{equation}
+Paraphrases of the same answer collapse into a single class, suppressing aleatoric noise.
+%
+$H_{\text{sem}}(x)$ is therefore a faithful, label-free measure of epistemic uncertainty; it is high only when the teacher genuinely disagrees with itself across semantically distinct answers.
