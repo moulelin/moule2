@@ -1,0 +1,35 @@
+Eval at step 2
+Dataset: MathArena/hmmt_feb_2025
+Model: Qwen/Qwen3-1.7B
+Greedy Accuracy: 1/30 = 3.33%
+============================================================
+[X] #  0  gt=103  pred=7
+[X] #  1  gt=3375  pred=3
+[X] #  2  gt=\frac{1}{576}  pred=4
+[X] #  3  gt=-984  pred=4050
+[X] #  4  gt=890  pred=9000
+[X] #  5  gt=\frac{1311}{2017}  pred=expectedtobe0,butthatseemsunlikely
+[X] #  6  gt=\frac{9 \sqrt{23}}{23}  pred=12
+[X] #  7  gt=1-\frac{2}{\pi}  pred=11.93
+[X] #  8  gt=1037  pred=202
+[X] #  9  gt=\frac{-1+\sqrt{17}}{2}, \frac{-1-\sqrt{17}}{2}  pred=7
+[X] # 10  gt=56  pred=4
+[X] # 11  gt=29  pred=1
+[X] # 12  gt=105  pred=4
+[X] # 13  gt=2304  pred=12
+[X] # 14  gt=200  pred=202
+[X] # 15  gt=6300  pred=25200
+[X] # 16  gt=2^{25} \cdot 26!  pred=1
+[X] # 17  gt=\frac{2025}{101}  pred=1
+[X] # 18  gt=\frac{4}{9}  pred=2
+[X] # 19  gt=\frac{448}{3}  pred=similar
+[O] # 20  gt=26  pred=26
+[X] # 21  gt=63  pred=36
+[X] # 22  gt=8\sqrt{10}  pred=1
+[X] # 23  gt=20  pred=2
+[X] # 24  gt=\sqrt{23}-2 \sqrt{3}  pred=25
+[X] # 25  gt=9\sqrt{15}  pred=15
+[X] # 26  gt=\frac{7}{18}  pred=1
+[X] # 27  gt=\sqrt{6}  pred=2
+[X] # 28  gt=14+4\sqrt{37}  pred=900
+[X] # 29  gt=\sqrt{\frac{95}{24}}  pred=77

@@ -86,7 +86,7 @@ def evaluate(args):
 
     for i, output in enumerate(outputs):
         gt = answers[i]
-        gt_stripped = strip_string(gt)
+        gt_stripped = extract_answer(gt) if "boxed" in gt else strip_string(gt)
 
         if args.mode == "greedy":
             response = output.outputs[0].text
@@ -100,7 +100,7 @@ def evaluate(args):
             print(f"  Correct:         {is_correct}")
             print(f"  Response tail:   {response[-300:]!r}")
             # ---- END DEBUG ----
-            result = {"idx": i, "problem": problems[i][:200], "ground_truth": gt,
+            result = {"idx": i, "problem": problems[i][:200], "ground_truth": gt_stripped,
                       "predicted": predicted, "correct": is_correct}
         else:
             all_extracted = [extract_answer(s.text) for s in output.outputs]
@@ -117,13 +117,13 @@ def evaluate(args):
             if args.mode == "majority":
                 voted = majority_vote(all_extracted)
                 is_correct = math_equal(voted, gt_stripped)
-                result = {"idx": i, "problem": problems[i][:200], "ground_truth": gt,
+                result = {"idx": i, "problem": problems[i][:200], "ground_truth": gt_stripped,
                           "voted_answer": voted, "correct": is_correct,
                           "n_correct_samples": n_correct_samples, "n_total_samples": len(per_sample)}
             else:
                 sample_acc = n_correct_samples / len(per_sample) if per_sample else 0.0
                 is_correct = n_correct_samples > 0
-                result = {"idx": i, "problem": problems[i][:200], "ground_truth": gt,
+                result = {"idx": i, "problem": problems[i][:200], "ground_truth": gt_stripped,
                           "correct": is_correct, "n_correct_samples": n_correct_samples,
                           "n_total_samples": len(per_sample), "sample_accuracy": sample_acc}
 

@@ -29,6 +29,26 @@ def build_teacher_system_prompt(label: str, reference_cot: str = "") -> str:
         reference_section=reference_section, label=label
     )
 
+# MATH 4-shot CoT examples (competition-level, from Qwen2.5-Math)
+MATH_FEW_SHOT_EXAMPLES = [
+    (
+        "Kevin Kangaroo begins hopping on a number line at 0. He wants to get to 1, but he can hop only $\\frac{1}{3}$ of the distance. Each hop tires him out so that he continues to hop $\\frac{1}{3}$ of the remaining distance. How far has he hopped after five hops? Express your answer as a common fraction.",
+        "Let's think step by step\nKevin hops $1/3$ of the remaining distance with every hop.\nHis first hop takes $1/3$ closer.\nFor his second hop, he has $2/3$ left to travel, so he hops forward $(2/3)(1/3)$.\nFor his third hop, he has $(2/3)^2$ left to travel, so he hops forward $(2/3)^2(1/3)$.\nIn general, Kevin hops forward $(2/3)^{k-1}(1/3)$ on his $k$th hop.\nWe want to find how far he has hopped after five hops.\nThis is a finite geometric series with first term $1/3$, common ratio $2/3$, and five terms.\nThus, Kevin has hopped $\\frac{\\frac{1}{3}\\left(1-\\left(\\frac{2}{3}\\right)^5\\right)}{1-\\frac{2}{3}} = \\boxed{\\frac{211}{243}}$.",
+    ),
+    (
+        "What is the area of the region defined by the equation $x^2+y^2 - 7 = 4y-14x+3$?",
+        "Let's think step by step\nWe rewrite the equation as $x^2 + 14x + y^2 - 4y = 10$ and then complete the square,\nresulting in  $(x+7)^2-49 + (y-2)^2-4=10$,\nor $(x+7)^2+(y-2)^2=63$.\nThis is the equation of a circle with center $(-7, 2)$ and radius $\\sqrt{63},$\nso the area of this region is $\\pi r^2 = \\boxed{63\\pi}$",
+    ),
+    (
+        "If $x^2+y^2=1$, what is the largest possible value of $|x|+|y|$?",
+        "Let's think step by step\nIf $(x,y)$ lies on the circle,\nso does $(x,-y),$ $(-x,-y),$ and $(-x,-y),$ (which all give the same value of $|x| + |y|$),\nso we can assume that $x \\ge 0$ and $y \\ge 0.$\nThen $|x| + |y| = x + y.$  Squaring, we get\n\\[(x + y)^2 = x^2 + 2xy + y^2 = 1 + 2xy.\\]\nNote that $(x - y)^2 \\ge 0.$\nExpanding, we get $x^2 - 2xy + y^2 \\ge 0,$ so $2xy \\le x^2 + y^2 = 1.$\nHence,\\[1 + 2xy \\le 2,\\]which means $x + y \\le \\sqrt{2}.$\nEquality occurs when $x = y = \\frac{1}{\\sqrt{2}},$\nso the maximum value of $|x| + |y|$ is $\\boxed{\\sqrt{2}}",
+    ),
+    (
+        "If $f(x)=\\frac{ax+b}{cx+d}, abcd\\not=0$ and $f(f(x))=x$ for all $x$ in the domain of $f$, what is the value of $a+d$?",
+        "Let's think step by step\nThe condition $f(f(x))$ means that $f$ is the inverse of itself,\nso its graph is symmetrical about the line $y = x$.\nWith a rational function of this form, we will have two asymptotes:\na vertical one at $x=-d/c$ if $cx+d$ does not divide $ax+b$,\nand a horizontal one at $y=a/c$,\nif we take the limit of $f(x)$ as $x$ goes to $\\pm\\infty$.\nIn order for $f$ to be its own inverse, the intersection of the asymptotes must lie on the line $y=x$\nso that it and its asymptotes reflect onto themselves.\nThis means that $-d/c=a/c$,\nand therefore $-d=a$ and $a+d=\\boxed{0}$",
+    ),
+]
+
 # GSM8K 4-shot CoT examples (from Qwen2.5-Math)
 GSM8K_FEW_SHOT_EXAMPLES = [
     (
@@ -107,9 +127,9 @@ def clean_gsm8k_answer(text: str) -> str:
 
 
 def preprocess_data(data, input_template=None, input_key="input", output_key=None,
-                    label_key="answer", apply_chat_template=None, system_prompt=None,
-                    enable_thinking=False, few_shot_examples=None):
-    """Preprocess data for VtD: extract prompt, label, optional reference CoT, and raw input."""
+                    label_key="answer", se_weight_key=None, apply_chat_template=None,
+                    system_prompt=None, enable_thinking=False, few_shot_examples=None):
+    """Preprocess data for VtD: extract prompt, label, optional reference CoT, raw input, and SE weight."""
     raw_input = data[input_key] if isinstance(data[input_key], str) else str(data[input_key])
 
     if apply_chat_template:
@@ -146,7 +166,12 @@ def preprocess_data(data, input_template=None, input_key="input", output_key=Non
             # Clean GSM8K format: remove <<calc>>, #### -> \boxed{}
             reference_output = clean_gsm8k_answer(raw)
 
-    return prompt, label, reference_output, raw_input
+    # Precomputed SE weight (optional, from offline uncertainty computation)
+    se_weight = None
+    if se_weight_key:
+        se_weight = data.get(se_weight_key)
+
+    return prompt, label, reference_output, raw_input, se_weight
 
 
 class VtDPromptDataset(Dataset):
@@ -175,6 +200,7 @@ class VtDPromptDataset(Dataset):
         input_template=None,
         max_length: int = 2048,
         is_eval: bool = False,
+        eval_few_shot_examples=None,
     ) -> None:
         super().__init__()
         self.tokenizer = tokenizer
@@ -185,6 +211,8 @@ class VtDPromptDataset(Dataset):
         input_key = getattr(self.strategy.args, "input_key", "question")
         label_key = getattr(self.strategy.args, "label_key", "answer")
         output_key = getattr(self.strategy.args, "output_key", "answer")
+        # Eval datasets don't have se_weight — only use for training
+        se_weight_key = getattr(self.strategy.args, "se_weight_key", None) if not is_eval else None
         apply_chat_template = getattr(self.strategy.args, "apply_chat_template", False)
         enable_thinking = getattr(self.strategy.args, "enable_thinking", False)
         num_shots = getattr(self.strategy.args, "num_shots", 4)
@@ -193,44 +221,62 @@ class VtDPromptDataset(Dataset):
             apply_chat_template = self.tokenizer.apply_chat_template
 
         system_prompt = VTD_SYSTEM_PROMPT
-        # Only use few-shot examples during evaluation, not training
-        few_shot_examples = GSM8K_FEW_SHOT_EXAMPLES[:num_shots] if (is_eval and num_shots > 0) else None
+        # For eval: use caller-provided few-shot examples (allows MATH vs GSM8K selection)
+        # For training: no few-shot examples
+        if is_eval and eval_few_shot_examples is not None:
+            few_shot_examples = eval_few_shot_examples
+        elif is_eval and num_shots > 0:
+            few_shot_examples = GSM8K_FEW_SHOT_EXAMPLES[:num_shots]
+        else:
+            few_shot_examples = None
 
         self.prompts = []
         self.labels = []
         self.reference_outputs = []
         self.raw_inputs = []
+        self.se_weights = []
 
         for data in tqdm(dataset, desc="Preprocessing VtD data", disable=not self.strategy.is_rank_0()):
-            prompt, label, ref_output, raw_input = preprocess_data(
+            prompt, label, ref_output, raw_input, se_weight = preprocess_data(
                 data, input_template, input_key,
                 output_key=output_key,
                 label_key=label_key,
+                se_weight_key=se_weight_key,
                 apply_chat_template=apply_chat_template,
                 system_prompt=system_prompt,
                 enable_thinking=enable_thinking,
                 few_shot_examples=few_shot_examples,
             )
-            if prompt and label:
-                self.prompts.append(prompt)
-                self.labels.append(label)
-                self.reference_outputs.append(ref_output)
-                self.raw_inputs.append(raw_input)
+            # Skip entries with null se_weight (invalid samples from offline computation)
+            if se_weight_key and se_weight is None:
+                continue
+            # When using precomputed SE, label is optional (no verification needed)
+            if not prompt:
+                continue
+            if not se_weight_key and not label:
+                continue
+            self.prompts.append(prompt)
+            self.labels.append(label)
+            self.reference_outputs.append(ref_output)
+            self.raw_inputs.append(raw_input)
+            self.se_weights.append(se_weight if se_weight is not None else 1.0)
 
     def __len__(self):
         return len(self.prompts)
 
     def __getitem__(self, idx):
-        return self.prompts[idx], self.labels[idx], self.reference_outputs[idx], self.raw_inputs[idx]
+        return self.prompts[idx], self.labels[idx], self.reference_outputs[idx], self.raw_inputs[idx], self.se_weights[idx]
 
     def collate_fn(self, item_list):
         prompts = []
         labels = []
         reference_outputs = []
         raw_inputs = []
-        for prompt, label, ref_output, raw_input in item_list:
+        se_weights = []
+        for prompt, label, ref_output, raw_input, se_weight in item_list:
             prompts.append(prompt)
             labels.append(label)
             reference_outputs.append(ref_output)
             raw_inputs.append(raw_input)
-        return prompts, labels, reference_outputs, raw_inputs
+            se_weights.append(se_weight)
+        return prompts, labels, reference_outputs, raw_inputs, se_weights

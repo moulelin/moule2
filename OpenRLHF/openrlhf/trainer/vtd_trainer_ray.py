@@ -41,7 +41,9 @@ except ImportError:
     SamplingParams = None
 
 from openrlhf.datasets import VtDPromptDataset
-from openrlhf.datasets.vtd_dataset import build_teacher_system_prompt
+from openrlhf.datasets.vtd_dataset import (
+    build_teacher_system_prompt, GSM8K_FEW_SHOT_EXAMPLES, MATH_FEW_SHOT_EXAMPLES,
+)
 from openrlhf.datasets.utils import blending_datasets
 from openrlhf.trainer.ray.launcher import RayActorGroup
 from openrlhf.trainer.ray.vllm_engine import batch_vllm_engine_call
@@ -538,22 +540,52 @@ def prepare_vtd_datasets(strategy, tokenizer):
         train_dataset, rollout_batch_size, True, True, train_dataset.collate_fn
     )
 
-    eval_dataloader = None
+    # Multiple eval datasets: --eval_dataset "openai/gsm8k,MathArena/hmmt_feb_2025,..."
+    #                         --eval_split  "test,train,train,..."
+    #                         --eval_input_key "question,problem,problem,..."
+    eval_dataloaders = {}
     if getattr(args, "eval_dataset", None):
-        eval_data = blending_datasets(
-            args.eval_dataset, None, strategy, dataset_split=args.eval_split,
-        )
-        eval_dataset = VtDPromptDataset(
-            eval_data, tokenizer, strategy,
-            input_template=args.input_template,
-            max_length=getattr(args, "max_input_len", 1024),
-            is_eval=True,
-        )
+        eval_names = [d.strip() for d in args.eval_dataset.split(",")]
+        eval_splits = [s.strip() for s in getattr(args, "eval_split", "test").split(",")]
+        eval_input_keys = [k.strip() for k in getattr(args, "eval_input_key", "question").split(",")]
+        # Pad to match length
+        while len(eval_splits) < len(eval_names):
+            eval_splits.append(eval_splits[-1])
+        while len(eval_input_keys) < len(eval_names):
+            eval_input_keys.append(eval_input_keys[-1])
+
         eval_batch_size = getattr(args, "eval_batch_size", 512)
-        eval_dataloader = strategy.setup_dataloader(
-            eval_dataset, eval_batch_size, True, False, eval_dataset.collate_fn,
-            drop_last=False
-        )
+        eval_num_shots = getattr(args, "eval_num_shots", 4)
+        # GSM8K uses GSM8K examples; competition datasets use MATH examples
+        GSM8K_NAMES = {"gsm8k"}
+        for ds_name, ds_split, ds_input_key in zip(eval_names, eval_splits, eval_input_keys):
+            short_name = ds_name.split("/")[-1].lower()
+            if short_name in GSM8K_NAMES:
+                few_shot = GSM8K_FEW_SHOT_EXAMPLES[:eval_num_shots]
+            else:
+                few_shot = MATH_FEW_SHOT_EXAMPLES[:eval_num_shots]
+
+            # Temporarily override input_key for this eval dataset
+            orig_input_key = args.input_key
+            args.input_key = ds_input_key
+            eval_data = blending_datasets(
+                ds_name, None, strategy, dataset_split=ds_split,
+            )
+            eval_dataset = VtDPromptDataset(
+                eval_data, tokenizer, strategy,
+                input_template=args.input_template,
+                max_length=getattr(args, "max_input_len", 1024),
+                is_eval=True,
+                eval_few_shot_examples=few_shot if eval_num_shots > 0 else None,
+            )
+            args.input_key = orig_input_key  # restore
+            dl = strategy.setup_dataloader(
+                eval_dataset, eval_batch_size, True, False, eval_dataset.collate_fn,
+                drop_last=False
+            )
+            short_name = ds_name.split("/")[-1]
+            eval_dataloaders[short_name] = (dl, ds_name)
+            strategy.print(f"Eval dataset: {ds_name} ({ds_split}), input_key={ds_input_key}, samples={len(eval_dataset)}")
 
     n_samples = getattr(args, "n_samples_per_prompt", 4)
     # All samples go through distillation (no separate contrast path).
@@ -563,7 +595,7 @@ def prepare_vtd_datasets(strategy, tokenizer):
     world_size = args.student_num_nodes * args.student_num_gpus_per_node
     accum_steps = args.train_batch_size // micro_bs // world_size
     max_steps = total_samples // world_size // micro_bs // accum_steps
-    return train_dataloader, eval_dataloader, max_steps
+    return train_dataloader, eval_dataloaders, max_steps
 
 
 # ============ Main VtD Ray Trainer ============
@@ -609,9 +641,15 @@ class VtDRayTrainer:
         self.use_reference_cot = bool(getattr(args, "output_key", None))
 
         # Semantic entropy config
-        self.se_n_samples = getattr(args, "se_n_samples", 8)
-        se_model = getattr(args, "se_cluster_model", "Qwen/Qwen2.5-0.5B-Instruct")
-        self.semantic_cluster = SemanticCluster(model_name=se_model, device="cpu")
+        self.use_precomputed_se = bool(getattr(args, "se_weight_key", None))
+        if self.use_precomputed_se:
+            logger.info("[SE] Using precomputed se_weight from dataset — skipping online SE sampling")
+            self.semantic_cluster = None
+            self.se_n_samples = 0
+        else:
+            self.se_n_samples = getattr(args, "se_n_samples", 8)
+            se_model = getattr(args, "se_cluster_model", "Qwen/Qwen2.5-0.5B-Instruct")
+            self.semantic_cluster = SemanticCluster(model_name=se_model, device="cpu")
 
         # Tokenizer
         self.tokenizer = get_tokenizer(
@@ -621,7 +659,7 @@ class VtDRayTrainer:
             self.tokenizer.pad_token = self.tokenizer.eos_token
 
         # Datasets
-        self.prompts_dataloader, self.eval_dataloader, self.max_steps = prepare_vtd_datasets(
+        self.prompts_dataloader, self.eval_dataloaders, self.max_steps = prepare_vtd_datasets(
             strategy, self.tokenizer
         )
 
@@ -635,7 +673,7 @@ class VtDRayTrainer:
         self.tensorboard_logger = TensorboardLogger(args) if args.use_tensorboard else None
 
         # Local txt log — write to project dir (always accessible)
-        self.project_dir = "/home/x-qlan1/code/moule"
+        self.project_dir = "/home/x-qlan1/code/moule2"
         self.log_file = os.path.join(self.project_dir, "vtd_metrics.txt")
         with open(self.log_file, "w") as f:
             f.write(f"VtD Training Log - {datetime.now().isoformat()}\n")
@@ -648,14 +686,15 @@ class VtDRayTrainer:
     def get_max_steps(self):
         return self.max_steps
 
-    def _generate(self, prompts: list[str], labels: list[str], greedy: bool = False) -> list[list[str]]:
+    def _generate(self, prompts: list[str], labels: list[str], greedy: bool = False, max_tokens: int = None) -> list[list[str]]:
         """Generate responses per prompt. Uses vLLM if available, else student model.
 
         Args:
             greedy: If True, generate 1 response per prompt with temperature=0 (for eval).
+            max_tokens: Override max generation length (e.g. eval uses longer than training).
         """
         if self.vllm_engines is not None and len(self.vllm_engines) > 0:
-            return self._generate_with_vllm(prompts, labels, greedy=greedy)
+            return self._generate_with_vllm(prompts, labels, greedy=greedy, max_tokens=max_tokens)
         else:
             return self._generate_with_student(prompts)
 
@@ -673,18 +712,19 @@ class VtDRayTrainer:
         results = ray.get(refs)
         return results[0] if results else [[] for _ in prompts]
 
-    def _generate_with_vllm(self, prompts: list[str], labels: list[str] = None, greedy: bool = False) -> list[list[str]]:
+    def _generate_with_vllm(self, prompts: list[str], labels: list[str] = None, greedy: bool = False, max_tokens: int = None) -> list[list[str]]:
         """Generate responses per prompt using vLLM engines."""
+        gen_len = max_tokens if max_tokens is not None else self.max_gen_len
         if greedy:
             sampling_params = SamplingParams(
                 temperature=0.0,
-                max_tokens=self.max_gen_len,
+                max_tokens=gen_len,
             )
         else:
             sampling_params = SamplingParams(
                 temperature=self.generate_kwargs.get("temperature", 0.7),
                 top_p=self.generate_kwargs.get("top_p", 0.95),
-                max_tokens=self.max_gen_len,
+                max_tokens=gen_len,
             )
 
         if self.args.vllm_enable_sleep:
@@ -786,13 +826,22 @@ class VtDRayTrainer:
         """
         global_step = 0
 
+        # Baseline eval before training — offload teacher to free GPU for vLLM generation
+        if self.eval_dataloaders:
+            logger.info("========== Baseline evaluation (before training) ==========")
+            if getattr(self.args, "colocate_all_models", False):
+                ray.get(self.teacher_model_group.async_run_method("offload_states"))
+            self._evaluate(global_step)
+            if getattr(self.args, "colocate_all_models", False):
+                ray.get(self.teacher_model_group.async_run_method("reload_states"))
+
         for episode in range(self.args.num_episodes):
             pbar = tqdm(
                 range(len(self.prompts_dataloader)),
                 desc=f"Episode [{episode + 1}/{self.args.num_episodes}]",
             )
 
-            for prompts, labels, reference_outputs, raw_inputs in self.prompts_dataloader:
+            for prompts, labels, reference_outputs, raw_inputs, dataset_se_weights in self.prompts_dataloader:
                 start_time = time.time()
 
                 # ============ Phase 1: Generate ============
@@ -803,29 +852,27 @@ class VtDRayTrainer:
                 student_responses = self._generate(prompts, labels)
                 phase1_time = time.time() - start_time
 
-                batch_correct = []
-                batch_incorrect = []
-                total_correct = 0
-                total_incorrect = 0
-                for i, responses in enumerate(student_responses):
-                    correct = []
-                    incorrect = []
-                    for resp in responses:
-                        if verify_answer(resp, labels[i]):
-                            correct.append(resp)
-                        else:
-                            incorrect.append(resp)
-                    batch_correct.append(correct)
-                    batch_incorrect.append(incorrect)
-                    total_correct += len(correct)
-                    total_incorrect += len(incorrect)
+                total_responses = sum(len(resps) for resps in student_responses)
 
-                total = total_correct + total_incorrect
-                batch_acc = total_correct / total if total > 0 else 0.0
-                logger.info(
-                    f"[采样] {len(prompts)} 个提示, "
-                    f"正确 {total_correct}/{total} ({batch_acc:.1%})"
-                )
+                if self.use_precomputed_se:
+                    # No verification needed — all responses go to distillation
+                    batch_acc = 0.0
+                    logger.info(
+                        f"[采样] {len(prompts)} 个提示, "
+                        f"共 {total_responses} 条回复 (跳过验证, 全部蒸馏)"
+                    )
+                else:
+                    # Online mode: verify against labels
+                    total_correct = 0
+                    for i, responses in enumerate(student_responses):
+                        for resp in responses:
+                            if verify_answer(resp, labels[i]):
+                                total_correct += 1
+                    batch_acc = total_correct / total_responses if total_responses > 0 else 0.0
+                    logger.info(
+                        f"[采样] {len(prompts)} 个提示, "
+                        f"正确 {total_correct}/{total_responses} ({batch_acc:.1%})"
+                    )
 
                 # ============ Phase 2: Collect teacher logits + Semantic Entropy ============
                 logger.info("========== 阶段2: 教师语义熵采样 + logits收集 ==========")
@@ -836,37 +883,47 @@ class VtDRayTrainer:
                 teacher_actors = self.teacher_model_group._actor_handlers
                 num_teacher = len(teacher_actors)
 
-                # ---- 2a: Teacher generates N responses per prompt for semantic entropy ----
-                se_gen_refs = []
-                for idx, i in enumerate(range(len(prompts))):
-                    teacher_prompt = self._build_teacher_prompt(
-                        raw_inputs[i], labels[i], reference_outputs[i]
+                # ---- 2a: Semantic entropy weights ----
+                if self.use_precomputed_se:
+                    # Use precomputed se_weight from dataset (no online teacher sampling)
+                    se_weight_per_prompt = dataset_se_weights
+                    se_per_prompt = [1.0 - w for w in se_weight_per_prompt]
+                    avg_se = sum(se_per_prompt) / len(se_per_prompt) if se_per_prompt else 0.0
+                    avg_se_w = sum(se_weight_per_prompt) / len(se_weight_per_prompt) if se_weight_per_prompt else 1.0
+                    logger.info(
+                        f"[阶段2] 语义熵 (预计算): 平均 SE={avg_se:.3f}, 平均权重={avg_se_w:.3f}"
                     )
-                    actor_idx = idx % num_teacher
-                    ref = teacher_actors[actor_idx].batch_generate.remote(
-                        [teacher_prompt],
-                        num_samples=self.se_n_samples,
-                        temperature=self.generate_kwargs.get("temperature", 0.7),
-                        top_p=self.generate_kwargs.get("top_p", 0.95),
+                else:
+                    # Online: teacher generates N responses per prompt for SE estimation
+                    se_gen_refs = []
+                    for idx, i in enumerate(range(len(prompts))):
+                        teacher_prompt = self._build_teacher_prompt(
+                            raw_inputs[i], labels[i], reference_outputs[i]
+                        )
+                        actor_idx = idx % num_teacher
+                        ref = teacher_actors[actor_idx].batch_generate.remote(
+                            [teacher_prompt],
+                            num_samples=self.se_n_samples,
+                            temperature=self.generate_kwargs.get("temperature", 0.7),
+                            top_p=self.generate_kwargs.get("top_p", 0.95),
+                        )
+                        se_gen_refs.append((i, ref))
+
+                    se_per_prompt = []
+                    se_weight_per_prompt = []
+                    for i, ref in se_gen_refs:
+                        teacher_responses = ray.get(ref)[0]
+                        se = self.semantic_cluster.compute_entropy(teacher_responses)
+                        se_w = semantic_entropy_to_weight(se)
+                        se_per_prompt.append(se)
+                        se_weight_per_prompt.append(se_w)
+
+                    avg_se = sum(se_per_prompt) / len(se_per_prompt) if se_per_prompt else 0.0
+                    avg_se_w = sum(se_weight_per_prompt) / len(se_weight_per_prompt) if se_weight_per_prompt else 1.0
+                    logger.info(
+                        f"[阶段2] 语义熵: 平均 SE={avg_se:.3f}, 平均权重={avg_se_w:.3f} "
+                        f"(N={self.se_n_samples} 采样/提示)"
                     )
-                    se_gen_refs.append((i, ref))
-
-                # Collect SE responses and compute per-prompt semantic entropy
-                se_per_prompt = []
-                se_weight_per_prompt = []
-                for i, ref in se_gen_refs:
-                    teacher_responses = ray.get(ref)[0]  # [0] because we sent [prompt]
-                    se = self.semantic_cluster.compute_entropy(teacher_responses)
-                    se_w = semantic_entropy_to_weight(se)
-                    se_per_prompt.append(se)
-                    se_weight_per_prompt.append(se_w)
-
-                avg_se = sum(se_per_prompt) / len(se_per_prompt) if se_per_prompt else 0.0
-                avg_se_w = sum(se_weight_per_prompt) / len(se_weight_per_prompt) if se_weight_per_prompt else 1.0
-                logger.info(
-                    f"[阶段2] 语义熵: 平均 SE={avg_se:.3f}, 平均权重={avg_se_w:.3f} "
-                    f"(N={self.se_n_samples} 采样/提示)"
-                )
 
                 # ---- 2b: Collect ALL student responses for distillation ----
                 all_student_distill_ids = []
@@ -879,8 +936,7 @@ class VtDRayTrainer:
                 all_se_weights = []  # per-sample SE weight (same for all responses of same prompt)
                 distill_prompt_indices = []
                 for i, prompt in enumerate(prompts):
-                    all_responses = batch_correct[i] + batch_incorrect[i]
-                    for resp in all_responses:
+                    for resp in student_responses[i]:
                         s_ids, s_mask, s_plen = self._tokenize_sequence(prompt, resp)
                         s_seq_len = s_ids.shape[1]
                         loss_mask = torch.zeros(1, s_seq_len)
@@ -891,9 +947,13 @@ class VtDRayTrainer:
                         all_student_distill_loss_masks.append(loss_mask)
                         all_student_prompt_lens.append(s_plen)
 
-                        t_ids, t_mask, t_plen = self._tokenize_teacher_sequence(
-                            raw_inputs[i], labels[i], reference_outputs[i], resp
-                        )
+                        if self.use_precomputed_se:
+                            # Teacher uses same prompt as student (no answer-aware prompt)
+                            t_ids, t_mask, t_plen = self._tokenize_sequence(prompt, resp)
+                        else:
+                            t_ids, t_mask, t_plen = self._tokenize_teacher_sequence(
+                                raw_inputs[i], labels[i], reference_outputs[i], resp
+                            )
                         all_teacher_distill_ids.append(t_ids)
                         all_teacher_distill_masks.append(t_mask)
                         all_teacher_prompt_lens.append(t_plen)
@@ -918,12 +978,14 @@ class VtDRayTrainer:
                         per_actor_masks[actor_idx].append(all_teacher_distill_masks[idx])
                         per_actor_indices[actor_idx].append(idx)
 
+                    distill_topk = getattr(self.args, "distill_topk", 0)
                     teacher_ray_refs = []
                     for a in range(num_teacher):
                         if per_actor_ids[a]:
                             ref = teacher_actors[a].batch_get_logits.remote(
                                 per_actor_ids[a], per_actor_masks[a],
                                 micro_batch_size=getattr(self.args, "teacher_micro_batch_size", 4),
+                                topk=distill_topk,
                             )
                             teacher_ray_refs.append((a, ref))
                     logger.info(
@@ -944,29 +1006,49 @@ class VtDRayTrainer:
                 distill_per_prompt = [[] for _ in prompts]
                 for idx in range(total_distill_fired):
                     prompt_idx = distill_prompt_indices[idx]
-                    t_topk_vals, t_topk_ids = all_teacher_results[idx]
                     t_plen = all_teacher_prompt_lens[idx]
                     s_plen = all_student_prompt_lens[idx]
                     s_ids = all_student_distill_ids[idx]
                     s_seq_len = s_ids.shape[1]
-                    top_k = t_topk_vals.shape[-1]
 
-                    t_response_vals = t_topk_vals[:, t_plen:, :]
-                    t_response_ids = t_topk_ids[:, t_plen:, :]
-                    response_len = t_response_vals.shape[1]
+                    if distill_topk > 0:
+                        # Top-K mode: result is (topk_vals, topk_ids) each (1, t_seq_len, K)
+                        t_vals, t_ids = all_teacher_results[idx]
+                        K = t_vals.shape[-1]
+                        t_resp_vals = t_vals[:, t_plen:, :]
+                        t_resp_ids = t_ids[:, t_plen:, :]
+                        response_len = t_resp_vals.shape[1]
 
-                    aligned_vals = torch.zeros(1, s_seq_len, top_k, dtype=t_topk_vals.dtype)
-                    aligned_ids = torch.zeros(1, s_seq_len, top_k, dtype=t_topk_ids.dtype)
-                    actual_len = min(response_len, s_seq_len - s_plen)
-                    aligned_vals[:, s_plen:s_plen + actual_len, :] = t_response_vals[:, :actual_len, :]
-                    aligned_ids[:, s_plen:s_plen + actual_len, :] = t_response_ids[:, :actual_len, :]
+                        aligned_vals = torch.zeros(1, s_seq_len, K, dtype=t_vals.dtype)
+                        aligned_ids = torch.zeros(1, s_seq_len, K, dtype=t_ids.dtype)
+                        actual_len = min(response_len, s_seq_len - s_plen)
+                        aligned_vals[:, s_plen:s_plen + actual_len, :] = t_resp_vals[:, :actual_len, :]
+                        aligned_ids[:, s_plen:s_plen + actual_len, :] = t_resp_ids[:, :actual_len, :]
 
-                    # Include SE weight as 6th element
-                    distill_per_prompt[prompt_idx].append((
-                        s_ids, all_student_distill_masks[idx],
-                        all_student_distill_loss_masks[idx], aligned_vals, aligned_ids,
-                        all_se_weights[idx],
-                    ))
+                        # 6-tuple for top-K
+                        distill_per_prompt[prompt_idx].append((
+                            s_ids, all_student_distill_masks[idx],
+                            all_student_distill_loss_masks[idx],
+                            aligned_vals, aligned_ids,
+                            all_se_weights[idx],
+                        ))
+                    else:
+                        # Full logits mode: result is (1, t_seq_len, vocab_size)
+                        t_logits = all_teacher_results[idx]
+                        vocab_size = t_logits.shape[-1]
+                        t_response_logits = t_logits[:, t_plen:, :]
+                        response_len = t_response_logits.shape[1]
+
+                        aligned_logits = torch.zeros(1, s_seq_len, vocab_size, dtype=t_logits.dtype)
+                        actual_len = min(response_len, s_seq_len - s_plen)
+                        aligned_logits[:, s_plen:s_plen + actual_len, :] = t_response_logits[:, :actual_len, :]
+
+                        # 5-tuple for full logits
+                        distill_per_prompt[prompt_idx].append((
+                            s_ids, all_student_distill_masks[idx],
+                            all_student_distill_loss_masks[idx], aligned_logits,
+                            all_se_weights[idx],
+                        ))
 
                 total_distill = sum(len(p) for p in distill_per_prompt)
                 phase2_time = time.time() - phase2_start
@@ -1029,8 +1111,7 @@ class VtDRayTrainer:
                 global_step += 1
                 step_time = time.time() - start_time
                 status["accuracy"] = batch_acc
-                status["num_correct"] = total_correct
-                status["num_incorrect"] = total_incorrect
+                status["num_responses"] = total_responses
                 status["num_distill_items"] = total_distill
                 status["avg_semantic_entropy"] = avg_se
                 status["avg_se_weight"] = avg_se_w
@@ -1046,7 +1127,7 @@ class VtDRayTrainer:
 
                 self._save_logs_and_checkpoints(global_step, status)
 
-                if global_step % self.args.eval_steps == 0 and self.eval_dataloader:
+                if global_step % self.args.eval_steps == 0 and self.eval_dataloaders:
                     self._evaluate(global_step)
 
                 pbar.update(1)
@@ -1086,16 +1167,34 @@ class VtDRayTrainer:
 
     @torch.no_grad()
     def _evaluate(self, global_step):
+        """Evaluate on all eval datasets."""
+        all_logs = {}
+        for short_name, (dataloader, full_name) in self.eval_dataloaders.items():
+            logs = self._evaluate_single(global_step, dataloader, short_name, full_name)
+            # Prefix logs with dataset name for wandb/tensorboard
+            for k, v in logs.items():
+                all_logs[f"{short_name}/{k}"] = v
+
+        if self.wandb_logger:
+            self.wandb_logger.log_eval(global_step, all_logs)
+        if self.tensorboard_logger:
+            self.tensorboard_logger.log_eval(global_step, all_logs)
+        self._log_to_file(global_step, all_logs, prefix="eval")
+
+    @torch.no_grad()
+    def _evaluate_single(self, global_step, eval_dataloader, short_name, full_name):
+        """Evaluate on a single eval dataset."""
         eval_start = time.time()
-        n_eval_batches = len(self.eval_dataloader)
-        logger.info(f"========== 开始贪心评估 (步骤 {global_step}, 共 {n_eval_batches} 个批次) ==========")
+        eval_max_tokens = getattr(self.args, "eval_max_tokens", 4096)
+        n_eval_batches = len(eval_dataloader)
+        logger.info(f"========== 开始贪心评估 [{short_name}] (步骤 {global_step}, 共 {n_eval_batches} 个批次, max_tokens={eval_max_tokens}) ==========")
         total_correct = 0
         total_samples = 0
         eval_details = []
 
-        for batch_idx, (prompts, labels, _ref_outputs, _raw_inputs) in enumerate(self.eval_dataloader):
-            logger.info(f"[评估] 批次 {batch_idx + 1}/{n_eval_batches} — 正在生成 {len(prompts)} 个提示...")
-            responses = self._generate(prompts, labels, greedy=True)
+        for batch_idx, (prompts, labels, _ref_outputs, _raw_inputs, _se_weights) in enumerate(eval_dataloader):
+            logger.info(f"[评估-{short_name}] 批次 {batch_idx + 1}/{n_eval_batches} — 正在生成 {len(prompts)} 个提示...")
+            responses = self._generate(prompts, labels, greedy=True, max_tokens=eval_max_tokens)
             for i, resps in enumerate(responses):
                 predicted = extract_answer(resps[0])
                 gt_stripped = strip_string(str(labels[i]))
@@ -1110,42 +1209,31 @@ class VtDRayTrainer:
                     "predicted": predicted,
                 })
             running_acc = total_correct / max(total_samples, 1)
-            logger.info(f"[评估] 批次 {batch_idx + 1}/{n_eval_batches} 完成 — "
+            logger.info(f"[评估-{short_name}] 批次 {batch_idx + 1}/{n_eval_batches} 完成 — "
                         f"当前准确率: {total_correct}/{total_samples} = {running_acc:.1%}")
 
         accuracy = total_correct / max(total_samples, 1)
         eval_time = time.time() - eval_start
-        logger.info(f"[评估] 步骤 {global_step} 完成: 准确率 {accuracy:.1%} ({total_correct}/{total_samples}), 耗时 {eval_time:.1f}s")
-        logs = {
-            "eval_accuracy": accuracy,
-            "eval_total": total_samples,
-            "eval_time": eval_time,
-        }
-
-        if self.wandb_logger:
-            self.wandb_logger.log_eval(global_step, logs)
-        if self.tensorboard_logger:
-            self.tensorboard_logger.log_eval(global_step, logs)
-        self._log_to_file(global_step, logs, prefix="eval")
+        logger.info(f"[评估-{short_name}] 步骤 {global_step} 完成: 准确率 {accuracy:.1%} ({total_correct}/{total_samples}), 耗时 {eval_time:.1f}s")
 
         # Save detailed eval results to txt
-        self._save_eval_results(global_step, accuracy, total_correct, total_samples, eval_details)
+        self._save_eval_results(global_step, accuracy, total_correct, total_samples, eval_details, short_name, full_name)
+        
+        return {
+            "accuracy": accuracy,
+            "total": total_samples,
+            "time": eval_time,
+        }
 
-        logger.info(f"[评估] 步骤 {global_step} 结果: {logs}")
-
-    def _save_eval_results(self, global_step, accuracy, total_correct, total_samples, details):
-        """Save per-sample eval results to a txt file under save_path/eval_results/<dataset_name>/."""
-        eval_dataset = getattr(self.args, "eval_dataset", "unknown")
-        # e.g. "openai/gsm8k" -> "gsm8k"
-        dataset_name = eval_dataset.split("/")[-1] if eval_dataset else "unknown"
-
-        eval_dir = os.path.join(self.project_dir, "eval_results", dataset_name)
+    def _save_eval_results(self, global_step, accuracy, total_correct, total_samples, details, short_name, full_name):
+        """Save per-sample eval results to a txt file under project_dir/eval_results/<dataset_name>/."""
+        eval_dir = os.path.join(self.project_dir, "eval_results", short_name)
         os.makedirs(eval_dir, exist_ok=True)
 
         txt_path = os.path.join(eval_dir, f"eval_step_{global_step}.txt")
         with open(txt_path, "w") as f:
             f.write(f"Eval at step {global_step}\n")
-            f.write(f"Dataset: {eval_dataset}\n")
+            f.write(f"Dataset: {full_name}\n")
             f.write(f"Model: {self.args.pretrain}\n")
             f.write(f"Greedy Accuracy: {total_correct}/{total_samples} = {accuracy:.2%}\n")
             f.write(f"{'='*60}\n")
@@ -1153,4 +1241,4 @@ class VtDRayTrainer:
                 status = "O" if d["correct"] else "X"
                 f.write(f"[{status}] #{d['idx']:3d}  gt={d['label']}  pred={d['predicted']}\n")
 
-        logger.info(f"[评估] 结果已保存到 {txt_path}")
+        logger.info(f"[评估-{short_name}] 结果已保存到 {txt_path}")

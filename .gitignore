@@ -1,3 +1,11 @@
 STAR-main/
 Qwen2.5-Math-main/
 teacher_uncertainty_each-sample/evolved_clean.jsonl
+teacher_uncertainty_each-sample/evolved_clean.jsonl
+generate_math_dataset/evolved_clean_removed.jsonl
+generate_math_dataset/evolved_clean.jsonl
+generate_math_dataset/evolved_raw.jsonl
+teacher_uncertainty_each-sample/dataset_output
+teacher_uncertainty_each-sample/debug_teacher_outputs.jsonl
+teacher_uncertainty_each-sample/evolved_with_se.jsonl
+teacher_uncertainty_each-sample/teacher_responses.jsonl

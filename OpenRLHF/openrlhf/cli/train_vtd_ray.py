@@ -35,7 +35,13 @@ def train(args):
     # ============ vLLM Engines ============
     vllm_engines = None
     if args.vllm_num_engines is not None and args.vllm_num_engines > 0:
-        max_len = args.max_input_len + args.generate_max_len
+        # vLLM max_model_len must accommodate both training generation and eval generation.
+        # Training: short (max_input_len + generate_max_len = ~3072)
+        # Eval: long thinking mode (few-shot prompt ~2000 + max_tokens up to 38000)
+        # Match standalone eval script: max_model_len = 40960
+        eval_max_tokens = getattr(args, "eval_max_tokens", args.generate_max_len)
+        max_len = max(args.max_input_len + args.generate_max_len, 4096 + eval_max_tokens)
+        max_len = min(max_len, 40960)  # cap at model's supported context length
         if args.colocate_all_models:
             assert (
                 args.student_num_nodes * args.student_num_gpus_per_node
@@ -202,14 +208,26 @@ if __name__ == "__main__":
                         help="Number of teacher responses per prompt for semantic entropy estimation")
     parser.add_argument("--se_cluster_model", type=str, default="Qwen/Qwen2.5-0.5B-Instruct",
                         help="Small model for pairwise semantic equivalence judging in SE clustering")
+    parser.add_argument("--se_weight_key", type=str, default=None,
+                        help="Key in dataset for precomputed SE weight. When set, skips online SE sampling")
     parser.add_argument("--teacher_micro_batch_size", type=int, default=2)
+    parser.add_argument("--distill_topk", type=int, default=0,
+                        help="Top-K teacher logits for distillation. 0 = full logits, >0 = top-K (e.g. 512)")
 
     # ============ Dataset ============
     parser.add_argument("--prompt_data", type=str, required=True)
     parser.add_argument("--prompt_data_probs", type=str, default=None)
     parser.add_argument("--prompt_split", type=str, default="train")
-    parser.add_argument("--eval_dataset", type=str, default=None)
-    parser.add_argument("--eval_split", type=str, default="test")
+    parser.add_argument("--eval_dataset", type=str, default=None,
+                        help="Comma-separated eval datasets, e.g. 'openai/gsm8k,MathArena/hmmt_feb_2025'")
+    parser.add_argument("--eval_split", type=str, default="test",
+                        help="Comma-separated splits matching eval_dataset, e.g. 'test,train'")
+    parser.add_argument("--eval_input_key", type=str, default="question",
+                        help="Comma-separated input keys matching eval_dataset, e.g. 'question,problem'")
+    parser.add_argument("--eval_num_shots", type=int, default=4,
+                        help="Number of few-shot examples for eval (independent of training num_shots)")
+    parser.add_argument("--eval_max_tokens", type=int, default=4096,
+                        help="Max generation tokens for eval (independent of generate_max_len)")
     parser.add_argument("--input_key", type=str, default="question")
     parser.add_argument("--label_key", type=str, default="answer")
     parser.add_argument("--output_key", type=str, default=None,

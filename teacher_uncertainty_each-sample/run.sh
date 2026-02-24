@@ -13,7 +13,7 @@ export TRANSFORMERS_CACHE=$SCRATCH/hf_cache
 # ---- Fix GLIBC ----
 export LD_PRELOAD=$CONDA_PREFIX/lib/libstdc++.so.6
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SCRIPT_DIR=/home/x-qlan1/code/moule2/teacher_uncertainty_each-sample
 
 # ============================================================
 # Offline teacher uncertainty computation
@@ -43,7 +43,7 @@ python3 "$SCRIPT_DIR/compute_uncertainty.py" \
     --max_gen_tokens 1024 \
     --input "$SCRIPT_DIR/evolved_clean.jsonl" \
     --output "$SCRIPT_DIR/evolved_with_se.jsonl" \
-    --batch_size 32
+    --batch_size 300
 
 echo "=========================================="
 echo "Done!"
