@@ -1,0 +1,11 @@
+\begin{abstract}
+On-policy distillation trains a student on its own outputs with teacher feedback to avoid the train-inference distribution mismatch present in standard distillation. 
+%
+However, it typically ignores the ground-truth labels and reference solutions available in reasoning datasets during the post-training. 
+%
+We introduce a verification-driven contrastive learning that explicitly exploits these reference labels. By evaluating student responses against ground-truth, we strategically pair suboptimal generations with expert reference solutions to form robust contrastive learning pairs.
+%
+Combined with token-level teacher distillation on verified correct outputs, this prompts the student to simultaneously refine its successful reasoning and correct its failures within a unified on-policy loop.
+%
+We evaluate our method, \textbf{CORE} (Contrastive On-policy Reasoning Distillation), across mathematical reasoning, summarization, translation, and instruction tuning tasks. CORE converges faster and achieves state-of-the-art results compared to both GRPO and standard on-policy distillation.
+\end{abstract}

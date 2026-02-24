@@ -1,0 +1,63 @@
+\section{Experiments}
+\label{sec:experiments}
+
+\subsection{Experimental Setup}
+
+\paragraph{Models.} We use Qwen3-1.7B as the student model and Qwen3-8B as the teacher model, both pretrained on diverse text corpora.
+
+\paragraph{Dataset.} We evaluate on GSM8K~\citep{cobbe2021gsm8k}, a dataset of grade-school math word problems requiring multi-step reasoning. We use 4-shot chain-of-thought prompting with calculator tool access.
+
+\paragraph{Training.}
+\begin{itemize}
+    \item Batch size: 32 (rollout), 32 (training)
+    \item Episodes: 3 (full dataset passes with on-policy regeneration)
+    \item Learning rate: $1 \times 10^{-6}$ with 5\% warmup
+    \item Generation: 8 samples per prompt, temperature 0.7
+    \item Distillation: $\alpha=5.0$ (distill weight), top-K=512 teacher logits
+    \item Contrastive: $\beta=0.1$ (DPO beta)
+\end{itemize}
+
+\paragraph{Infrastructure.} We use 4× H100 GPUs with Ray for distributed training:
+\begin{itemize}
+    \item GPU 0: Student + Reference model (colocated)
+    \item GPU 1: Teacher model
+    \item GPU 2-3: vLLM engines (2×) for on-policy generation
+\end{itemize}
+
+\subsection{Main Results}
+
+\textbf{TODO: Add results table comparing:}
+\begin{itemize}
+    \item Supervised fine-tuning baseline
+    \item Distillation only (no contrastive)
+    \item Contrastive only (no distillation)
+    \item TCD (full method)
+    \item Teacher performance (upper bound)
+\end{itemize}
+
+\subsection{Ablation Studies}
+
+\paragraph{Effect of Episode Number.}
+We ablate the number of on-policy episodes (1, 2, 3). Each episode regenerates data with the updated student, improving the quality of both correct traces (for distillation) and incorrect traces (for contrastive learning).
+
+\paragraph{Distillation Weight $\alpha$.}
+We vary $\alpha \in \{0.1, 1.0, 5.0, 10.0\}$ to study the trade-off between learning from verified correct reasoning vs. learning from mistakes.
+
+\paragraph{Top-K Truncation.}
+We compare full vocabulary (151,936) vs. top-K logits with $K \in \{128, 512, 2048\}$, measuring both accuracy and memory usage.
+
+\paragraph{Teacher Fallback Strategy.}
+When student generates 0/8 correct samples, we compare:
+\begin{enumerate}
+    \item Skip contrastive loss
+    \item Use teacher.generate() to create reference
+    \item Use teacher logits for autoregressive sampling
+\end{enumerate}
+
+\subsection{Analysis}
+
+\paragraph{Correct/Incorrect Ratio Over Training.}
+We track the fraction of correct vs. incorrect student-generated traces across episodes, showing how on-policy distribution improves.
+
+\paragraph{Memory vs. Accuracy Trade-offs.}
+We analyze GPU memory consumption for different components (student, teacher, vLLM, reference model) under various configurations (colocated vs. separate, DeepSpeed ZeRO stages).

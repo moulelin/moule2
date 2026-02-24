@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2025)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: neurips_2024.aux
+The style file: unsrt.bst
+Database file #1: references.bib
+Warning--I didn't find a database entry for "TODO"
+You've used 14 entries,
+            1791 wiz_defined-function locations,
+            523 strings with 7017 characters,
+and the built_in function-call counts, 3257 in all, are:
+= -- 207
+> -- 307
+< -- 0
++ -- 107
+- -- 93
+* -- 259
+:= -- 618
+add.period$ -- 42
+call.type$ -- 14
+change.case$ -- 14
+chr.to.int$ -- 0
+cite$ -- 14
+duplicate$ -- 120
+empty$ -- 241
+format.name$ -- 93
+if$ -- 656
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 14
+newline$ -- 73
+num.names$ -- 14
+pop$ -- 36
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 43
+stack$ -- 0
+substring$ -- 78
+swap$ -- 15
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 21
+width$ -- 16
+write$ -- 147
+(There was 1 warning)

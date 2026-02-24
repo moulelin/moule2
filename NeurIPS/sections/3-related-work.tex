@@ -1,0 +1,20 @@
+\section{Related Work}
+\label{sec:related}
+
+\subsection{Knowledge Distillation for Language Models}
+
+Traditional knowledge distillation~\citep{hinton2015distilling} trains student models to match teacher output distributions. For autoregressive language models, supervised KD~\citep{sanh2019distilbert} and sequence-level KD~\citep{kim2016sequence} are widely used. However, these off-policy approaches suffer from distribution mismatch between training (teacher-generated or ground-truth sequences) and inference (student-generated sequences).
+
+\textbf{On-policy distillation}~\citep{agarwal2024policy} addresses this by training students on their own generated outputs, using teacher logits as labels. GKD (Generalized Knowledge Distillation) demonstrates strong improvements on summarization and translation tasks. Our work extends on-policy distillation to reasoning tasks by incorporating verification signals and contrastive objectives.
+
+\subsection{Learning from Verification Feedback}
+
+Recent work on mathematical reasoning leverages verification to improve model training. GRPO~\citep{TODO} and similar RL-based approaches optimize for verified correctness using policy gradient methods. V-STaR~\citep{TODO} iteratively generates verified solutions for self-improvement.
+
+However, these methods rely solely on sparse binary rewards (correct/incorrect) and do not leverage dense token-level teacher guidance. TCD bridges this gap by combining verification with token-level distillation.
+
+\subsection{Contrastive Learning for Language Models}
+
+DPO~\citep{rafailov2023direct} introduced preference-based contrastive learning for alignment, training models to prefer chosen responses over rejected ones. SimPO~\citep{TODO} and other variants explore different contrastive formulations.
+
+Our work adapts contrastive learning to the distillation setting: we use verified correct responses (from reference data or teacher generation) as "chosen" and student-generated incorrect responses as "rejected", enabling the student to learn from its mistakes with teacher guidance.

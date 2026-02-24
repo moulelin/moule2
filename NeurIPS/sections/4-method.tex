@@ -1,0 +1,53 @@
+\section{Method: Token-level Contrastive Distillation}
+\label{sec:method}
+
+\subsection{Problem Setup}
+
+We consider distilling a large teacher model $p_T$ into a smaller student model $p_S^\theta$ for mathematical reasoning tasks. Given a dataset of questions $\{x_i\}$ and ground-truth answers $\{a_i\}$, our goal is to train the student to generate correct reasoning traces $y$ (chain-of-thought) that lead to the correct answer.
+
+\subsection{On-policy Generation with Verification}
+
+For each question $x$, we generate $K$ reasoning traces from the current student policy:
+\[
+\{y^{(1)}, \ldots, y^{(K)}\} \sim p_S^\theta(\cdot | x)
+\]
+
+Each trace is verified by extracting the final answer and comparing with ground-truth:
+\[
+\text{verify}(y^{(k)}, a) \in \{\text{correct}, \text{incorrect}\}
+\]
+
+This yields two sets per question: correct traces $\mathcal{C}_x$ and incorrect traces $\mathcal{I}_x$.
+
+\subsection{Dual Learning Objectives}
+
+\paragraph{Distillation on Correct Traces.}
+For verified correct reasoning, we perform token-level knowledge distillation. Given teacher logits $z_T(y_{<t}, x)$ and student logits $z_S^\theta(y_{<t}, x)$ at position $t$, we minimize:
+\[
+\mathcal{L}_{\text{distill}}(\theta) = \mathbb{E}_{x, y \in \mathcal{C}_x} \left[ \frac{1}{|y|} \sum_{t=1}^{|y|} D_{\text{KL}}\left( \sigma(z_T/\tau) \| \sigma(z_S^\theta/\tau) \right) \right]
+\]
+where $\sigma$ is softmax, $\tau$ is temperature, and we use top-$k$ truncation of teacher logits for memory efficiency.
+
+\paragraph{Contrastive Learning on Errors.}
+For incorrect traces, we apply DPO-style contrastive loss. The "chosen" response $y_c$ is either (1) reference chain-of-thought if available, (2) student's own correct trace if any, or (3) teacher-generated trace. The "rejected" response $y_r$ is the student's incorrect trace:
+\[
+\mathcal{L}_{\text{contrast}}(\theta) = -\mathbb{E}_{x, y_r \in \mathcal{I}_x} \left[ \log \sigma \left( \beta \left( \log \frac{p_S^\theta(y_c|x)}{p_{\text{ref}}(y_c|x)} - \log \frac{p_S^\theta(y_r|x)}{p_{\text{ref}}(y_r|x)} \right) \right) \right]
+\]
+where $p_{\text{ref}}$ is a reference model (frozen copy of student) and $\beta$ controls the strength of the KL penalty.
+
+\subsection{Combined Training Objective}
+
+The final loss combines both objectives:
+\[
+\mathcal{L}(\theta) = \alpha \cdot \mathcal{L}_{\text{distill}}(\theta) + (1-\alpha) \cdot \mathcal{L}_{\text{contrast}}(\theta)
+\]
+where $\alpha$ controls the relative weight between distillation and contrastive learning.
+
+\subsection{Memory-Efficient Implementation}
+
+To handle large vocabulary sizes (151,936 for Qwen), we employ:
+\begin{itemize}
+    \item \textbf{Top-K teacher logits}: Store only top-512 logits from teacher, reducing memory by 300×
+    \item \textbf{Token-by-token processing}: Compute distillation loss incrementally to avoid materializing full distributions
+    \item \textbf{vLLM for generation}: Use vLLM engines with continuous batching for efficient on-policy sampling
+\end{itemize}

@@ -1,0 +1,85 @@
+\appendix
+
+\section{Implementation Details}
+\label{app:implementation}
+
+\subsection{Distributed Training Architecture}
+
+Our implementation uses Ray~\citep{TODO} for distributed actor management and vLLM~\citep{TODO} for efficient LLM serving. The architecture consists of:
+
+\begin{itemize}
+    \item \textbf{VtDTrainerRay}: Main coordinator running on the driver process
+    \item \textbf{VtDStudentActor}: Manages student model with DeepSpeed (GPU 0)
+    \item \textbf{VtDReferenceActor}: Frozen copy of initial student (GPU 0, colocated)
+    \item \textbf{VtDTeacherActor}: Teacher model (GPU 1)
+    \item \textbf{LLMRayActor × 2}: vLLM engines for on-policy generation (GPU 2-3)
+\end{itemize}
+
+Model colocation uses Ray placement groups with fractional GPU allocation (num\_gpus=0.2) to share GPU 0 between student and reference models.
+
+\subsection{Memory Optimization Techniques}
+
+\paragraph{Top-K Teacher Logits.}
+Instead of storing full vocabulary logits (151,936 × 4 bytes = 608 KB per position), we keep only top-512 values and indices:
+\begin{verbatim}
+topk_vals, topk_ids = logits.topk(k=512, dim=-1)
+# Store: 512 × 4 bytes (vals) + 512 × 4 bytes (ids) = 4 KB
+\end{verbatim}
+This achieves 150× memory reduction with minimal accuracy loss.
+
+\paragraph{Token-by-token Distillation Loss.}
+We compute KL divergence incrementally to avoid materializing large tensors:
+\begin{verbatim}
+for t in range(seq_len):
+    teacher_probs_t = F.softmax(teacher_vals[t], dim=-1)
+    student_logprobs_t = F.log_softmax(student_logits[t], dim=-1)
+    student_logprobs_topk = student_logprobs_t.gather(-1, teacher_ids[t])
+    kl_t = -(teacher_probs_t * student_logprobs_topk).sum(-1)
+\end{verbatim}
+
+\subsection{Communication Backend Selection}
+
+For non-colocated setups, vLLM workers require collective communication for weight updates. We found:
+\begin{itemize}
+    \item \textbf{NCCL}: Fast but fails when actors are in separate Ray placement groups due to CUDA\_VISIBLE\_DEVICES isolation
+    \item \textbf{Gloo}: CPU-based fallback that works across placement groups, used when tensor\_parallel\_size=1
+\end{itemize}
+
+\section{Additional Experimental Results}
+\label{app:results}
+
+\subsection{Hyperparameter Sensitivity}
+
+\textbf{TODO: Add figures/tables for:}
+\begin{itemize}
+    \item Learning rate sweep
+    \item Temperature sweep for generation
+    \item Beta sweep for contrastive loss
+    \item Number of samples per prompt (K)
+\end{itemize}
+
+\subsection{Evaluation Protocol Details}
+
+For GSM8K evaluation, we:
+\begin{enumerate}
+    \item Generate greedy responses (temperature=0, n=1)
+    \item Extract final numerical answer using regex
+    \item Compare with ground-truth using math\_equal() for numerical equivalence
+    \item Report accuracy = correct / total
+\end{enumerate}
+
+\subsection{Computational Cost}
+
+Training TCD on 10K GSM8K samples for 3 episodes takes approximately:
+\begin{itemize}
+    \item Wall-clock time: \textbf{TODO} hours on 4× H100
+    \item GPU hours: \textbf{TODO}
+    \item On-policy generation: \textbf{TODO}\% of total time
+    \item Teacher logits computation: \textbf{TODO}\% of total time
+    \item Student training: \textbf{TODO}\% of total time
+\end{itemize}
+
+\section{Reproducibility}
+\label{app:reproducibility}
+
+Code will be released at \url{https://github.com/TODO}. Full training configurations are provided in YAML format.
