@@ -5,17 +5,28 @@
 
 \subsection{Distributed Training Architecture}
 
-Our implementation uses Ray~\citep{TODO} for distributed actor management and vLLM~\citep{TODO} for efficient LLM serving. The architecture consists of:
+Our implementation uses Ray~\citep{moritz2018ray} for distributed actor management and vLLM~\citep{kwon2023vllm} for efficient LLM serving across 4$\times$ NVIDIA H100 GPUs. The GPU allocation differs between the two phases.
 
-\begin{itemize}
-    \item \textbf{VtDTrainerRay}: Main coordinator running on the driver process
-    \item \textbf{VtDStudentActor}: Manages student model with DeepSpeed (GPU 0)
-    \item \textbf{VtDReferenceActor}: Frozen copy of initial student (GPU 0, colocated)
-    \item \textbf{VtDTeacherActor}: Teacher model (GPU 1)
-    \item \textbf{LLMRayActor × 2}: vLLM engines for on-policy generation (GPU 2-3)
-\end{itemize}
+\paragraph{Phase 1: Offline semantic entropy computation.}
+This phase runs as a standalone script before training begins. Two vLLM model instances are loaded on the same GPU.
+The \textbf{teacher vLLM engine} (GPU 0) serves the teacher model (e.g., Qwen3-8B) with \texttt{gpu\_memory\_utilization=0.65} and \texttt{tensor\_parallel\_size=1}; for each prompt it generates $N{=}8$ responses in a single batched call via \texttt{engine.generate()}.
+The \textbf{cluster judge vLLM engine} (GPU 0, colocated) serves the semantic equivalence judge (Qwen2.5-3B-Instruct) with \texttt{gpu\_memory\_utilization=0.20}; it is only invoked for answer pairs that do not match via exact string comparison, keeping its utilization low.
+Both engines share GPU 0 via vLLM's memory pre-allocation. The remaining GPUs are idle during this phase. Processing 8{,}800 prompts with batch size 300 completes in approximately 1--2 hours.
 
-Model colocation uses Ray placement groups with fractional GPU allocation (num\_gpus=0.2) to share GPU 0 between student and reference models.
+\paragraph{Phase 2: On-policy distillation.}
+All 4 GPUs are utilized via Ray placement groups.
+\textbf{GPU 0} hosts the \emph{student actor}: the student model (e.g., Qwen3-1.7B) wrapped in DeepSpeed ZeRO Stage~1 for gradient computation and parameter updates; a frozen reference copy of the initial student is colocated on the same GPU using fractional allocation (\texttt{num\_gpus=0.2}).
+\textbf{GPU 1} hosts the \emph{teacher actor}: the frozen teacher model loaded in inference mode, which receives student-generated rollouts and returns top-$k$ logit values and token indices at every position.
+\textbf{GPUs 2--3} host two \texttt{LLMRayActor} \emph{vLLM generation engines}, each initialized from the student's current weights. They generate $K{=}4$ on-policy rollouts per prompt in parallel. After each gradient step, the updated student weights are broadcast to both engines via \texttt{update\_weight()} over the Gloo backend.
+
+\noindent The training loop proceeds as follows at each step:
+\begin{enumerate}
+    \item The Ray coordinator dispatches a mini-batch of prompts to the 2 vLLM engines.
+    \item Each engine generates $K/2{=}2$ rollouts per prompt (total $K{=}4$ per prompt across both engines).
+    \item Rollouts are sent to the teacher actor, which computes top-$k$ logits for all token positions.
+    \item The student actor receives rollouts, teacher logits, and precomputed $w_{\text{se}}$ weights, then performs a gradient update.
+    \item Updated student weights are synchronized back to both vLLM engines for the next iteration.
+\end{enumerate}
 
 \subsection{Memory Optimization Techniques}
 
@@ -39,24 +50,14 @@ for t in range(seq_len):
 
 \subsection{Communication Backend Selection}
 
-For non-colocated setups, vLLM workers require collective communication for weight updates. We found:
-\begin{itemize}
-    \item \textbf{NCCL}: Fast but fails when actors are in separate Ray placement groups due to CUDA\_VISIBLE\_DEVICES isolation
-    \item \textbf{Gloo}: CPU-based fallback that works across placement groups, used when tensor\_parallel\_size=1
-\end{itemize}
+For non-colocated setups, vLLM workers require collective communication for weight updates. \textbf{NCCL} is fast but fails when actors reside in separate Ray placement groups due to \texttt{CUDA\_VISIBLE\_DEVICES} isolation. We therefore use \textbf{Gloo}, a CPU-based fallback that works across placement groups, when \texttt{tensor\_parallel\_size=1}.
 
 \section{Additional Experimental Results}
 \label{app:results}
 
 \subsection{Hyperparameter Sensitivity}
 
-\textbf{TODO: Add figures/tables for:}
-\begin{itemize}
-    \item Learning rate sweep
-    \item Temperature sweep for generation
-    \item Beta sweep for contrastive loss
-    \item Number of samples per prompt (K)
-\end{itemize}
+\textbf{TODO:} Add figures/tables for learning rate sweep, temperature sweep for generation, beta sweep for contrastive loss, and number of samples per prompt ($K$).
 
 \subsection{Evaluation Protocol Details}
 
@@ -70,14 +71,7 @@ For GSM8K evaluation, we:
 
 \subsection{Computational Cost}
 
-Training TCD on 10K GSM8K samples for 3 episodes takes approximately:
-\begin{itemize}
-    \item Wall-clock time: \textbf{TODO} hours on 4× H100
-    \item GPU hours: \textbf{TODO}
-    \item On-policy generation: \textbf{TODO}\% of total time
-    \item Teacher logits computation: \textbf{TODO}\% of total time
-    \item Student training: \textbf{TODO}\% of total time
-\end{itemize}
+Training on the SURE-Math dataset takes approximately \textbf{TODO} wall-clock hours on 4$\times$ H100 (\textbf{TODO} GPU-hours total). The time breakdown is: on-policy generation \textbf{TODO}\%, teacher logits computation \textbf{TODO}\%, and student training \textbf{TODO}\%.
 
 \section{Reproducibility}
 \label{app:reproducibility}

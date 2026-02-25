@@ -6,10 +6,8 @@ We presented Token-level Contrastive Distillation (TCD), a framework that combin
 Our experiments on GSM8K demonstrate that TCD enables a 1.7B student model to achieve strong mathematical reasoning performance when distilled from an 8B teacher. The framework is efficient and scalable, using vLLM for on-policy generation and memory-optimized techniques for handling large vocabularies.
 
 \paragraph{Limitations and Future Work.}
-\begin{itemize}
-    \item \textbf{Scalability}: Current experiments use 4 GPUs; scaling to multi-node setups requires careful optimization of communication backends (NCCL vs. Gloo)
-    \item \textbf{Generalization}: We focus on mathematical reasoning (GSM8K); extending to other reasoning tasks (code, commonsense) is important
-    \item \textbf{Teacher quality}: Our approach assumes access to a capable teacher; exploring self-improvement scenarios is promising
-\end{itemize}
+\textbf{Scalability}: Current experiments use 4 GPUs; scaling to multi-node setups requires careful optimization of communication backends (NCCL vs.\ Gloo).
+\textbf{Generalization}: We focus on mathematical reasoning; extending to other reasoning tasks (code, commonsense) is an important direction.
+\textbf{Teacher quality}: Our approach assumes access to a capable teacher; exploring self-improvement scenarios is promising.
 
 TCD opens avenues for efficient reasoning model deployment by making strong reasoning capabilities accessible in compact models suitable for resource-constrained environments.

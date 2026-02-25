@@ -24,10 +24,12 @@ Each response's log-probability is first length-normalized to avoid penalizing l
 and the semantic entropy is
 \begin{equation}
     H_{\text{sem}}(x_i) = -\sum_{c \in \mathcal{C}} p(c \mid x_i) \log p(c \mid x_i).
+    \label{eq:se}
 \end{equation}
 We normalize by the maximum possible entropy to obtain a value in $[0, 1]$ and define the per-prompt distillation weight as
 \begin{equation}
     w_{\text{se}}(x_i) = 1 - \frac{H_{\text{sem}}(x_i)}{\log N}.
+    \label{eq:weight}
 \end{equation}
 A weight near 1 indicates that the teacher consistently agrees on the same semantic answer (low epistemic uncertainty), while a weight near 0 indicates contradictory responses across clusters (high epistemic uncertainty). These weights are precomputed and stored with the training data.
 
@@ -58,3 +60,34 @@ The full training objective averages over all prompts and their $K$ on-policy ro
 \end{equation}
 
 At each training step, the updated student weights are synchronized back to the vLLM generation engines, ensuring that the next round of rollouts reflects the latest policy. This on-policy loop continues until convergence.
+
+Algorithm~\ref{alg:uopd} summarizes the complete UOPD pipeline.
+
+\begin{algorithm}[t]
+\caption{Uncertainty-Calibrated On-Policy Distillation (UOPD)}
+\label{alg:uopd}
+\begin{algorithmic}[1]
+\REQUIRE Training prompts $\mathcal{D} = \{x_i\}_{i=1}^M$, teacher $p_T$, student $p_S(\cdot;\theta_S)$, SE samples $N$, rollouts $K$, top-$k$
+\STATE \textbf{--- Phase 1: Offline Semantic Entropy (Sec.~\ref{sec:offline_se}) ---}
+\FOR{each prompt $x_i \in \mathcal{D}$}
+    \STATE Sample $N$ responses $\{y_1^T, \ldots, y_N^T\} \sim p_T(\cdot \mid x_i)$
+    \STATE Extract final answers; cluster into semantic classes $\mathcal{C}$
+    \STATE Compute semantic entropy $H_{\text{sem}}(x_i)$ \hfill (Eq.~\ref{eq:se})
+    \STATE Store weight $w_{\text{se}}(x_i) = 1 - H_{\text{sem}}(x_i) / \log N$ \hfill (Eq.~\ref{eq:weight})
+\ENDFOR
+\STATE \textbf{--- Phase 2: On-Policy Distillation (Sec.~\ref{sec:distill}) ---}
+\WHILE{not converged}
+    \STATE Sample mini-batch $\mathcal{B} \subset \mathcal{D}$
+    \FOR{each $x \in \mathcal{B}$}
+        \STATE Generate $K$ rollouts $\{y^{(1)}, \ldots, y^{(K)}\} \sim p_S(\cdot \mid x; \theta_S)$
+        \FOR{each rollout $y^{(j)}$}
+            \STATE Query teacher for top-$k$ logits at each token position of $y^{(j)}$
+            \STATE Compute token-level CE: $\ell_t = -\sum_{v} \tilde{p}_T(v) \log p_S(v; \theta_S)$
+        \ENDFOR
+        \STATE Compute weighted loss $\mathcal{L}(x, y^{(j)}; \theta_S)$ \hfill (Eq.~\ref{eq:uopd_loss})
+    \ENDFOR
+    \STATE Update $\theta_S$ with $\nabla_{\theta_S} \frac{1}{|\mathcal{B}|}\sum_{x \in \mathcal{B}} \frac{1}{K}\sum_{j=1}^{K} \mathcal{L}(x, y^{(j)}; \theta_S)$
+    \STATE Sync $\theta_S$ to vLLM generation engines
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}

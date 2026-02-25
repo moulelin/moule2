@@ -4,47 +4,49 @@ The top-level auxiliary file: neurips_2024.aux
 The style file: unsrt.bst
 Database file #1: references.bib
 Warning--I didn't find a database entry for "TODO"
+Warning--I didn't find a database entry for "moritz2018ray"
+Warning--I didn't find a database entry for "kwon2023vllm"
 Warning--empty journal in numinamath
 Warning--empty journal in amobench
-You've used 18 entries,
+You've used 17 entries,
             1791 wiz_defined-function locations,
-            526 strings with 7328 characters,
-and the built_in function-call counts, 3873 in all, are:
-= -- 233
-> -- 346
+            524 strings with 7065 characters,
+and the built_in function-call counts, 3610 in all, are:
+= -- 221
+> -- 311
 < -- 0
-+ -- 122
-- -- 104
-* -- 259
-:= -- 718
-add.period$ -- 56
-call.type$ -- 18
-change.case$ -- 18
++ -- 110
+- -- 93
+* -- 236
+:= -- 664
+add.period$ -- 53
+call.type$ -- 17
+change.case$ -- 17
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 169
-empty$ -- 332
-format.name$ -- 104
-if$ -- 805
+cite$ -- 19
+duplicate$ -- 161
+empty$ -- 318
+format.name$ -- 93
+if$ -- 755
 int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 18
-newline$ -- 95
-num.names$ -- 18
-pop$ -- 76
+int.to.str$ -- 17
+missing$ -- 17
+newline$ -- 90
+num.names$ -- 17
+pop$ -- 73
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 56
+skip$ -- 53
 stack$ -- 0
 substring$ -- 37
-swap$ -- 22
+swap$ -- 21
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 20
-width$ -- 20
-write$ -- 186
-(There were 3 warnings)
+while$ -- 19
+width$ -- 19
+write$ -- 176
+(There were 5 warnings)

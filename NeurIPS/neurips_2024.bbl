@@ -72,11 +72,6 @@ Can Xu, Qingfeng Sun, Kai Zheng, Xiubo Geng, Pu~Zhao, Jiazhan Feng, Chongyang Ta
 \newblock Wizardlm: Empowering large language models to follow complex instructions.
 \newblock In {\em International Conference on Learning Representations (ICLR)}, 2024.
 
-\bibitem{cobbe2021gsm8k}
-Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, Mark Chen, Heewoo Jun, Lukasz Kaiser, Matthias Plappert, Jerry Tworek, Jacob Hilton, Reiichiro Nakano, et~al.
-\newblock Training verifiers to solve math word problems.
-\newblock {\em arXiv preprint arXiv:2110.14168}, 2021.
-
 \bibitem{sanh2019distilbert}
 Victor Sanh, Lysandre Debut, Julien Chaumond, and Thomas Wolf.
 \newblock Distilbert, a distilled version of bert: smaller, faster, cheaper and lighter.

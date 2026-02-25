@@ -6,61 +6,47 @@
 
 We introduce \textbf{SURE-Math} (\textbf{S}emantic-\textbf{U}ncertainty \textbf{RE}asoning \textbf{Math}), a mathematical reasoning dataset in which every problem is annotated with the teacher's precomputed semantic entropy score.
 
-\paragraph{Seed collection.}
-We aggregate seed problems from seven public sources spanning four difficulty tiers.
-\emph{Easy}: ScaleQuest-Math \citep{yuan2024scalequest} (15K problems).
+We first collect 1{,}000 mathematics problems spanning middle-school to competition level, each paired with a verified ground-truth answer. Of these, 200 are reserved as a held-out test set (Section~\ref{sec:evaluation}); the remaining 800 are added to the training pool.
+
+We further aggregate seed problems from public sources across four difficulty tiers.
+\emph{Easy}: ScaleQuest-Math \citep{yuan2024scalequest} (15K).
 \emph{Medium}: NuminaMath-CoT \citep{numinamath} (10K) and MATH \citep{hendrycks2021math} (12.5K).
 \emph{Hard}: Omni-MATH \citep{gao2024omnimath} (4.4K) and OlympiadBench \citep{he2024olympiadbench} (5K).
-\emph{Competition}: AIME 2024--2025, HMMT 2025, and AMO-Bench \citep{amobench} (${\sim}110$ problems).
-In addition, we manually curate 1{,}000 middle-school and high-school mathematics problems with verified ground-truth labels.
+\emph{Competition}: AIME 2024--2025, HMMT Feb \& Nov 2025, and AMO-Bench \citep{amobench}.
 
-\paragraph{Evol-Instruct evolution.}
-Starting from these seeds, we generate approximately one million new problems using Qwen2.5-72B-Instruct with an Evol-Instruct \citep{xu2024wizardlm} style pipeline. Six evolution strategies are applied: \emph{harder}, \emph{rewrite}, \emph{algebraize}, \emph{apply}, \emph{compose}, and \emph{competition}. Each seed undergoes 1--5 rounds of evolution depending on its difficulty tier, with competition-level seeds receiving the most rounds to amplify their representation.
+Starting from these seeds, we synthesize new problems with Qwen2.5-72B-Instruct using an Evol-Instruct \citep{xu2024wizardlm} style pipeline. Six evolution strategies are applied, each realized by a dedicated system prompt: \emph{harder} (increase reasoning steps or add constraints), \emph{rewrite} (change context and wording while preserving the underlying skill), \emph{algebraize} (replace concrete values with variables), \emph{apply} (embed the concept in a real-world scenario), \emph{compose} (combine with a different branch of mathematics), and \emph{competition} (transform into AMC/AIME/Olympiad style).
+Each seed undergoes 1--5 rounds of iterative evolution depending on its difficulty tier: easy seeds receive 1 round, medium seeds 2 rounds, hard seeds 3 rounds, and competition seeds 5 rounds. In follow-up rounds, a different strategy (drawn from \emph{harder}, \emph{competition}, and \emph{compose}) is applied to the output of the previous round, progressively increasing difficulty. Strategy selection within each tier is weighted to favor \emph{harder} and \emph{competition} for higher-tier seeds.
 
-\paragraph{Quality filtering.}
-We apply a three-stage filter. First, we remove multiple-choice questions and problems shorter than 30 characters or longer than 2{,}000 characters, and deduplicate with a 0.7 similarity threshold. Second, Qwen2.5-72B-Instruct judges each remaining problem against five quality criteria: (1)~well-formed and complete, (2)~unambiguous with exactly one correct answer, (3)~requires at least two steps of mathematical reasoning, (4)~admits a closed-form answer (number or expression, not a proof or essay), and (5)~self-contained. Only problems passing all five criteria are retained. After filtering, 8{,}000 problems remain.
 
-\paragraph{Semantic entropy annotation.}
 For each of the 8{,}000 problems, we sample $N{=}8$ responses from Qwen3-8B \citep{qwen3} at temperature 0.7, extract the $\texttt{\textbackslash boxed\{\}}$ answer from each response, and compute the probability-weighted semantic entropy as described in Section~\ref{sec:offline_se}. The resulting per-problem semantic entropy score and the corresponding distillation weight $w_{\text{se}}$ are stored alongside each problem.
 
-\paragraph{Data splits.}
 We reserve 200 of the 1{,}000 manually collected problems (which carry ground-truth labels) as a held-out test set. The remaining 800 curated problems and all 8{,}000 evolved problems form the training set.
 
 \subsection{Experimental Setup}
 \label{sec:setup}
 
 \paragraph{Models.}
-The student model is Qwen3-1.7B and the teacher is Qwen3-8B \citep{qwen3}, both instruction-tuned. Semantic clustering for the offline SE computation uses a Qwen3-8B judge for pairwise semantic equivalence.
+We evaluate three student--teacher pairs of increasing scale: Qwen3-1.7B/Qwen3-8B, Qwen3-4B/Qwen3-8B, and Qwen3-8B/Qwen3-30B \citep{qwen3}, all instruction-tuned variants. Semantic clustering for the offline SE computation uses a Qwen2.5-3B-Instruct judge for pairwise semantic equivalence.
 
 \paragraph{Training details.}
 We train with the on-policy distillation objective described in Eq.~\ref{eq:uopd_loss}. At each step, the student generates $K{=}4$ rollouts per prompt. The teacher provides its top-512 logit values at every token position. We use a learning rate of $3{\times}10^{-6}$ with a cosine schedule and 5\% warmup, AdamW with $(\beta_1, \beta_2) = (0.9, 0.95)$, gradient clipping at 1.0, and a global batch size of 128. Training runs for one epoch over 50{,}000 samples (with replacement from the 8{,}800 training problems). All models use bfloat16 precision and FlashAttention-2.
 
-\paragraph{Infrastructure.}
-Training runs on 4$\times$ NVIDIA H100 GPUs. The student model, teacher model, and 4 vLLM generation engines are colocated on the same node with DeepSpeed ZeRO Stage~1. At each training step, vLLM engines generate student rollouts, the teacher produces top-$k$ logits for these rollouts, and the student parameters are then updated and synchronized back to the vLLM engines for the next round of generation.
-
-\paragraph{Baselines.}
-We compare UOPD against the following methods.
-\begin{itemize}
-    \item \textbf{Qwen3-1.7B}: The base student model without any distillation (lower bound).
-    \item \textbf{Qwen3-8B}: The teacher model (upper bound).
-    \item \textbf{Standard OPD}: On-policy distillation with uniform weighting ($w_{\text{se}} = 1$ for all prompts), following \citet{agarwal2024policy}.
-    \item \textbf{GRPO}: Group Relative Policy Optimization, a reinforcement learning approach that trains the student using reward signals from correct and incorrect rollouts.
-    \item \textbf{Self-Distilled Reasoner}: On-policy distillation with ground-truth chain-of-thought injected into the teacher's system prompt \citep{zhao2026self}.
-\end{itemize}
+For each student--teacher pair, we compare UOPD against the following methods.
+(1)~\textbf{Base}: the student model without any distillation (lower bound).
+(2)~\textbf{Teacher}: the teacher model (upper bound).
+(3)~\textbf{Standard OPD}: on-policy distillation with uniform weighting ($w_{\text{se}} = 1$ for all prompts), following \citet{agarwal2024policy}.
+(4)~\textbf{GRPO}: Group Relative Policy Optimization, which trains the student using reward signals from correct and incorrect rollouts.
+(5)~\textbf{Self-Distilled Reasoner}: on-policy distillation with ground-truth chain-of-thought injected into the teacher's system prompt \citep{zhao2026self}.
 
 \subsection{Evaluation}
 \label{sec:evaluation}
 
 \paragraph{Benchmarks.}
-We evaluate all methods on five public mathematical reasoning benchmarks of increasing difficulty.
-\begin{itemize}
-    \item \textbf{GSM8K} \citep{cobbe2021gsm8k}: 1{,}319 grade-school math word problems.
-    \item \textbf{AIME 2024}: 30 problems from the American Invitational Mathematics Examination.
-    \item \textbf{AIME 2025}: 30 problems from AIME 2025 (Parts I and II combined).
-    \item \textbf{HMMT Feb 2025}: 30 problems from the Harvard-MIT Mathematics Tournament.
-    \item \textbf{AMO-Bench} \citep{amobench}: 50 IMO-level competition problems.
-\end{itemize}
-In addition, we report accuracy on our held-out \textbf{SURE-Math test set} (200 curated problems with labels).
+We evaluate all methods on three public mathematical reasoning benchmarks of increasing difficulty, plus our held-out test set:
+\textbf{MATH-500} \citep{hendrycks2021math}, 500 competition-level problems spanning seven subjects;
+\textbf{AIME 2025}, 30 problems from the American Invitational Mathematics Examination (Parts I and II);
+\textbf{AMO-Bench} \citep{amobench}, 50 IMO-level competition problems;
+and our held-out \textbf{SURE-Math test set} (200 curated problems with ground-truth labels).
 
 \paragraph{Metrics.}
 We report pass@1 accuracy with greedy decoding (temperature 0) and avg@16 accuracy with 16 samples at temperature 1.2 and top-$p{=}0.95$.
@@ -75,24 +61,48 @@ Table~\ref{tab:main_results} presents the main comparison across all benchmarks.
 \caption{Main results on mathematical reasoning benchmarks. We report pass@1 (greedy) and avg@16 accuracy (\%). Best student-sized results are \textbf{bolded}.}
 \label{tab:main_results}
 \vspace{0.5em}
-\small
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{l cc cc cc cc}
 \toprule
- & \multicolumn{2}{c}{\textbf{GSM8K}} & \multicolumn{2}{c}{\textbf{AIME 2025}} & \multicolumn{2}{c}{\textbf{HMMT 2025}} & \multicolumn{2}{c}{\textbf{SURE-Math}} \\
+ & \multicolumn{2}{c}{\textbf{MATH-500}} & \multicolumn{2}{c}{\textbf{AIME 2025}} & \multicolumn{2}{c}{\textbf{AMO-Bench}} & \multicolumn{2}{c}{\textbf{SURE-Math}} \\
 \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9}
 \textbf{Method} & pass@1 & avg@16 & pass@1 & avg@16 & pass@1 & avg@16 & pass@1 & avg@16 \\
 \midrule
-Qwen3-8B (Teacher)     & --   & --   & --   & --   & --   & --   & --   & -- \\
-Qwen3-1.7B (Base)      & --   & --   & 26.7 & 35.6 & --   & --   & --   & -- \\
-\midrule
+
+% --- Group 1 ---
+\rowcolor{gray!10}
+\multicolumn{9}{c}{\textbf{Student:} Qwen3-1.7B \quad \textbf{Teacher:} Qwen3-8B} \\
+Base (1.7B)             & --   & --   & --   & --   & --   & --   & --   & -- \\
 Standard OPD            & --   & --   & --   & --   & --   & --   & --   & -- \\
 GRPO                    & --   & --   & --   & --   & --   & --   & --   & -- \\
 Self-Distilled Reasoner & --   & --   & --   & --   & --   & --   & --   & -- \\
 \textbf{UOPD (Ours)}   & --   & --   & --   & --   & --   & --   & --   & -- \\
-\bottomrule
-\end{tabular}
-\end{table}
 
+\midrule
+
+% --- Group 2 ---
+\rowcolor{gray!10}
+\multicolumn{9}{c}{\textbf{Student:} Qwen3-4B \quad \textbf{Teacher:} Qwen3-8B} \\
+Base (4B)               & --   & --   & --   & --   & --   & --   & --   & -- \\
+Standard OPD            & --   & --   & --   & --   & --   & --   & --   & -- \\
+GRPO                    & --   & --   & --   & --   & --   & --   & --   & -- \\
+Self-Distilled Reasoner & --   & --   & --   & --   & --   & --   & --   & -- \\
+\textbf{UOPD (Ours)}   & --   & --   & --   & --   & --   & --   & --   & -- \\
+
+\midrule
+
+% --- Group 3 ---
+\rowcolor{gray!10}
+\multicolumn{9}{c}{\textbf{Student:} Qwen3-8B \quad \textbf{Teacher:} Qwen3-30B} \\
+Base (8B)               & --   & --   & --   & --   & --   & --   & --   & -- \\
+Standard OPD            & --   & --   & --   & --   & --   & --   & --   & -- \\
+GRPO                    & --   & --   & --   & --   & --   & --   & --   & -- \\
+Self-Distilled Reasoner & --   & --   & --   & --   & --   & --   & --   & -- \\
+\textbf{UOPD (Ours)}   & --   & --   & --   & --   & --   & --   & --   & -- \\
+
+\bottomrule
+\end{tabular}}
+\end{table}
 % TODO: Fill in results once all evaluations are complete.
 % Available so far:
 %   Qwen3-1.7B base:      AIME25 greedy=26.7%, avg@16=35.6%
@@ -114,7 +124,7 @@ We compare three weighting strategies: (1)~uniform weighting ($w_{\text{se}} = 1
 \small
 \begin{tabular}{l cccc}
 \toprule
-\textbf{Weighting} & \textbf{GSM8K} & \textbf{AIME 2025} & \textbf{HMMT 2025} & \textbf{SURE-Math} \\
+\textbf{Weighting} & \textbf{MATH-500} & \textbf{AIME 2025} & \textbf{AMO-Bench} & \textbf{SURE-Math} \\
 \midrule
 Uniform ($w = 1$)                          & -- & -- & -- & -- \\
 Binary filter ($\tau = 0.3$)               & -- & -- & -- & -- \\
