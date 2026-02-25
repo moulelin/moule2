@@ -160,6 +160,34 @@ Figure~\ref{fig:se_distribution} shows the distribution of semantic entropy scor
 % \label{fig:se_distribution}
 % \end{figure}
 
+\paragraph{Validating SE as a teacher error signal.}
+A core assumption of UOPD is that high semantic entropy indicates problems the teacher is likely to answer incorrectly.
+We verify this directly on the SURE-Math training set.
+For each of the 16{,}330 training problems, we obtain ground-truth labels by generating solutions with Qwen2.5-72B-Instruct and then evaluate the teacher (Qwen3-8B) with greedy decoding on the same problems.
+The teacher's predicted answer is compared against the 72B-verified ground truth using exact-match and symbolic equivalence checking.
+
+Figure~\ref{fig:se_validation}(a) bins the training problems by their precomputed SE score and plots the teacher's accuracy within each bin.
+The relationship is strikingly monotonic: for problems with near-zero SE ($< 0.1$), the teacher achieves 87\% accuracy, whereas for problems with SE $> 0.9$, accuracy drops to just 12\%.
+Figure~\ref{fig:se_validation}(b) treats teacher error as a binary classification target and uses SE as the predictor, yielding an AUROC of \textbf{0.7949}.
+This confirms that probability-weighted semantic entropy is a reliable proxy for teacher correctness, validating the use of $w_{\text{se}} = 1 - \bar{H}_{\text{sem}}$ as a distillation weight: samples where the teacher is most likely wrong receive the lowest weight, while confident and correct samples dominate the training signal.
+
+\begin{figure}[t]
+\centering
+\begin{subfigure}[t]{0.52\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/se_vs_accuracy.png}
+    \caption{Teacher accuracy (Qwen3-8B, greedy) vs.\ SE score. Accuracy decreases monotonically from 87\% to 12\% as SE increases.}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.44\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{images/roc_curve.png}
+    \caption{ROC curve using SE as a predictor of teacher error, achieving an AUROC of 0.7949.}
+\end{subfigure}
+\caption{Empirical validation that semantic entropy predicts teacher error. Ground-truth labels are obtained from Qwen2.5-72B-Instruct on the 16{,}330 SURE-Math training problems. High SE reliably identifies samples where the teacher answers incorrectly, justifying the uncertainty-based weighting in UOPD.}
+\label{fig:se_validation}
+\end{figure}
+
 \paragraph{Qualitative examples.}
 Table~\ref{tab:qualitative} shows representative examples where UOPD's uncertainty weighting helps. For low-SE prompts, the teacher provides consistent guidance and the student learns effectively. For high-SE prompts, the teacher produces contradictory answers; UOPD suppresses these samples, preventing the student from learning incorrect reasoning patterns.
 

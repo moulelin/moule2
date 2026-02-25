@@ -1,0 +1,9 @@
+{
+  "total_samples": 16330,
+  "overall_accuracy": 67.0974,
+  "auroc": 0.7949,
+  "correct_median_se": 0.0,
+  "correct_mean_se": 0.104,
+  "incorrect_median_se": 0.3545,
+  "incorrect_mean_se": 0.3905
+}

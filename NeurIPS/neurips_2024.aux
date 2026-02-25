@@ -1,5 +1,19 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \citation{zhao2026self}
@@ -18,10 +32,11 @@
 \newlabel{sec:method}{{3}{2}{Method}{section.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Offline Semantic Entropy Estimation}{2}{subsection.3.1}\protected@file@percent }
 \newlabel{sec:offline_se}{{3.1}{2}{Offline Semantic Entropy Estimation}{subsection.3.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Overview of UOPD. Phase~1 estimates teacher reliability offline by computing semantic entropy over meaning clusters rather than surface-form token distributions. Phase~2 performs on-policy distillation whose per-sample loss is calibrated by the precomputed uncertainty weights. Because the two phases are fully decoupled, uncertainty estimation introduces zero additional overhead during training.}}{3}{figure.1}\protected@file@percent }
-\newlabel{fig:uopd}{{1}{3}{Overview of UOPD. Phase~1 estimates teacher reliability offline by computing semantic entropy over meaning clusters rather than surface-form token distributions. Phase~2 performs on-policy distillation whose per-sample loss is calibrated by the precomputed uncertainty weights. Because the two phases are fully decoupled, uncertainty estimation introduces zero additional overhead during training}{figure.1}{}}
-\newlabel{eq:se}{{5}{3}{Offline Semantic Entropy Estimation}{equation.5}{}}
-\newlabel{eq:weight}{{6}{3}{Offline Semantic Entropy Estimation}{equation.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Overview of UOPD. Phase\nobreakspace  {}1 estimates teacher reliability offline by computing semantic entropy over meaning clusters rather than surface-form token distributions. Phase\nobreakspace  {}2 performs on-policy distillation whose per-sample loss is calibrated by the precomputed uncertainty weights. Because the two phases are fully decoupled, uncertainty estimation introduces zero additional overhead during training.\relax }}{3}{figure.caption.2}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:uopd}{{1}{3}{Overview of UOPD. Phase~1 estimates teacher reliability offline by computing semantic entropy over meaning clusters rather than surface-form token distributions. Phase~2 performs on-policy distillation whose per-sample loss is calibrated by the precomputed uncertainty weights. Because the two phases are fully decoupled, uncertainty estimation introduces zero additional overhead during training.\relax }{figure.caption.2}{}}
+\newlabel{eq:se}{{5}{3}{Offline Semantic Entropy Estimation}{equation.3.5}{}}
+\newlabel{eq:weight}{{6}{3}{Offline Semantic Entropy Estimation}{equation.3.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Uncertainty-Calibrated On-Policy Distillation}{3}{subsection.3.2}\protected@file@percent }
 \newlabel{sec:distill}{{3.2}{3}{Uncertainty-Calibrated On-Policy Distillation}{subsection.3.2}{}}
 \citation{yuan2024scalequest}
@@ -31,7 +46,7 @@
 \citation{he2024olympiadbench}
 \citation{amobench}
 \citation{xu2024wizardlm}
-\newlabel{eq:uopd_loss}{{8}{4}{Uncertainty-Calibrated On-Policy Distillation}{equation.8}{}}
+\newlabel{eq:uopd_loss}{{8}{4}{Uncertainty-Calibrated On-Policy Distillation}{equation.3.8}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Overall Training Objective}{4}{subsection.3.3}\protected@file@percent }
 \newlabel{sec:objective}{{3.3}{4}{Overall Training Objective}{subsection.3.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Experiments}{4}{section.4}\protected@file@percent }
@@ -42,48 +57,53 @@
 \citation{qwen3}
 \citation{agarwal2024policy}
 \citation{zhao2026self}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Uncertainty-Calibrated On-Policy Distillation (UOPD)}}{5}{algorithm.1}\protected@file@percent }
-\newlabel{alg:uopd}{{1}{5}{Overall Training Objective}{algorithm.1}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Uncertainty-Calibrated On-Policy Distillation (UOPD)\relax }}{5}{algorithm.1}\protected@file@percent }
+\newlabel{alg:uopd}{{1}{5}{Uncertainty-Calibrated On-Policy Distillation (UOPD)\relax }{algorithm.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Experimental Setup}{5}{subsection.4.2}\protected@file@percent }
 \newlabel{sec:setup}{{4.2}{5}{Experimental Setup}{subsection.4.2}{}}
-\@writefile{toc}{\contentsline {paragraph}{Models.}{5}{section*.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Training details.}{5}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Models.}{5}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Training details.}{5}{section*.4}\protected@file@percent }
 \citation{hendrycks2021math}
 \citation{amobench}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Main results on mathematical reasoning benchmarks. We report pass@1 (greedy) and avg@16 accuracy (\%). Best student-sized results are \textbf  {bolded}.}}{6}{table.1}\protected@file@percent }
-\newlabel{tab:main_results}{{1}{6}{Main results on mathematical reasoning benchmarks. We report pass@1 (greedy) and avg@16 accuracy (\%). Best student-sized results are \textbf {bolded}}{table.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Main results on mathematical reasoning benchmarks. We report pass@1 (greedy) and avg@16 accuracy (\%). Best student-sized results are \textbf  {bolded}.\relax }}{6}{table.caption.7}\protected@file@percent }
+\newlabel{tab:main_results}{{1}{6}{Main results on mathematical reasoning benchmarks. We report pass@1 (greedy) and avg@16 accuracy (\%). Best student-sized results are \textbf {bolded}.\relax }{table.caption.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Evaluation}{6}{subsection.4.3}\protected@file@percent }
 \newlabel{sec:evaluation}{{4.3}{6}{Evaluation}{subsection.4.3}{}}
-\@writefile{toc}{\contentsline {paragraph}{Benchmarks.}{6}{section*.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Metrics.}{6}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Benchmarks.}{6}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Metrics.}{6}{section*.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Main Results}{6}{subsection.4.4}\protected@file@percent }
 \newlabel{sec:main_results}{{4.4}{6}{Main Results}{subsection.4.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Ablation Studies}{6}{subsection.4.5}\protected@file@percent }
 \newlabel{sec:ablation}{{4.5}{6}{Ablation Studies}{subsection.4.5}{}}
-\@writefile{toc}{\contentsline {paragraph}{Effect of uncertainty weighting.}{6}{section*.5}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Ablation on uncertainty weighting strategies.}}{6}{table.2}\protected@file@percent }
-\newlabel{tab:ablation_weighting}{{2}{6}{Ablation on uncertainty weighting strategies}{table.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Effect of uncertainty weighting.}{6}{section*.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Ablation on uncertainty weighting strategies.\relax }}{6}{table.caption.9}\protected@file@percent }
+\newlabel{tab:ablation_weighting}{{2}{6}{Ablation on uncertainty weighting strategies.\relax }{table.caption.9}{}}
 \citation{hinton2015distilling}
 \citation{sanh2019distilbert}
 \citation{kim2016sequence}
 \citation{agarwal2024policy}
 \citation{TODO}
 \citation{TODO}
-\citation{rafailov2023direct}
-\citation{TODO}
-\@writefile{toc}{\contentsline {paragraph}{Number of SE samples $N$.}{7}{section*.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Top-$k$ logit truncation.}{7}{section*.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Number of student rollouts $K$.}{7}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Number of SE samples $N$.}{7}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Top-$k$ logit truncation.}{7}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Number of student rollouts $K$.}{7}{section*.12}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Analysis}{7}{subsection.4.6}\protected@file@percent }
 \newlabel{sec:analysis}{{4.6}{7}{Analysis}{subsection.4.6}{}}
-\@writefile{toc}{\contentsline {paragraph}{Convergence speed.}{7}{section*.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Semantic entropy distribution.}{7}{section*.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Qualitative examples.}{7}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Convergence speed.}{7}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Semantic entropy distribution.}{7}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Validating SE as a teacher error signal.}{7}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Qualitative examples.}{7}{section*.17}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {5}Related Work}{7}{section.5}\protected@file@percent }
 \newlabel{sec:related}{{5}{7}{Related Work}{section.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Knowledge Distillation for Language Models}{7}{subsection.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Learning from Verification Feedback}{7}{subsection.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Contrastive Learning for Language Models}{7}{subsection.5.3}\protected@file@percent }
+\citation{rafailov2023direct}
+\citation{TODO}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Empirical validation that semantic entropy predicts teacher error. Ground-truth labels are obtained from Qwen2.5-72B-Instruct on the 16{,}330 SURE-Math training problems. High SE reliably identifies samples where the teacher answers incorrectly, justifying the uncertainty-based weighting in UOPD.\relax }}{8}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:se_validation}{{2}{8}{Empirical validation that semantic entropy predicts teacher error. Ground-truth labels are obtained from Qwen2.5-72B-Instruct on the 16{,}330 SURE-Math training problems. High SE reliably identifies samples where the teacher answers incorrectly, justifying the uncertainty-based weighting in UOPD.\relax }{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Learning from Verification Feedback}{8}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Contrastive Learning for Language Models}{8}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{8}{section.6}\protected@file@percent }
+\newlabel{sec:conclusion}{{6}{8}{Conclusion}{section.6}{}}
 \bibstyle{unsrt}
 \bibdata{references}
 \bibcite{zhao2026self}{{1}{}{{}}{{}}}
@@ -98,31 +118,28 @@
 \bibcite{hendrycks2021math}{{10}{}{{}}{{}}}
 \bibcite{gao2024omnimath}{{11}{}{{}}{{}}}
 \bibcite{he2024olympiadbench}{{12}{}{{}}{{}}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{8}{section.6}\protected@file@percent }
-\newlabel{sec:conclusion}{{6}{8}{Conclusion}{section.6}{}}
-\@writefile{toc}{\contentsline {paragraph}{Limitations and Future Work.}{8}{section*.12}\protected@file@percent }
 \bibcite{amobench}{{13}{}{{}}{{}}}
 \bibcite{xu2024wizardlm}{{14}{}{{}}{{}}}
 \bibcite{sanh2019distilbert}{{15}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {paragraph}{Limitations and Future Work.}{9}{section*.18}\protected@file@percent }
 \bibcite{kim2016sequence}{{16}{}{{}}{{}}}
 \bibcite{rafailov2023direct}{{17}{}{{}}{{}}}
 \citation{moritz2018ray}
 \citation{kwon2023vllm}
-\@writefile{toc}{\contentsline {section}{\numberline {A}Implementation Details}{9}{appendix.A}\protected@file@percent }
-\newlabel{app:implementation}{{A}{9}{Implementation Details}{appendix.A}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Distributed Training Architecture}{9}{subsection.A.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Phase 1: Offline semantic entropy computation.}{9}{section*.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Phase 2: On-policy distillation.}{9}{section*.15}\protected@file@percent }
-\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\@writefile{toc}{\contentsline {section}{\numberline {A}Implementation Details}{10}{appendix.A}\protected@file@percent }
+\newlabel{app:implementation}{{A}{10}{Implementation Details}{appendix.A}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Distributed Training Architecture}{10}{subsection.A.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Phase 1: Offline semantic entropy computation.}{10}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Phase 2: On-policy distillation.}{10}{section*.21}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Memory Optimization Techniques}{10}{subsection.A.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Top-K Teacher Logits.}{10}{section*.16}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Token-by-token Distillation Loss.}{10}{section*.17}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.3}Communication Backend Selection}{10}{subsection.A.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B}Additional Experimental Results}{10}{appendix.B}\protected@file@percent }
-\newlabel{app:results}{{B}{10}{Additional Experimental Results}{appendix.B}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Hyperparameter Sensitivity}{10}{subsection.B.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Evaluation Protocol Details}{10}{subsection.B.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.3}Computational Cost}{10}{subsection.B.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {C}Reproducibility}{10}{appendix.C}\protected@file@percent }
-\newlabel{app:reproducibility}{{C}{10}{Reproducibility}{appendix.C}{}}
-\gdef \@abspage@last{10}
+\@writefile{toc}{\contentsline {paragraph}{Top-K Teacher Logits.}{10}{section*.22}\protected@file@percent }
+\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\@writefile{toc}{\contentsline {paragraph}{Token-by-token Distillation Loss.}{11}{section*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.3}Communication Backend Selection}{11}{subsection.A.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}Additional Experimental Results}{11}{appendix.B}\protected@file@percent }
+\newlabel{app:results}{{B}{11}{Additional Experimental Results}{appendix.B}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Hyperparameter Sensitivity}{11}{subsection.B.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Evaluation Protocol Details}{11}{subsection.B.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.3}Computational Cost}{11}{subsection.B.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {C}Reproducibility}{11}{appendix.C}\protected@file@percent }
+\newlabel{app:reproducibility}{{C}{11}{Reproducibility}{appendix.C}{}}
