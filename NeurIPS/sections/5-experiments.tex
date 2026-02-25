@@ -34,7 +34,7 @@ We train with the on-policy distillation objective described in Eq.~\ref{eq:uopd
 For each student--teacher pair, we compare UOPD against the following methods.
 (1)~\textbf{Base}: the student model without any distillation (lower bound).
 (2)~\textbf{Teacher}: the teacher model (upper bound).
-(3)~\textbf{Standard OPD}: on-policy distillation with uniform weighting ($w_{\text{se}} = 1$ for all prompts), following \citet{agarwal2024policy}.
+(3)~\textbf{Standard OPD}: on-policy distillation with uniform weighting ($w_{\text{se}} = 1$ for all prompts), following \citep{agarwal2024policy}.
 (4)~\textbf{GRPO}: Group Relative Policy Optimization, which trains the student using reward signals from correct and incorrect rollouts.
 (5)~\textbf{Self-Distilled Reasoner}: on-policy distillation with ground-truth chain-of-thought injected into the teacher's system prompt \citep{zhao2026self}.
 

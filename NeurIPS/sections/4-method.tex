@@ -3,7 +3,14 @@
 
 We propose UOPD, a two-phase framework for uncertainty-calibrated on-policy distillation. In the first phase, we estimate the teacher's epistemic uncertainty for each training prompt by computing semantic entropy over multiple teacher rollouts. This computation is performed entirely offline before training begins, producing a per-prompt uncertainty weight that is stored alongside the training data. In the second phase, the student is trained on-policy with token-level distillation from the teacher, where each sample's contribution to the loss is calibrated by its precomputed uncertainty weight.
 
-The key advantage of this design is the separation of uncertainty estimation from training. Because semantic entropy is computed once before the training loop, UOPD introduces zero additional overhead during training while still enabling uncertainty-aware distillation. We describe each component in detail below.
+The key advantage of this design is the separation of uncertainty estimation from training. Because semantic entropy is computed once before the training loop, UOPD introduces zero additional overhead during training while still enabling uncertainty-aware distillation. Figure~\ref{fig:uopd} illustrates the overall pipeline. We describe each component in detail below.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{images/UOPD.pdf}
+    \caption{Overview of UOPD. Phase~1 estimates teacher reliability offline by computing semantic entropy over meaning clusters rather than surface-form token distributions. Phase~2 performs on-policy distillation whose per-sample loss is calibrated by the precomputed uncertainty weights. Because the two phases are fully decoupled, uncertainty estimation introduces zero additional overhead during training.}
+    \label{fig:uopd}
+\end{figure}
 
 \subsection{Offline Semantic Entropy Estimation}
 \label{sec:offline_se}
@@ -61,7 +68,7 @@ The full training objective averages over all prompts and their $K$ on-policy ro
 
 At each training step, the updated student weights are synchronized back to the vLLM generation engines, ensuring that the next round of rollouts reflects the latest policy. This on-policy loop continues until convergence.
 
-Algorithm~\ref{alg:uopd} summarizes the complete UOPD pipeline.
+Algorithm~\ref{alg:uopd} summarizes the complete UOPD pipeline. Phase~1 (lines 2--7) iterates over all training prompts, sampling $N$ teacher responses per prompt, clustering them into semantic equivalence classes, and storing the resulting uncertainty weight $w_{\text{se}}$. Phase~2 (lines 9--14) performs the on-policy training loop: at each step, the student generates $K$ rollouts, queries the teacher for top-$k$ logits at every token position, and updates its parameters with the uncertainty-weighted distillation loss, after which the refreshed weights are synchronized to the generation engines for the next iteration.
 
 \begin{algorithm}[t]
 \caption{Uncertainty-Calibrated On-Policy Distillation (UOPD)}
