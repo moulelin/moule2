@@ -14,6 +14,6 @@ export CUDA_VISIBLE_DEVICES=0,1
 SCRIPT_DIR=/home/x-qlan1/code/moule2/teacher_uncertainty_each-sample/pdf_extract
 
 python3 "$SCRIPT_DIR/pdf_to_markdown.py" \
-    --input "$SCRIPT_DIR/math.pdf" \
+    --input "$SCRIPT_DIR/gaokao_merged.pdf" \
     --output_dir "$SCRIPT_DIR" \
     --force_ocr
