@@ -1,0 +1,613 @@
++ mkdir -p /home/x-qlan1/code/moule2/scripts/eval_base/logs
++ bash /home/x-qlan1/code/moule2/scripts/eval_base/sh/eval_amo_bench.sh
++ source /anvil/scratch/x-qlan1/moule/train-env/bin/activate
+++ '[' -z '' ']'
+++ '[' -n x ']'
+++ SCRIPT_PATH=/anvil/scratch/x-qlan1/moule/train-env/bin/activate
+++ '[' /anvil/scratch/x-qlan1/moule/train-env/bin/activate = /home/x-qlan1/code/moule2/scripts/eval_base/sh/eval_amo_bench.sh ']'
+++ deactivate nondestructive
+++ unset -f pydoc
+++ '[' -z '' ']'
+++ '[' -z '' ']'
+++ hash -r
+++ '[' -z '' ']'
+++ unset VIRTUAL_ENV
+++ unset VIRTUAL_ENV_PROMPT
+++ '[' '!' nondestructive = nondestructive ']'
+++ VIRTUAL_ENV=/anvil/scratch/x-qlan1/moule/train-env
+++ '[' linux-gnu = cygwin ']'
+++ '[' linux-gnu = msys ']'
+++ export VIRTUAL_ENV
+++ '[' -z '' ']'
+++ unset SCRIPT_PATH
+++ _OLD_VIRTUAL_PATH=/anvil/scratch/x-qlan1/moule/train-env/bin:/home/x-qlan1/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/x-qlan1/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/x-qlan1/.vscode-server/cli/servers/Stable-072586267e68ece9a47aa43f8c108e0dcbf44622/server/bin/remote-cli:/home/x-qlan1/miniconda3/bin:/home/x-qlan1/miniconda3/condabin:/apps/anvil/external/apps/xalt2/xalt/xalt/bin:/apps/spack/anvil/apps/openmpi/4.0.6-gcc-11.2.0-3navcwb/bin:/apps/spack/anvil/apps/numactl/2.0.14-gcc-11.2.0-wrjotmv/bin:/apps/spack/anvil/apps/libfabric/1.12.0-gcc-8.4.1-xj6lmd4/bin:/apps/spack/anvil/apps/gcc/11.2.0-gcc-8.4.1-qjtdkvs/bin:/home/x-qlan1/bin:/home/x-qlan1/.local/bin:/usr/libexec/gsissh/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/usr/site/rcac/sbin:/usr/site/rcac/bin:/usr/site/rcac/scripts:/opt/thinlinc/bin:/opt/thinlinc/sbin:/home/x-qlan1/.vscode-server/extensions/ms-python.debugpy-2025.18.0-linux-x64/bundled/scripts/noConfigScripts
+++ PATH=/anvil/scratch/x-qlan1/moule/train-env/bin:/anvil/scratch/x-qlan1/moule/train-env/bin:/home/x-qlan1/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/x-qlan1/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/x-qlan1/.vscode-server/cli/servers/Stable-072586267e68ece9a47aa43f8c108e0dcbf44622/server/bin/remote-cli:/home/x-qlan1/miniconda3/bin:/home/x-qlan1/miniconda3/condabin:/apps/anvil/external/apps/xalt2/xalt/xalt/bin:/apps/spack/anvil/apps/openmpi/4.0.6-gcc-11.2.0-3navcwb/bin:/apps/spack/anvil/apps/numactl/2.0.14-gcc-11.2.0-wrjotmv/bin:/apps/spack/anvil/apps/libfabric/1.12.0-gcc-8.4.1-xj6lmd4/bin:/apps/spack/anvil/apps/gcc/11.2.0-gcc-8.4.1-qjtdkvs/bin:/home/x-qlan1/bin:/home/x-qlan1/.local/bin:/usr/libexec/gsissh/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/usr/site/rcac/sbin:/usr/site/rcac/bin:/usr/site/rcac/scripts:/opt/thinlinc/bin:/opt/thinlinc/sbin:/home/x-qlan1/.vscode-server/extensions/ms-python.debugpy-2025.18.0-linux-x64/bundled/scripts/noConfigScripts
+++ export PATH
+++ '[' x '!=' x ']'
++++ basename /anvil/scratch/x-qlan1/moule/train-env
+++ VIRTUAL_ENV_PROMPT=train-env
+++ export VIRTUAL_ENV_PROMPT
+++ '[' -z '' ']'
+++ '[' -z '' ']'
+++ _OLD_VIRTUAL_PS1=
+++ PS1='(train-env) '
+++ export PS1
+++ alias pydoc
+++ true
+++ hash -r
++ SCRATCH=/anvil/scratch/x-qlan1/moule2
++ SCRIPT_DIR=/home/x-qlan1/code/moule2/scripts/eval_base/py
++ export HF_HOME=/anvil/scratch/x-qlan1/moule2/hf_cache
++ HF_HOME=/anvil/scratch/x-qlan1/moule2/hf_cache
++ export HF_DATASETS_CACHE=/anvil/scratch/x-qlan1/moule2/hf_cache/datasets
++ HF_DATASETS_CACHE=/anvil/scratch/x-qlan1/moule2/hf_cache/datasets
++ export TRANSFORMERS_CACHE=/anvil/scratch/x-qlan1/moule2/hf_cache
++ TRANSFORMERS_CACHE=/anvil/scratch/x-qlan1/moule2/hf_cache
++ export TORCH_HOME=/anvil/scratch/x-qlan1/moule2/torch_cache
++ TORCH_HOME=/anvil/scratch/x-qlan1/moule2/torch_cache
++ export LD_PRELOAD=/home/x-qlan1/miniconda3/lib/libstdc++.so.6
++ LD_PRELOAD=/home/x-qlan1/miniconda3/lib/libstdc++.so.6
++ OUTPUT_DIR=/anvil/scratch/x-qlan1/moule2/eval_results/base
++ mkdir -p /anvil/scratch/x-qlan1/moule2/eval_results/base
++ wait
++ run_model 2,3 Qwen/Qwen3-4B
++ local GPUS=2,3
++ local MODEL=Qwen/Qwen3-4B
++ echo ============================================================
++ echo '[2,3] Evaluating: Qwen/Qwen3-4B on AMO-Bench'
++ echo ============================================================
++ CUDA_VISIBLE_DEVICES=2,3
++ python3 /home/x-qlan1/code/moule2/scripts/eval_base/py/eval_amo_bench.py --model Qwen/Qwen3-4B --mode greedy --max_tokens 38000 --max_model_len 40960 --tp 2 --gpu_memory_utilization 0.9 --output_dir /anvil/scratch/x-qlan1/moule2/eval_results/base
++ run_model 0,1 Qwen/Qwen3-1.7B
++ local GPUS=0,1
++ local MODEL=Qwen/Qwen3-1.7B
++ echo ============================================================
++ echo '[0,1] Evaluating: Qwen/Qwen3-1.7B on AMO-Bench'
++ echo ============================================================
++ CUDA_VISIBLE_DEVICES=0,1
++ python3 /home/x-qlan1/code/moule2/scripts/eval_base/py/eval_amo_bench.py --model Qwen/Qwen3-1.7B --mode greedy --max_tokens 38000 --max_model_len 40960 --tp 2 --gpu_memory_utilization 0.9 --output_dir /anvil/scratch/x-qlan1/moule2/eval_results/base
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+`torch_dtype` is deprecated! Use `dtype` instead!
+`torch_dtype` is deprecated! Use `dtype` instead!
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+W0226 20:28:30.970000 1204003 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W0226 20:28:30.970000 1204003 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+W0226 20:28:30.971000 1204000 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W0226 20:28:30.971000 1204000 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+W0226 20:28:30.971000 1204001 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W0226 20:28:30.971000 1204001 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+W0226 20:28:30.972000 1204002 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W0226 20:28:30.972000 1204002 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m Process EngineCore_DP0:
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m   File "/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m     self.run()
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m   File "/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 108, in run
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m     self._target(*self._args, **self._kwargs)
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 712, in run_engine_core
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m     raise e
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 699, in run_engine_core
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m     engine_core = EngineCoreProc(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 498, in __init__
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m     super().__init__(vllm_config, executor_class, log_stats,
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 83, in __init__
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m     self.model_executor = executor_class(vllm_config)
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/executor/executor_base.py", line 54, in __init__
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m     self._init_executor()
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 106, in _init_executor
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m     self.workers = WorkerProc.wait_for_ready(unready_workers)
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 509, in wait_for_ready
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m     raise e from None
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m Exception: WorkerProc initialization failed due to an exception in a background process. See stack trace for root cause.
+[1;36m(Worker_TP0 pid=1204000)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/x-qlan1/code/moule2/scripts/eval_base/py/eval_amo_bench.py", line 202, in <module>
+    evaluate(args)
+  File "/home/x-qlan1/code/moule2/scripts/eval_base/py/eval_amo_bench.py", line 61, in evaluate
+    llm = LLM(
+          ^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/entrypoints/llm.py", line 297, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 177, in from_engine_args
+    return cls(vllm_config=vllm_config,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 114, in __init__
+    self.engine_core = EngineCoreClient.make_client(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 80, in make_client
+    return SyncMPClient(vllm_config, executor_class, log_stats)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 602, in __init__
+    super().__init__(
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 448, in __init__
+    with launch_core_engines(vllm_config, executor_class,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 732, in launch_core_engines
+    wait_for_engine_startup(
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 785, in wait_for_engine_startup
+    raise RuntimeError("Engine core initialization failed. "
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+[1;36m(Worker_TP0 pid=1204000)[0;0m Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:05<00:10,  5.36s/it]
++ CUDA_VISIBLE_DEVICES=0,1
++ python3 /home/x-qlan1/code/moule2/scripts/eval_base/py/eval_amo_bench.py --model Qwen/Qwen3-1.7B --mode average --n_samples 16 --temperature 1.2 --top_p 0.95 --max_tokens 38000 --max_model_len 40960 --tp 2 --gpu_memory_utilization 0.9 --output_dir /anvil/scratch/x-qlan1/moule2/eval_results/base
+[1;36m(Worker_TP0 pid=1204000)[0;0m Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:05<00:02,  2.36s/it]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[1;36m(Worker_TP0 pid=1204000)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:11<00:00,  3.94s/it]
+[1;36m(Worker_TP0 pid=1204000)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:11<00:00,  3.81s/it]
+[1;36m(Worker_TP0 pid=1204000)[0;0m 
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+`torch_dtype` is deprecated! Use `dtype` instead!
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[1;36m(Worker_TP1 pid=1204002)[0;0m 2026-02-26 20:29:29,538 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+[1;36m(Worker_TP0 pid=1204000)[0;0m 2026-02-26 20:29:29,539 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+[1;36m(Worker_TP0 pid=1204000)[0;0m 2026-02-26 20:29:29,695 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
+[1;36m(Worker_TP1 pid=1204002)[0;0m 2026-02-26 20:29:29,695 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
+[1;36m(Worker_TP0 pid=1204000)[0;0m Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/67 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   1%|▏         | 1/67 [00:00<00:10,  6.28it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   3%|▎         | 2/67 [00:00<00:10,  6.12it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   4%|▍         | 3/67 [00:00<00:09,  6.74it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   6%|▌         | 4/67 [00:00<00:08,  7.19it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   7%|▋         | 5/67 [00:00<00:08,  6.92it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   9%|▉         | 6/67 [00:00<00:08,  6.97it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  10%|█         | 7/67 [00:01<00:08,  7.26it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  12%|█▏        | 8/67 [00:01<00:08,  6.91it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  13%|█▎        | 9/67 [00:01<00:08,  6.99it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  15%|█▍        | 10/67 [00:01<00:07,  7.13it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  16%|█▋        | 11/67 [00:01<00:08,  6.87it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  18%|█▊        | 12/67 [00:01<00:08,  6.86it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  19%|█▉        | 13/67 [00:01<00:08,  6.56it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  21%|██        | 14/67 [00:02<00:08,  5.91it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  22%|██▏       | 15/67 [00:02<00:08,  5.83it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  24%|██▍       | 16/67 [00:02<00:08,  5.73it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  25%|██▌       | 17/67 [00:02<00:08,  5.64it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  27%|██▋       | 18/67 [00:02<00:08,  5.82it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  28%|██▊       | 19/67 [00:03<00:08,  5.68it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  30%|██▉       | 20/67 [00:03<00:07,  5.88it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  31%|███▏      | 21/67 [00:03<00:07,  6.20it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  33%|███▎      | 22/67 [00:03<00:07,  6.31it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  34%|███▍      | 23/67 [00:03<00:07,  6.24it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  36%|███▌      | 24/67 [00:03<00:07,  6.10it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  37%|███▋      | 25/67 [00:03<00:07,  5.94it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  39%|███▉      | 26/67 [00:04<00:06,  5.91it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  40%|████      | 27/67 [00:04<00:06,  5.79it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  42%|████▏     | 28/67 [00:04<00:06,  5.89it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  43%|████▎     | 29/67 [00:04<00:06,  5.67it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  45%|████▍     | 30/67 [00:04<00:06,  5.85it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  46%|████▋     | 31/67 [00:04<00:06,  5.96it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  48%|████▊     | 32/67 [00:05<00:05,  5.98it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  49%|████▉     | 33/67 [00:05<00:06,  5.44it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|█████     | 34/67 [00:05<00:05,  5.51it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  52%|█████▏    | 35/67 [00:05<00:05,  5.34it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  54%|█████▎    | 36/67 [00:05<00:05,  5.65it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  55%|█████▌    | 37/67 [00:06<00:05,  5.87it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  57%|█████▋    | 38/67 [00:06<00:05,  5.66it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  58%|█████▊    | 39/67 [00:06<00:04,  5.65it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  60%|█████▉    | 40/67 [00:06<00:04,  5.89it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  61%|██████    | 41/67 [00:06<00:04,  5.59it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  63%|██████▎   | 42/67 [00:06<00:04,  5.61it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  64%|██████▍   | 43/67 [00:07<00:04,  5.40it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  66%|██████▌   | 44/67 [00:07<00:04,  5.31it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  67%|██████▋   | 45/67 [00:07<00:04,  5.36it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  69%|██████▊   | 46/67 [00:07<00:03,  5.46it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  70%|███████   | 47/67 [00:07<00:03,  5.46it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  72%|███████▏  | 48/67 [00:08<00:03,  6.13it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  73%|███████▎  | 49/67 [00:08<00:03,  5.63it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  75%|███████▍  | 50/67 [00:08<00:02,  6.13it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  76%|███████▌  | 51/67 [00:08<00:02,  5.99it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  78%|███████▊  | 52/67 [00:08<00:02,  5.46it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  79%|███████▉  | 53/67 [00:08<00:02,  5.91it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  81%|████████  | 54/67 [00:09<00:02,  5.85it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  82%|████████▏ | 55/67 [00:09<00:02,  5.92it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  84%|████████▎ | 56/67 [00:09<00:02,  5.34it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  85%|████████▌ | 57/67 [00:09<00:01,  5.92it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  87%|████████▋ | 58/67 [00:09<00:01,  5.95it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  88%|████████▊ | 59/67 [00:09<00:01,  6.01it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  90%|████████▉ | 60/67 [00:10<00:01,  5.65it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  91%|█████████ | 61/67 [00:10<00:01,  5.77it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  93%|█████████▎| 62/67 [00:10<00:00,  5.49it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  94%|█████████▍| 63/67 [00:10<00:00,  5.45it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  96%|█████████▌| 64/67 [00:10<00:00,  5.25it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  97%|█████████▋| 65/67 [00:11<00:00,  5.88it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  99%|█████████▊| 66/67 [00:11<00:00,  5.99it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 67/67 [00:11<00:00,  6.19it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 67/67 [00:11<00:00,  5.92it/s]
+[1;36m(Worker_TP0 pid=1204000)[0;0m Capturing CUDA graphs (decode, FULL):   0%|          | 0/67 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   1%|▏         | 1/67 [00:00<00:12,  5.19it/s]Capturing CUDA graphs (decode, FULL):   3%|▎         | 2/67 [00:00<00:09,  6.96it/s]Capturing CUDA graphs (decode, FULL):   6%|▌         | 4/67 [00:01<00:19,  3.30it/s]Capturing CUDA graphs (decode, FULL):   7%|▋         | 5/67 [00:01<00:15,  4.12it/s]Capturing CUDA graphs (decode, FULL):   9%|▉         | 6/67 [00:01<00:12,  4.93it/s]Capturing CUDA graphs (decode, FULL):  10%|█         | 7/67 [00:01<00:10,  5.63it/s]Capturing CUDA graphs (decode, FULL):  13%|█▎        | 9/67 [00:01<00:08,  6.99it/s]Capturing CUDA graphs (decode, FULL):  16%|█▋        | 11/67 [00:01<00:07,  7.56it/s]Capturing CUDA graphs (decode, FULL):  18%|█▊        | 12/67 [00:01<00:07,  7.79it/s]Capturing CUDA graphs (decode, FULL):  19%|█▉        | 13/67 [00:02<00:07,  7.69it/s]Capturing CUDA graphs (decode, FULL):  21%|██        | 14/67 [00:02<00:06,  7.85it/s]Capturing CUDA graphs (decode, FULL):  22%|██▏       | 15/67 [00:02<00:06,  8.27it/s]Capturing CUDA graphs (decode, FULL):  24%|██▍       | 16/67 [00:02<00:06,  8.27it/s]Capturing CUDA graphs (decode, FULL):  25%|██▌       | 17/67 [00:02<00:06,  7.99it/s]Capturing CUDA graphs (decode, FULL):  27%|██▋       | 18/67 [00:02<00:06,  8.11it/s]Capturing CUDA graphs (decode, FULL):  28%|██▊       | 19/67 [00:02<00:05,  8.51it/s]Capturing CUDA graphs (decode, FULL):  30%|██▉       | 20/67 [00:02<00:05,  8.82it/s]Capturing CUDA graphs (decode, FULL):  33%|███▎      | 22/67 [00:03<00:04,  9.21it/s]Capturing CUDA graphs (decode, FULL):  34%|███▍      | 23/67 [00:03<00:04,  9.26it/s]Capturing CUDA graphs (decode, FULL):  36%|███▌      | 24/67 [00:03<00:04,  9.39it/s]Capturing CUDA graphs (decode, FULL):  37%|███▋      | 25/67 [00:03<00:04,  9.20it/s]Capturing CUDA graphs (decode, FULL):  40%|████      | 27/67 [00:03<00:04,  8.87it/s]Capturing CUDA graphs (decode, FULL):  42%|████▏     | 28/67 [00:03<00:04,  8.63it/s]Capturing CUDA graphs (decode, FULL):  43%|████▎     | 29/67 [00:03<00:04,  8.23it/s]Capturing CUDA graphs (decode, FULL):  45%|████▍     | 30/67 [00:04<00:04,  8.44it/s]Capturing CUDA graphs (decode, FULL):  46%|████▋     | 31/67 [00:04<00:04,  7.72it/s]Capturing CUDA graphs (decode, FULL):  48%|████▊     | 32/67 [00:04<00:04,  7.93it/s]Capturing CUDA graphs (decode, FULL):  51%|█████     | 34/67 [00:04<00:03,  8.98it/s]Capturing CUDA graphs (decode, FULL):  52%|█████▏    | 35/67 [00:04<00:03,  8.28it/s]Capturing CUDA graphs (decode, FULL):  54%|█████▎    | 36/67 [00:04<00:03,  8.35it/s]Capturing CUDA graphs (decode, FULL):  57%|█████▋    | 38/67 [00:05<00:03,  8.84it/s]Capturing CUDA graphs (decode, FULL):  58%|█████▊    | 39/67 [00:05<00:03,  8.84it/s]Capturing CUDA graphs (decode, FULL):  60%|█████▉    | 40/67 [00:05<00:03,  9.00it/s]Capturing CUDA graphs (decode, FULL):  61%|██████    | 41/67 [00:05<00:02,  9.05it/s]Capturing CUDA graphs (decode, FULL):  63%|██████▎   | 42/67 [00:05<00:02,  8.72it/s]Capturing CUDA graphs (decode, FULL):  64%|██████▍   | 43/67 [00:05<00:03,  7.92it/s]Capturing CUDA graphs (decode, FULL):  66%|██████▌   | 44/67 [00:05<00:03,  7.49it/s]Capturing CUDA graphs (decode, FULL):  67%|██████▋   | 45/67 [00:05<00:02,  7.39it/s]Capturing CUDA graphs (decode, FULL):  69%|██████▊   | 46/67 [00:06<00:02,  7.55it/s]Capturing CUDA graphs (decode, FULL):  70%|███████   | 47/67 [00:06<00:02,  7.54it/s]Capturing CUDA graphs (decode, FULL):  72%|███████▏  | 48/67 [00:06<00:02,  8.10it/s]Capturing CUDA graphs (decode, FULL):  73%|███████▎  | 49/67 [00:06<00:02,  8.57it/s]Capturing CUDA graphs (decode, FULL):  75%|███████▍  | 50/67 [00:06<00:01,  8.88it/s]Capturing CUDA graphs (decode, FULL):  76%|███████▌  | 51/67 [00:06<00:01,  8.93it/s]Capturing CUDA graphs (decode, FULL):  78%|███████▊  | 52/67 [00:06<00:01,  9.11it/s]Capturing CUDA graphs (decode, FULL):  79%|███████▉  | 53/67 [00:06<00:01,  8.31it/s]Capturing CUDA graphs (decode, FULL):  82%|████████▏ | 55/67 [00:07<00:01,  8.90it/s]Capturing CUDA graphs (decode, FULL):  84%|████████▎ | 56/67 [00:07<00:01,  8.99it/s]Capturing CUDA graphs (decode, FULL):  85%|████████▌ | 57/67 [00:07<00:01,  9.06it/s]Capturing CUDA graphs (decode, FULL):  87%|████████▋ | 58/67 [00:07<00:00,  9.07it/s]Capturing CUDA graphs (decode, FULL):  90%|████████▉ | 60/67 [00:07<00:00,  9.24it/s]Capturing CUDA graphs (decode, FULL):  91%|█████████ | 61/67 [00:07<00:00,  9.36it/s]Capturing CUDA graphs (decode, FULL):  93%|█████████▎| 62/67 [00:07<00:00,  9.31it/s]Capturing CUDA graphs (decode, FULL):  94%|█████████▍| 63/67 [00:07<00:00,  8.61it/s]Capturing CUDA graphs (decode, FULL):  96%|█████████▌| 64/67 [00:08<00:00,  8.54it/s]Capturing CUDA graphs (decode, FULL):  97%|█████████▋| 65/67 [00:08<00:00,  8.04it/s]Capturing CUDA graphs (decode, FULL):  99%|█████████▊| 66/67 [00:08<00:00,  7.65it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 67/67 [00:08<00:00,  7.25it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 67/67 [00:08<00:00,  7.89it/s]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Adding requests:   0%|          | 0/50 [00:00<?, ?it/s]Adding requests:  18%|█▊        | 9/50 [00:00<00:00, 81.71it/s]Adding requests:  38%|███▊      | 19/50 [00:00<00:00, 86.75it/s]Adding requests:  56%|█████▌    | 28/50 [00:00<00:00, 84.87it/s]Adding requests:  74%|███████▍  | 37/50 [00:00<00:00, 77.39it/s]Adding requests:  90%|█████████ | 45/50 [00:00<00:00, 75.32it/s]Adding requests: 100%|██████████| 50/50 [00:00<00:00, 78.21it/s]
+Processed prompts:   0%|          | 0/50 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+W0226 20:30:34.211000 1204454 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W0226 20:30:34.211000 1204454 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+W0226 20:30:34.212000 1204456 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W0226 20:30:34.212000 1204456 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m Process EngineCore_DP0:
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m   File "/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m     self.run()
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m   File "/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 108, in run
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m     self._target(*self._args, **self._kwargs)
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 712, in run_engine_core
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m     raise e
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 699, in run_engine_core
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m     engine_core = EngineCoreProc(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 498, in __init__
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m     super().__init__(vllm_config, executor_class, log_stats,
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 83, in __init__
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m     self.model_executor = executor_class(vllm_config)
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/executor/executor_base.py", line 54, in __init__
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m     self._init_executor()
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 106, in _init_executor
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m     self.workers = WorkerProc.wait_for_ready(unready_workers)
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 509, in wait_for_ready
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m     raise e from None
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m Exception: WorkerProc initialization failed due to an exception in a background process. See stack trace for root cause.
+Traceback (most recent call last):
+  File "/home/x-qlan1/code/moule2/scripts/eval_base/py/eval_amo_bench.py", line 202, in <module>
+    evaluate(args)
+  File "/home/x-qlan1/code/moule2/scripts/eval_base/py/eval_amo_bench.py", line 61, in evaluate
+    llm = LLM(
+          ^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/entrypoints/llm.py", line 297, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 177, in from_engine_args
+    return cls(vllm_config=vllm_config,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 114, in __init__
+    self.engine_core = EngineCoreClient.make_client(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 80, in make_client
+    return SyncMPClient(vllm_config, executor_class, log_stats)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 602, in __init__
+    super().__init__(
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 448, in __init__
+    with launch_core_engines(vllm_config, executor_class,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 732, in launch_core_engines
+    wait_for_engine_startup(
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 785, in wait_for_engine_startup
+    raise RuntimeError("Engine core initialization failed. "
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+Processed prompts:   2%|▏         | 1/50 [00:52<42:42, 52.29s/it, est. speed input: 25.34 toks/s, output: 57.12 toks/s]Processed prompts:   4%|▍         | 2/50 [01:36<37:53, 47.36s/it, est. speed input: 26.38 toks/s, output: 86.15 toks/s]Processed prompts:   6%|▌         | 3/50 [01:44<23:05, 29.48s/it, est. speed input: 36.17 toks/s, output: 134.08 toks/s]Processed prompts:   8%|▊         | 4/50 [01:46<14:17, 18.63s/it, est. speed input: 48.59 toks/s, output: 186.17 toks/s]Processed prompts:  10%|█         | 5/50 [02:14<16:26, 21.92s/it, est. speed input: 47.78 toks/s, output: 201.09 toks/s]Processed prompts:  12%|█▏        | 6/50 [02:26<13:45, 18.75s/it, est. speed input: 51.57 toks/s, output: 236.61 toks/s]Processed prompts:  14%|█▍        | 7/50 [02:41<12:31, 17.48s/it, est. speed input: 55.08 toks/s, output: 266.87 toks/s]Processed prompts:  16%|█▌        | 8/50 [03:47<22:57, 32.80s/it, est. speed input: 44.44 toks/s, output: 238.36 toks/s]Processed prompts:  18%|█▊        | 9/50 [03:55<17:10, 25.14s/it, est. speed input: 47.80 toks/s, output: 278.17 toks/s]Processed prompts:  20%|██        | 10/50 [03:56<11:43, 17.58s/it, est. speed input: 52.78 toks/s, output: 325.58 toks/s]Processed prompts:  22%|██▏       | 11/50 [04:15<11:42, 18.00s/it, est. speed input: 53.70 toks/s, output: 348.71 toks/s]Processed prompts:  24%|██▍       | 12/50 [04:37<12:09, 19.20s/it, est. speed input: 53.76 toks/s, output: 367.52 toks/s]Processed prompts:  26%|██▌       | 13/50 [05:22<16:41, 27.06s/it, est. speed input: 50.04 toks/s, output: 360.80 toks/s]Processed prompts:  28%|██▊       | 14/50 [06:32<24:06, 40.18s/it, est. speed input: 44.29 toks/s, output: 338.72 toks/s]Processed prompts:  30%|███       | 15/50 [06:46<18:52, 32.37s/it, est. speed input: 45.86 toks/s, output: 369.21 toks/s]Processed prompts:  32%|███▏      | 16/50 [06:52<13:44, 24.26s/it, est. speed input: 48.21 toks/s, output: 406.58 toks/s]Processed prompts:  34%|███▍      | 17/50 [07:24<14:36, 26.55s/it, est. speed input: 47.60 toks/s, output: 418.92 toks/s]Processed prompts:  36%|███▌      | 18/50 [08:06<16:44, 31.40s/it, est. speed input: 46.16 toks/s, output: 423.10 toks/s]Processed prompts:  38%|███▊      | 19/50 [08:30<14:59, 29.02s/it, est. speed input: 46.67 toks/s, output: 444.19 toks/s]Processed prompts:  40%|████      | 20/50 [08:45<12:26, 24.90s/it, est. speed input: 47.68 toks/s, output: 471.65 toks/s]Processed prompts:  42%|████▏     | 21/50 [09:05<11:19, 23.42s/it, est. speed input: 48.68 toks/s, output: 494.50 toks/s]Processed prompts:  44%|████▍     | 22/50 [09:39<12:19, 26.41s/it, est. speed input: 47.96 toks/s, output: 505.77 toks/s]Processed prompts:  46%|████▌     | 23/50 [09:40<08:30, 18.90s/it, est. speed input: 50.24 toks/s, output: 544.31 toks/s]Processed prompts:  48%|████▊     | 24/50 [09:53<07:22, 17.03s/it, est. speed input: 51.87 toks/s, output: 572.34 toks/s]Processed prompts:  50%|█████     | 25/50 [10:41<11:01, 26.45s/it, est. speed input: 50.26 toks/s, output: 568.45 toks/s]Processed prompts:  52%|█████▏    | 26/50 [12:13<18:28, 46.18s/it, est. speed input: 46.02 toks/s, output: 535.62 toks/s]Processed prompts:  54%|█████▍    | 27/50 [12:41<15:34, 40.63s/it, est. speed input: 46.22 toks/s, output: 554.68 toks/s]Processed prompts:  56%|█████▌    | 28/50 [12:50<11:23, 31.05s/it, est. speed input: 47.44 toks/s, output: 586.93 toks/s]Processed prompts:  58%|█████▊    | 29/50 [13:03<08:57, 25.60s/it, est. speed input: 48.15 toks/s, output: 615.74 toks/s]Processed prompts:  60%|██████    | 30/50 [16:54<29:05, 87.29s/it, est. speed input: 38.38 toks/s, output: 512.83 toks/s]Processed prompts:  76%|███████▌  | 38/50 [16:54<03:56, 19.72s/it, est. speed input: 48.74 toks/s, output: 812.47 toks/s]Processed prompts: 100%|██████████| 50/50 [16:54<00:00, 19.72s/it, est. speed input: 66.07 toks/s, output: 1261.98 toks/s]Processed prompts: 100%|██████████| 50/50 [16:54<00:00, 20.29s/it, est. speed input: 66.07 toks/s, output: 1261.98 toks/s]
++ CUDA_VISIBLE_DEVICES=2,3
++ python3 /home/x-qlan1/code/moule2/scripts/eval_base/py/eval_amo_bench.py --model Qwen/Qwen3-4B --mode average --n_samples 16 --temperature 1.2 --top_p 0.95 --max_tokens 38000 --max_model_len 40960 --tp 2 --gpu_memory_utilization 0.9 --output_dir /anvil/scratch/x-qlan1/moule2/eval_results/base
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+`torch_dtype` is deprecated! Use `dtype` instead!
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+W0226 20:48:27.986000 1208245 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W0226 20:48:27.986000 1208245 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+W0226 20:48:27.987000 1208244 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W0226 20:48:27.987000 1208244 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+[1;36m(Worker_TP0 pid=1208244)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+[1;36m(Worker_TP0 pid=1208244)[0;0m Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:03<00:07,  3.53s/it]
+[1;36m(Worker_TP0 pid=1208244)[0;0m Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:03<00:01,  1.55s/it]
+[1;36m(Worker_TP0 pid=1208244)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:07<00:00,  2.64s/it]
+[1;36m(Worker_TP0 pid=1208244)[0;0m Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:07<00:00,  2.54s/it]
+[1;36m(Worker_TP0 pid=1208244)[0;0m 
+[1;36m(Worker_TP0 pid=1208244)[0;0m 2026-02-26 20:49:12,427 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+[1;36m(Worker_TP1 pid=1208245)[0;0m 2026-02-26 20:49:12,429 - INFO - autotuner.py:256 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+[1;36m(Worker_TP0 pid=1208244)[0;0m 2026-02-26 20:49:12,582 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
+[1;36m(Worker_TP1 pid=1208245)[0;0m 2026-02-26 20:49:12,587 - INFO - autotuner.py:262 - flashinfer.jit: [Autotuner]: Autotuning process ends
+[1;36m(Worker_TP0 pid=1208244)[0;0m Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/67 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   1%|▏         | 1/67 [00:00<00:08,  8.23it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   4%|▍         | 3/67 [00:00<00:06, 10.42it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   7%|▋         | 5/67 [00:00<00:06,  9.97it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  10%|█         | 7/67 [00:00<00:05, 10.19it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  13%|█▎        | 9/67 [00:00<00:05,  9.93it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  16%|█▋        | 11/67 [00:01<00:05, 10.08it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  19%|█▉        | 13/67 [00:01<00:05, 10.21it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  22%|██▏       | 15/67 [00:01<00:05,  9.68it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  24%|██▍       | 16/67 [00:01<00:05,  9.73it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  25%|██▌       | 17/67 [00:01<00:05,  9.41it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  28%|██▊       | 19/67 [00:01<00:04,  9.65it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  30%|██▉       | 20/67 [00:02<00:04,  9.41it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  31%|███▏      | 21/67 [00:02<00:04,  9.52it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  33%|███▎      | 22/67 [00:02<00:04,  9.60it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  34%|███▍      | 23/67 [00:02<00:04,  9.12it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  36%|███▌      | 24/67 [00:02<00:04,  9.23it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  37%|███▋      | 25/67 [00:02<00:04,  9.04it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  39%|███▉      | 26/67 [00:02<00:04,  9.13it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  40%|████      | 27/67 [00:02<00:04,  9.15it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  42%|████▏     | 28/67 [00:02<00:04,  9.11it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  43%|████▎     | 29/67 [00:03<00:04,  8.71it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  45%|████▍     | 30/67 [00:03<00:04,  8.74it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  46%|████▋     | 31/67 [00:03<00:04,  8.76it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  48%|████▊     | 32/67 [00:03<00:03,  8.79it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  49%|████▉     | 33/67 [00:03<00:04,  8.47it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|█████     | 34/67 [00:03<00:03,  8.48it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  52%|█████▏    | 35/67 [00:03<00:03,  8.57it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  54%|█████▎    | 36/67 [00:03<00:03,  8.53it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  55%|█████▌    | 37/67 [00:03<00:03,  8.56it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  57%|█████▋    | 38/67 [00:04<00:03,  8.27it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  58%|█████▊    | 39/67 [00:04<00:03,  8.32it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  60%|█████▉    | 40/67 [00:04<00:03,  8.37it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  61%|██████    | 41/67 [00:04<00:03,  8.34it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  63%|██████▎   | 42/67 [00:04<00:02,  8.51it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  64%|██████▍   | 43/67 [00:04<00:02,  8.38it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  66%|██████▌   | 44/67 [00:04<00:02,  8.44it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  67%|██████▋   | 45/67 [00:04<00:02,  8.21it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  69%|██████▊   | 46/67 [00:05<00:02,  8.56it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  70%|███████   | 47/67 [00:05<00:02,  8.04it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  72%|███████▏  | 48/67 [00:05<00:02,  8.30it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  73%|███████▎  | 49/67 [00:05<00:02,  8.14it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  75%|███████▍  | 50/67 [00:05<00:02,  8.24it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  76%|███████▌  | 51/67 [00:05<00:01,  8.06it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  78%|███████▊  | 52/67 [00:05<00:01,  8.08it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  79%|███████▉  | 53/67 [00:05<00:01,  7.89it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  81%|████████  | 54/67 [00:06<00:01,  7.88it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  82%|████████▏ | 55/67 [00:06<00:01,  7.79it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  84%|████████▎ | 56/67 [00:06<00:01,  7.57it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  85%|████████▌ | 57/67 [00:06<00:01,  7.65it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  87%|████████▋ | 58/67 [00:06<00:01,  7.97it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  88%|████████▊ | 59/67 [00:06<00:01,  7.79it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  90%|████████▉ | 60/67 [00:06<00:00,  7.72it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  91%|█████████ | 61/67 [00:06<00:00,  7.99it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  93%|█████████▎| 62/67 [00:07<00:00,  7.84it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  94%|█████████▍| 63/67 [00:07<00:00,  8.00it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  96%|█████████▌| 64/67 [00:07<00:00,  8.10it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  97%|█████████▋| 65/67 [00:07<00:00,  8.48it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  99%|█████████▊| 66/67 [00:07<00:00,  8.68it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 67/67 [00:07<00:00,  8.54it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 67/67 [00:07<00:00,  8.72it/s]
+[1;36m(Worker_TP0 pid=1208244)[0;0m Capturing CUDA graphs (decode, FULL):   0%|          | 0/67 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   1%|▏         | 1/67 [00:00<00:07,  8.38it/s]Capturing CUDA graphs (decode, FULL):   4%|▍         | 3/67 [00:00<00:05, 11.52it/s]Capturing CUDA graphs (decode, FULL):   7%|▋         | 5/67 [00:00<00:05, 12.33it/s]Capturing CUDA graphs (decode, FULL):  10%|█         | 7/67 [00:00<00:04, 12.29it/s]Capturing CUDA graphs (decode, FULL):  13%|█▎        | 9/67 [00:00<00:04, 12.82it/s]Capturing CUDA graphs (decode, FULL):  16%|█▋        | 11/67 [00:00<00:04, 12.81it/s]Capturing CUDA graphs (decode, FULL):  19%|█▉        | 13/67 [00:01<00:04, 12.97it/s]Capturing CUDA graphs (decode, FULL):  22%|██▏       | 15/67 [00:01<00:03, 13.04it/s]Capturing CUDA graphs (decode, FULL):  25%|██▌       | 17/67 [00:01<00:03, 13.10it/s]Capturing CUDA graphs (decode, FULL):  28%|██▊       | 19/67 [00:01<00:03, 13.12it/s]Capturing CUDA graphs (decode, FULL):  31%|███▏      | 21/67 [00:01<00:03, 13.23it/s]Capturing CUDA graphs (decode, FULL):  34%|███▍      | 23/67 [00:01<00:03, 13.57it/s]Capturing CUDA graphs (decode, FULL):  37%|███▋      | 25/67 [00:01<00:03, 13.44it/s]Capturing CUDA graphs (decode, FULL):  40%|████      | 27/67 [00:02<00:03, 13.17it/s]Capturing CUDA graphs (decode, FULL):  43%|████▎     | 29/67 [00:02<00:02, 13.23it/s]Capturing CUDA graphs (decode, FULL):  46%|████▋     | 31/67 [00:02<00:02, 13.23it/s]Capturing CUDA graphs (decode, FULL):  49%|████▉     | 33/67 [00:02<00:02, 13.11it/s]Capturing CUDA graphs (decode, FULL):  52%|█████▏    | 35/67 [00:02<00:02, 13.17it/s]Capturing CUDA graphs (decode, FULL):  55%|█████▌    | 37/67 [00:02<00:02, 13.16it/s]Capturing CUDA graphs (decode, FULL):  58%|█████▊    | 39/67 [00:03<00:02, 13.10it/s]Capturing CUDA graphs (decode, FULL):  61%|██████    | 41/67 [00:03<00:01, 13.02it/s]Capturing CUDA graphs (decode, FULL):  64%|██████▍   | 43/67 [00:03<00:01, 12.99it/s]Capturing CUDA graphs (decode, FULL):  67%|██████▋   | 45/67 [00:03<00:01, 13.14it/s]Capturing CUDA graphs (decode, FULL):  70%|███████   | 47/67 [00:03<00:01, 13.21it/s]Capturing CUDA graphs (decode, FULL):  73%|███████▎  | 49/67 [00:03<00:01, 12.85it/s]Capturing CUDA graphs (decode, FULL):  76%|███████▌  | 51/67 [00:03<00:01, 12.94it/s]Capturing CUDA graphs (decode, FULL):  79%|███████▉  | 53/67 [00:04<00:01, 13.07it/s]Capturing CUDA graphs (decode, FULL):  82%|████████▏ | 55/67 [00:04<00:00, 13.12it/s]Capturing CUDA graphs (decode, FULL):  85%|████████▌ | 57/67 [00:04<00:00, 13.15it/s]Capturing CUDA graphs (decode, FULL):  88%|████████▊ | 59/67 [00:04<00:00, 13.13it/s]Capturing CUDA graphs (decode, FULL):  91%|█████████ | 61/67 [00:04<00:00, 13.32it/s]Capturing CUDA graphs (decode, FULL):  94%|█████████▍| 63/67 [00:04<00:00, 13.01it/s]Capturing CUDA graphs (decode, FULL):  97%|█████████▋| 65/67 [00:04<00:00, 13.20it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 67/67 [00:05<00:00, 13.06it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 67/67 [00:05<00:00, 13.03it/s]
+Adding requests:   0%|          | 0/50 [00:00<?, ?it/s]Adding requests:  20%|██        | 10/50 [00:00<00:00, 94.18it/s]Adding requests:  40%|████      | 20/50 [00:00<00:00, 82.61it/s]Adding requests:  58%|█████▊    | 29/50 [00:00<00:00, 82.12it/s]Adding requests:  76%|███████▌  | 38/50 [00:00<00:00, 82.20it/s]Adding requests:  94%|█████████▍| 47/50 [00:00<00:00, 79.61it/s]Adding requests: 100%|██████████| 50/50 [00:00<00:00, 81.79it/s]
+Processed prompts:   0%|          | 0/800 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts:   2%|▏         | 16/800 [13:28<11:00:39, 50.56s/it, est. speed input: 24.21 toks/s, output: 252.22 toks/s]Processed prompts:   4%|▍         | 32/800 [15:45<5:30:40, 25.83s/it, est. speed input: 40.38 toks/s, output: 538.25 toks/s] Processed prompts:   6%|▌         | 48/800 [16:22<3:09:12, 15.10s/it, est. speed input: 61.56 toks/s, output: 652.16 toks/s]Processed prompts:   8%|▊         | 64/800 [17:15<2:08:07, 10.44s/it, est. speed input: 77.95 toks/s, output: 913.76 toks/s]Processed prompts:  10%|█         | 80/800 [17:48<1:29:03,  7.42s/it, est. speed input: 94.24 toks/s, output: 1203.51 toks/s]Processed prompts:  12%|█▏        | 96/800 [22:16<2:04:11, 10.58s/it, est. speed input: 90.10 toks/s, output: 1217.95 toks/s]Processed prompts:  14%|█▍        | 112/800 [23:56<1:45:09,  9.17s/it, est. speed input: 99.07 toks/s, output: 1318.89 toks/s]Processed prompts:  16%|█▌        | 128/800 [26:34<1:45:23,  9.41s/it, est. speed input: 103.18 toks/s, output: 1374.46 toks/s]Processed prompts:  18%|█▊        | 144/800 [27:06<1:17:30,  7.09s/it, est. speed input: 113.14 toks/s, output: 1556.18 toks/s]Processed prompts:  20%|██        | 160/800 [30:24<1:33:03,  8.72s/it, est. speed input: 112.63 toks/s, output: 1598.72 toks/s]Processed prompts:  22%|██▏       | 176/800 [31:08<1:11:35,  6.88s/it, est. speed input: 120.89 toks/s, output: 1725.87 toks/s]Processed prompts:  24%|██▍       | 192/800 [39:07<2:20:55, 13.91s/it, est. speed input: 106.40 toks/s, output: 1523.59 toks/s]Processed prompts:  26%|██▌       | 208/800 [42:40<2:15:23, 13.72s/it, est. speed input: 106.70 toks/s, output: 1546.62 toks/s]Processed prompts:  28%|██▊       | 224/800 [43:06<1:36:40, 10.07s/it, est. speed input: 114.46 toks/s, output: 1687.92 toks/s]Processed prompts:  30%|███       | 240/800 [45:55<1:35:15, 10.21s/it, est. speed input: 115.54 toks/s, output: 1723.92 toks/s]Processed prompts:  32%|███▏      | 256/800 [46:30<1:10:40,  7.80s/it, est. speed input: 121.19 toks/s, output: 1760.58 toks/s]Processed prompts:  34%|███▍      | 272/800 [49:33<1:18:21,  8.91s/it, est. speed input: 120.22 toks/s, output: 1765.33 toks/s]Processed prompts:  36%|███▌      | 288/800 [50:08<58:39,  6.87s/it, est. speed input: 125.94 toks/s, output: 1802.09 toks/s]  Processed prompts:  38%|███▊      | 304/800 [52:15<59:32,  7.20s/it, est. speed input: 128.38 toks/s, output: 1859.84 toks/s]Processed prompts:  40%|████      | 320/800 [53:19<49:54,  6.24s/it, est. speed input: 132.22 toks/s, output: 1908.97 toks/s]Processed prompts:  42%|████▏     | 336/800 [55:08<49:36,  6.41s/it, est. speed input: 133.62 toks/s, output: 1903.45 toks/s]Processed prompts:  44%|████▍     | 352/800 [1:03:31<1:43:59, 13.93s/it, est. speed input: 121.20 toks/s, output: 1744.85 toks/s]Processed prompts:  46%|████▌     | 368/800 [1:04:12<1:15:36, 10.50s/it, est. speed input: 124.79 toks/s, output: 1813.29 toks/s]Processed prompts:  48%|████▊     | 384/800 [1:04:46<55:26,  8.00s/it, est. speed input: 128.45 toks/s, output: 1858.26 toks/s]  Processed prompts:  50%|█████     | 400/800 [1:08:14<1:03:14,  9.49s/it, est. speed input: 127.33 toks/s, output: 1866.85 toks/s]Processed prompts:  52%|█████▏    | 416/800 [1:09:31<51:48,  8.10s/it, est. speed input: 129.63 toks/s, output: 1941.15 toks/s]  Processed prompts:  54%|█████▍    | 432/800 [1:11:28<48:11,  7.86s/it, est. speed input: 131.44 toks/s, output: 1942.77 toks/s]Processed prompts:  56%|█████▌    | 448/800 [1:14:29<52:10,  8.89s/it, est. speed input: 130.54 toks/s, output: 1913.65 toks/s]Processed prompts:  58%|█████▊    | 464/800 [1:20:24<1:12:06, 12.88s/it, est. speed input: 125.05 toks/s, output: 1816.64 toks/s]Processed prompts:  60%|██████    | 480/800 [1:20:24<48:07,  9.02s/it, est. speed input: 128.88 toks/s, output: 1894.98 toks/s]  Processed prompts:  60%|██████    | 480/800 [1:20:39<48:07,  9.02s/it, est. speed input: 128.88 toks/s, output: 1894.98 toks/s]Processed prompts:  62%|██████▏   | 496/800 [1:21:00<35:26,  7.00s/it, est. speed input: 132.71 toks/s, output: 1951.99 toks/s]Processed prompts:  64%|██████▍   | 512/800 [1:22:15<30:13,  6.30s/it, est. speed input: 135.40 toks/s, output: 1988.83 toks/s][rank1]:[E226 22:14:57.322881078 ProcessGroupNCCL.cpp:2068] [PG ID 2 PG GUID 3 Rank 1] Process group watchdog thread terminated with exception: CUDA error: an illegal memory access was encountered
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+Exception raised from c10_cuda_check_implementation at /pytorch/c10/cuda/CUDAException.cpp:42 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x80 (0x14a58a521eb0 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x111c7 (0x14a5ec0c41c7 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libc10_cuda.so)
+frame #2: c10d::ProcessGroupNCCL::WorkNCCL::finishedGPUExecutionInternal() const + 0x50 (0x14a58b3d3640 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: c10d::ProcessGroupNCCL::WorkNCCL::isCompleted() + 0x68 (0x14a58b3e2e28 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: c10d::ProcessGroupNCCL::Watchdog::runLoop() + 0x978 (0x14a58b3e5f48 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: c10d::ProcessGroupNCCL::Watchdog::run() + 0xd2 (0x14a58b3e7ec2 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xdf0e6 (0x14a6094b90e6 in /home/x-qlan1/miniconda3/lib/libstdc++.so.6)
+frame #7: <unknown function> + 0x81ca (0x14a60917e1ca in /lib64/libpthread.so.0)
+frame #8: clone + 0x43 (0x14a6084468d3 in /lib64/libc.so.6)
+
+[rank0]:[E226 22:14:57.323795566 ProcessGroupNCCL.cpp:2068] [PG ID 2 PG GUID 3 Rank 0] Process group watchdog thread terminated with exception: CUDA error: an illegal memory access was encountered
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+Exception raised from c10_cuda_check_implementation at /pytorch/c10/cuda/CUDAException.cpp:42 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x80 (0x153318051eb0 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x111c7 (0x1533180e41c7 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libc10_cuda.so)
+frame #2: c10d::ProcessGroupNCCL::WorkNCCL::finishedGPUExecutionInternal() const + 0x50 (0x153318fa8640 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: c10d::ProcessGroupNCCL::WorkNCCL::isCompleted() + 0x68 (0x153318fb7e28 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: c10d::ProcessGroupNCCL::Watchdog::runLoop() + 0x978 (0x153318fbaf48 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: c10d::ProcessGroupNCCL::Watchdog::run() + 0xd2 (0x153318fbcec2 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xdf0e6 (0x153396f390e6 in /home/x-qlan1/miniconda3/lib/libstdc++.so.6)
+frame #7: <unknown function> + 0x81ca (0x153396c041ca in /lib64/libpthread.so.0)
+frame #8: clone + 0x43 (0x153395ecc8d3 in /lib64/libc.so.6)
+
+terminate called after throwing an instance of 'c10::DistBackendError'
+  what():  [PG ID 2 PG GUID 3 Rank 1] Process group watchdog thread terminated with exception: CUDA error: an illegal memory access was encountered
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+Exception raised from c10_cuda_check_implementation at /pytorch/c10/cuda/CUDAException.cpp:42 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x80 (0x14a58a521eb0 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x111c7 (0x14a5ec0c41c7 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libc10_cuda.so)
+frame #2: c10d::ProcessGroupNCCL::WorkNCCL::finishedGPUExecutionInternal() const + 0x50 (0x14a58b3d3640 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: c10d::ProcessGroupNCCL::WorkNCCL::isCompleted() + 0x68 (0x14a58b3e2e28 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: c10d::ProcessGroupNCCL::Watchdog::runLoop() + 0x978 (0x14a58b3e5f48 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: c10d::ProcessGroupNCCL::Watchdog::run() + 0xd2 (0x14a58b3e7ec2 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xdf0e6 (0x14a6094b90e6 in /home/x-qlan1/miniconda3/lib/libstdc++.so.6)
+frame #7: <unknown function> + 0x81ca (0x14a60917e1ca in /lib64/libpthread.so.0)
+frame #8: clone + 0x43 (0x14a6084468d3 in /lib64/libc.so.6)
+
+Exception raised from run at /pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:2074 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x80 (0x14a58a521eb0 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0xe1c1a1 (0x14a58b3bf1a1 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #2: <unknown function> + 0x9468e6 (0x14a58aee98e6 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: <unknown function> + 0xdf0e6 (0x14a6094b90e6 in /home/x-qlan1/miniconda3/lib/libstdc++.so.6)
+frame #4: <unknown function> + 0x81ca (0x14a60917e1ca in /lib64/libpthread.so.0)
+frame #5: clone + 0x43 (0x14a6084468d3 in /lib64/libc.so.6)
+
+terminate called after throwing an instance of 'c10::DistBackendError'
+  what():  [PG ID 2 PG GUID 3 Rank 0] Process group watchdog thread terminated with exception: CUDA error: an illegal memory access was encountered
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+Exception raised from c10_cuda_check_implementation at /pytorch/c10/cuda/CUDAException.cpp:42 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x80 (0x153318051eb0 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x111c7 (0x1533180e41c7 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libc10_cuda.so)
+frame #2: c10d::ProcessGroupNCCL::WorkNCCL::finishedGPUExecutionInternal() const + 0x50 (0x153318fa8640 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: c10d::ProcessGroupNCCL::WorkNCCL::isCompleted() + 0x68 (0x153318fb7e28 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #4: c10d::ProcessGroupNCCL::Watchdog::runLoop() + 0x978 (0x153318fbaf48 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: c10d::ProcessGroupNCCL::Watchdog::run() + 0xd2 (0x153318fbcec2 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xdf0e6 (0x153396f390e6 in /home/x-qlan1/miniconda3/lib/libstdc++.so.6)
+frame #7: <unknown function> + 0x81ca (0x153396c041ca in /lib64/libpthread.so.0)
+frame #8: clone + 0x43 (0x153395ecc8d3 in /lib64/libc.so.6)
+
+Exception raised from run at /pytorch/torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:2074 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x80 (0x153318051eb0 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0xe1c1a1 (0x153318f941a1 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #2: <unknown function> + 0x9468e6 (0x153318abe8e6 in /anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/lib/libtorch_cuda.so)
+frame #3: <unknown function> + 0xdf0e6 (0x153396f390e6 in /home/x-qlan1/miniconda3/lib/libstdc++.so.6)
+frame #4: <unknown function> + 0x81ca (0x153396c041ca in /lib64/libpthread.so.0)
+frame #5: clone + 0x43 (0x153395ecc8d3 in /lib64/libc.so.6)
+
+Traceback (most recent call last):
+  File "/home/x-qlan1/code/moule2/scripts/eval_base/py/eval_amo_bench.py", line 202, in <module>
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m Process EngineCore_DP0:
+    evaluate(args)
+  File "/home/x-qlan1/code/moule2/scripts/eval_base/py/eval_amo_bench.py", line 80, in evaluate
+    outputs = llm.generate(prompts, sampling_params)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/entrypoints/llm.py", line 401, in generate
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m   File "/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m     self.run()
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m   File "/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 108, in run
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m     self._target(*self._args, **self._kwargs)
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 712, in run_engine_core
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m     raise e
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 701, in run_engine_core
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m     engine_core.run_busy_loop()
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 728, in run_busy_loop
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m     self._process_engine_step()
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 754, in _process_engine_step
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m     outputs, model_executed = self.step_fn()
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m                               ^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 284, in step
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m     model_output = self.execute_model_with_error_logging(
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 270, in execute_model_with_error_logging
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m     raise err
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 261, in execute_model_with_error_logging
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m     return model_fn(scheduler_output)
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 181, in execute_model
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m     (output, ) = self.collective_rpc(
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m                  ^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 264, in collective_rpc
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m     result = get_response(w, dequeue_timeout,
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 244, in get_response
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m     status, result = w.worker_response_mq.dequeue(
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/distributed/device_communicators/shm_broadcast.py", line 511, in dequeue
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m     with self.acquire_read(timeout, cancel, indefinite) as buf:
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m   File "/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 137, in __enter__
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m     return next(self.gen)
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m            ^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/distributed/device_communicators/shm_broadcast.py", line 455, in acquire_read
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m     raise RuntimeError("cancelled")
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m RuntimeError: cancelled
+    outputs = self._run_engine(use_tqdm=use_tqdm)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/entrypoints/llm.py", line 1600, in _run_engine
+    step_outputs = self.llm_engine.step()
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 265, in step
+    outputs = self.engine_core.get_output()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 670, in get_output
+    raise self._format_exception(outputs) from None
+vllm.v1.engine.exceptions.EngineDeadError: EngineCore encountered an issue. See stack trace (above) for the root cause.
+Processed prompts:  64%|██████▍   | 512/800 [1:25:28<48:04, 10.02s/it, est. speed input: 135.40 toks/s, output: 1988.83 toks/s]
+/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 2 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 3 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
++ run_model 0,1 Qwen/Qwen3-8B
++ local GPUS=0,1
++ local MODEL=Qwen/Qwen3-8B
++ echo ============================================================
++ echo '[0,1] Evaluating: Qwen/Qwen3-8B on AMO-Bench'
++ echo ============================================================
++ CUDA_VISIBLE_DEVICES=0,1
++ python3 /home/x-qlan1/code/moule2/scripts/eval_base/py/eval_amo_bench.py --model Qwen/Qwen3-8B --mode greedy --max_tokens 38000 --max_model_len 40960 --tp 2 --gpu_memory_utilization 0.9 --output_dir /anvil/scratch/x-qlan1/moule2/eval_results/base
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+`torch_dtype` is deprecated! Use `dtype` instead!
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+W0226 22:16:12.962000 1226912 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W0226 22:16:12.962000 1226912 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+W0226 22:16:12.963000 1226913 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W0226 22:16:12.963000 1226913 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m Process EngineCore_DP0:
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m   File "/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m     self.run()
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m   File "/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 108, in run
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m     self._target(*self._args, **self._kwargs)
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 712, in run_engine_core
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m     raise e
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 699, in run_engine_core
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m     engine_core = EngineCoreProc(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 498, in __init__
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m     super().__init__(vllm_config, executor_class, log_stats,
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 83, in __init__
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m     self.model_executor = executor_class(vllm_config)
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/executor/executor_base.py", line 54, in __init__
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m     self._init_executor()
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 106, in _init_executor
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m     self.workers = WorkerProc.wait_for_ready(unready_workers)
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 509, in wait_for_ready
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m     raise e from None
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m Exception: WorkerProc initialization failed due to an exception in a background process. See stack trace for root cause.
+Traceback (most recent call last):
+  File "/home/x-qlan1/code/moule2/scripts/eval_base/py/eval_amo_bench.py", line 202, in <module>
+    evaluate(args)
+  File "/home/x-qlan1/code/moule2/scripts/eval_base/py/eval_amo_bench.py", line 61, in evaluate
+    llm = LLM(
+          ^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/entrypoints/llm.py", line 297, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 177, in from_engine_args
+    return cls(vllm_config=vllm_config,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 114, in __init__
+    self.engine_core = EngineCoreClient.make_client(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 80, in make_client
+    return SyncMPClient(vllm_config, executor_class, log_stats)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 602, in __init__
+    super().__init__(
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 448, in __init__
+    with launch_core_engines(vllm_config, executor_class,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 732, in launch_core_engines
+    wait_for_engine_startup(
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 785, in wait_for_engine_startup
+    raise RuntimeError("Engine core initialization failed. "
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
++ CUDA_VISIBLE_DEVICES=0,1
++ python3 /home/x-qlan1/code/moule2/scripts/eval_base/py/eval_amo_bench.py --model Qwen/Qwen3-8B --mode average --n_samples 16 --temperature 1.2 --top_p 0.95 --max_tokens 38000 --max_model_len 40960 --tp 2 --gpu_memory_utilization 0.9 --output_dir /anvil/scratch/x-qlan1/moule2/eval_results/base
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+`torch_dtype` is deprecated! Use `dtype` instead!
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+W0226 22:17:33.369000 1227242 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W0226 22:17:33.369000 1227242 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+W0226 22:17:33.370000 1227243 torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W0226 22:17:33.370000 1227243 torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m Process EngineCore_DP0:
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m   File "/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m     self.run()
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m   File "/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/multiprocessing/process.py", line 108, in run
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m     self._target(*self._args, **self._kwargs)
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 712, in run_engine_core
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m     raise e
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 699, in run_engine_core
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m     engine_core = EngineCoreProc(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 498, in __init__
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m     super().__init__(vllm_config, executor_class, log_stats,
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 83, in __init__
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m     self.model_executor = executor_class(vllm_config)
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/executor/executor_base.py", line 54, in __init__
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m     self._init_executor()
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 106, in _init_executor
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m     self.workers = WorkerProc.wait_for_ready(unready_workers)
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 509, in wait_for_ready
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m     raise e from None
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m Exception: WorkerProc initialization failed due to an exception in a background process. See stack trace for root cause.
+Traceback (most recent call last):
+  File "/home/x-qlan1/code/moule2/scripts/eval_base/py/eval_amo_bench.py", line 202, in <module>
+    evaluate(args)
+  File "/home/x-qlan1/code/moule2/scripts/eval_base/py/eval_amo_bench.py", line 61, in evaluate
+    llm = LLM(
+          ^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/entrypoints/llm.py", line 297, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 177, in from_engine_args
+    return cls(vllm_config=vllm_config,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 114, in __init__
+    self.engine_core = EngineCoreClient.make_client(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 80, in make_client
+    return SyncMPClient(vllm_config, executor_class, log_stats)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 602, in __init__
+    super().__init__(
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 448, in __init__
+    with launch_core_engines(vllm_config, executor_class,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 732, in launch_core_engines
+    wait_for_engine_startup(
+  File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 785, in wait_for_engine_startup
+    raise RuntimeError("Engine core initialization failed. "
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
++ wait
++ echo 'All AMO-Bench evaluations completed.'

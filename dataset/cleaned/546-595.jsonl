@@ -1,0 +1,50 @@
+{"question": "已知 F 是双曲线 C: $\\frac{x^2}{4} - \\frac{y^2}{5} = 1$ 的一个焦点, 点 P 在 C 上, O 为坐标原点, 若 |OP| = |OF| , 则 $\\triangle OPF$ 的面积", "answer": "$\\frac{5}{2}$"}
+{"question": "已知双曲线 $C: \\frac{x^2}{3} - y^2 = 1$，O 为坐标原点，F 为 C 的右焦点，过 F 的直线与 C 的两条渐近线的交点分别为 M, N。若 $\\triangle OMN$ 为直角三角形，则 |MN| =", "answer": "3"}
+{"question": "已知 F 是双曲线 C: $x^2 - \\frac{y^2}{3} = 1$ 的右焦点, P 是 C 上一点, 且 PF 与 x 轴垂直, 点 A 的坐标是 (1,3), 则 $\\triangle APF$ 的面积为", "answer": "$\\frac{3}{2}$"}
+{"question": "已知 $F$ 是双曲线 $C: x^2 - \\frac{y^2}{8} = 1$ 的右焦点, $P$ 是 $C$ 左支上一点, $A(0,6\\sqrt{6})$ ,当 $\\Delta APF$ 周长最小时,该三角形的面积为", "answer": "12\\sqrt{6}"}
+{"question": "双曲线 $\\frac{x^2}{4} - \\frac{y^2}{5} = 1$ 的右焦点到直线 $x + 2y - 8 = 0$ 的距离为", "answer": "$\\sqrt{5}$"}
+{"question": "已知点O(0,0),A(-2,0),B(2,0). 设点P满足 $|PA| - |PB| = 2$，且 P 为函数 $y = 3\\sqrt{4-x^2}$ 图像上的点，则 $|OP| = ($", "answer": "$\\sqrt{10}$"}
+{"question": "双曲线 $\\frac{x^2}{3} - y^2 = 1$ 的焦点坐标是 (", "answer": "(-2,0),(2,0)"}
+{"question": "在平面直角坐标系 xOy 中, 若双曲线 $\\frac{x^2}{a^2} - \\frac{y^2}{5} = 1$ (a>0) 的一条渐近线方程为 $y=\\frac{\\sqrt{5}}{2}x$ ,则该双曲线的离心率是", "answer": "$\\frac{3}{2}$"}
+{"question": "在平面直角坐标系 xOy 中,双曲线 $\\frac{x^2}{3}-y^2=1$ 的右准线与它的两条渐近线分别交于点 P, Q, 其焦点是 $F_1$, $F_2$, 则四边形 $F_1PF_2Q$ 的面积是 .", "answer": "2\\sqrt{3}"}
+{"question": "已知 O 为坐标原点, 抛物线 $C: y^2 = 2px$ (p>0) 的焦点为 F, P 为 C 上一点, PF 与 x 轴垂直, Q 为 x 轴上 一点, 且 $PQ \\perp OP$, 若 $|FQ| = 6$, 则 C 的准线方程为 .", "answer": "$x = -\\frac{3}{2}$"}
+{"question": "设 $F$ 为抛物线 $C\\colon y^2=4x$ 的焦点, 曲线 $y=\\frac{k}{x} (k>0)$ 与 $C$ 交于点 $P$, $PF \\perp x$ 轴, 则 $k=$", "answer": "2"}
+{"question": "已知 A 为抛物线 $C: y^2 = 2px (p > 0)$ 上一点, 点 A 到 C 的焦点的距离为 12, 到 y 轴的距离为 9, 则 p = (", "answer": "6"}
+{"question": "设若抛物线 $y^2 = 2px (p > 0)$ 的焦点是椭圆 $\\frac{x^2}{3p} + \\frac{y^2}{p} = 1$ 的一个焦点, 则 $p=$", "answer": "8"}
+{"question": "设以抛物线 $C$ 的顶点为圆心的圆交 $C$ 于 $A$ , $B$ 两点, 交 $C$ 的准线于 $D$ , $E$ 两点. 已知 $|AB| = 4\\sqrt{2}$ , $|DE| = 2\\sqrt{5}$ , 则 $C$ 的焦点到准线的距离为", "answer": "4"}
+{"question": "设 O 为坐标原点, F 为抛物线 $C: y^2 = 4\\sqrt{2}x$ 的焦点, P 为 C 上一点, 若 $|PF| = 4\\sqrt{2}$, 则 $\\Delta POF$ 的面积为", "answer": "$2\\sqrt{3}$"}
+{"question": "设 O 为坐标原点,直线 x=2 与抛物线 $C:y^2=2px(p>0)$ 交于 D,E 两点,若 $OD \\perp OE$,则 C 的焦点坐标", "answer": "$\\left(\\frac{1}{2}, 0\\right)$"}
+{"question": "斜率为 $\\sqrt{3}$ 的直线过抛物线 $C: y^2 = 4x$ 的焦点,且与 C 交于 A, B 两点,则 $|AB| = \\underline{\\hspace{1cm}}.$", "answer": "$\\frac{16}{3}$"}
+{"question": "设抛物线 $y^2 = 4x$ 的焦点为 $F$，准线为 $l$。则以 $F$ 为圆心，且与 $l$ 相切的圆的方程为", "answer": "$(x-1)^2 + y^2 = 4$"}
+{"question": "两个非零向量 $e_1$, $e_2$ 不共线，若 $(ke_1 + e_2) // (e_1 + ke_2)$，则实数 $k$ 的值为", "answer": "$\\pm 1$"}
+{"question": "从单词“education”中选取 5 个不同的字母排成一排，则含“at”（“at”相连且顺序不变）的概率为（ ）", "answer": "$\\frac{1}{18}$"}
+{"question": "已知正二十面体的各面都是正三角形，那么它的顶点数为", "answer": "12"}
+{"question": "已知 $(x+1)^6(ax-1)^2$ 的展开式中，$x^3$ 系数为 56，则实数 $a$ 的值为", "answer": "6 或 -1"}
+{"question": "函数 $y = \\cos^2 \\frac{x}{2} - 1$ 的最小正周期是", "answer": "$2\\pi$"}
+{"question": "抛物线 $(x - 2)^2 = 2(y - m + 2)$ 的焦点在 $x$ 轴上，则实数 $m$ 的值为", "answer": "$\\frac{3}{2}$"}
+{"question": "某县农民均收入服从 $\\mu = 500$ 元，$\\sigma = 20$ 元的正态分布，则此县农民年均收入在 500 元到 520 元间人数的百分比为", "answer": "0.3415"}
+{"question": "$\\lim_{x \\to 1} \\frac{x + x^2 + \\dots + x^n - n}{x - 1} = $", "answer": "$\\frac{n(n+1)}{2}$"}
+{"question": "正方体的全面积为 24，球 O 与正方体的各棱均相切，球 O 的体积是", "answer": "$\\frac{8\\sqrt{2}}{3}\\pi$"}
+{"question": "已知圆 O 的半径为 $\\sqrt{3}$，圆周上两点 A、B 与原点 O 恰构成正三角形，向量 $\\vec{OA}$ 与 $\\vec{OB}$ 的数量积是", "answer": "$\\frac{3}{2}$"}
+{"question": "已知 $\\tan(\\alpha - \\frac{\\pi}{3}) = -\\frac{\\sqrt{3}}{5}$，则 $\\tan\\alpha = $ ________；$\\frac{\\sin\\alpha \\cos\\alpha}{3\\cos^2\\alpha - 2\\sin^2\\alpha} = $ ________.", "answer": "$\\frac{\\sqrt{3}}{2}$ , $\\frac{\\sqrt{3}}{3}$"}
+{"question": "将边长为 1 的正三角形 ABC 沿高 AD 折叠成直二面角 B-AD-C，则直线 AC 与直线 AB 所成角的余弦值是 ________.", "answer": "$\\frac{3}{4}$"}
+{"question": "满足条件 $\\varnothing \\subsetneq M \\subsetneq \\{0, 1, 2\\}$ 的集合共有", "answer": "6"}
+{"question": "等差数列 $\\{a_n\\}$ 中，若 $a_1 + a_4 + a_7 = 39$，$a_3 + a_6 + a_9 = 27$，则前 9 项的和 $S_9$ 等于（ ）", "answer": "99"}
+{"question": "已知 $(2^x - \\frac{\\sqrt{2}}{2})^9$ 展开式的第 7 项为 $\\frac{21}{4}$，则实数 $x$ 的值是", "answer": "$-\\frac{1}{3}$"}
+{"question": "已知 $(2^x - \\frac{\\sqrt{2}}{2})^9 (x \\in \\mathbb{R})$ 展开式的第 7 项为 $\\frac{21}{4}$，则 $\\lim_{n \\to \\infty}(x + x^2 + \\dots + x^n)$ 的值为", "answer": "-\\frac{1}{4}"}
+{"question": "已知复数 $z = 1 - i$，则 $|z^3| = $", "answer": "$2\\sqrt{2}$"}
+{"question": "已知等差数列 $\\{a_n\\}$ 的前 $n$ 项和为 $S_n$，且 $\\frac{S_4}{S_8} = \\frac{1}{3}$，那么 $\\frac{S_8}{S_{16}} = $", "answer": "$\\frac{3}{10}$"}
+{"question": "若半径为 $R$ 的球与正三棱柱的各个面都相切，则球与正三棱柱的体积比为", "answer": "$\\frac{2\\sqrt{3}}{27}\\pi$"}
+{"question": "如果以原点为圆心的圆经过双曲线 $\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1 (a > 0, b > 0)$ 的焦点，而且被该双曲线的右准线分成弧长为 $2:1$ 的两段圆弧，那么该双曲线的离心率 $e$ 等于（ ）", "answer": "$\\sqrt{2}$"}
+{"question": "$(x^3 - \\frac{1}{2x^2})^{10}$ 展开式中的常数项为", "answer": "$\\frac{105}{32}$"}
+{"question": "若不等式 $|x^2 - 8x + a| \\le x - 4$ 的解集为 $[4, 5]$，则实数 $a$ 的值等于", "answer": "16"}
+{"question": "已知数列 $\\{a_n\\}$ 前 $n$ 项和为 $S_n = 1 - 5 + 9 - 13 + 17 - 21 + \\dots + (-1)^{n-1}(4n - 3)$，则 $S_{15} + S_{22} - S_{31}$ 的值是", "answer": "-76"}
+{"question": "在含有 30 个个体的总体中，抽取一个容量为 5 的样本，则个体 $a$ 被抽到的概率为", "answer": "$\\frac{1}{6}$"}
+{"question": "函数 $y = \\sqrt{x - 4} + \\sqrt{15 - 3x}$ 的值域是", "answer": "$[1, 2]$"}
+{"question": "函数 $f(x)$ 与 $g(x) = (\\sqrt{7} - \\sqrt{6})^x$ 图像关于直线 $x - y = 0$ 对称，则 $f(4 - x^2)$ 的单调增区间是", "answer": "$(0, 2)$"}
+{"question": "等比数列 $\\{a_n\\}$ 的前 $n$ 项和为 $S_n$，且某连续三项正好为等差数列 $\\{b_n\\}$ 中的第 1, 5, 6 项，则 $\\lim_{n \\to \\infty} \\frac{S_{n+2}}{na_1} =$", "answer": "$1$ 或 $0$"}
+{"question": "若 $\\lim_{n \\to -\\infty} (\\sqrt{x^2 - x + 1} + x - k) = 1$，则 $k = $", "answer": "$\\frac{1}{2}$"}
+{"question": "满足 $A \\cup B = \\{a, b\\}$ 的集合 $A$、$B$ 的组数有", "answer": "9"}
+{"question": "函数 $y = \\cos 2x$ 的图象的一个对称中心为", "answer": "$\\left(\\frac{\\pi}{4}, 0\\right)$"}
+{"question": "若关于 $x$ 的不等式 $|x - 2| + |x - a| \\ge a$ 在 $R$ 上恒成立，则 $a$ 的最大值为", "answer": "1"}
+{"question": "$\\lim_{x \\to 0} \\frac{\\sqrt{1 + x} - 1}{x} = $", "answer": "$\\frac{1}{2}$"}

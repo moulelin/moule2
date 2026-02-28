@@ -1,0 +1,50 @@
+{"question": "If $\\theta$ is an angle in the second quadrant and $\\tan(\\theta + \\frac{\\pi}{4}) = \\frac{1}{2}$, then $\\sin \\theta + \\cos \\theta =$", "answer": "$-\\frac{\\sqrt{10}}{5}$"}
+{"question": "If $\\alpha \\in (0, \\frac{\\pi}{2})$ and $\\tan 2\\alpha = \\frac{\\cos \\alpha}{2 - \\sin \\alpha}$, then $\\tan \\alpha =$", "answer": "$\\frac{\\sqrt{15}}{15}$"}
+{"question": "If $\\tan \\theta = -2$, then $\\frac{\\sin \\theta (1 + \\sin 2\\theta)}{\\sin \\theta + \\cos \\theta} =$", "answer": "$\\frac{2}{5}$"}
+{"question": "$\\cos^2 \\frac{\\pi}{12} - \\cos^2 \\frac{5\\pi}{12} =$", "answer": "$\\frac{\\sqrt{3}}{2}$"}
+{"question": "Given $\\sin x = -\\frac{2}{3}$, find $\\cos 2x =$", "answer": "$\\frac{1}{9}$"}
+{"question": "Given $\\sin^2\\!\\left(\\frac{\\pi}{4} + \\alpha\\right) = \\frac{2}{3}$, the value of $\\sin 2\\alpha$ is", "answer": "$\\frac{1}{3}$"}
+{"question": "Given $\\tan \\theta = 2$, find $\\cos 2\\theta =$ ; $\\tan(\\theta - \\frac{\\pi}{4}) =$", "answer": "$-\\frac{3}{5} ; \\frac{1}{3}$"}
+{"question": "If the maximum value of the function $f(x) = \\sin(x + \\varphi) + \\cos x$ is $2$, then one possible value of the constant $\\varphi$ is", "answer": "$\\frac{\\pi}{2}$"}
+{"question": "Given $\\alpha \\in (0, \\frac{\\pi}{2})$ and $2\\sin 2\\alpha = \\cos 2\\alpha + 1$, find $\\sin \\alpha =$", "answer": "$\\frac{\\sqrt{5}}{5}$"}
+{"question": "The number of zeros of the function $f(x) = 2\\sin x - \\sin 2x$ on $[0, 2\\pi]$ is", "answer": "3"}
+{"question": "$\\tan 255^\\circ = $", "answer": "$2 + \\sqrt{3}$"}
+{"question": "If $\\sin \\alpha = \\frac{1}{3}$, then $\\cos 2\\alpha =$", "answer": "$\\frac{7}{9}$"}
+{"question": "Given $\\sin \\alpha + \\cos \\beta = 1$ and $\\cos \\alpha + \\sin \\beta = 0$, find $\\sin(\\alpha + \\beta) =$", "answer": "$-\\frac{1}{2}$"}
+{"question": "Given $\\tan(\\alpha - \\frac{5\\pi}{4}) = \\frac{1}{5}$, find $\\tan \\alpha =$", "answer": "$\\frac{3}{2}$"}
+{"question": "Given $\\alpha \\in (0, \\frac{\\pi}{2})$ and $\\tan \\alpha = 2$, find $\\cos(\\alpha - \\frac{\\pi}{4}) =$", "answer": "$\\frac{3\\sqrt{10}}{10}$"}
+{"question": "Given $\\sin \\alpha - \\cos \\alpha = \\frac{4}{3}$, find $\\sin 2\\alpha =$", "answer": "$-\\frac{7}{9}$"}
+{"question": "If $\\cos\\!\\left(\\frac{\\pi}{4} - \\alpha\\right) = \\frac{3}{5}$, then $\\sin 2\\alpha =$", "answer": "$\\frac{7}{25}$"}
+{"question": "$\\sin 20^\\circ \\cos 10^\\circ - \\cos 160^\\circ \\sin 10^\\circ =$", "answer": "$\\frac{1}{2}$"}
+{"question": "Let $\\alpha \\in (0, \\frac{\\pi}{2})$ and $\\beta \\in (0, \\frac{\\pi}{2})$ with $\\tan \\alpha = \\frac{1 + \\sin \\beta}{\\cos \\beta}$. Then", "answer": "$2\\alpha - \\beta = \\frac{\\pi}{2}$"}
+{"question": "Given $\\sin 2\\alpha = \\frac{2}{3}$, find $\\cos^2\\!(\\alpha + \\frac{\\pi}{4}) =$", "answer": "$\\frac{1}{6}$"}
+{"question": "The minimum and maximum values of the function $f(x) = \\cos x + (x + 1)\\sin x + 1$ on $[0, 2\\pi]$ are, respectively,", "answer": "$-\\frac{3\\pi}{2}, \\frac{\\pi}{2} + 2$"}
+{"question": "Let $T$ denote the minimum positive period of the function $f(x) = \\cos(\\omega x + \\varphi)$ $(\\omega > 0,\\, 0 < \\varphi < \\pi)$. If $f(T) = \\frac{\\sqrt{3}}{2}$ and $x = \\frac{\\pi}{9}$ is a zero of $f(x)$, then the minimum value of $\\omega$ is", "answer": "3"}
+{"question": "Let $T$ denote the minimum positive period of the function $f(x) = \\sin(\\omega x + \\frac{\\pi}{4}) + b$ $(\\omega > 0)$. If $\\frac{2\\pi}{3} < T < \\pi$ and the graph of $y = f(x)$ is centrally symmetric about the point $\\left(\\frac{3\\pi}{2},\\, 2\\right)$, then $f\\!\\left(\\frac{\\pi}{2}\\right) =$", "answer": "1"}
+{"question": "Among the following intervals, the one on which the function $f(x) = 7\\sin(x - \\frac{\\pi}{6})$ is monotonically increasing is", "answer": "$(0, \\frac{\\pi}{2})$"}
+{"question": "Given that part of the graph of the function $f(x) = 2\\cos(\\omega x + \\varphi)$ is shown in the figure, find $f\\!\\left(\\frac{\\pi}{2}\\right) =$", "answer": "$-\\sqrt{3}$"}
+{"question": "Among the following functions, the one that has period $\\frac{\\pi}{2}$ and is monotonically increasing on $\\left(\\frac{\\pi}{4},\\, \\frac{\\pi}{2}\\right)$ is", "answer": "$f(x) = |\\cos 2x|$"}
+{"question": "If $x_1 = \\frac{\\pi}{4}$ and $x_2 = \\frac{3\\pi}{4}$ are two adjacent extreme points of the function $f(x) = \\sin \\omega x$ $(\\omega > 0)$, then $\\omega =$", "answer": "2"}
+{"question": "The minimum value of the function $f(x) = \\sin(2x + \\frac{3\\pi}{2}) - 3\\cos x$ is", "answer": "$-4$"}
+{"question": "The number of zeros of the function $f(x) = \\cos(3x + \\frac{\\pi}{6})$ on $[0, \\pi]$ is", "answer": "3"}
+{"question": "If $f(x) = \\cos x - \\sin x$ is a decreasing function on $[-a, a]$, then the maximum value of $a$ is", "answer": "$\\frac{\\pi}{4}$"}
+{"question": "If $f(x) = \\cos x - \\sin x$ is a decreasing function on $[0, a]$, then the maximum value of $a$ is", "answer": "$\\frac{3\\pi}{4}$"}
+{"question": "The minimum positive period of the function $f(x) = \\frac{\\tan x}{1 + \\tan^2 x}$ is", "answer": "$\\pi$"}
+{"question": "The minimum positive period of the function $f(x) = \\sin(2x + \\frac{\\pi}{3})$ is", "answer": "$\\pi$"}
+{"question": "The graph of $f(x) = \\sin(\\omega x + \\frac{\\pi}{3})$ $(\\omega > 0)$ is shifted $\\frac{\\pi}{2}$ units to the left to obtain curve $C$. If $C$ is symmetric about the $y$-axis, then the minimum value of $\\omega$ is", "answer": "$\\frac{1}{3}$"}
+{"question": "Suppose the function $f(x) = \\sin(\\omega x + \\frac{\\pi}{3})$ has exactly three extreme points and two zeros on the interval $(0, \\pi)$. Then the range of $\\omega$ is", "answer": "$(\\frac{13}{6}, \\frac{8}{3}]$"}
+{"question": "If one zero of the function $f(x) = A\\sin x - \\sqrt{3}\\cos x$ is $\\frac{\\pi}{3}$, then $A =$ ______; $f\\!\\left(\\frac{\\pi}{2}\\right) =$ ______.", "answer": "① $1$ ; ② $-\\sqrt{2}$"}
+{"question": "The graph of $f(x) = \\sin(\\omega x + \\frac{\\pi}{3})$ $(\\omega > 0)$ is shifted $\\frac{\\pi}{2}$ units to the left to obtain curve $C$. If $C$ is symmetric about the $y$-axis, then the minimum value of $\\omega$ is", "answer": "$\\frac{1}{3}$"}
+{"question": "The $x$-coordinates of all points on the graph of $y = f(x)$ are compressed to $\\frac{1}{2}$ of their original values (the $y$-coordinates remain unchanged), and the resulting curve is then shifted $\\frac{\\pi}{3}$ units to the right to obtain the graph of $y = \\sin(x - \\frac{\\pi}{4})$. Then $f(x) =$", "answer": "$\\sin\\left(\\frac{x}{2} + \\frac{\\pi}{12}\\right)$"}
+{"question": "The graph of $y = 3\\sin(2x + \\frac{\\pi}{4})$ is shifted $\\frac{\\pi}{6}$ units to the right. The equation of the axis of symmetry of the resulting graph that is closest to the $y$-axis is", "answer": "$x = -\\frac{5\\pi}{24}$"}
+{"question": "Given that $f(x) = A\\sin(\\omega x + \\varphi)$ $(A > 0,\\, \\omega > 0,\\, |\\varphi| < \\pi)$ is an odd function, the $x$-coordinates of all points on the graph of $y = f(x)$ are stretched to twice their original values (the $y$-coordinates remain unchanged) to obtain the function $g(x)$. If the minimum positive period of $g(x)$ is $2\\pi$ and $g\\!\\left(\\frac{\\pi}{4}\\right) = \\sqrt{2}$, then $f\\!\\left(\\frac{3\\pi}{8}\\right) =$", "answer": "$\\sqrt{2}$"}
+{"question": "After shifting the graph of $y = 2\\sin(2x + \\frac{\\pi}{6})$ to the right by $\\frac{1}{4}$ of its period, the resulting function is", "answer": "$y = 2\\sin(2x - \\frac{\\pi}{3})$"}
+{"question": "The graph of $y = \\sin x - \\sqrt{3}\\cos x$ can be obtained from the graph of $y = \\sin x + \\sqrt{3}\\cos x$ by shifting it at least ______ units to the right.", "answer": "$\\frac{2\\pi}{3}$"}
+{"question": "The graph of $y = \\sin x - \\sqrt{3}\\cos x$ can be obtained from the graph of $y = 2\\sin x$ by shifting it at least ______ units to the right.", "answer": "$\\frac{\\pi}{3}$"}
+{"question": "After shifting the graph of $y = \\cos(2x + \\varphi)$ $(-\\pi \\le \\varphi \\le \\pi)$ to the right by $\\frac{\\pi}{2}$ units, it coincides with the graph of $y = \\sin(2x + \\frac{\\pi}{3})$. Then $\\varphi =$", "answer": "$\\frac{5\\pi}{6}$"}
+{"question": "The minimum positive period and maximum value of the function $f(x) = \\sin \\frac{x}{3} + \\cos \\frac{x}{3}$ are, respectively,", "answer": "$6\\pi$ and $\\sqrt{2}$"}
+{"question": "Given $f(x) = 2\\sin x + \\sin 2x$, the minimum value of $f(x)$ is", "answer": "$-\\frac{3\\sqrt{3}}{2}$"}
+{"question": "The maximum value of the function $f(x) = 2\\cos x + \\sin x$ is", "answer": "$\\sqrt{5}$"}
+{"question": "The maximum value of the function $f(x) = \\sin^2 x + \\sqrt{3}\\cos x - \\frac{3}{4}$ for $x \\in [0, \\frac{\\pi}{2}]$ is", "answer": "1"}
+{"question": "The maximum value of the function $f(x) = \\frac{1}{5}\\sin\\!\\left(x + \\frac{\\pi}{3}\\right) + \\cos\\!\\left(x - \\frac{\\pi}{6}\\right)$ is", "answer": "$\\frac{6}{5}$"}
+{"question": "The maximum value of the function $f(x) = \\cos 2x + 6\\cos\\!\\left(\\frac{\\pi}{2} - x\\right)$ is", "answer": "5"}

@@ -1,0 +1,50 @@
+{"question": "Hyperbola $C: \\frac{x^2}{4}-\\frac{y^2}{5}=1$: focus $F$, $P$ on $C$, $O$ origin, $|OP|=|OF|$. Find the area of $\\triangle OPF$.", "answer": "$\\frac{5}{2}$"}
+{"question": "Hyperbola $C: \\frac{x^2}{3}-y^2=1$: right focus $F$, $O$ origin. Line through $F$ meets both asymptotes at $M$, $N$. If $\\triangle OMN$ is a right triangle, find $|MN|=$", "answer": "3"}
+{"question": "Hyperbola $C: x^2-\\frac{y^2}{3}=1$: right focus $F$, $P$ on $C$ with $PF\\perp x$-axis, $A(1,3)$. Find the area of $\\triangle APF$.", "answer": "$\\frac{3}{2}$"}
+{"question": "Hyperbola $C: x^2-\\frac{y^2}{8}=1$: right focus $F$, $P$ on the left branch, $A(0,6\\sqrt{6})$. When the perimeter of $\\triangle APF$ is minimized, find the area.", "answer": "12\\sqrt{6}"}
+{"question": "Find the distance from the right focus of $\\frac{x^2}{4}-\\frac{y^2}{5}=1$ to line $x+2y-8=0$.", "answer": "$\\sqrt{5}$"}
+{"question": "Given $O(0,0)$, $A(-2,0)$, $B(2,0)$. Point $P$ satisfies $|PA|-|PB|=2$ and lies on $y=3\\sqrt{4-x^2}$. Find $|OP|=$", "answer": "$\\sqrt{10}$"}
+{"question": "Find the foci of hyperbola $\\frac{x^2}{3}-y^2=1$.", "answer": "(-2,0),(2,0)"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{5}=1$ ($a>0$) has asymptote $y=\\frac{\\sqrt{5}}{2}x$. Find the eccentricity.", "answer": "$\\frac{3}{2}$"}
+{"question": "Hyperbola $\\frac{x^2}{3}-y^2=1$: right directrix meets both asymptotes at $P$, $Q$; foci are $F_1$, $F_2$. Find the area of quadrilateral $F_1PF_2Q$.", "answer": "2\\sqrt{3}"}
+{"question": "Parabola $C: y^2=2px$ ($p>0$) has focus $F$. $P$ on $C$ with $PF\\perp x$-axis, $Q$ on $x$-axis with $PQ\\perp OP$, $O$ origin. If $|FQ|=6$, find the directrix equation.", "answer": "$x = -\\frac{3}{2}$"}
+{"question": "Parabola $C: y^2=4x$ has focus $F$. Curve $y=\\frac{k}{x}$ ($k>0$) meets $C$ at $P$ with $PF\\perp x$-axis. Find $k=$", "answer": "2"}
+{"question": "Point $A$ on parabola $C: y^2=2px$ ($p>0$) has distance 12 to the focus and distance 9 to the $y$-axis. Find $p=$", "answer": "6"}
+{"question": "If the focus of parabola $y^2=2px$ ($p>0$) coincides with a focus of ellipse $\\frac{x^2}{3p}+\\frac{y^2}{p}=1$, find $p=$", "answer": "8"}
+{"question": "A circle centered at the vertex of parabola $C$ meets $C$ at $A$, $B$ and meets the directrix at $D$, $E$. Given $|AB|=4\\sqrt{2}$ and $|DE|=2\\sqrt{5}$, find the distance from the focus to the directrix.", "answer": "4"}
+{"question": "Parabola $C: y^2=4\\sqrt{2}x$: $O$ origin, $F$ focus, $P$ on $C$ with $|PF|=4\\sqrt{2}$. Find the area of $\\triangle POF$.", "answer": "$2\\sqrt{3}$"}
+{"question": "Parabola $C: y^2=2px$ ($p>0$): line $x=2$ meets $C$ at $D$, $E$ with $OD\\perp OE$. Find the focus coordinates.", "answer": "$\\left(\\frac{1}{2}, 0\\right)$"}
+{"question": "A line with slope $\\sqrt{3}$ passes through the focus of $C: y^2=4x$ and meets $C$ at $A$, $B$. Find $|AB|=$", "answer": "$\\frac{16}{3}$"}
+{"question": "Parabola $y^2=4x$ has focus $F$ and directrix $l$. Find the equation of the circle centered at $F$ and tangent to $l$.", "answer": "$(x-1)^2 + y^2 = 4$"}
+{"question": "Non-collinear non-zero vectors $\\vec{e_1}$, $\\vec{e_2}$: if $(k\\vec{e_1}+\\vec{e_2})\\parallel(\\vec{e_1}+k\\vec{e_2})$, find $k=$", "answer": "$\\pm 1$"}
+{"question": "From the letters of 'education', 5 different letters are arranged in a row. Find the probability that the arrangement contains 'at' (consecutive and in order).", "answer": "$\\frac{1}{18}$"}
+{"question": "A regular icosahedron has all faces as equilateral triangles. Find its number of vertices.", "answer": "12"}
+{"question": "In the expansion of $(x+1)^6(ax-1)^2$, the coefficient of $x^3$ is 56. Find $a=$", "answer": "6 or -1"}
+{"question": "Find the minimum positive period of $y=\\cos^2\\frac{x}{2}-1$.", "answer": "$2\\pi$"}
+{"question": "The focus of parabola $(x-2)^2=2(y-m+2)$ lies on the $x$-axis. Find $m=$", "answer": "$\\frac{3}{2}$"}
+{"question": "In a county, per-capita income follows a normal distribution with $\\mu=500$, $\\sigma=20$. Find the percentage of people with income between 500 and 520 yuan.", "answer": "0.3415"}
+{"question": "$\\lim_{x\\to 1}\\frac{x+x^2+\\cdots+x^n-n}{x-1}=$", "answer": "$\\frac{n(n+1)}{2}$"}
+{"question": "A cube has total surface area 24. A sphere $O$ is tangent to all edges of the cube. Find the volume of sphere $O$.", "answer": "$\\frac{8\\sqrt{2}}{3}\\pi$"}
+{"question": "Circle $O$ has radius $\\sqrt{3}$. Points $A$, $B$ on the circle form an equilateral triangle with $O$. Find $\\vec{OA}\\cdot\\vec{OB}=$", "answer": "$\\frac{3}{2}$"}
+{"question": "Given $\\tan(\\alpha-\\frac{\\pi}{3})=-\\frac{\\sqrt{3}}{5}$, find $\\tan\\alpha=$ ________; $\\frac{\\sin\\alpha\\cos\\alpha}{3\\cos^2\\alpha-2\\sin^2\\alpha}=$ ________.", "answer": "$\\frac{\\sqrt{3}}{2}$ , $\\frac{\\sqrt{3}}{3}$"}
+{"question": "Equilateral triangle $ABC$ with side 1 is folded along altitude $AD$ to form a right dihedral angle $B$-$AD$-$C$. Find the cosine of the angle between lines $AC$ and $AB$.", "answer": "$\\frac{3}{4}$"}
+{"question": "Count the sets $M$ satisfying $\\varnothing\\subsetneq M\\subsetneq\\{0,1,2\\}$.", "answer": "6"}
+{"question": "Arithmetic sequence $\\{a_n\\}$: $a_1+a_4+a_7=39$ and $a_3+a_6+a_9=27$. Find $S_9=$", "answer": "99"}
+{"question": "In the expansion of $\\left(2^x-\\frac{\\sqrt{2}}{2}\\right)^9$, the 7th term is $\\frac{21}{4}$. Find $x=$", "answer": "$-\\frac{1}{3}$"}
+{"question": "In the expansion of $\\left(2^x-\\frac{\\sqrt{2}}{2}\\right)^9$ ($x\\in\\mathbb{R}$), the 7th term is $\\frac{21}{4}$. Find $\\lim_{n\\to\\infty}(x+x^2+\\cdots+x^n)=$", "answer": "-\\frac{1}{4}"}
+{"question": "Given $z=1-i$, find $|z^3|=$", "answer": "$2\\sqrt{2}$"}
+{"question": "Arithmetic sequence $\\{a_n\\}$ has $\\frac{S_4}{S_8}=\\frac{1}{3}$. Find $\\frac{S_8}{S_{16}}=$", "answer": "$\\frac{3}{10}$"}
+{"question": "A sphere of radius $R$ is tangent to all faces of a regular triangular prism. Find the ratio of the sphere's volume to the prism's volume.", "answer": "$\\frac{2\\sqrt{3}}{27}\\pi$"}
+{"question": "A circle centered at the origin passes through the foci of hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) and is divided by the right directrix into two arcs with length ratio $2:1$. Find the eccentricity.", "answer": "$\\sqrt{2}$"}
+{"question": "Find the constant term in the expansion of $\\left(x^3-\\frac{1}{2x^2}\\right)^{10}$.", "answer": "$\\frac{105}{32}$"}
+{"question": "If the solution set of $|x^2-8x+a|\\le x-4$ is $[4,5]$, find $a=$", "answer": "16"}
+{"question": "Sequence $\\{a_n\\}$: $S_n=1-5+9-13+17-21+\\cdots+(-1)^{n-1}(4n-3)$. Find $S_{15}+S_{22}-S_{31}=$", "answer": "-76"}
+{"question": "In a population of 30 individuals, a sample of size 5 is drawn. Find the probability that individual $a$ is selected.", "answer": "$\\frac{1}{6}$"}
+{"question": "Find the range of $y=\\sqrt{x-4}+\\sqrt{15-3x}$.", "answer": "$[1, 2]$"}
+{"question": "Function $f(x)$ and $g(x)=(\\sqrt{7}-\\sqrt{6})^x$ have graphs symmetric about $y=x$. Find the monotone increasing interval of $f(4-x^2)$.", "answer": "$(0, 2)$"}
+{"question": "Geometric sequence $\\{a_n\\}$ has partial sums $S_n$, and three consecutive terms coincide with the 1st, 5th, 6th terms of an arithmetic sequence $\\{b_n\\}$. Find $\\lim_{n\\to\\infty}\\frac{S_{n+2}}{na_1}=$", "answer": "$1$ or $0$"}
+{"question": "If $\\lim_{x\\to -\\infty}(\\sqrt{x^2-x+1}+x-k)=1$, find $k=$", "answer": "$\\frac{1}{2}$"}
+{"question": "Count the pairs of sets $(A,B)$ satisfying $A\\cup B=\\{a,b\\}$.", "answer": "9"}
+{"question": "Find one center of symmetry of $y=\\cos 2x$.", "answer": "$\\left(\\frac{\\pi}{4}, 0\\right)$"}
+{"question": "If $|x-2|+|x-a|\\ge a$ holds for all $x\\in\\mathbb{R}$, find the maximum value of $a$.", "answer": "1"}
+{"question": "$\\lim_{x\\to 0}\\frac{\\sqrt{1+x}-1}{x}=$", "answer": "$\\frac{1}{2}$"}

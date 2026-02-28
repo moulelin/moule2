@@ -1,0 +1,95 @@
+{"question": "If the set $A = \\{x \\in \\mathbb{R} \\mid ax^2 + ax + 1 = 0\\}$ contains exactly one element, then $a =$", "answer": "4"}
+{"question": "Given sets $A = \\{1, 2\\}$ and $B = \\{a, a^2 + 3\\}$. If $A \\cap B = \\{1\\}$, then the value of the real number $a$ is", "answer": "1"}
+{"question": "Let the universal set $U = \\{1, 2, 3, 4, 5\\}$. If set $M$ satisfies $\\complement_U M = \\{1, 3\\}$, then $M =$", "answer": "$\\{2, 4, 5\\}$"}
+{"question": "Given sets $A = \\{1, 2, 3, 5, 7, 11\\}$ and $B = \\{x \\mid 3 < x < 15\\}$, then the number of elements in $A \\cap B$ is", "answer": "3"}
+{"question": "Given sets $A = \\{(x, y) \\mid x, y \\in \\mathbb{N}^*, y \\geqslant x\\}$ and $B = \\{(x, y) \\mid x + y = 8\\}$, then the number of elements in $A \\cap B$ is", "answer": "4"}
+{"question": "Given set $A = \\{(x, y) \\mid x^2 + y^2 \\leqslant 3, x \\in \\mathbb{Z}, y \\in \\mathbb{Z}\\}$, then the number of elements in $A$ is", "answer": "9"}
+{"question": "Given sets $A = \\{(x, y) \\mid x^2 + y^2 = 1\\}$ and $B = \\{(x, y) \\mid y = x\\}$, then the number of elements in $A \\cap B$ is", "answer": "2"}
+{"question": "Given sets $A = \\{1, 2, 3, 4\\}$ and $B = \\{2, 4, 6, 8\\}$, then the number of elements in $A \\cap B$ is", "answer": "2"}
+{"question": "Given sets $A = \\{x \\mid x = 3n + 2, n \\in \\mathbb{N}\\}$ and $B = \\{6, 8, 10, 12, 14\\}$, then the number of elements in $A \\cap B$ is", "answer": "2"}
+{"question": "Given sets $A = \\{1, 2, 3\\}$ and $B = \\{2, 3\\}$, then", "answer": "$B \\subseteq A$"}
+{"question": "Given sets $A = \\{x \\mid x^2 - 2x > 0\\}$ and $B = \\{x \\mid -\\sqrt{5} < x < \\sqrt{5}\\}$, then", "answer": "$A \\cup B = \\mathbb{R}$"}
+{"question": "Given sets $A = \\{x \\mid x^2 - 3x + 2 = 0, x \\in \\mathbb{R}\\}$ and $B = \\{x \\mid 0 < x < 5, x \\in \\mathbb{N}\\}$, then the number of sets $C$ satisfying $A \\subseteq C \\subseteq B$ is", "answer": "4"}
+{"question": "Let sets $M = \\{1, 3, 5, 7, 9\\}$ and $N = \\{x \\mid 2x > 7\\}$, then $M \\cap N =$", "answer": "\\{5, 7, 9\\}"}
+{"question": "Let sets $A = \\{x \\mid -2 < x < 4\\}$ and $B = \\{2, 3, 4, 5\\}$, then $A \\cap B =$", "answer": "\\{2, 3\\}"}
+{"question": "Let sets $M = \\{x \\mid 0 < x < 4\\}$ and $N = \\{x \\mid \\frac{1}{3} \\leqslant x \\leqslant 5\\}$, then $M \\cap N =$", "answer": "\\{x \\mid \\frac{1}{3} \\leqslant x < 4\\}"}
+{"question": "Let sets $A = \\{2, 3, 5, 7\\}$ and $B = \\{1, 2, 3, 5, 8\\}$, then $A \\cap B =$", "answer": "\\{2, 3, 5\\}"}
+{"question": "Given sets $A = \\{x \\mid x - 1 \\geqslant 0\\}$ and $B = \\{0, 1, 2\\}$, then $A \\cap B =$", "answer": "\\{1, 2\\}"}
+{"question": "Given sets $A = \\{1, 2, 3\\}$ and $B = \\{2, 3, 4\\}$, then $A \\cup B =$", "answer": "\\{1, 2, 3, 4\\}"}
+{"question": "Given sets $A = \\{1, 2, 3\\}$ and $B = \\{x \\mid (x + 1)(x - 2) < 0, x \\in \\mathbb{Z}\\}$, then $A \\cup B =$", "answer": "\\{0, 1, 2, 3\\}"}
+{"question": "Given sets $A = \\{1, 2, 3\\}$ and $B = \\{x \\mid x^2 < 9\\}$, then $A \\cap B =$", "answer": "\\{1, 2\\}"}
+{"question": "Given sets $A = \\{1, 3, 5, 7\\}$ and $B = \\{x \\mid 2 \\leqslant x \\leqslant 5\\}$, then $A \\cap B =$", "answer": "\\{3, 5\\}"}
+{"question": "Given sets $A = \\{0, 2, 4, 6, 8, 10\\}$ and $B = \\{4, 8\\}$, then $\\complement_A B =$", "answer": "\\{0, 2, 6, 10\\}"}
+{"question": "Given sets $A = \\{-2, -1, 0, 1, 2\\}$ and $B = \\{x \\mid (x - 1)(x + 2) < 0\\}$, then $A \\cap B =$", "answer": "\\{-1, 0\\}"}
+{"question": "Given sets $A = \\{x \\mid -1 < x < 2\\}$ and $B = \\{x \\mid 0 < x < 3\\}$, then $A \\cup B =$", "answer": "(-1, 3)"}
+{"question": "Given sets $A = \\{-2, -1, 0, 1, 2\\}$ and $B = \\{x \\mid 0 \\leqslant x \\leqslant \\frac{5}{2}\\}$, then $A \\cap B =$", "answer": "\\{0, 1, 2\\}"}
+{"question": "Given sets $M = \\{x \\mid \\sqrt{x} < 4\\}$ and $N = \\{x \\mid 3x \\geqslant 1\\}$, then $M \\cap N =$", "answer": "\\{x \\mid \\frac{1}{3} \\leqslant x < 16\\}"}
+{"question": "Given sets $A = \\{-1, 1, 2, 4\\}$ and $B = \\{x \\mid |x - 1| \\leqslant 1\\}$, then $A \\cap B =$", "answer": "\\{1, 2\\}"}
+{"question": "Given the universal set $U = \\{1, 2, 3, 4, 5\\}$, and sets $M = \\{1, 2\\}$, $N = \\{3, 4\\}$, then $\\complement_U (M \\cup N) =$", "answer": "\\{5\\}"}
+{"question": "Given sets $S = \\{s \\mid s = 2n + 1, n \\in \\mathbb{Z}\\}$ and $T = \\{t \\mid t = 4n + 1, n \\in \\mathbb{Z}\\}$, then $S \\cap T =$", "answer": "T"}
+{"question": "Given the universal set $U = \\{1, 2, 3, 4, 5, 6\\}$, and sets $A = \\{1, 3, 6\\}$, $B = \\{2, 3, 4\\}$, then $A \\cap (\\complement_U B) =$", "answer": "\\{1, 6\\}"}
+{"question": "Given set $A = \\{x \\mid x^2 - 3x - 4 < 0\\}$ and $B = \\{-4, 1, 3, 5\\}$, then $A \\cap B =$", "answer": "\\{1, 3\\}"}
+{"question": "Given set $A = \\{x \\mid x^2 - 4 \\leqslant 0\\}$ and $B = \\{x \\mid 2x + a \\leqslant 0\\}$, and $A \\cap B = \\{x \\mid -2 \\leqslant x \\leqslant 1\\}$, then $a =$", "answer": "-2"}
+{"question": "Given set $A = \\{x \\mid |x| < 3, x \\in \\mathbb{Z}\\}$ and $B = \\{x \\mid |x| > 1, x \\in \\mathbb{Z}\\}$, then $A \\cap B =$", "answer": "\\{-2, 2\\}"}
+{"question": "Given the universal set $U = \\{-2, -1, 0, 1, 2, 3\\}$, and sets $A = \\{-1, 0, 1\\}$, $B = \\{1, 2\\}$, then $\\complement_U (A \\cup B) =$", "answer": "\\{-2, 3\\}"}
+{"question": "Given set $A = \\{x \\mid 1 \\leqslant x \\leqslant 3\\}$ and $B = \\{x \\mid 2 < x < 4\\}$, then $A \\cup B =$", "answer": "\\{x \\mid 1 \\leqslant x < 4\\}"}
+{"question": "Given the universal set $U = \\{-3, -2, -1, 0, 1, 2, 3\\}$, and sets $A = \\{-1, 0, 1, 2\\}$, $B = \\{-3, 0, 2, 3\\}$, then $A \\cap (\\complement_U B) =$", "answer": "\\{-1, 1\\}"}
+{"question": "Given set $M = \\{x \\mid -4 < x < 2\\}$ and $N = \\{x \\mid x^2 - x - 6 < 0\\}$, then $M \\cap N =$", "answer": "\\{x \\mid -2 < x < 2\\}"}
+{"question": "Given the universal set $U = \\{1, 2, 3, 4, 5, 6, 7\\}$, and sets $A = \\{2, 3, 4, 5\\}$, $B = \\{2, 3, 6, 7\\}$, then $B \\cap \\complement_U A =$", "answer": "\\{6, 7\\}"}
+{"question": "Given set $A = \\{x \\mid x^2 - 5x + 6 > 0\\}$ and $B = \\{x \\mid x < 1\\}$, then $A \\cap B =$", "answer": "\\{x \\mid x < 1\\}"}
+{"question": "Given set $A = \\{x \\mid x > -1\\}$ and $B = \\{x \\mid x < 2\\}$, then $A \\cap B =$", "answer": "(-1, 2)"}
+{"question": "Given set $A = \\{-1, 0, 1, 2\\}$ and $B = \\{x \\mid x^2 \\leqslant 1\\}$, then $A \\cap B =$", "answer": "\\{-1, 0, 1\\}"}
+{"question": "Given set $A = \\{x \\mid x^2 - x - 2 > 0\\}$, then $\\complement_R A =$", "answer": "$\\{x \\mid -1 \\leqslant x \\leqslant 2\\}$"}
+{"question": "Given set $A = \\{x \\mid x < 1\\}$ and $B = \\{x \\mid 3^x < 1\\}$, then $A \\cap B =$", "answer": "\\{x \\mid x < 0\\}"}
+{"question": "Given set $A = \\{x \\mid x < 2\\}$ and $B = \\{x \\mid 3 - 2x > 0\\}$, then $A \\cap B =$", "answer": "\\{x \\mid x < \\frac{3}{2}\\}"}
+{"question": "Given set $S = \\{x \\mid (x - 2)(x - 3) \\geqslant 0\\}$ and $T = \\{x \\mid x > 0\\}$, then $S \\cap T =$", "answer": "(0, 2] \\cup [3, +\\infty)"}
+{"question": "Given set $A = \\{1, 2, 4\\}$ and $B = \\{x \\mid x^2 - 4x + m = 0\\}$. If $A \\cap B = \\{1\\}$, then $B =$", "answer": "\\{1, 3\\}"}
+{"question": "Given set $P = \\{x \\mid x^2 \\leqslant 1\\}$ and $M = \\{a\\}$. If $P \\cup M = P$, then the range of the real number $a$ is", "answer": "[-1, 1]"}
+{"question": "Known sets $A = \\{(x, y) \\mid x^2 + y^2 \\leqslant 1, x, y \\in \\mathbb{Z}\\}$ and $B = \\{(x, y) \\mid |x| \\leqslant 2, |y| \\leqslant 2, x, y \\in \\mathbb{Z}\\}$. Define the set $A \\oplus B = \\{(x_1 + x_2, y_1 + y_2) \\mid (x_1, y_1) \\in A, (x_2, y_2) \\in B\\}$. The number of elements in $A \\oplus B$ is", "answer": "45"}
+{"question": "Given the following four propositions: $p_1$: If a complex number $z$ satisfies $\\frac{1}{z} \\in \\mathbb{R}$, then $z \\in \\mathbb{R}$; $p_2$: If a complex number $z$ satisfies $z^2 \\in \\mathbb{R}$, then $z \\in \\mathbb{R}$; $p_3$: If complex numbers $z_1, z_2$ satisfy $z_1 z_2 \\in \\mathbb{R}$, then $z_1 = \\bar{z}_2$; $p_4$: If a complex number $z \\in \\mathbb{R}$, then $\\bar{z} \\in \\mathbb{R}$. The true propositions among these are", "answer": "$p_1, p_4$"}
+{"question": "Given proposition $p: \\exists x \\in \\mathbf{R}, \\sin x < 1$; proposition $q: \\forall x \\in \\mathbf{R}, e^{|x|} \\geqslant 1$. The true proposition among the following is", "answer": "$p \\wedge q$"}
+{"question": "Given proposition $p: \\forall x > 0, \\ln(x + 1) > 0$ and proposition $q: \\text{If } a > b, \\text{ then } a^2 > b^2$. The true proposition among the following is", "answer": "$p \\wedge \\neg q$"}
+{"question": "Given function $f(x) = x^3$, then its inverse function is", "answer": "$f^{-1}(x) = \\sqrt[3]{x}$"}
+{"question": "Given that the graph of function $f(x) = ax^3 - 2x$ passes through the point $(-1, 4)$, then $a =$", "answer": "-2"}
+{"question": "Given function $f(x) = x^3 + ax^2 + bx + c$, and $0 \\leqslant f(-1) = f(-2) = f(-3) \\leqslant 3$, then the range of $c$ is", "answer": "6 < c \\leqslant 9"}
+{"question": "Given functions $f(x) = 5^{|x|}$ and $g(x) = ax^2 - x \\ (a \\in \\mathbb{R})$. If $f[g(1)] = 1$, then $a =$", "answer": "1"}
+{"question": "Given $f(x) = \\frac{x}{1+x}, x \\geqslant 0$. If $f_1(x) = f(x)$ and $f_{n+1}(x) = f(f_n(x)), n \\in \\mathbb{N}_+$, then the expression for $f_{2014}(x)$ is", "answer": "\\frac{x}{1 + 2014x}"}
+{"question": "The domain of the function $f(x) = \\frac{1}{x} + \\sqrt{1-x}$ is", "answer": "(-\\infty, 0) \\cup (0, 1]"}
+{"question": "The domain of the function $f(x) = \\frac{1}{x+1} + \\ln x$ is", "answer": "(0, +\\infty)"}
+{"question": "The domain of the function $y = \\sqrt{7 + 6x - x^2}$ is", "answer": "(-\\infty, 0]"}
+{"question": "The domain of the function $f(x) = \\frac{1}{\\sqrt{(\\log_2 x)^2 - 1}}$ is", "answer": "$(0, \\frac{1}{2}) \\cup (2, +\\infty)$"}
+{"question": "Given the function $f(x) = \\begin{cases} 2^{x-1} - 2, & x \\leqslant 1 \\\\ -\\log_2(x+1), & x > 1 \\end{cases}$. If $f(a) = -3$, then $f(6-a) =$", "answer": "-\\frac{7}{4}"}
+{"question": "Given the function $f(x) = \\begin{cases} 1 + \\log_2(2-x), & x < 1 \\\\ 2^{x-1}, & x \\geqslant 1 \\end{cases}$, then $f(-2) + f(\\log_2 12) =$", "answer": "9"}
+{"question": "Given the function $f(x) = \\begin{cases} x+1, & x \\leqslant 0 \\\\ 2^x, & x > 0 \\end{cases}$, the range of $x$ satisfying $f(x) + f(x-\\frac{1}{2}) > 1$ is", "answer": "(-\\frac{1}{4}, +\\infty)"}
+{"question": "Given the function $f(x) = \\begin{cases} e^{x-1}, & x < 1 \\\\ x^{\\frac{1}{3}}, & x \\geqslant 1 \\end{cases}$, the range of $x$ satisfying $f(x) \\leqslant 2$ is", "answer": "(-\\infty, 8]"}
+{"question": "Given the function $f(x) = \\begin{cases} -x^2 + 2, & x \\leqslant 1 \\\\ x + \\frac{1}{x} - 1, & x > 1 \\end{cases}$, then $f(f(\\frac{1}{2})) =$ ________; if $x \\in [a, b]$, and $1 \\leqslant f(x) \\leqslant 3$, then the maximum value of $b - a$ is ________.", "answer": "\\frac{37}{28}, 3 + \\sqrt{3}"}
+{"question": "Given $a \\in \\mathbb{R}$, and the function $f(x) = \\begin{cases} x^2 - 4, & x > 2 \\\\ |x - 3| + a, & x \\leqslant 2 \\end{cases}$. If $f(f(\\sqrt{6})) = 3$, then $a =$ ________.", "answer": "2"}
+{"question": "Given the function $f(x) = \\begin{cases} -x^2 + 2x, & x \\leqslant 0 \\\\ \\ln(x + 1), & x > 0 \\end{cases}$. If $|f(x)| \\geqslant ax$, then the range of the real number $a$ is", "answer": "[-2, 0]"}
+{"question": "If the maximum value of function $f(x) = x^2 + ax + b$ on the interval $[0, 1]$ is $M$ and the minimum value is $m$, then $M - m$", "answer": "Depends on $a$, but is independent of $b$"}
+{"question": "Given $a \\in \\mathbb{R}$, and the maximum value of the function $f(x) = \\left|x + \\frac{4}{x} - a\\right| + a$ on the interval $[1, 4]$ is 5, then the range of $a$ is", "answer": "(-\\infty, \\frac{9}{2}]"}
+{"question": "Among the following functions, the one that is an increasing function is ________.", "answer": "$f(x) = \\sqrt[3]{x}$"}
+{"question": "Known that the function $f(x) = \\lg(x^2 - 4x - 5)$ is monotonically increasing on the interval $(a, +\\infty)$, then the range of the real number $a$ is", "answer": "[5, +\\infty)"}
+{"question": "Let the function $f(x) = e^x + ae^{-x}$ ($a$ is a constant). If $f(x)$ is an odd function, then $a =$ ________.", "answer": "-1"}
+{"question": "Let the function $f(x) = e^x + ae^{-x}$ ($a$ is a constant). If $f(x)$ is an increasing function on $\\mathbb{R}$, then the range of $a$ is ________.", "answer": "(-\\infty, 0]"}
+{"question": "If $f(x) = \\ln\\left|a + \\frac{1}{1-x}\\right| + b$ is an odd function, then $a =$ ________, $b =$ ________.", "answer": "-\\frac{1}{2}, \\ln 2"}
+{"question": "Given function $f(x) = \\frac{1-x}{1+x}$, the odd function among the following is", "answer": "f(x - 1) + 1"}
+{"question": "Given that $f(x)$ is an odd function with domain $\\mathbb{R}$, and $f(1+x) = f(-x)$. If $f\\left(-\\frac{1}{3}\\right) = \\frac{1}{3}$, then $f\\left(\\frac{5}{3}\\right) =$", "answer": "\\frac{1}{3}"}
+{"question": "Given function $f(x) = x^3(a \\cdot 2^x - 2^{-x})$ is an even function, then $a =$", "answer": "1"}
+{"question": "Given function $f(x)$ with domain $\\mathbb{R}$, such that $f(x+1)$ is an odd function and $f(x+2)$ is an even function. When $x \\in [1, 2]$, $f(x) = ax^2 + b$. If $f(0) + f(3) = 6$, then $f\\left(\\frac{9}{2}\\right) =$", "answer": "\\frac{5}{2}"}
+{"question": "Given function $f(x) = \\frac{1-x}{1+x}$, the odd function among the following is", "answer": "f(x - 1) + 1"}
+{"question": "Given that the odd function $f(x)$ is defined on $\\mathbb{R}$, is monotonically decreasing on the interval $(-\\infty, 0)$, and satisfies $f(2) = 0$, the range of $x$ that satisfies $xf(x - 1) \\geqslant 0$ is", "answer": "[-1, 0] \\cup [1, 3]"}
+{"question": "Given that $f(x)$ is an odd function, and when $x < 0$, $f(x) = -e^{ax}$. If $f(\\ln 2) = 8$, then $a =$", "answer": "-3"}
+{"question": "Given that $f(x)$ is an odd function defined on $\\mathbb{R}$ and is monotonically decreasing on $(-\\infty, 0)$ with $f(2) = 0$, then $f(x)$ is also monotonically decreasing on $(0, +\\infty)$. Because $f(x)$ is an odd function and $f(2) = 0$, it follows that $f(-2) = 0$ and $f(0) = 0$. The values of the function are $f(x) > 0$ when $x \\in (-\\infty, -2) \\cup (0, 2)$ and $f(x) < 0$ when $x \\in (-2, 0) \\cup (2, +\\infty)$. Solving the inequality $xf(x-1) \\geqslant 0$, we find the range of $x$ is", "answer": "[-1, 0] \\cup [1, 3]"}
+{"question": "Given that $f(x)$ is an odd function defined on $\\mathbb{R}$, and for $x \\in (-\\infty, 0)$, $f(x) = 2x^3 + x^2$. To find $f(2)$, we use the odd property $f(2) = -f(-2)$. Calculating $f(-2) = 2(-2)^3 + (-2)^2 = -16 + 4 = -12$, thus $f(2) =$", "answer": "12"}
+{"question": "Given that $f(x) = x \\ln(x + \\sqrt{a + x^2})$ is an even function, by the definition of even functions $f(x) = f(-x)$, we have $x \\ln(x + \\sqrt{a + x^2}) = -x \\ln(-x + \\sqrt{a + x^2})$. This implies $\\ln(x + \\sqrt{a + x^2}) + \\ln(\\sqrt{a + x^2} - x) = 0$, which leads to $\\ln(a + x^2 - x^2) = \\ln a = 0$. Therefore $a =$", "answer": "1"}
+{"question": "Given that the even function $f(x)$ has a graph symmetric about the line $x = 2$, we have $f(x) = f(4 - x)$. Since $f(x)$ is even, $f(-1) = f(1)$. Using the symmetry about $x = 2$, $f(1) = f(4 - 1) = f(3)$. Given $f(3) = 3$, then $f(-1) =$", "answer": "3"}
+{"question": "Given that the even function $f(x)$ is monotonically decreasing on $[0, +\\infty)$ and $f(2) = 0$. The inequality $f(x - 1) > 0$ is equivalent to $f(|x - 1|) > f(2)$. Due to the monotonicity on the positive axis, this implies $|x - 1| < 2$, which leads to $-2 < x - 1 < 2$. Thus, the range for $x$ is", "answer": "(-1, 3)"}
+{"question": "Given $f(x) = \\ln(\\sqrt{1 + 9x^2} - 3x) + 1$, let $g(x) = \\ln(\\sqrt{1 + 9x^2} - 3x)$. Since $g(x) + g(-x) = \\ln(1 + 9x^2 - 9x^2) = 0$, $g(x)$ is an odd function. Therefore, $f(x) + f(-x) = g(x) + 1 + g(-x) + 1 = 2$. Given that $\\lg 2 + \\lg \\frac{1}{2} = 0$, then $f(\\lg 2) + f(\\lg \\frac{1}{2}) =$", "answer": "2"}
+{"question": "Given that $f(x)$ is an odd function, and when $x > 0$, $f(x) = x^2 + \\frac{1}{x}$, then $f(-1) =$", "answer": "-2"}
+{"question": "Given that $f(x)$ is an odd function and $g(x)$ is an even function, and $f(-1) + g(1) = 2$, $f(1) + g(-1) = 4$, then $g(1)$ equals", "answer": "3"}
+{"question": "Given function $f(x) = ax^3 + b\\sin x + 4$ ($a, b \\in \\mathbb{R}$). If $f(\\lg(\\log_2 10)) = 5$, then $f(\\lg(\\lg 2)) =$", "answer": "3"}
+{"question": "Given that the domain of function $f(x)$ is $\\mathbb{R}$, and $f(x + y) + f(x - y) = f(x)f(y)$, $f(1) = 1$, then $\\sum_{k=1}^{22} f(k) =$", "answer": "-3"}
+{"question": "Given function $f(x)$ with domain $\\mathbb{R}$, such that $f(x + 1)$ is an odd function and $f(x + 2)$ is an even function. When $x \\in [1, 2]$, $f(x) = ax^2 + b$. If $f(0) + f(3) = 6$, then $f\\left(\\frac{9}{2}\\right) =$", "answer": "\\frac{5}{2}"}
+{"question": "Given function $f(x)$ with domain $\\mathbb{R}$, such that $f(x+2)$ is an even function and $f(2x+1)$ is an odd function. Then", "answer": "$f(-1) = 0$"}
+{"question": "Given $f(x)$ is an odd function defined on $(-\\infty, +\\infty)$ satisfying $f(1-x) = f(1+x)$. If $f(1) = 2$, then $f(1) + f(2) + f(3) + \\dots + f(50) =$", "answer": "2"}
+{"question": "Given function $f(x)$ satisfies $f(x+4) = f(x)$ for all $x \\in \\mathbb{R}$. On the interval $(-2, 2]$, the function is defined as $f(x) = \\begin{cases} \\cos \\frac{\\pi x}{2}, & 0 < x \\leqslant 2 \\\\ |x + \\frac{1}{2}|, & -2 < x \\leqslant 0 \\end{cases}$. Then the value of $f(f(15)) =$", "answer": "\\frac{\\sqrt{2}}{2}"}

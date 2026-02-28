@@ -1,0 +1,496 @@
+============================================================
+[2,3] Evaluating: Qwen/Qwen3-4B on AMO-Bench
+============================================================
+============================================================
+[0,1] Evaluating: Qwen/Qwen3-1.7B on AMO-Bench
+============================================================
+INFO 02-26 20:27:07 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 20:27:07 [__init__.py:216] Automatically detected platform cuda.
+Dataset: amo_bench (meituan-longcat/AMO-Bench), 50 problems
+INFO 02-26 20:27:20 [utils.py:233] non-default args: {'trust_remote_code': True, 'max_model_len': 40960, 'tensor_parallel_size': 2, 'disable_log_stats': True, 'model': 'Qwen/Qwen3-1.7B'}
+Dataset: amo_bench (meituan-longcat/AMO-Bench), 50 problems
+INFO 02-26 20:27:20 [utils.py:233] non-default args: {'trust_remote_code': True, 'max_model_len': 40960, 'tensor_parallel_size': 2, 'disable_log_stats': True, 'model': 'Qwen/Qwen3-4B'}
+INFO 02-26 20:27:20 [model.py:547] Resolved architecture: Qwen3ForCausalLM
+INFO 02-26 20:27:20 [model.py:1510] Using max model len 40960
+INFO 02-26 20:27:20 [model.py:547] Resolved architecture: Qwen3ForCausalLM
+INFO 02-26 20:27:20 [model.py:1510] Using max model len 40960
+INFO 02-26 20:27:21 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=16384.
+INFO 02-26 20:27:21 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=16384.
+WARNING 02-26 20:27:22 [__init__.py:3036] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+WARNING 02-26 20:27:22 [__init__.py:3036] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+INFO 02-26 20:27:38 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 20:27:38 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m INFO 02-26 20:27:45 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=1203893)[0;0m INFO 02-26 20:27:45 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=1203893)[0;0m INFO 02-26 20:27:46 [core.py:77] Initializing a V1 LLM engine (v0.11.0) with config: model='Qwen/Qwen3-4B', speculative_config=None, tokenizer='Qwen/Qwen3-4B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=40960, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen3-4B, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention","vllm.sparse_attn_indexer"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":[2,1],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":512,"local_cache_dir":null}
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m INFO 02-26 20:27:46 [core.py:77] Initializing a V1 LLM engine (v0.11.0) with config: model='Qwen/Qwen3-1.7B', speculative_config=None, tokenizer='Qwen/Qwen3-1.7B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=40960, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen3-1.7B, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention","vllm.sparse_attn_indexer"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":[2,1],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":512,"local_cache_dir":null}
+[1;36m(EngineCore_DP0 pid=1203893)[0;0m INFO 02-26 20:27:46 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0, 1], buffer_handle=(2, 16777216, 10, 'psm_38c57e1a'), local_subscribe_addr='ipc:///tmp/3d7746cd-6664-47b2-b118-c1a7bc525550', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m INFO 02-26 20:27:46 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0, 1], buffer_handle=(2, 16777216, 10, 'psm_8552d040'), local_subscribe_addr='ipc:///tmp/004c76cf-244a-4cd8-84fa-fad17f22646a', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 02-26 20:28:09 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 20:28:09 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 20:28:09 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 20:28:10 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 20:28:32 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_e9ab8d47'), local_subscribe_addr='ipc:///tmp/682530d4-ce00-4019-ae8f-4dedef0f934d', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 02-26 20:28:32 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_1c39b912'), local_subscribe_addr='ipc:///tmp/b4daf13d-2786-4687-8e2a-101ac8630647', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 02-26 20:28:32 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_b5fe4ca3'), local_subscribe_addr='ipc:///tmp/f80a98b1-7b59-41af-ac87-4da2f3be1278', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 02-26 20:28:32 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_fa39ff9c'), local_subscribe_addr='ipc:///tmp/f2b4f65f-f2eb-4200-80ca-5ea3ed9335cf', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+ERROR 02-26 20:28:32 [multiproc_executor.py:597] WorkerProc failed to start.
+ERROR 02-26 20:28:32 [multiproc_executor.py:597] Traceback (most recent call last):
+ERROR 02-26 20:28:32 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 571, in worker_main
+ERROR 02-26 20:28:32 [multiproc_executor.py:597]     worker = WorkerProc(*args, **kwargs)
+ERROR 02-26 20:28:32 [multiproc_executor.py:597]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 02-26 20:28:32 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 430, in __init__
+ERROR 02-26 20:28:32 [multiproc_executor.py:597]     self.worker.init_device()
+ERROR 02-26 20:28:32 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/worker/worker_base.py", line 259, in init_device
+ERROR 02-26 20:28:32 [multiproc_executor.py:597]     self.worker.init_device()  # type: ignore
+ERROR 02-26 20:28:32 [multiproc_executor.py:597]     ^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 02-26 20:28:32 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 161, in init_device
+ERROR 02-26 20:28:32 [multiproc_executor.py:597]     current_platform.set_device(self.device)
+ERROR 02-26 20:28:32 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/platforms/cuda.py", line 79, in set_device
+ERROR 02-26 20:28:32 [multiproc_executor.py:597]     torch.cuda.set_device(device)
+ERROR 02-26 20:28:32 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py", line 569, in set_device
+ERROR 02-26 20:28:32 [multiproc_executor.py:597]     torch._C._cuda_setDevice(device)
+ERROR 02-26 20:28:32 [multiproc_executor.py:597] torch.AcceleratorError: CUDA error: out of memory
+ERROR 02-26 20:28:32 [multiproc_executor.py:597] CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+ERROR 02-26 20:28:32 [multiproc_executor.py:597] For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+ERROR 02-26 20:28:32 [multiproc_executor.py:597] Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+ERROR 02-26 20:28:32 [multiproc_executor.py:597] 
+INFO 02-26 20:28:32 [multiproc_executor.py:558] Parent process exited, terminating worker
+INFO 02-26 20:28:32 [multiproc_executor.py:558] Parent process exited, terminating worker
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+INFO 02-26 20:28:32 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 02-26 20:28:32 [pynccl.py:103] vLLM is using nccl==2.27.3
+INFO 02-26 20:28:32 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 02-26 20:28:32 [pynccl.py:103] vLLM is using nccl==2.27.3
+WARNING 02-26 20:28:35 [symm_mem.py:90] SymmMemCommunicator: symmetric memory multicast operations are not supported.
+WARNING 02-26 20:28:35 [symm_mem.py:90] SymmMemCommunicator: symmetric memory multicast operations are not supported.
+INFO 02-26 20:28:35 [custom_all_reduce.py:35] Skipping P2P check and trusting the driver's P2P report.
+INFO 02-26 20:28:35 [custom_all_reduce.py:35] Skipping P2P check and trusting the driver's P2P report.
+INFO 02-26 20:28:35 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[1], buffer_handle=(1, 4194304, 6, 'psm_8bd63b94'), local_subscribe_addr='ipc:///tmp/df6bacc5-09dd-451d-8c21-5587f63fa9de', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+INFO 02-26 20:28:35 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 02-26 20:28:35 [pynccl.py:103] vLLM is using nccl==2.27.3
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+INFO 02-26 20:28:35 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 02-26 20:28:35 [pynccl.py:103] vLLM is using nccl==2.27.3
+INFO 02-26 20:28:35 [parallel_state.py:1208] rank 1 in world size 2 is assigned as DP rank 0, PP rank 0, TP rank 1, EP rank 1
+INFO 02-26 20:28:35 [parallel_state.py:1208] rank 0 in world size 2 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+INFO 02-26 20:28:36 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+INFO 02-26 20:28:36 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+[1;36m(Worker_TP1 pid=1204002)[0;0m INFO 02-26 20:28:36 [gpu_model_runner.py:2602] Starting to load model Qwen/Qwen3-4B...
+[1;36m(Worker_TP0 pid=1204000)[0;0m INFO 02-26 20:28:36 [gpu_model_runner.py:2602] Starting to load model Qwen/Qwen3-4B...
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708] EngineCore failed to start.
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708] Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 699, in run_engine_core
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708]     engine_core = EngineCoreProc(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 498, in __init__
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708]     super().__init__(vllm_config, executor_class, log_stats,
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 83, in __init__
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708]     self.model_executor = executor_class(vllm_config)
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708]                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/executor/executor_base.py", line 54, in __init__
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708]     self._init_executor()
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 106, in _init_executor
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708]     self.workers = WorkerProc.wait_for_ready(unready_workers)
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 509, in wait_for_ready
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708]     raise e from None
+[1;36m(EngineCore_DP0 pid=1203892)[0;0m ERROR 02-26 20:28:36 [core.py:708] Exception: WorkerProc initialization failed due to an exception in a background process. See stack trace for root cause.
+[1;36m(Worker_TP1 pid=1204002)[0;0m INFO 02-26 20:28:37 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(Worker_TP0 pid=1204000)[0;0m INFO 02-26 20:28:37 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(Worker_TP1 pid=1204002)[0;0m INFO 02-26 20:28:37 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(Worker_TP0 pid=1204000)[0;0m INFO 02-26 20:28:37 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(Worker_TP1 pid=1204002)[0;0m INFO 02-26 20:28:37 [weight_utils.py:392] Using model weights format ['*.safetensors']
+[1;36m(Worker_TP0 pid=1204000)[0;0m INFO 02-26 20:28:37 [weight_utils.py:392] Using model weights format ['*.safetensors']
+[1;36m(Worker_TP1 pid=1204002)[0;0m INFO 02-26 20:28:49 [default_loader.py:267] Loading weights took 11.65 seconds
+[1;36m(Worker_TP0 pid=1204000)[0;0m INFO 02-26 20:28:49 [default_loader.py:267] Loading weights took 11.53 seconds
+[1;36m(Worker_TP1 pid=1204002)[0;0m INFO 02-26 20:28:50 [gpu_model_runner.py:2653] Model loading took 3.8168 GiB and 12.426708 seconds
+[1;36m(Worker_TP0 pid=1204000)[0;0m INFO 02-26 20:28:50 [gpu_model_runner.py:2653] Model loading took 3.8168 GiB and 12.402193 seconds
+INFO 02-26 20:29:02 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(Worker_TP0 pid=1204000)[0;0m INFO 02-26 20:29:13 [backends.py:548] Using cache directory: /home/x-qlan1/.cache/vllm/torch_compile_cache/e172acb1b2/rank_0_0/backbone for vLLM's torch.compile
+[1;36m(Worker_TP1 pid=1204002)[0;0m INFO 02-26 20:29:13 [backends.py:548] Using cache directory: /home/x-qlan1/.cache/vllm/torch_compile_cache/e172acb1b2/rank_1_0/backbone for vLLM's torch.compile
+[1;36m(Worker_TP0 pid=1204000)[0;0m INFO 02-26 20:29:13 [backends.py:559] Dynamo bytecode transform time: 22.14 s
+[1;36m(Worker_TP1 pid=1204002)[0;0m INFO 02-26 20:29:13 [backends.py:559] Dynamo bytecode transform time: 22.15 s
+Dataset: amo_bench (meituan-longcat/AMO-Bench), 50 problems
+INFO 02-26 20:29:18 [utils.py:233] non-default args: {'trust_remote_code': True, 'max_model_len': 40960, 'tensor_parallel_size': 2, 'disable_log_stats': True, 'model': 'Qwen/Qwen3-1.7B'}
+INFO 02-26 20:29:18 [model.py:547] Resolved architecture: Qwen3ForCausalLM
+INFO 02-26 20:29:18 [model.py:1510] Using max model len 40960
+INFO 02-26 20:29:19 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=16384.
+WARNING 02-26 20:29:20 [__init__.py:3036] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+[1;36m(Worker_TP0 pid=1204000)[0;0m INFO 02-26 20:29:21 [backends.py:164] Directly load the compiled graph(s) for dynamic shape from the cache, took 5.664 s
+[1;36m(Worker_TP1 pid=1204002)[0;0m INFO 02-26 20:29:21 [backends.py:164] Directly load the compiled graph(s) for dynamic shape from the cache, took 5.691 s
+[1;36m(Worker_TP0 pid=1204000)[0;0m INFO 02-26 20:29:24 [monitor.py:34] torch.compile takes 22.14 s in total
+[1;36m(Worker_TP1 pid=1204002)[0;0m INFO 02-26 20:29:24 [monitor.py:34] torch.compile takes 22.15 s in total
+[1;36m(Worker_TP1 pid=1204002)[0;0m INFO 02-26 20:29:27 [gpu_worker.py:298] Available KV cache memory: 65.02 GiB
+[1;36m(Worker_TP0 pid=1204000)[0;0m INFO 02-26 20:29:28 [gpu_worker.py:298] Available KV cache memory: 65.02 GiB
+[1;36m(EngineCore_DP0 pid=1203893)[0;0m INFO 02-26 20:29:29 [kv_cache_utils.py:1087] GPU KV cache size: 946,848 tokens
+[1;36m(EngineCore_DP0 pid=1203893)[0;0m INFO 02-26 20:29:29 [kv_cache_utils.py:1091] Maximum concurrency for 40,960 tokens per request: 23.12x
+[1;36m(EngineCore_DP0 pid=1203893)[0;0m INFO 02-26 20:29:29 [kv_cache_utils.py:1087] GPU KV cache size: 946,848 tokens
+[1;36m(EngineCore_DP0 pid=1203893)[0;0m INFO 02-26 20:29:29 [kv_cache_utils.py:1091] Maximum concurrency for 40,960 tokens per request: 23.12x
+[1;36m(Worker_TP0 pid=1204000)[0;0m All deep_gemm operations loaded successfully!
+INFO 02-26 20:29:39 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m INFO 02-26 20:29:49 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m INFO 02-26 20:29:49 [core.py:77] Initializing a V1 LLM engine (v0.11.0) with config: model='Qwen/Qwen3-1.7B', speculative_config=None, tokenizer='Qwen/Qwen3-1.7B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=40960, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen3-1.7B, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention","vllm.sparse_attn_indexer"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":[2,1],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":512,"local_cache_dir":null}
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m INFO 02-26 20:29:49 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0, 1], buffer_handle=(2, 16777216, 10, 'psm_19dfd5da'), local_subscribe_addr='ipc:///tmp/bfd14058-2607-4d54-9452-0483323feca7', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[1;36m(Worker_TP1 pid=1204002)[0;0m All deep_gemm operations loaded successfully!
+[1;36m(Worker_TP1 pid=1204002)[0;0m INFO 02-26 20:29:50 [custom_all_reduce.py:203] Registering 9782 cuda graph addresses
+[1;36m(Worker_TP0 pid=1204000)[0;0m INFO 02-26 20:29:50 [custom_all_reduce.py:203] Registering 9782 cuda graph addresses
+[1;36m(Worker_TP1 pid=1204002)[0;0m INFO 02-26 20:29:52 [gpu_model_runner.py:3480] Graph capturing finished in 23 secs, took -0.50 GiB
+[1;36m(Worker_TP0 pid=1204000)[0;0m INFO 02-26 20:29:52 [gpu_model_runner.py:3480] Graph capturing finished in 23 secs, took -0.50 GiB
+[1;36m(EngineCore_DP0 pid=1203893)[0;0m INFO 02-26 20:29:52 [core.py:210] init engine (profile, create kv cache, warmup model) took 61.95 seconds
+INFO 02-26 20:29:55 [llm.py:306] Supported_tasks: ['generate']
+Mode: greedy, n_samples: 1, max_tokens: 38000
+Generating responses...
+INFO 02-26 20:30:13 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 20:30:13 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 20:30:35 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_7799bfcd'), local_subscribe_addr='ipc:///tmp/5d571218-d782-421f-ac5d-eff52359c681', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 02-26 20:30:35 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_ca55f133'), local_subscribe_addr='ipc:///tmp/34f5542c-fb6c-4aa6-bdc3-5997e1207d82', remote_subscribe_addr=None, remote_addr_ipv6=False)
+ERROR 02-26 20:30:36 [multiproc_executor.py:597] WorkerProc failed to start.
+ERROR 02-26 20:30:36 [multiproc_executor.py:597] Traceback (most recent call last):
+ERROR 02-26 20:30:36 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 571, in worker_main
+ERROR 02-26 20:30:36 [multiproc_executor.py:597]     worker = WorkerProc(*args, **kwargs)
+ERROR 02-26 20:30:36 [multiproc_executor.py:597]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 02-26 20:30:36 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 430, in __init__
+ERROR 02-26 20:30:36 [multiproc_executor.py:597]     self.worker.init_device()
+ERROR 02-26 20:30:36 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/worker/worker_base.py", line 259, in init_device
+ERROR 02-26 20:30:36 [multiproc_executor.py:597]     self.worker.init_device()  # type: ignore
+ERROR 02-26 20:30:36 [multiproc_executor.py:597]     ^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 02-26 20:30:36 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 161, in init_device
+ERROR 02-26 20:30:36 [multiproc_executor.py:597]     current_platform.set_device(self.device)
+ERROR 02-26 20:30:36 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/platforms/cuda.py", line 79, in set_device
+ERROR 02-26 20:30:36 [multiproc_executor.py:597]     torch.cuda.set_device(device)
+ERROR 02-26 20:30:36 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py", line 569, in set_device
+ERROR 02-26 20:30:36 [multiproc_executor.py:597]     torch._C._cuda_setDevice(device)
+ERROR 02-26 20:30:36 [multiproc_executor.py:597] torch.AcceleratorError: CUDA error: out of memory
+ERROR 02-26 20:30:36 [multiproc_executor.py:597] CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+ERROR 02-26 20:30:36 [multiproc_executor.py:597] For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+ERROR 02-26 20:30:36 [multiproc_executor.py:597] Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+ERROR 02-26 20:30:36 [multiproc_executor.py:597] 
+INFO 02-26 20:30:36 [multiproc_executor.py:558] Parent process exited, terminating worker
+INFO 02-26 20:30:36 [multiproc_executor.py:558] Parent process exited, terminating worker
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708] EngineCore failed to start.
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708] Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 699, in run_engine_core
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708]     engine_core = EngineCoreProc(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 498, in __init__
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708]     super().__init__(vllm_config, executor_class, log_stats,
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 83, in __init__
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708]     self.model_executor = executor_class(vllm_config)
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708]                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/executor/executor_base.py", line 54, in __init__
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708]     self._init_executor()
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 106, in _init_executor
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708]     self.workers = WorkerProc.wait_for_ready(unready_workers)
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 509, in wait_for_ready
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708]     raise e from None
+[1;36m(EngineCore_DP0 pid=1204291)[0;0m ERROR 02-26 20:30:40 [core.py:708] Exception: WorkerProc initialization failed due to an exception in a background process. See stack trace for root cause.
+Generation completed in 1015.0s
+
+============================================================
+Model: Qwen/Qwen3-4B
+Dataset: amo_bench (50 problems)
+Mode: greedy
+Accuracy: 5/50 = 10.0%
+============================================================
+  [O] # 0  gt=6  pred=6
+  [X] # 1  gt=Thesolutionsetistheunionofthefollowingfivesets:\begin{enumerate}\item{(2,n,n)|n\in\mathbb{N}^{+}}\item{(2,2n+3,2n)|n\in\mathbb{N}}\item{(2,2n,2n+3)|n\in\mathbb{N}}\item{(2^{q}-1,kq+1,kq)|q\in\mathbb{N}^{+}suchthat2^{q}-1isaprime(i.e.,a``Mersenneprime''),k\in\mathbb{N}}\item{(2^{q}-1,kq,kq+1)|q\in\mathbb{N}^{+}suchthat2^{q}-1isaprime(i.e.,a``Mersenneprime''),k\in\mathbb{N}}\end{enumerate}Here,\mathbb{N}^{+}denotesthesetofpositiveintegers,\mathbb{N}denotesthesetofnon-negativeintegers.Primenumbersoftheform2^{q}-1arealsoknownas``Mersenneprimes''.(Note:Forthecaseswherep=2^{q}-1,thesolerequirementisthat2^{q}-1beaprimenumber;nofurtherconditionsareimposedontheexponentq.)  pred=thespecifictripleswherepis2,3
+  [X] # 2  gt={1,2,3}  pred={1}
+  [X] # 3  gt=512578  pred=1
+  [X] # 4  gt=\frac{(2+\sqrt{3})^{2^{2-n}}+(2-\sqrt{3})^{2^{2-n}}}{2}  pred=oftheforma_n=1+A(1/4)^n+B(-1/8)^n,withABdeterminedbytheinitialconditions,eventhoughitdoesn'tmatchthethirdterm
+  [X] # 5  gt=1382935444  pred=2^{2024}-2
+  [X] # 6  gt={0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30}  pred=1
+  [X] # 7  gt=\frac{{15}+5\sqrt{5}}{6}\cdot\sqrt[3]{{14}-6\sqrt{5}}  pred=0.0
+  [X] # 8  gt=6  pred=1
+  [X] # 9  gt=-9126  pred=\frac{521689}{12}
+  [X] #10  gt=10  pred=2
+  [X] #11  gt=\frac{3}{5}\cdot\sqrt{{4678570}+{2280}\sqrt{4210702}}  pred=1
+  [X] #12  gt=\frac{33497570861567}{2}  pred=2023
+  [X] #13  gt=59  pred=0
+  [X] #14  gt=\frac{9\sqrt{3}}{2}  pred=\frac{37\sqrt{6}}{6}
+  [O] #15  gt=68  pred=68
+  [X] #16  gt=2016  pred=14567
+  [X] #17  gt=\frac{\sqrt{3}}{45}  pred=\frac{2}{45}
+  [X] #18  gt=666  pred=703
+  [O] #19  gt=120  pred=120
+  [O] #20  gt=230  pred=230
+  [X] #21  gt=\frac{208\cdot3^{1/4}}{21}  pred=13
+  [X] #22  gt=-1  pred=2
+  [X] #23  gt=Forn=3,theminimumofa_1^2+a_2^2+a_3^2is12Forn\ge4,theminimumofa_1^2+a_2^2+\cdots+a_n^2is\frac{6n^2}{5}  pred=\frac{4n^2}{3}
+  [X] #24  gt=ThesetSofallsuchpositiveintegersnisgivenby:\begin{equation*}S=\begin{cases}{n|n=2  pred=2
+  [X] #25  gt=Infinitelymany.\textit{(Note:anyanswerconveying``\inftyinite''isaccepted.)}  pred=0
+  [X] #26  gt=Infinitelymany.\textit{(Note:anyanswerconveying``\inftyinite''isaccepted.)}  pred=6
+  [X] #27  gt=42  pred=6
+  [X] #28  gt=\frac{21}{103}  pred=1
+  [X] #29  gt=3736  pred=3735
+  [X] #30  gt=2295  pred=2021^2-2\cdot2021+2043
+  [X] #31  gt=225  pred=4
+  [X] #32  gt=34  pred=51
+  [X] #33  gt=\frac{3(16+(\sqrt[3]{7+4\sqrt{3}}+\sqrt[3]{7-4\sqrt{3}}-1)^2)}{32(\sqrt[3]{7+4\sqrt{3}}+\sqrt[3]{7-4\sqrt{3}}-1)}  pred=1
+  [X] #34  gt=7657  pred=likelymore
+  [X] #35  gt=343  pred=2
+  [X] #36  gt=\frac{(a-b)(a-c)(b-c)}{8}\cdot(\frac{(a+b-c)(a-b+c)(-a+b+c)}{2abc-(a+b-c)(a-b+c)(-a+b+c)})^3  pred=(r^2)*
+  [X] #37  gt=\lfloor\frac{3d}{2}\rfloor+1,where\lfloor\quad\rfloordenotesthefloorfunction(roundingdowntothenearestinteger)  pred=\inftyinite,butsincetheproblemsaystoexpressitasacommonfraction,maybeI'mmissingsomething
+  [O] #38  gt=0(mod128)  pred=0
+  [X] #39  gt=Theanswercanbeexpressedinvariousforms.Basedonthevaluesoft,n,mlistedbelow,verifywhetherthestudent'sansweriscorrect:\begin{enumerate}\itemt=500,n=1000,thenm=2\itemt=2,n=100,thenm=50\itemt=8,n=10,thenm=3\itemt=500,n=999,thenmhasnosolution\itemt=2,n=99,thenmhasnosolution\itemt=8,n=9,thenmhasnosolution\itemt=499,n=1000,thenm=4\itemt=3,n=66,thenm=22\itemt=15,n=20,thenm=4\itemt=97,n=999,thenm=11\itemt=33,n=297,thenm=9\itemt=3,n=9,thenm=3\end{enumerate}  pred=\frac{n}{t}
+  [X] #40  gt=Let\prod^{n}_{j=1}p_j,wherep_1,p_2,...isasequenceofprimessuchthatp_1=2,foranypositiveintegeri\ge2,p_i\equiv1(mod~m*\prod^{i-1}_{j=1}p_j)wherensatisfiesn>1+log_{2}(20232024)  pred=m
+  [X] #41  gt=nisanoddintegerwithn\ge3,misanevenintegerwithm\ge4,n-m-1\le0  pred=misevennisodd
+  [X] #42  gt={40,64,75,100,150}  pred={75,150}
+  [X] #43  gt=8281323  pred=3
+  [X] #44  gt={2}^{2026}-1  pred=2026
+  [X] #45  gt=Whenn=2,thenumberis7;Whenn\ge3,thenumberis{n}^{2}+2  pred=n^2
+  [X] #46  gt=72  pred=0
+  [X] #47  gt=30  pred=25
+  [X] #48  gt=16  pred=0
+  [X] #49  gt=180  pred=171
+
+Results saved to /anvil/scratch/x-qlan1/moule2/eval_results/base/Qwen_Qwen3-4B_amo_bench_greedy.json
+Results saved to /home/x-qlan1/code/moule2/scripts/eval_base/results/Qwen_Qwen3-4B_amo_bench_greedy.txt
+[1;36m(Worker_TP0 pid=1204000)[0;0m INFO 02-26 20:47:12 [multiproc_executor.py:558] Parent process exited, terminating worker
+[1;36m(Worker_TP1 pid=1204002)[0;0m INFO 02-26 20:47:12 [multiproc_executor.py:558] Parent process exited, terminating worker
+ERROR 02-26 20:47:17 [core_client.py:564] Engine core proc EngineCore_DP0 died unexpectedly, shutting down client.
+INFO 02-26 20:47:32 [__init__.py:216] Automatically detected platform cuda.
+Dataset: amo_bench (meituan-longcat/AMO-Bench), 50 problems
+INFO 02-26 20:47:39 [utils.py:233] non-default args: {'trust_remote_code': True, 'max_model_len': 40960, 'tensor_parallel_size': 2, 'disable_log_stats': True, 'model': 'Qwen/Qwen3-4B'}
+INFO 02-26 20:47:39 [model.py:547] Resolved architecture: Qwen3ForCausalLM
+INFO 02-26 20:47:39 [model.py:1510] Using max model len 40960
+INFO 02-26 20:47:40 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=16384.
+WARNING 02-26 20:47:40 [__init__.py:3036] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+INFO 02-26 20:47:52 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m INFO 02-26 20:47:58 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m INFO 02-26 20:47:58 [core.py:77] Initializing a V1 LLM engine (v0.11.0) with config: model='Qwen/Qwen3-4B', speculative_config=None, tokenizer='Qwen/Qwen3-4B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=40960, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen3-4B, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention","vllm.sparse_attn_indexer"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":[2,1],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":512,"local_cache_dir":null}
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m INFO 02-26 20:47:58 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0, 1], buffer_handle=(2, 16777216, 10, 'psm_9897d7bf'), local_subscribe_addr='ipc:///tmp/1e6e3988-1930-4578-83b5-7bddc00a7448', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 02-26 20:48:15 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 20:48:15 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 20:48:28 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_eae1ad42'), local_subscribe_addr='ipc:///tmp/56e6592d-3da0-4064-ac31-bcb1b51513aa', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 02-26 20:48:28 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_226fd9fb'), local_subscribe_addr='ipc:///tmp/b9cf3831-317c-4894-90d9-afc610712a70', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+INFO 02-26 20:48:29 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 02-26 20:48:29 [pynccl.py:103] vLLM is using nccl==2.27.3
+INFO 02-26 20:48:29 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 02-26 20:48:29 [pynccl.py:103] vLLM is using nccl==2.27.3
+WARNING 02-26 20:48:31 [symm_mem.py:90] SymmMemCommunicator: symmetric memory multicast operations are not supported.
+WARNING 02-26 20:48:31 [symm_mem.py:90] SymmMemCommunicator: symmetric memory multicast operations are not supported.
+INFO 02-26 20:48:31 [custom_all_reduce.py:35] Skipping P2P check and trusting the driver's P2P report.
+INFO 02-26 20:48:31 [custom_all_reduce.py:35] Skipping P2P check and trusting the driver's P2P report.
+INFO 02-26 20:48:31 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[1], buffer_handle=(1, 4194304, 6, 'psm_5284f2d3'), local_subscribe_addr='ipc:///tmp/1da39fcd-2f58-4b42-b4b7-ac69f98624e4', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+INFO 02-26 20:48:31 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 02-26 20:48:31 [pynccl.py:103] vLLM is using nccl==2.27.3
+[Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+INFO 02-26 20:48:31 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 02-26 20:48:31 [pynccl.py:103] vLLM is using nccl==2.27.3
+INFO 02-26 20:48:32 [parallel_state.py:1208] rank 0 in world size 2 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+INFO 02-26 20:48:32 [parallel_state.py:1208] rank 1 in world size 2 is assigned as DP rank 0, PP rank 0, TP rank 1, EP rank 1
+INFO 02-26 20:48:32 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+INFO 02-26 20:48:32 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+[1;36m(Worker_TP1 pid=1208245)[0;0m INFO 02-26 20:48:32 [gpu_model_runner.py:2602] Starting to load model Qwen/Qwen3-4B...
+[1;36m(Worker_TP0 pid=1208244)[0;0m INFO 02-26 20:48:32 [gpu_model_runner.py:2602] Starting to load model Qwen/Qwen3-4B...
+[1;36m(Worker_TP1 pid=1208245)[0;0m INFO 02-26 20:48:33 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(Worker_TP0 pid=1208244)[0;0m INFO 02-26 20:48:33 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(Worker_TP1 pid=1208245)[0;0m INFO 02-26 20:48:33 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(Worker_TP0 pid=1208244)[0;0m INFO 02-26 20:48:33 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(Worker_TP1 pid=1208245)[0;0m INFO 02-26 20:48:33 [weight_utils.py:392] Using model weights format ['*.safetensors']
+[1;36m(Worker_TP0 pid=1208244)[0;0m INFO 02-26 20:48:33 [weight_utils.py:392] Using model weights format ['*.safetensors']
+[1;36m(Worker_TP0 pid=1208244)[0;0m INFO 02-26 20:48:41 [default_loader.py:267] Loading weights took 7.69 seconds
+[1;36m(Worker_TP1 pid=1208245)[0;0m INFO 02-26 20:48:41 [default_loader.py:267] Loading weights took 7.85 seconds
+[1;36m(Worker_TP0 pid=1208244)[0;0m INFO 02-26 20:48:42 [gpu_model_runner.py:2653] Model loading took 3.8168 GiB and 8.436990 seconds
+[1;36m(Worker_TP1 pid=1208245)[0;0m INFO 02-26 20:48:42 [gpu_model_runner.py:2653] Model loading took 3.8168 GiB and 8.449121 seconds
+[1;36m(Worker_TP1 pid=1208245)[0;0m INFO 02-26 20:49:00 [backends.py:548] Using cache directory: /home/x-qlan1/.cache/vllm/torch_compile_cache/e172acb1b2/rank_1_0/backbone for vLLM's torch.compile
+[1;36m(Worker_TP0 pid=1208244)[0;0m INFO 02-26 20:49:00 [backends.py:548] Using cache directory: /home/x-qlan1/.cache/vllm/torch_compile_cache/e172acb1b2/rank_0_0/backbone for vLLM's torch.compile
+[1;36m(Worker_TP1 pid=1208245)[0;0m INFO 02-26 20:49:00 [backends.py:559] Dynamo bytecode transform time: 17.42 s
+[1;36m(Worker_TP0 pid=1208244)[0;0m INFO 02-26 20:49:00 [backends.py:559] Dynamo bytecode transform time: 17.43 s
+[1;36m(Worker_TP1 pid=1208245)[0;0m INFO 02-26 20:49:06 [backends.py:164] Directly load the compiled graph(s) for dynamic shape from the cache, took 4.197 s
+[1;36m(Worker_TP0 pid=1208244)[0;0m INFO 02-26 20:49:06 [backends.py:164] Directly load the compiled graph(s) for dynamic shape from the cache, took 4.199 s
+[1;36m(Worker_TP0 pid=1208244)[0;0m INFO 02-26 20:49:08 [monitor.py:34] torch.compile takes 17.43 s in total
+[1;36m(Worker_TP1 pid=1208245)[0;0m INFO 02-26 20:49:08 [monitor.py:34] torch.compile takes 17.42 s in total
+[1;36m(Worker_TP1 pid=1208245)[0;0m INFO 02-26 20:49:11 [gpu_worker.py:298] Available KV cache memory: 65.02 GiB
+[1;36m(Worker_TP0 pid=1208244)[0;0m INFO 02-26 20:49:11 [gpu_worker.py:298] Available KV cache memory: 65.02 GiB
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m INFO 02-26 20:49:12 [kv_cache_utils.py:1087] GPU KV cache size: 946,848 tokens
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m INFO 02-26 20:49:12 [kv_cache_utils.py:1091] Maximum concurrency for 40,960 tokens per request: 23.12x
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m INFO 02-26 20:49:12 [kv_cache_utils.py:1087] GPU KV cache size: 946,848 tokens
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m INFO 02-26 20:49:12 [kv_cache_utils.py:1091] Maximum concurrency for 40,960 tokens per request: 23.12x
+[1;36m(Worker_TP0 pid=1208244)[0;0m All deep_gemm operations loaded successfully!
+[1;36m(Worker_TP0 pid=1208244)[0;0m INFO 02-26 20:49:26 [custom_all_reduce.py:203] Registering 9782 cuda graph addresses
+[1;36m(Worker_TP1 pid=1208245)[0;0m All deep_gemm operations loaded successfully!
+[1;36m(Worker_TP1 pid=1208245)[0;0m INFO 02-26 20:49:26 [custom_all_reduce.py:203] Registering 9782 cuda graph addresses
+[1;36m(Worker_TP0 pid=1208244)[0;0m INFO 02-26 20:49:27 [gpu_model_runner.py:3480] Graph capturing finished in 15 secs, took -0.50 GiB
+[1;36m(Worker_TP1 pid=1208245)[0;0m INFO 02-26 20:49:27 [gpu_model_runner.py:3480] Graph capturing finished in 15 secs, took -0.50 GiB
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m INFO 02-26 20:49:27 [core.py:210] init engine (profile, create kv cache, warmup model) took 44.77 seconds
+INFO 02-26 20:49:29 [llm.py:306] Supported_tasks: ['generate']
+Mode: average, n_samples: 16, max_tokens: 38000
+Generating responses...
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [multiproc_executor.py:154] Worker proc VllmWorker-1 died unexpectedly, shutting down executor.
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [dump_input.py:69] Dumping input data for V1 LLM engine (v0.11.0) with config: model='Qwen/Qwen3-4B', speculative_config=None, tokenizer='Qwen/Qwen3-4B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=40960, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen3-4B, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention","vllm.sparse_attn_indexer"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":[2,1],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":512,"local_cache_dir":null}, 
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [dump_input.py:76] Dumping scheduler output for model execution: SchedulerOutput(scheduled_new_reqs=[], scheduled_cached_reqs=CachedRequestData(req_ids=['9_31', '13_31', '14_31', '6_33', '0_34', '2_34', '3_34', '4_34', '5_34', '6_34', '8_34', '9_34', '10_34', '11_34', '12_34', '13_34', '14_34', '15_34', '0_35', '5_35', '11_35', '15_35', '0_36', '3_36', '7_36', '12_36', '13_36', '15_36', '8_37', '14_38', '15_38', '0_39', '1_39', '2_39', '3_39', '4_39', '5_39', '6_39', '7_39', '8_39', '9_39', '10_39', '11_39', '12_39', '13_39', '14_39', '15_39', '0_40', '1_40', '2_40', '3_40', '4_40', '5_40', '6_40', '7_40', '8_40', '9_40', '10_40', '11_40', '12_40', '13_40', '14_40', '15_40', '0_41', '1_41', '2_41', '3_41', '4_41', '5_41', '6_41', '7_41', '8_41', '9_41', '10_41', '11_41', '12_41', '13_41', '14_41', '15_41', '0_42', '1_42', '2_42', '3_42', '4_42', '5_42'], resumed_from_preemption=[false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false], new_token_ids=[], new_block_ids=[null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, [[23724]], [[14376]], null, null, null, null, [[4718]], null, null, null, null, null, null, null, null, null, null, null, [[18752]], null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, [[23548]], [[10607]], null, null, null, null, null, null, null, null, null, null, null, [[43574]], null, null, null, null, null, null], num_computed_tokens=[28396, 27879, 27812, 26231, 22278, 21522, 21171, 20879, 20646, 20463, 20225, 20109, 19978, 19854, 19752, 19673, 19617, 19565, 19413, 19104, 18736, 18540, 18756, 18698, 18495, 18176, 18125, 18044, 16374, 12326, 12126, 10339, 10142, 9925, 9740, 9508, 9255, 9008, 8813, 8662, 8524, 8403, 8298, 8219, 8149, 8111, 8086, 8100, 8056, 8015, 7981, 7947, 7913, 7881, 7857, 7836, 7816, 7804, 7790, 7779, 7769, 7758, 7735, 7715, 7681, 7648, 7616, 7594, 7576, 7556, 7525, 7497, 7478, 7454, 7402, 7346, 7288, 7222, 7152, 7227, 7026, 6801, 6526, 6286, 6066]), num_scheduled_tokens={8_41: 1, 7_41: 1, 13_41: 1, 4_34: 1, 9_34: 1, 15_40: 1, 5_35: 1, 4_39: 1, 6_39: 1, 13_39: 1, 1_41: 1, 11_34: 1, 7_39: 1, 12_40: 1, 0_42: 1, 8_40: 1, 2_34: 1, 4_41: 1, 5_39: 1, 14_38: 1, 2_42: 1, 1_39: 1, 4_42: 1, 8_39: 1, 9_40: 1, 13_31: 1, 10_40: 1, 5_40: 1, 13_34: 1, 0_39: 1, 14_34: 1, 0_40: 1, 0_41: 1, 1_40: 1, 12_41: 1, 3_34: 1, 14_31: 1, 14_40: 1, 9_39: 1, 6_40: 1, 10_34: 1, 11_39: 1, 1_42: 1, 13_40: 1, 12_34: 1, 13_36: 1, 2_41: 1, 0_36: 1, 3_36: 1, 0_34: 1, 9_41: 1, 6_41: 1, 14_39: 1, 15_35: 1, 14_41: 1, 15_39: 1, 5_34: 1, 4_40: 1, 3_41: 1, 11_35: 1, 12_36: 1, 3_40: 1, 2_39: 1, 5_42: 3, 11_40: 1, 15_34: 1, 3_42: 1, 7_36: 1, 11_41: 1, 15_38: 1, 15_36: 1, 5_41: 1, 8_34: 1, 8_37: 1, 0_35: 1, 7_40: 1, 3_39: 1, 9_31: 1, 15_41: 1, 2_40: 1, 6_34: 1, 10_39: 1, 10_41: 1, 12_39: 1, 6_33: 1}, total_num_scheduled_tokens=87, scheduled_spec_decode_tokens={}, scheduled_encoder_inputs={}, num_common_prefix_blocks=[64], finished_req_ids=[], free_encoder_mm_hashes=[], structured_output_request_ids={}, grammar_bitmask=null, kv_connector_metadata=null)
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710] EngineCore encountered a fatal error.
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710] Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 701, in run_engine_core
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]     engine_core.run_busy_loop()
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 728, in run_busy_loop
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]     self._process_engine_step()
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 754, in _process_engine_step
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]     outputs, model_executed = self.step_fn()
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]                               ^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 284, in step
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]     model_output = self.execute_model_with_error_logging(
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 270, in execute_model_with_error_logging
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]     raise err
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 261, in execute_model_with_error_logging
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]     return model_fn(scheduler_output)
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 181, in execute_model
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]     (output, ) = self.collective_rpc(
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]                  ^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 264, in collective_rpc
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]     result = get_response(w, dequeue_timeout,
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 244, in get_response
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]     status, result = w.worker_response_mq.dequeue(
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/distributed/device_communicators/shm_broadcast.py", line 511, in dequeue
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]     with self.acquire_read(timeout, cancel, indefinite) as buf:
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]   File "/home/x-qlan1/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 137, in __enter__
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]     return next(self.gen)
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]            ^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/distributed/device_communicators/shm_broadcast.py", line 455, in acquire_read
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710]     raise RuntimeError("cancelled")
+[1;36m(EngineCore_DP0 pid=1208230)[0;0m ERROR 02-26 22:14:57 [core.py:710] RuntimeError: cancelled
+============================================================
+[0,1] Evaluating: Qwen/Qwen3-8B on AMO-Bench
+============================================================
+INFO 02-26 22:15:16 [__init__.py:216] Automatically detected platform cuda.
+Dataset: amo_bench (meituan-longcat/AMO-Bench), 50 problems
+INFO 02-26 22:15:24 [utils.py:233] non-default args: {'trust_remote_code': True, 'max_model_len': 40960, 'tensor_parallel_size': 2, 'disable_log_stats': True, 'model': 'Qwen/Qwen3-8B'}
+INFO 02-26 22:15:24 [model.py:547] Resolved architecture: Qwen3ForCausalLM
+INFO 02-26 22:15:24 [model.py:1510] Using max model len 40960
+INFO 02-26 22:15:24 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=16384.
+WARNING 02-26 22:15:25 [__init__.py:3036] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+INFO 02-26 22:15:37 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m INFO 02-26 22:15:42 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m INFO 02-26 22:15:42 [core.py:77] Initializing a V1 LLM engine (v0.11.0) with config: model='Qwen/Qwen3-8B', speculative_config=None, tokenizer='Qwen/Qwen3-8B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=40960, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen3-8B, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention","vllm.sparse_attn_indexer"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":[2,1],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":512,"local_cache_dir":null}
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m INFO 02-26 22:15:42 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0, 1], buffer_handle=(2, 16777216, 10, 'psm_13752f1a'), local_subscribe_addr='ipc:///tmp/a23f0b38-289b-4658-b95f-70acb933c161', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 02-26 22:15:59 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 22:15:59 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 22:16:13 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_2788a92b'), local_subscribe_addr='ipc:///tmp/636d2d1c-1c12-4ccc-8c6e-4aa63431b4ac', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 02-26 22:16:13 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_073f4aa5'), local_subscribe_addr='ipc:///tmp/b9873ddd-0744-49f2-a468-dbd49a58af65', remote_subscribe_addr=None, remote_addr_ipv6=False)
+ERROR 02-26 22:16:14 [multiproc_executor.py:597] WorkerProc failed to start.
+ERROR 02-26 22:16:14 [multiproc_executor.py:597] Traceback (most recent call last):
+ERROR 02-26 22:16:14 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 571, in worker_main
+ERROR 02-26 22:16:14 [multiproc_executor.py:597]     worker = WorkerProc(*args, **kwargs)
+ERROR 02-26 22:16:14 [multiproc_executor.py:597]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 02-26 22:16:14 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 430, in __init__
+ERROR 02-26 22:16:14 [multiproc_executor.py:597]     self.worker.init_device()
+ERROR 02-26 22:16:14 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/worker/worker_base.py", line 259, in init_device
+ERROR 02-26 22:16:14 [multiproc_executor.py:597]     self.worker.init_device()  # type: ignore
+ERROR 02-26 22:16:14 [multiproc_executor.py:597]     ^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 02-26 22:16:14 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 161, in init_device
+ERROR 02-26 22:16:14 [multiproc_executor.py:597]     current_platform.set_device(self.device)
+ERROR 02-26 22:16:14 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/platforms/cuda.py", line 79, in set_device
+ERROR 02-26 22:16:14 [multiproc_executor.py:597]     torch.cuda.set_device(device)
+ERROR 02-26 22:16:14 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py", line 569, in set_device
+ERROR 02-26 22:16:14 [multiproc_executor.py:597]     torch._C._cuda_setDevice(device)
+ERROR 02-26 22:16:14 [multiproc_executor.py:597] torch.AcceleratorError: CUDA error: out of memory
+ERROR 02-26 22:16:14 [multiproc_executor.py:597] CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+ERROR 02-26 22:16:14 [multiproc_executor.py:597] For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+ERROR 02-26 22:16:14 [multiproc_executor.py:597] Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+ERROR 02-26 22:16:14 [multiproc_executor.py:597] 
+INFO 02-26 22:16:14 [multiproc_executor.py:558] Parent process exited, terminating worker
+INFO 02-26 22:16:14 [multiproc_executor.py:558] Parent process exited, terminating worker
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708] EngineCore failed to start.
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708] Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 699, in run_engine_core
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708]     engine_core = EngineCoreProc(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 498, in __init__
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708]     super().__init__(vllm_config, executor_class, log_stats,
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 83, in __init__
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708]     self.model_executor = executor_class(vllm_config)
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708]                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/executor/executor_base.py", line 54, in __init__
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708]     self._init_executor()
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 106, in _init_executor
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708]     self.workers = WorkerProc.wait_for_ready(unready_workers)
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 509, in wait_for_ready
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708]     raise e from None
+[1;36m(EngineCore_DP0 pid=1226826)[0;0m ERROR 02-26 22:16:18 [core.py:708] Exception: WorkerProc initialization failed due to an exception in a background process. See stack trace for root cause.
+INFO 02-26 22:16:34 [__init__.py:216] Automatically detected platform cuda.
+Dataset: amo_bench (meituan-longcat/AMO-Bench), 50 problems
+INFO 02-26 22:16:41 [utils.py:233] non-default args: {'trust_remote_code': True, 'max_model_len': 40960, 'tensor_parallel_size': 2, 'disable_log_stats': True, 'model': 'Qwen/Qwen3-8B'}
+INFO 02-26 22:16:42 [model.py:547] Resolved architecture: Qwen3ForCausalLM
+INFO 02-26 22:16:42 [model.py:1510] Using max model len 40960
+INFO 02-26 22:16:42 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=16384.
+WARNING 02-26 22:16:42 [__init__.py:3036] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+INFO 02-26 22:16:55 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m INFO 02-26 22:17:00 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m INFO 02-26 22:17:00 [core.py:77] Initializing a V1 LLM engine (v0.11.0) with config: model='Qwen/Qwen3-8B', speculative_config=None, tokenizer='Qwen/Qwen3-8B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=40960, download_dir=None, load_format=auto, tensor_parallel_size=2, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen3-8B, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention","vllm.sparse_attn_indexer"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":[2,1],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":512,"local_cache_dir":null}
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m INFO 02-26 22:17:00 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0, 1], buffer_handle=(2, 16777216, 10, 'psm_221f4120'), local_subscribe_addr='ipc:///tmp/ec0075f4-f281-4bdf-845c-92d12b1f6540', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 02-26 22:17:20 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 22:17:20 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 22:17:34 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_64331f1b'), local_subscribe_addr='ipc:///tmp/3c3cacf5-95a1-4519-b938-b41ea704ac53', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 02-26 22:17:34 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_3099d93a'), local_subscribe_addr='ipc:///tmp/60924b54-3c98-4ec7-9200-cabf66f31b47', remote_subscribe_addr=None, remote_addr_ipv6=False)
+ERROR 02-26 22:17:34 [multiproc_executor.py:597] WorkerProc failed to start.
+ERROR 02-26 22:17:34 [multiproc_executor.py:597] Traceback (most recent call last):
+ERROR 02-26 22:17:34 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 571, in worker_main
+ERROR 02-26 22:17:34 [multiproc_executor.py:597]     worker = WorkerProc(*args, **kwargs)
+ERROR 02-26 22:17:34 [multiproc_executor.py:597]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 02-26 22:17:34 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 430, in __init__
+ERROR 02-26 22:17:34 [multiproc_executor.py:597]     self.worker.init_device()
+ERROR 02-26 22:17:34 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/worker/worker_base.py", line 259, in init_device
+ERROR 02-26 22:17:34 [multiproc_executor.py:597]     self.worker.init_device()  # type: ignore
+ERROR 02-26 22:17:34 [multiproc_executor.py:597]     ^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 02-26 22:17:34 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 161, in init_device
+ERROR 02-26 22:17:34 [multiproc_executor.py:597]     current_platform.set_device(self.device)
+ERROR 02-26 22:17:34 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/platforms/cuda.py", line 79, in set_device
+ERROR 02-26 22:17:34 [multiproc_executor.py:597]     torch.cuda.set_device(device)
+ERROR 02-26 22:17:34 [multiproc_executor.py:597]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/torch/cuda/__init__.py", line 569, in set_device
+ERROR 02-26 22:17:34 [multiproc_executor.py:597]     torch._C._cuda_setDevice(device)
+ERROR 02-26 22:17:34 [multiproc_executor.py:597] torch.AcceleratorError: CUDA error: out of memory
+ERROR 02-26 22:17:34 [multiproc_executor.py:597] CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+ERROR 02-26 22:17:34 [multiproc_executor.py:597] For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+ERROR 02-26 22:17:34 [multiproc_executor.py:597] Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+ERROR 02-26 22:17:34 [multiproc_executor.py:597] 
+INFO 02-26 22:17:34 [multiproc_executor.py:558] Parent process exited, terminating worker
+INFO 02-26 22:17:34 [multiproc_executor.py:558] Parent process exited, terminating worker
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708] EngineCore failed to start.
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708] Traceback (most recent call last):
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 699, in run_engine_core
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708]     engine_core = EngineCoreProc(*args, **kwargs)
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 498, in __init__
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708]     super().__init__(vllm_config, executor_class, log_stats,
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 83, in __init__
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708]     self.model_executor = executor_class(vllm_config)
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708]                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/executor/executor_base.py", line 54, in __init__
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708]     self._init_executor()
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 106, in _init_executor
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708]     self.workers = WorkerProc.wait_for_ready(unready_workers)
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708]   File "/anvil/scratch/x-qlan1/moule/train-env/lib/python3.12/site-packages/vllm/v1/executor/multiproc_executor.py", line 509, in wait_for_ready
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708]     raise e from None
+[1;36m(EngineCore_DP0 pid=1227222)[0;0m ERROR 02-26 22:17:38 [core.py:708] Exception: WorkerProc initialization failed due to an exception in a background process. See stack trace for root cause.
+All AMO-Bench evaluations completed.

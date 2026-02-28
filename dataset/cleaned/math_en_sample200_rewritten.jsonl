@@ -1,0 +1,200 @@
+{"question": "Let $f(x) = x^3 + ax^2 + bx + c$ satisfy $0 \\leqslant f(-1) = f(-2) = f(-3) \\leqslant 3$. Find the range of $c$.", "answer": "6 < c \\leqslant 9"}
+{"question": "In $\\triangle ABC$, $\\cos C = \\frac{2}{3}$, $AC = 4$, $BC = 3$. Find $\\tan B$.", "answer": "$4\\sqrt{5}$"}
+{"question": "Suppose $f(x)$ is odd and $f(x) = x^2 + \\frac{1}{x}$ for $x > 0$. Find $f(-1)$.", "answer": "-2"}
+{"question": "Let $a, b \\in \\mathbb{R}$ with $a - 3b + 6 = 0$. Find the minimum value of $2^a + \\frac{1}{8^b}$.", "answer": "$\\left[\\frac{1}{2},1\\right]$"}
+{"question": "In $\\triangle ABC$, sides $a, b, c$ are opposite to $A, B, C$. Given $a = 2$ and $(2+b)(\\sin A - \\sin B) = (c-b)\\sin C$, find the maximum area of $\\triangle ABC$.", "answer": "$\\sqrt{3}$"}
+{"question": "If $a\\log_3 4 = 2$, find $4^{-a}$.", "answer": "$\\frac{1}{9}$"}
+{"question": "Let $U = \\{1,2,3,4,5,6,7\\}$, $A = \\{2,3,4,5\\}$, $B = \\{2,3,6,7\\}$. Find $B \\cap \\complement_U A$.", "answer": "\\{6, 7\\}"}
+{"question": "The geometric sequence $\\{a_n\\}$ satisfies $a_1 = 3$ and $a_1 + a_3 + a_5 = 21$. Find $a_3 + a_5 + a_7$. A. 21 B. 42 C. 63 D. 84", "answer": "42"}
+{"question": "Let $a, b \\in \\mathbb{R}$ with $ab > 0$ and $f(x) = ax^2 + b$. If $f(s-t)$, $f(s)$, $f(s+t)$ form a geometric sequence, describe the locus of $(s, t)$.", "answer": "a line and a hyperbola"}
+{"question": "Find the eccentricity of the hyperbola whose asymptotes are $x \\pm y = 0$.", "answer": "$\\sqrt{2}$"}
+{"question": "In quadrilateral $ABCD$, $AD \\parallel BC$, $AB = 2\\sqrt{3}$, $AD = 5$, $\\angle A = 30°$. Point $E$ lies on the extension of $CB$ with $AE = BE$. Find $\\vec{BD} \\cdot \\vec{AE}$.", "answer": "$-1$"}
+{"question": "For the arithmetic sequence $\\{a_n\\}$ with $a_2 = 3$ and $a_5 = 9$, find $S_{10}$.", "answer": "$\\frac{20}{11}$"}
+{"question": "Find the maximum distance from $(0, -1)$ to the line $y = k(x+2)$.", "answer": "$\\sqrt{5}$"}
+{"question": "Let $f(x) = \\begin{cases} -x^2+2x, & x \\leqslant 0 \\\\ \\ln(x+1), & x > 0 \\end{cases}$. Find all values of $a$ such that $|f(x)| \\geqslant ax$ for all $x$.", "answer": "$[-2, 0]$"}
+{"question": "Suppose there exists a function $f(x)$ on $\\mathbb{R}$ satisfying: (1) $f(x_0)$ equals either $x_0$ or $x_0^2$ for every $x_0$; (2) $f(x) = a$ has no real solution. Find the range of $a$.", "answer": "$(-\\infty, 0) \\cup (0, 1) \\cup (1, +\\infty)$"}
+{"question": "In the plane, $A(-1,0)$ and $B(2,0)$ are fixed. $E$, $F$ move on the $y$-axis with $|\\vec{EF}| = 2$. Find the minimum value of $\\vec{AE} \\cdot \\vec{BF}$.", "answer": "$-3$"}
+{"question": "The graph of $f(x) = a^{x-4} + 1$ ($a > 0$, $a \\neq 1$) always passes through a fixed point $A$. If $A$ satisfies $mx + ny = 4$ with $m > 0$, $n > 0$, find the minimum of $\\frac{1}{m} + \\frac{2}{n}$.", "answer": "4"}
+{"question": "Let $f(x) = 4^x - 2^{x+2} - 1$ for $x \\in [0,3]$. Find the range of $f$.", "answer": "[-5, 31]"}
+{"question": "Find the maximum value of $f(x) = \\cos 2x + 6\\cos\\!\\left(\\frac{\\pi}{2} - x\\right)$.", "answer": "5"}
+{"question": "Let $f(x) = \\frac{e^x}{x+a}$. If $f'(1) = \\frac{e}{4}$, find $a$.", "answer": "$1$"}
+{"question": "Let $U = \\{1,2,3,4,5\\}$ and $M$ satisfy $\\complement_U M = \\{1,3\\}$. Find $M$.", "answer": "$\\{2, 4, 5\\}$"}
+{"question": "Variables $x, y$ satisfy $\\begin{cases} x+y \\geqslant a \\\\ x-y \\leqslant -1 \\end{cases}$ and the minimum of $z = x + ay$ is 7. Find $a$.", "answer": "3"}
+{"question": "Curves $y = 2 - \\frac{1}{2}x^2$ and $y = \\frac{1}{4}x^3 - 2$ intersect at a point. Find the angle between their tangent lines there.", "answer": "$\\frac{\\pi}{4}$"}
+{"question": "Given $\\tan\\!\\left(\\alpha - \\frac{\\pi}{3}\\right) = -\\frac{\\sqrt{3}}{5}$, find $\\tan\\alpha$ and $\\frac{\\sin\\alpha\\cos\\alpha}{3\\cos^2\\alpha - 2\\sin^2\\alpha}$.", "answer": "$\\frac{\\sqrt{3}}{2}$ , $\\frac{\\sqrt{3}}{3}$"}
+{"question": "In $\\{a_n\\}$ with $a_1 = 2$ and $a_{n+1} = 2a_n$, if $S_n = 126$, find $n$.", "answer": "6"}
+{"question": "The maximum value of $f(x) = \\left|x + \\frac{4}{x} - a\\right| + a$ on $[1,4]$ is 5. Find the range of $a$.", "answer": "(-\\infty, \\frac{9}{2}]"}
+{"question": "Let $A = \\{x \\mid x = 3n+2,\\, n \\in \\mathbb{N}\\}$ and $B = \\{6,8,10,12,14\\}$. How many elements are in $A \\cap B$?", "answer": "2"}
+{"question": "Nonzero vectors $\\vec{a}$, $\\vec{b}$ satisfy $|\\vec{a}+\\vec{b}| = |\\vec{a}-\\vec{b}|$. Which conclusion follows? A. $\\vec{a} \\perp \\vec{b}$ B. $|\\vec{a}|=|\\vec{b}|$ C. $\\vec{a} \\parallel \\vec{b}$ D. $|\\vec{a}|>|\\vec{b}|$", "answer": "A"}
+{"question": "A cone has base radius $\\sqrt{2}$ and its lateral surface unfolds to a semicircle. Find the slant height.", "answer": "$2\\sqrt{2}$"}
+{"question": "Given $2^a = 5$ and $\\log_8 3 = b$, find $4^{a-3b}$.", "answer": "$\\frac{25}{9}$"}
+{"question": "Let $A = \\{x \\mid x < 1\\}$ and $B = \\{x \\mid 3^x < 1\\}$. Find $A \\cap B$.", "answer": "\\{x \\mid x < 0\\}"}
+{"question": "A function $f(x)$ on $\\mathbb{R}$ has $f(x+1)$ odd and $f(x+2)$ even. For $x \\in [1,2]$, $f(x) = ax^2 + b$. If $f(0) + f(3) = 6$, find $f\\!\\left(\\frac{9}{2}\\right)$.", "answer": "\\frac{5}{2}"}
+{"question": "Let $f(x)$ have period 4 and be odd; $g(x)$ have period 2. On $(0,2]$: $f(x) = \\sqrt{1-(x-1)^2}$, $g(x) = \\begin{cases} k(x+2), & 0<x\\leqslant 1 \\\\ -\\frac{1}{2}, & 1<x\\leqslant 2 \\end{cases}$ ($k>0$). If $f(x) = g(x)$ has 8 roots on $(0,9]$, find the range of $k$.", "answer": "$\\left[\\frac{1}{3}, \\frac{1}{2\\sqrt{2}}\\right)$"}
+{"question": "The graph of $y = f(x)$ is symmetric to $y = 2^{x+a}$ about $y = -x$. If $f(-2) + f(-4) = 1$, find $a$.", "answer": "2"}
+{"question": "Let $A = \\{1,2,3\\}$ and $B = \\{x \\mid x^2 < 9\\}$. Find $A \\cap B$.", "answer": "\\{1, 2\\}"}
+{"question": "Let $\\vec{a} = (2,3)$ and $\\vec{b} = (3,2)$. Find $|\\vec{a}-\\vec{b}|$. A. $\\sqrt{2}$ B. 2 C. $5\\sqrt{2}$ D. 50", "answer": "$\\sqrt{2}$"}
+{"question": "Variables $x, y$ satisfy $2x - 3y \\leqslant 9$. Find the maximum of $x^2 + y^2$.", "answer": "10"}
+{"question": "Hyperbola $C: x^2 - my^2 = 3m$ ($m > 0$) has focus $F$. Find the distance from $F$ to an asymptote.", "answer": "$y = \\pm \\frac{1}{2}x$"}
+{"question": "In right prism $ABC$-$A_1B_1C_1$ with $\\angle ABC = 120°$, $AB = 2$, $BC = CC_1 = 1$, find $\\cos$ of the angle between skew lines $AB_1$ and $BC_1$.", "answer": "$\\frac{\\sqrt{10}}{5}$"}
+{"question": "An obtuse $\\triangle ABC$ has area $\\frac{1}{2}$, $AB = 1$, $BC = \\sqrt{2}$. Find $AC$.", "answer": "$\\sqrt{5}$"}
+{"question": "A regular quadrilateral pyramid $O$-$ABCD$ has volume $\\frac{3\\sqrt{2}}{2}$ and base edge $\\sqrt{3}$. Find the surface area of the sphere centered at $O$ with radius $OA$.", "answer": "24π"}
+{"question": "Let $U = \\{-2,-1,0,1,2,3\\}$, $A = \\{-1,0,1\\}$, $B = \\{1,2\\}$. Find $\\complement_U(A \\cup B)$.", "answer": "\\{-2, 3\\}"}
+{"question": "'There exists a negative $\\lambda$ with $\\vec{m} = \\lambda\\vec{n}$' is a ______ condition for '$\\vec{m} \\cdot \\vec{n} < 0$'. A. Sufficient but not necessary B. Necessary but not sufficient C. Sufficient and necessary D. Neither", "answer": "A"}
+{"question": "The sequence $\\{a_n\\}$ satisfies $a_{n+1} = \\frac{1}{1-a_n}$ and $a_8 = 2$. Find $a_1$.", "answer": "$\\frac{1}{2}$"}
+{"question": "Ellipse $C: \\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ ($a>b>0$) has eccentricity $\\frac{1}{2}$. A line through $F_1$ perpendicular to $AF_2$ meets $C$ at $D$, $E$ with $|DE| = 6$. Find the perimeter of $\\triangle ADE$.", "answer": "13"}
+{"question": "Find the equation of the circle passing through $(0,0)$, $(1,1)$, and $(2,0)$.", "answer": "$x^2 + y^2 - 2x = 0$"}
+{"question": "Let $\\theta$ be a second-quadrant angle with $\\tan(\\theta + \\frac{\\pi}{4}) = \\frac{1}{2}$. Find $\\sin\\theta + \\cos\\theta$.", "answer": "$-\\frac{\\sqrt{10}}{5}$"}
+{"question": "Points $A$, $B$ on the ellipse $\\frac{x^2}{4} + y^2 = m$ ($m>1$) satisfy $P(0,1)$ with $\\overrightarrow{AP} = 2\\overrightarrow{PB}$. Find the value of $m$ that maximises $|x_B|$.", "answer": "5"}
+{"question": "How many sets $M$ satisfy $\\varnothing \\subsetneq M \\subsetneq \\{0,1,2\\}$?", "answer": "6"}
+{"question": "Let $M = \\{x \\mid 0 < x < 4\\}$ and $N = \\{x \\mid \\frac{1}{3} \\leqslant x \\leqslant 5\\}$. Find $M \\cap N$.", "answer": "\\{x \\mid \\frac{1}{3} \\leqslant x < 4\\}"}
+{"question": "Let $a = 0.1e^{0.1}$, $b = \\frac{1}{9}$, $c = -\\ln 0.9$. Order $a$, $b$, $c$.", "answer": "c < a < b"}
+{"question": "Ellipse $\\frac{x^2}{9} + \\frac{y^2}{5} = 1$ has left focus $F$. Point $P$ is on the ellipse above the $x$-axis. If the midpoint of $PF$ lies on the circle centred at $O$ with radius $|OF|$, find the slope of $PF$.", "answer": "\\sqrt{15}"}
+{"question": "A company produces items A and B using materials X and Y. Each A needs 1.5 kg X, 1 kg Y, and 5 work-hours; each B needs 0.5 kg X, 0.3 kg Y, and 3 work-hours. Profit per A is 2100 yuan and per B is 900 yuan. With 150 kg X, 90 kg Y, and at most 600 work-hours available, find the maximum total profit.", "answer": "216000"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1$ has asymptote $y = \\frac{\\sqrt{5}}{2}x$ and shares foci with $\\frac{x^2}{12} + \\frac{y^2}{3} = 1$. Find the equation of $C$.", "answer": "\\frac{x^2}{4} - \\frac{y^2}{5} = 1"}
+{"question": "Given $A(-2,3)$ and $B(0,a)$, if the reflection of line $AB$ about $y=a$ intersects $(x+3)^2+(y+2)^2=1$, find the range of $a$.", "answer": "$\\left[\\frac{1}{3}, \\frac{3}{2}\\right]$"}
+{"question": "Ellipse $E$ has centre at the origin, eccentricity $\\frac{1}{2}$, and right focus coinciding with the focus of $y^2 = 8x$. If $A$, $B$ are the intersections of the directrix of $E$ with $E$, find $|AB|$.", "answer": "6"}
+{"question": "Variables $x, y$ satisfy $\\begin{cases} 2x+3y-3 \\leqslant 0 \\\\ 2x-3y+3 \\geqslant 0 \\end{cases}$. Find the range of $z = 2x+y$.", "answer": "-15"}
+{"question": "In a geometric sequence $a_1, a_2, a_3, a_4$ with $a_1+a_2+a_3+a_4 = \\ln(a_1+a_2+a_3)$ and $a_1 > 1$, determine the ordering of terms.", "answer": "$a_1 > a_3, a_2 < a_4$"}
+{"question": "The ellipse $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ ($a>b>0$) has eccentricity $\\frac{1}{2}$. Which relation holds?", "answer": "$3a^2 = 4b^2$"}
+{"question": "Let $A = \\{-1,1,2,4\\}$ and $B = \\{x \\mid |x-1| \\leqslant 1\\}$. Find $A \\cap B$.", "answer": "\\{1, 2\\}"}
+{"question": "If $x = -2$ is an extremum point of $f(x) = (x^2+ax-1)e^{x-1}$, find the local minimum of $f$.", "answer": "-1"}
+{"question": "Let $f(x) = x\\ln(x+\\sqrt{a+x^2})$ be an even function. Using $f(x) = f(-x)$ leads to $\\ln a = 0$. Find $a$.", "answer": "1"}
+{"question": "A line with slope $\\sqrt{3}$ meets the $y$-axis at $A$ and is tangent to $x^2+(y-1)^2=1$ at $B$. Find $|AB|$.", "answer": "$\\sqrt{3}$"}
+{"question": "In $\\triangle ABC$, $\\cos A = \\frac{4}{5}$, $\\cos C = \\frac{5}{13}$, and $a = 1$. Find $b$.", "answer": "$\\frac{21}{13}$"}
+{"question": "The graph of $f(x) = ax^3 + x + 1$ has a tangent at $(1, f(1))$ passing through $(2,7)$. Find $a$.", "answer": "1"}
+{"question": "Let $\\vec{e}$ be a unit vector. The angle between nonzero $\\vec{a}$ and $\\vec{e}$ is $\\frac{\\pi}{3}$, and $\\vec{b}$ satisfies $|\\vec{b}|^2 - 4\\vec{e}\\cdot\\vec{b}+3=0$. The minimum value of $|\\vec{a}-\\vec{b}|$ is A. $\\sqrt{3}-1$ B. $\\sqrt{3}+1$ C. 2 D. $2-\\sqrt{3}$", "answer": "$\\sqrt{3} - 1$"}
+{"question": "The solution set of $-\\frac{1}{2}x^2+2x > mx$ is $(0,2)$. Find $m$.", "answer": "1"}
+{"question": "The sequence $\\{a_n\\}$ satisfies $a_1 = 1$ and $a_{n+1} = \\frac{a_n}{1+\\sqrt{a_n}}$. With partial sums $S_n$, determine:", "answer": "$\\frac{3}{2} < S_{100} < 3$"}
+{"question": "The function $f(x) = \\lg(x^2-4x-5)$ is monotonically increasing on $(a, +\\infty)$. Find the range of $a$.", "answer": "[5, +\\infty)"}
+{"question": "An equilateral $\\triangle ABC$ has area $\\frac{9\\sqrt{3}}{4}$ with all vertices on sphere $O$ whose surface area is $16\\pi$. Find the distance from $O$ to plane $ABC$.", "answer": "1"}
+{"question": "Let $\\{a_n\\}$ be arithmetic with common difference $d$, and $\\{b_n\\}$ geometric with common ratio $g$. The sum of the first $n$ terms of $\\{a_n+b_n\\}$ is $S_n = n^2-n+2^n-1$. Find $d+g$.", "answer": "3"}
+{"question": "Hyperbola $E: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ has foci $F_1$, $F_2$, and $M$ on $E$ with $MF_1 \\perp x$-axis. If $\\sin\\angle MF_2F_1 = \\frac{1}{3}$, find the eccentricity.", "answer": "$\\sqrt{2}$"}
+{"question": "Let $A = \\{1,2,3\\}$ and $B = \\{2,3,4\\}$. Find $A \\cup B$.", "answer": "\\{1, 2, 3, 4\\}"}
+{"question": "Let $f(x) = ax^3-3x^2+1$. If $f$ has a unique zero $x_0 > 0$, find the range of $a$.", "answer": "$a \\in (-\\infty, -2)$"}
+{"question": "Suppose $f(x)$ is odd, $g(x)$ is even, $f(-1)+g(1)=2$, and $f(1)+g(-1)=4$. Find $g(1)$.", "answer": "3"}
+{"question": "For a geometric sequence $\\{a_n\\}$ with $S_2=4$ and $S_4=6$, find $S_6$. A. 7 B. 8 C. 9 D. 10", "answer": "7"}
+{"question": "The hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{5}=1$ ($a>0$) has asymptote $y=\\frac{\\sqrt{5}}{2}x$. Find the eccentricity.", "answer": "$\\frac{3}{2}$"}
+{"question": "For an arithmetic sequence $\\{a_n\\}$ with $a_2 = -3$ and $S_5 = -10$, find $a_5$ and the minimum value of $S_n$.", "answer": "0  $-10$"}
+{"question": "$x_1 = \\frac{\\pi}{4}$ and $x_2 = \\frac{3\\pi}{4}$ are two adjacent extreme points of $f(x) = \\sin\\omega x$ ($\\omega > 0$). Find $\\omega$.", "answer": "2"}
+{"question": "Let $\\alpha \\in (0, \\frac{\\pi}{2})$ with $2\\sin 2\\alpha = \\cos 2\\alpha + 1$. Find $\\sin\\alpha$.", "answer": "$\\frac{\\sqrt{5}}{5}$"}
+{"question": "Line $l: y = k(x-2)+1$ intersects segment $AB$ where $A(1,3)$ and $B(-2,-1)$. Find the range of $k$.", "answer": "$-2 \\le k \\le \\frac{1}{2}$"}
+{"question": "Shifting $y = 2\\sin 2x$ left by $\\frac{\\pi}{12}$ gives a new function. Write the equations of its axes of symmetry.", "answer": "$x = \\frac{k\\pi}{2} + \\frac{\\pi}{6} (k \\in \\mathbb{Z})$"}
+{"question": "An arithmetic sequence $\\{a_n\\}$ has common difference 2. If $a_2$, $a_4$, $a_8$ form a geometric sequence, find $S_n$. A. $n(n+1)$ B. $n(n-1)$ C. $\\frac{n(n+1)}{2}$ D. $\\frac{n(n-1)}{2}$", "answer": "$n(n+1)$"}
+{"question": "Plane vectors $\\vec{a}$, $\\vec{b}$, $\\vec{c}$ ($\\vec{c}\\neq\\vec{0}$) have $|\\vec{a}|=1$, $|\\vec{b}|=2$, $\\vec{a}\\cdot\\vec{b}=0$, $(\\vec{a}-\\vec{b})\\cdot\\vec{c}=0$. Find the minimum of $x^2+y^2+z^2$ where $x$, $y$ are projections of $\\vec{d}$ along $\\vec{a}$, $\\vec{b}$ and $z$ is the projection of $\\vec{d}-\\vec{a}$ along $\\vec{c}$.", "answer": "$\\frac{2}{\\kappa}$"}
+{"question": "A cone has apex $S$ with $SA \\perp SB$, and $SA$ makes a $30°$ angle with the base. If the area of $\\triangle SAB$ is 8, find the volume of the cone.", "answer": "8\\pi"}
+{"question": "Let $A = \\{-2,-1,0,1,2\\}$ and $B = \\{x \\mid 0 \\leqslant x \\leqslant \\frac{5}{2}\\}$. Find $A \\cap B$.", "answer": "\\{0, 1, 2\\}"}
+{"question": "Given $\\vec{a} = (1,m)$ and $\\vec{b} = (3,-2)$ with $(\\vec{a}+\\vec{b}) \\perp \\vec{b}$, find $m$.", "answer": "8"}
+{"question": "Let $f(x)=\\begin{cases} x-4, & x \\geqslant \\lambda \\\\ x^2-4x+3, & x < \\lambda \\end{cases}$. When $\\lambda=2$, find the solution set of $f(x)<0$. Also find the range of $\\lambda$ for which $f$ has exactly 2 zeros.", "answer": "$(1,4); (1,3] \\cup (4,+\\infty)$"}
+{"question": "Find the maximum value of $f(x) = \\sin(x+2\\varphi) - 2\\sin\\varphi\\cos(x+\\varphi)$.", "answer": "1"}
+{"question": "The geometric sequence $\\{a_n\\}$ satisfies $a_1 = \\frac{1}{4}$ and $a_3 a_5 = 4(a_4-1)$. Find $a_2$. A. 2 B. 1 C. $\\frac{1}{2}$ D. $\\frac{1}{8}$", "answer": "$\\frac{1}{2}$"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$: a line through $F_1$ meets both asymptotes at $A$, $B$ with $\\overrightarrow{F_1A}=\\overrightarrow{AB}$ and $\\overrightarrow{F_1B}\\cdot\\overrightarrow{F_2B}=0$. Find the eccentricity.", "answer": "2"}
+{"question": "In the arithmetic sequence $\\{a_n\\}$, $S_9 = 27$ and $a_{10} = 8$. Find $a_{100}$.", "answer": "98"}
+{"question": "Let $a = \\log_{0.2} 0.3$ and $b = \\log_2 0.3$. Compare $ab$, $a+b$, and 0.", "answer": "$ab < a+b < 0$"}
+{"question": "Al-Kashi's approximation for $\\pi$ using a regular $6n$-gon is given by which expression?", "answer": "$3n\\left(\\sin \\frac{30^\\circ}{n} + \\tan \\frac{30^\\circ}{n}\\right)$"}
+{"question": "Find the minimum value of $f(x) = 2\\sin x + \\sin 2x$.", "answer": "$-\\frac{3\\sqrt{3}}{2}$"}
+{"question": "Ellipse $C: \\frac{x^2}{a^2}+\\frac{y^2}{4}=1$ has foci $F_1$, $F_2$ and $M$ on $C$. Find the maximum of $|MF_1|\\cdot|MF_2|$.", "answer": "9"}
+{"question": "An odd function $f(x)$ on $\\mathbb{R}$ satisfies $f(1+x) = f(-x)$. If $f(-\\frac{1}{3}) = \\frac{1}{3}$, find $f(\\frac{5}{3})$.", "answer": "\\frac{1}{3}"}
+{"question": "Point $P(x,y)$ lies on $2x+y-5=0$. Find the minimum value of $|OP|$ where $O$ is the origin.", "answer": "$\\sqrt{5}$"}
+{"question": "Compute $\\sin 20°\\cos 10° - \\cos 160°\\sin 10°$.", "answer": "$\\frac{1}{2}$"}
+{"question": "Ellipse $C: \\frac{x^2}{36}+\\frac{y^2}{20}=1$ has foci $F_1$, $F_2$. Point $M$ in the first quadrant lies on $C$ and $\\triangle MF_1F_2$ is isosceles. Find the coordinates of $M$.", "answer": "$(3,\\sqrt{15})$"}
+{"question": "A 7-story pagoda has 381 lanterns total, with each lower story having twice as many as the story above. How many lanterns are at the top? A. 1 B. 3 C. 5 D. 9", "answer": "3"}
+{"question": "Find the minimum value of $f(x) = \\sin(2x+\\frac{3\\pi}{2}) - 3\\cos x$.", "answer": "$-4$"}
+{"question": "Let $A = \\{1,3,5,7\\}$ and $B = \\{x \\mid 2 \\leqslant x \\leqslant 5\\}$. Find $A \\cap B$.", "answer": "\\{3, 5\\}"}
+{"question": "Let $A = \\{(x,y) \\mid x^2+y^2 \\leqslant 3,\\, x \\in \\mathbb{Z},\\, y \\in \\mathbb{Z}\\}$. How many elements does $A$ have?", "answer": "9"}
+{"question": "Let $f(x) = \\begin{cases} -x^2+2x, & x \\leqslant 0 \\\\ \\ln(x+1), & x > 0 \\end{cases}$. Find all $a$ such that $|f(x)| \\geqslant ax$ for all $x$.", "answer": "[-2, 0]"}
+{"question": "Part of the graph of $f(x) = 2\\cos(\\omega x + \\varphi)$ is shown. Find $f\\!\\left(\\frac{\\pi}{2}\\right)$.", "answer": "$-\\sqrt{3}$"}
+{"question": "An even function $y = f(x)$ has its graph symmetric about $x = 2$, and $f(3) = 3$. Find $f(-1)$.", "answer": "3"}
+{"question": "Let $A = \\{x \\mid -2 < x < 4\\}$ and $B = \\{2,3,4,5\\}$. Find $A \\cap B$.", "answer": "\\{2, 3\\}"}
+{"question": "An odd function $f$ satisfies $f(x) = x^{2/3}$ for $x \\geqslant 0$. Find $f(-8)$.", "answer": "$-4$"}
+{"question": "Let $f(x) = \\begin{cases} x+1, & x \\leqslant 0 \\\\ 2^x, & x > 0 \\end{cases}$. Find all $x$ satisfying $f(x) + f(x-\\frac{1}{2}) > 1$.", "answer": "$\\left(-\\frac{1}{4}, +\\infty\\right)$"}
+{"question": "Find all $a$ such that $f(x) = x - \\frac{1}{3}\\sin 2x + a\\sin x$ is monotonically increasing on $(-\\infty,+\\infty)$.", "answer": "$\\left[-\\frac{1}{3}, \\frac{1}{3}\\right]$"}
+{"question": "Find the distance from $(3,0)$ to an asymptote of $\\frac{x^2}{16}-\\frac{y^2}{9}=1$.", "answer": "$\\frac{9}{5}$"}
+{"question": "Let $M = \\{2m-1,\\, m-3\\}$. If $-3 \\in M$, find $m$.", "answer": "0 or -1"}
+{"question": "Given $\\alpha \\in (0, \\frac{\\pi}{2})$ and $\\tan\\alpha = 2$, find $\\cos(\\alpha-\\frac{\\pi}{4})$.", "answer": "$\\frac{3\\sqrt{10}}{10}$"}
+{"question": "Given $\\vec{a} = (-1,2)$ and $\\vec{b} = (m,1)$ with $(\\vec{a}+\\vec{b}) \\perp \\vec{a}$, find $m$.", "answer": "7"}
+{"question": "Given $\\sin^2(\\frac{\\pi}{4}+\\alpha) = \\frac{2}{3}$, find $\\sin 2\\alpha$.", "answer": "$\\frac{1}{3}$"}
+{"question": "If $\\lim_{x\\to-\\infty}(\\sqrt{x^2-x+1}+x-k)=1$, find $k$.", "answer": "$\\frac{1}{2}$"}
+{"question": "Let $f(x) = 5^{|x|}$ and $g(x) = ax^2-x$. If $f(g(1))=1$, find $a$.", "answer": "1"}
+{"question": "Nonzero vectors $\\vec{a}$, $\\vec{b}$ satisfy $|\\vec{a}|=2|\\vec{b}|$ and $(\\vec{a}-\\vec{b}) \\perp \\vec{b}$. Find the angle between $\\vec{a}$ and $\\vec{b}$. A. $\\frac{\\pi}{6}$ B. $\\frac{\\pi}{3}$ C. $\\frac{2\\pi}{3}$ D. $\\frac{5\\pi}{6}$", "answer": "B"}
+{"question": "Find the range of $x$ for which $4^x - a\\cdot 2^x + 2 > 0$ holds for all $a \\in (-\\infty, 3]$.", "answer": "$(-\\infty, 0) \\cup (1, +\\infty)$"}
+{"question": "In $\\triangle ABC$, $a\\sin A - b\\sin B = 4c\\sin C$ and $\\cos A = -\\frac{1}{4}$. Find $\\frac{b}{c}$.", "answer": "6"}
+{"question": "Find the range of $y = \\sqrt{x-4} + \\sqrt{15-3x}$.", "answer": "$[1, 2]$"}
+{"question": "For arithmetic $\\{a_n\\}$ with $3S_3 = S_2 + S_4$ and $a_1 = 2$, find $a_5$. A. $-12$ B. $-10$ C. 10 D. 12", "answer": "$-10$"}
+{"question": "Compute $\\lim_{x\\to 1}\\frac{x+x^2+\\cdots+x^n-n}{x-1}$.", "answer": "$\\frac{n(n+1)}{2}$"}
+{"question": "Let $A = \\{x \\mid x^2-x-2>0\\}$. Find $\\complement_{\\mathbb{R}} A$.", "answer": "$\\{x \\mid -1 \\leqslant x \\leqslant 2\\}$"}
+{"question": "Given $\\sin\\alpha+\\cos\\beta=1$ and $\\cos\\alpha+\\sin\\beta=0$, find $\\sin(\\alpha+\\beta)$.", "answer": "$-\\frac{1}{2}$"}
+{"question": "A cone with apex $S$: $\\cos\\angle ASB = \\frac{7}{8}$, $SA$ makes $45°$ with the base, area of $\\triangle SAB = 5\\sqrt{15}$. Find the lateral surface area.", "answer": "$40\\sqrt{2}\\pi$"}
+{"question": "The hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ has asymptote $y=\\sqrt{2}x$. Find the eccentricity.", "answer": "\\sqrt{3}"}
+{"question": "A cuboid $3 \\times 2 \\times 1$ has all vertices on sphere $O$. Find the surface area of sphere $O$.", "answer": "14\\pi"}
+{"question": "A cone has base radius 1 and slant height 3. Find the volume of the largest sphere fitting inside the cone.", "answer": "$\\frac{\\sqrt{2}}{2}\\pi$"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ has eccentricity $\\sqrt{2}$. Find the distance from $(4,0)$ to an asymptote.", "answer": "2\\sqrt{2}"}
+{"question": "Find the foci of the hyperbola $\\frac{x^2}{3}-y^2=1$.", "answer": "(-2,0),(2,0)"}
+{"question": "In the sequence $\\{b_n\\}$ defined by continued fractions: $b_1 = 1+\\frac{1}{\\alpha_1}$, $b_2 = 1+\\frac{1}{\\alpha_1+\\frac{1}{\\alpha_2}}$, etc., with $\\alpha_k \\in \\mathbb{N}^*$. Which comparison is correct? A. $b_1<b_5$ B. $b_3<b_8$ C. $b_6<b_2$ D. $b_4<b_7$", "answer": "D"}
+{"question": "Variables $x, y$ satisfy $x+y-1 \\geqslant 0$ and $y \\geqslant 0$. Find the minimum of $z = 2x-3y$.", "answer": "$-6$"}
+{"question": "Let $A = \\{(x,y) \\mid x^2+y^2 \\leqslant 3,\\, x \\in \\mathbb{Z},\\, y \\in \\mathbb{Z}\\}$. Count the elements of $A$.", "answer": "9"}
+{"question": "Let $A = \\{2,3,5,7\\}$ and $B = \\{1,2,3,5,8\\}$. Find $A \\cap B$.", "answer": "\\{2, 3, 5\\}"}
+{"question": "Find the equation of the tangent to $y = \\frac{2x-1}{x+2}$ at $(-1,-3)$.", "answer": "$5x - y + 2 = 0$"}
+{"question": "Let $a = 2^{4/3}$, $b = 4^{2/5}$, $c = 25^{1/3}$. Order $a$, $b$, $c$.", "answer": "$b < a < c$"}
+{"question": "A zero of $f(x) = A\\sin x - \\sqrt{3}\\cos x$ is $\\frac{\\pi}{3}$. Find $A$ and $f(\\frac{\\pi}{2})$.", "answer": "① $1$ ; ② $-\\sqrt{2}$"}
+{"question": "Line $x = a$ meets the asymptotes of $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ at $D$, $E$. If the area of $\\triangle ODE$ is 8, find the minimum focal length.", "answer": "8"}
+{"question": "Let $P$ move on $\\frac{x^2}{5}+\\frac{y^2}{3}=1$. Find the sum of distances from $P$ to the two foci.", "answer": "$2\\sqrt{5}$"}
+{"question": "Let $D$, $E$, $F$ be midpoints of $BC$, $CA$, $AB$ in $\\triangle ABC$. Express $\\vec{EB}+\\vec{FC}$. A. $\\vec{BC}$ B. $\\frac{1}{2}\\vec{AD}$ C. $\\vec{AD}$ D. $\\frac{1}{2}\\vec{BC}$", "answer": "$\\vec{AD}$"}
+{"question": "The slope of the tangent to $y = (ax+1)e^x$ at $(0,1)$ is $-2$. Find $a$.", "answer": "$-3$"}
+{"question": "Compute $\\cos^2\\frac{\\pi}{12} - \\cos^2\\frac{5\\pi}{12}$.", "answer": "$\\frac{\\sqrt{3}}{2}$"}
+{"question": "The tangent to $y = ax - \\ln(x+1)$ at the origin has equation $y = 2x$. Find $a$.", "answer": "3"}
+{"question": "Ellipse $C: \\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ has eccentricity $\\frac{1}{3}$, left vertex $A_1$, right vertex $A_2$, upper vertex $B$. If $\\overrightarrow{BA_1}\\cdot\\overrightarrow{BA_2}=-1$, find the equation of $C$.", "answer": "$\\frac{x^2}{9} + \\frac{y^2}{8} = 1$"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$: the right focus $F(c,0)$ is at distance $\\frac{\\sqrt{3}}{2}c$ from an asymptote. Find the eccentricity.", "answer": "2"}
+{"question": "Hyperbola $C: \\frac{x^2}{m}-y^2=1$ ($m>0$) has asymptote $\\sqrt{3}x+my=0$. Find the focal length.", "answer": "4"}
+{"question": "A function $f(x)$ on $\\mathbb{R}$ has $f(x+1)$ odd and $f(x+2)$ even. For $x \\in [1,2]$, $f(x)=ax^2+b$. If $f(0)+f(3)=6$, find $f\\!\\left(\\frac{9}{2}\\right)$.", "answer": "\\frac{5}{2}"}
+{"question": "Variables $x, y$ satisfy $x-y-1 \\leqslant 0$ and $x-3y+3 \\geqslant 0$. Find the maximum of $z = x+2y$.", "answer": "7"}
+{"question": "A hyperbola passes through $(4,\\sqrt{3})$ and has asymptotes $y = \\pm\\frac{1}{2}x$. Find its standard equation.", "answer": "$$\\frac{x^2}{4} - y^2 = 1$$"}
+{"question": "In rectangle $ABCD$ with $AB=1$ and $AD=2$, $P$ moves on the circle centred at $C$ tangent to diagonal $BD$. Writing $\\vec{AP}=\\lambda\\vec{AB}+\\mu\\vec{AD}$, find the maximum of $\\lambda+\\mu$. A. 3 B. $2\\sqrt{2}$ C. $\\sqrt{5}$ D. 2", "answer": "3"}
+{"question": "Which of the following is a monotonically increasing function?", "answer": "$f(x) = \\sqrt[3]{x}$"}
+{"question": "Let $f(x)=e^x(2x-1)-ax+a$ with $a<1$. If there is a unique integer $x_0$ with $f(x_0)<0$, find the range of $a$.", "answer": "$a \\in \\left[\\frac{3}{2e}, 1\\right)$"}
+{"question": "Ellipse $\\frac{x^2}{6}+\\frac{y^2}{3}=1$: line $l$ meets the ellipse at $A$, $B$ in the first quadrant, and meets the $x$- and $y$-axes at $M$, $N$ with $|MA|=|NB|$ and $|MN|=2\\sqrt{3}$. Find the equation of $l$.", "answer": "$x + \\sqrt{2}y - 2\\sqrt{2} = 0$"}
+{"question": "Let $a = \\log_2 e$, $b = \\ln 2$, $c = \\log_{1/2}\\frac{1}{3}$. Order $a$, $b$, $c$.", "answer": "$c>a>b$"}
+{"question": "Let $A = \\{x \\mid x > -1\\}$ and $B = \\{x \\mid x < 2\\}$. Find $A \\cap B$.", "answer": "(-1, 2)"}
+{"question": "Let $\\vec{e_1}$, $\\vec{e_2}$ be perpendicular unit vectors. If the angle between $\\sqrt{3}\\vec{e_1}-\\vec{e_2}$ and $\\vec{e_1}+\\lambda\\vec{e_2}$ is $60°$, find $\\lambda$.", "answer": "$\\frac{\\sqrt{3}}{3}$"}
+{"question": "Let $A = \\{x \\mid -1 < x < 2\\}$ and $B = \\{x \\mid 0 < x < 3\\}$. Find $A \\cup B$.", "answer": "(-1, 3)"}
+{"question": "In $\\triangle ABC$, $b\\sin C+c\\sin B=4a\\sin B\\sin C$ and $b^2+c^2-a^2=8$. Find the area of $\\triangle ABC$.", "answer": "$\\frac{2\\sqrt{3}}{3}$"}
+{"question": "Compute $\\displaystyle\\int_{-1}^1(x^2+\\sin x)\\,dx$.", "answer": "$\\frac{2}{3}$"}
+{"question": "Let $f(x)=\\begin{cases}e^{x-1}, & x<1 \\\\ x^{1/3}, & x\\ge 1\\end{cases}$. Find all $x$ with $f(x)<2$.", "answer": "(-∞,8]"}
+{"question": "Let $f(x) = \\begin{cases} x^2-x+3, & x \\leqslant 1 \\\\ x+\\frac{2}{x}, & x>1 \\end{cases}$. Find all $a$ such that $f(x) \\geqslant |\\frac{x}{2}+a|$ for all $x \\in \\mathbb{R}$.", "answer": "$\\left[-\\frac{47}{16}, 2\\right]$"}
+{"question": "Find the eccentricity of $\\frac{x^2}{9}+\\frac{y^2}{4}=1$.", "answer": "$\\frac{\\sqrt{5}}{3}$"}
+{"question": "Let $\\vec{e_1}$, $\\vec{e_2}$ be unit vectors with $|2\\vec{e_1}-\\vec{e_2}| \\leqslant \\sqrt{2}$. Let $\\vec{a}=\\vec{e_1}+\\vec{e_2}$ and $\\vec{b}=3\\vec{e_1}+\\vec{e_2}$. If $\\theta$ is the angle between $\\vec{a}$ and $\\vec{b}$, find the minimum of $\\cos^2\\theta$.", "answer": "$\\frac{28}{29}$"}
+{"question": "The function $f(x)=x^2-2x+a(e^{x-1}+e^{-(x-1)})$ has exactly one zero. Find $a$.", "answer": "$\\frac{1}{2}$"}
+{"question": "For arithmetic $\\{a_n\\}$ with $a_1+a_5=24$ and $S_6=48$, find the common difference. A. 1 B. 2 C. 4 D. 8", "answer": "4"}
+{"question": "For $x \\in [-2,1]$, the inequality $ax^3-x^2+4x+3 \\geqslant 0$ always holds. Find the range of $a$.", "answer": "$a \\in [-6, -2]$"}
+{"question": "Let $f(x) = \\begin{cases} x+1, & x \\leqslant 0 \\\\ 2^x, & x > 0 \\end{cases}$. Find all $x$ satisfying $f(x)+f(x-\\frac{1}{2})>1$.", "answer": "(-\\frac{1}{4}, +\\infty)"}
+{"question": "Line $x+y+2=0$ meets the $x$-axis at $A$ and $y$-axis at $B$. Point $P$ lies on $(x-2)^2+y^2=2$. Find the range of the area of $\\triangle ABP$.", "answer": "[2, 6]"}
+{"question": "An even function $f$ satisfies $f(x) = \\ln(-x)+3x$ for $x < 0$. Find the equation of the tangent to $y=f(x)$ at $(1,-3)$.", "answer": "$y=-2x-1$"}
+{"question": "Let $a>0$, $b>0$ with $a^2+b^2-\\sqrt{3}ab=1$. Find the maximum of $\\sqrt{3}a^2-ab$.", "answer": "$2 + \\sqrt{3}$"}
+{"question": "Find the domain of $f(x) = \\frac{1}{\\sqrt{(\\log_2 x)^2-1}}$.", "answer": "$(0, \\frac{1}{2}) \\cup (2, +\\infty)$"}
+{"question": "Ellipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ ($a>b>0$) has right focus $F(3,0)$. A line through $F$ meets the ellipse at $A$, $B$ with midpoint $(1,-1)$. Find the equation of the ellipse.", "answer": "$\\frac{x^2}{18} + \\frac{y^2}{9} = 1$"}
+{"question": "Let $\\vec{a}=(1,2)$, $\\vec{b}=(2,-2)$, $\\vec{c}=(1,\\lambda)$. If $\\vec{c} \\parallel (2\\vec{a}+\\vec{b})$, find $\\lambda$.", "answer": "$\\frac{1}{2}$"}
+{"question": "If $\\int_0^T x^2\\,dx=9$, find $T$.", "answer": "3"}
+{"question": "Find the equation of the line through $P(-1,0)$ with inclination angle $60°$.", "answer": "$\\sqrt{3}x - y + \\sqrt{3} = 0$"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ has eccentricity $\\sqrt{5}$, $F_1P \\perp F_2P$, and area of $\\triangle PF_1F_2=4$. Find $a$.", "answer": "1"}
+{"question": "If the solution set of $|x^2-8x+a| \\leqslant x-4$ is $[4,5]$, find $a$.", "answer": "16"}
+{"question": "A cone has base radius 6 and volume $30\\pi$. Find its lateral surface area.", "answer": "39π"}
+{"question": "A cone has base radius $\\sqrt{2}$ and its lateral surface unfolds to a semicircle. Find the slant height.", "answer": "$2\\sqrt{2}$"}
+{"question": "A geometric sequence $\\{a_n\\}$ with all positive terms has $S_4=15$ and $a_5=3a_3+4a_1$. Find $a_3$.", "answer": "4"}
+{"question": "Among the following intervals, which one contains a monotonically increasing interval of $f(x) = 7\\sin(x-\\frac{\\pi}{6})$?", "answer": "$(0, \\frac{\\pi}{2})$"}
+{"question": "Given $\\vec{a}=(m,4)$ and $\\vec{b}=(3,-2)$ with $\\vec{a}\\parallel\\vec{b}$, find $m$.", "answer": "$-6$"}
+{"question": "Let $a>0$ and $f(x) = \\begin{cases} x^2+2ax+a, & x \\leqslant 0 \\\\ -x^2+2ax-2a, & x>0 \\end{cases}$. If $f(x)=ax$ has exactly 2 real solutions, find the range of $a$.", "answer": "$(4, 8)$"}
+{"question": "If the maximum of $f(x) = \\sin(x+\\varphi)+\\cos x$ is 2, give one possible value of $\\varphi$.", "answer": "$\\frac{\\pi}{2}$"}
+{"question": "Ellipse $C: \\frac{x^2}{a^2}+\\frac{y^2}{4}=1$ has focus $(2,0)$. Find its eccentricity.", "answer": "$\\frac{\\sqrt{2}}{2}$"}
+{"question": "Let $f(x) = x^3(a\\cdot 2^x-2^{-x})$ be an even function. Find $a$.", "answer": "1"}
+{"question": "In $\\triangle ABC$, $2b\\cos B = a\\cos C + c\\cos A$. Find $B$.", "answer": "$\\frac{\\pi}{3}$"}
+{"question": "How many pairs of sets $(A,B)$ satisfy $A \\cup B = \\{a,b\\}$?", "answer": "9"}
+{"question": "Ellipse $C: \\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ ($a>b>0$) has left vertex $A$. Points $P$, $Q$ on $C$ are symmetric about the $y$-axis, and the product of slopes of $AP$ and $AQ$ is $\\frac{1}{4}$. Find the eccentricity.", "answer": "$\\frac{\\sqrt{3}}{2}$"}
+{"question": "In $\\triangle ABC$, $b=6$, $a=2c$, $B=\\frac{\\pi}{3}$. Find the area of $\\triangle ABC$.", "answer": "$6\\sqrt{3}$"}
+{"question": "A sphere of radius $R$ is tangent to all faces of a regular triangular prism. Find the ratio of the sphere's volume to the prism's volume.", "answer": "$\\frac{2\\sqrt{3}}{27}\\pi$"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$: the circle with $OF$ as diameter meets $x^2+y^2=a^2$ at $P$, $Q$ with $|PQ|=|OF|$. Find the eccentricity.", "answer": "$\\sqrt{2}$"}
+{"question": "Line $y=x+1$ meets circle $x^2+y^2+2y-3=0$ at $A$, $B$. Find $|AB|$.", "answer": "2\\sqrt{2}"}
+{"question": "If $A = \\{ax^2-3x+2=0\\}$ has exactly one element, find all possible values of $a$.", "answer": "$\\frac{9}{8}$"}
+{"question": "In equilateral $\\triangle ABC$ with side 1, $D$ moves on $BC$. $DE \\perp AB$ at $E$, $DF \\parallel AB$ meets $AC$ at $F$. Find $|2\\vec{BE}+\\vec{DF}|$ and the minimum of $(\\vec{DE}+\\vec{DF})\\cdot\\vec{DA}$.", "answer": "1  $\\frac{11}{20}$"}
+{"question": "Let $a=3^{0.7}$, $b=(\\frac{1}{3})^{-0.8}$, $c=\\log_{0.7}0.8$. Order $a$, $b$, $c$.", "answer": "$c<a<b$"}
+{"question": "In $\\triangle ABC$, $\\angle ABC=90°$, $AB=4$, $BC=3$. Point $D$ on $AC$ has $\\angle BDC=45°$. Find $BD$ and $\\cos\\angle ABD$.", "answer": "$BD = \\frac{12\\sqrt{2}}{5}, \\cos \\angle ABD = \\frac{7\\sqrt{2}}{10}$"}
+{"question": "Let $A = \\{1,2,4\\}$ and $B = \\{x \\mid x^2-4x+m=0\\}$ with $A \\cap B = \\{1\\}$. Find $B$.", "answer": "\\{1, 3\\}"}

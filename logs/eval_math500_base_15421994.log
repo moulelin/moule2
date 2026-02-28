@@ -1,0 +1,589 @@
+============================================================
+Evaluating: Qwen/Qwen3-1.7B on MATH-500
+============================================================
+INFO 02-26 15:36:56 [__init__.py:216] Automatically detected platform cuda.
+Dataset: math500 (HuggingFaceH4/MATH-500), 500 problems
+INFO 02-26 15:37:03 [utils.py:233] non-default args: {'trust_remote_code': True, 'max_model_len': 8192, 'disable_log_stats': True, 'model': 'Qwen/Qwen3-1.7B'}
+INFO 02-26 15:37:04 [model.py:547] Resolved architecture: Qwen3ForCausalLM
+INFO 02-26 15:37:04 [model.py:1510] Using max model len 8192
+INFO 02-26 15:37:04 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=16384.
+WARNING 02-26 15:37:05 [__init__.py:3036] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+INFO 02-26 15:37:19 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:37:24 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:37:24 [core.py:77] Initializing a V1 LLM engine (v0.11.0) with config: model='Qwen/Qwen3-1.7B', speculative_config=None, tokenizer='Qwen/Qwen3-1.7B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen3-1.7B, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention","vllm.sparse_attn_indexer"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":[2,1],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":512,"local_cache_dir":null}
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:37:30 [parallel_state.py:1208] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:37:30 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:37:30 [gpu_model_runner.py:2602] Starting to load model Qwen/Qwen3-1.7B...
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:37:30 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:37:30 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:37:31 [weight_utils.py:392] Using model weights format ['*.safetensors']
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:37:35 [default_loader.py:267] Loading weights took 3.59 seconds
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:37:35 [gpu_model_runner.py:2653] Model loading took 3.2152 GiB and 4.220085 seconds
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:37:43 [backends.py:548] Using cache directory: /home/x-qlan1/.cache/vllm/torch_compile_cache/ad962454d7/rank_0_0/backbone for vLLM's torch.compile
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:37:43 [backends.py:559] Dynamo bytecode transform time: 7.24 s
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:37:48 [backends.py:197] Cache the graph for dynamic shape for later use
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:38:02 [backends.py:218] Compiling a graph for dynamic shape takes 19.58 s
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:38:10 [monitor.py:34] torch.compile takes 26.83 s in total
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:38:11 [gpu_worker.py:298] Available KV cache memory: 65.78 GiB
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:38:12 [kv_cache_utils.py:1087] GPU KV cache size: 615,824 tokens
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:38:12 [kv_cache_utils.py:1091] Maximum concurrency for 8,192 tokens per request: 75.17x
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m All deep_gemm operations loaded successfully!
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:38:17 [gpu_model_runner.py:3480] Graph capturing finished in 5 secs, took -0.52 GiB
+[1;36m(EngineCore_DP0 pid=1227944)[0;0m INFO 02-26 15:38:17 [core.py:210] init engine (profile, create kv cache, warmup model) took 42.08 seconds
+INFO 02-26 15:38:18 [llm.py:306] Supported_tasks: ['generate']
+Mode: greedy, n_samples: 1, max_tokens: 4096
+Generating responses...
+Generation completed in 152.3s
+
+============================================================
+Model: Qwen/Qwen3-1.7B
+Dataset: math500 (500 problems)
+Mode: greedy
+Accuracy: 379/500 = 75.8%
+============================================================
+  [O] #  0  gt=\left( 3, \frac{\pi}{2} \right)  pred=(3,\frac{\pi}{2})
+  [O] #  1  gt=p - q  pred=p-q
+  [O] #  2  gt=\frac{14}{3}  pred=\frac{14}{3}
+  [O] #  3  gt=9  pred=9
+  [O] #  4  gt=\text{Evelyn}  pred=Evelyn
+  [O] #  5  gt=42  pred=42
+  [O] #  6  gt=27  pred=27
+  [O] #  7  gt=90^\circ  pred=90
+  [O] #  8  gt=3\sqrt{13}  pred=3\sqrt{13}
+  [X] #  9  gt=4  pred=3
+  [O] # 10  gt=2220  pred=2220
+  [X] # 11  gt=\frac{3}{56}  pred=0
+  [O] # 12  gt=284  pred=284
+  [O] # 13  gt=5  pred=5
+  [O] # 14  gt=\sqrt{51}  pred=\sqrt{51}
+  [O] # 15  gt=6 - 5i  pred=6-5i
+  [O] # 16  gt=-50  pred=-50
+  [O] # 17  gt=\pi  pred=\pi
+  [X] # 18  gt=28  pred=4
+  [O] # 19  gt=3  pred=3
+  [O] # 20  gt=6+9i  pred=6+9i
+  [X] # 21  gt=13535  pred=0.011540548456284768
+  [O] # 22  gt=5  pred=5
+  [O] # 23  gt=x=5  pred=5
+  [O] # 24  gt=10  pred=10
+  [X] # 25  gt=1,-2  pred=1
+  [X] # 26  gt=144  pred=3
+  [O] # 27  gt=78  pred=78
+  [O] # 28  gt=-2 + 7i  pred=-2+7i
+  [O] # 29  gt=225  pred=225
+  [O] # 30  gt=52_8  pred=52_8
+  [O] # 31  gt=11\sqrt2  pred=11\sqrt{2}
+  [O] # 32  gt=720  pred=720
+  [O] # 33  gt=\frac{243}{625}  pred=\frac{243}{625}
+  [O] # 34  gt=-125  pred=-125
+  [O] # 35  gt=3  pred=3
+  [X] # 36  gt=3, 5, 7  pred=7
+  [O] # 37  gt=72  pred=72
+  [O] # 38  gt=2000  pred=2000
+  [O] # 39  gt=23  pred=23
+  [O] # 40  gt=12  pred=12
+  [O] # 41  gt=17  pred=17
+  [O] # 42  gt=4  pred=4
+  [X] # 43  gt=70 \sqrt{2}  pred=20
+  [O] # 44  gt=1.25  pred=1.25
+  [O] # 45  gt=2  pred=2
+  [O] # 46  gt=6  pred=6
+  [O] # 47  gt=5  pred=5
+  [O] # 48  gt=\frac{3}{2}  pred=\frac{3}{2}
+  [O] # 49  gt=83  pred=83
+  [X] # 50  gt=203  pred=371
+  [O] # 51  gt=x^5 - x^4 + x^3 - x^2 + x - 1  pred=x^5-x^4+x^3-x^2+x-1
+  [O] # 52  gt=12  pred=12
+  [O] # 53  gt=-\frac{\pi}{6}  pred=-\frac{\pi}{6}
+  [O] # 54  gt=0.15  pred=0.15
+  [O] # 55  gt=3  pred=3
+  [O] # 56  gt=11  pred=11
+  [O] # 57  gt=16  pred=16
+  [O] # 58  gt=9901  pred=9901
+  [O] # 59  gt=5  pred=5
+  [X] # 60  gt=(6,31,-1)  pred=4
+  [O] # 61  gt=-256  pred=-256
+  [O] # 62  gt=4  pred=4
+  [O] # 63  gt=10  pred=10
+  [X] # 64  gt=\frac{35}{64}  pred=64
+  [O] # 65  gt=1  pred=1
+  [O] # 66  gt=x^3+3x-6  pred=x^3+3x-6
+  [O] # 67  gt=10  pred=10
+  [O] # 68  gt=46  pred=46
+  [O] # 69  gt=-1  pred=-1
+  [X] # 70  gt=40_9  pred=40
+  [X] # 71  gt=2516_8  pred=21
+  [O] # 72  gt=3  pred=3
+  [O] # 73  gt=\frac{3\sqrt{3}}{4}  pred=\frac{3\sqrt{3}}{4}
+  [O] # 74  gt=\cot x  pred=\cotx
+  [O] # 75  gt=\frac{11}{36}  pred=\frac{11}{36}
+  [O] # 76  gt=0  pred=0
+  [O] # 77  gt=4  pred=4
+  [O] # 78  gt=(-2,1)  pred=(-2,1)
+  [O] # 79  gt=2  pred=2
+  [X] # 80  gt=501  pred=4
+  [O] # 81  gt=3  pred=3
+  [X] # 82  gt=\frac{3}{2}  pred=5
+  [O] # 83  gt=2  pred=2
+  [O] # 84  gt=-1  pred=-1
+  [O] # 85  gt=\sqrt{5}  pred=\sqrt{5}
+  [O] # 86  gt=240  pred=240
+  [O] # 87  gt=1  pred=1
+  [X] # 88  gt=2  pred=0
+  [O] # 89  gt=21  pred=21
+  [O] # 90  gt=\frac{3}{2}  pred=\frac{3}{2}
+  [O] # 91  gt=1  pred=1
+  [O] # 92  gt=\frac{448}{15625}  pred=\frac{448}{15625}
+  [O] # 93  gt=33  pred=33
+  [X] # 94  gt=80  pred=likelyanintegerorasimplefraction,maybethere'sawaytofindthemeasureofangleAFDwithoutknowingtheexactmeasuresofBADCDA
+  [O] # 95  gt=-4  pred=-4
+  [X] # 96  gt=1 \pm \sqrt{19}  pred=4
+  [O] # 97  gt=\text{east}  pred=east
+  [O] # 98  gt=2k+2  pred=2k+2
+  [O] # 99  gt=\begin{pmatrix} -1/3 \\ 2/3 \\ 5/3 \end{pmatrix}  pred=\begin{pmatrix}-\frac{1}{3}\\\frac{2}{3}\\\frac{5}{3}\end{pmatrix}
+  [X] #100  gt=145^\circ  pred=105
+  [X] #101  gt=850  pred=13
+  [O] #102  gt=(a+5)(b+2)  pred=(a+5)(b+2)
+  [X] #103  gt=(3,4]  pred=2
+  [X] #104  gt=40  pred=1640
+  [O] #105  gt=29  pred=29
+  [O] #106  gt=\frac43  pred=\frac{4}{3}
+  [O] #107  gt=9  pred=9
+  [O] #108  gt=2  pred=2
+  [O] #109  gt=120^\circ  pred=120
+  [X] #110  gt=504  pred=3
+  [O] #111  gt=210  pred=210
+  [O] #112  gt=13  pred=13
+  [O] #113  gt=8000  pred=8000
+  [O] #114  gt=-5  pred=-5
+  [O] #115  gt=1260  pred=1260
+  [O] #116  gt=2  pred=2
+  [O] #117  gt=3  pred=3
+  [O] #118  gt=81  pred=81
+  [O] #119  gt=-9  pred=-9
+  [X] #120  gt=\text{even}  pred=
+  [O] #121  gt=6  pred=6
+  [O] #122  gt=9  pred=9
+  [O] #123  gt=8  pred=8
+  [O] #124  gt=\frac{11}{2}  pred=\frac{11}{2}
+  [O] #125  gt=-3  pred=-3
+  [X] #126  gt=1+274i  pred=1
+  [O] #127  gt=4210_{5}  pred=4210
+  [O] #128  gt=36  pred=36
+  [O] #129  gt=\frac{3840}{289}  pred=\frac{3840}{289}
+  [O] #130  gt=13  pred=13
+  [O] #131  gt=8  pred=8
+  [O] #132  gt=4  pred=4
+  [O] #133  gt=120  pred=120
+  [O] #134  gt=16  pred=16
+  [O] #135  gt=9  pred=9
+  [X] #136  gt=64  pred=6
+  [X] #137  gt=204_5  pred=204
+  [X] #138  gt=\frac{1}{3}  pred=1
+  [O] #139  gt=1  pred=1
+  [O] #140  gt=13  pred=13
+  [O] #141  gt=2  pred=2
+  [O] #142  gt=28800  pred=28800
+  [O] #143  gt=3 \sqrt{5}  pred=3\sqrt{5}
+  [O] #144  gt=(15,-29)  pred=(15,-29)
+  [O] #145  gt=-2  pred=-2
+  [O] #146  gt=\frac{\sqrt{3}}{3}  pred=\frac{\sqrt{3}}{3}
+  [X] #147  gt=16  pred=256
+  [O] #148  gt=11  pred=11
+  [O] #149  gt=49  pred=49
+  [O] #150  gt=1  pred=1
+  [O] #151  gt=144  pred=144
+  [O] #152  gt=8  pred=8
+  [X] #153  gt=\frac{2}{21}  pred=2
+  [X] #154  gt=2\sqrt{113}  pred=12
+  [O] #155  gt=\frac{1}{4}  pred=\frac{1}{4}
+  [X] #156  gt=30^\circ  pred=3
+  [O] #157  gt=\frac65  pred=\frac{6}{5}
+  [O] #158  gt=2107  pred=2107
+  [O] #159  gt=3.21  pred=3.21
+  [O] #160  gt=18  pred=18
+  [O] #161  gt=6  pred=6
+  [O] #162  gt=\dfrac{17}{50}  pred=\frac{17}{50}
+  [X] #163  gt=-\frac{35}{9}  pred=negative
+  [O] #164  gt=-\sqrt{3}  pred=-\sqrt{3}
+  [O] #165  gt=\frac{4}{9}  pred=\frac{4}{9}
+  [X] #166  gt=\frac{270}7\text{ degrees}  pred=3
+  [O] #167  gt=65  pred=65
+  [X] #168  gt=19  pred=3
+  [O] #169  gt=12  pred=12
+  [X] #170  gt=1736  pred=8
+  [O] #171  gt=\frac{13}{15}  pred=\frac{13}{15}
+  [O] #172  gt=350  pred=350
+  [O] #173  gt=4  pred=4
+  [O] #174  gt=2  pred=2
+  [O] #175  gt=3  pred=3
+  [X] #176  gt=.0000672  pred=
+  [O] #177  gt=30^\circ  pred=30
+  [O] #178  gt=60  pred=60
+  [O] #179  gt=5x - 7y + 11z + 4 = 0  pred=5x-7y+11z+4=0
+  [O] #180  gt=3  pred=3
+  [O] #181  gt=\frac{\sqrt{3}}{3}  pred=\frac{\sqrt{3}}{3}
+  [O] #182  gt=1251  pred=1251
+  [O] #183  gt=23  pred=23
+  [X] #184  gt=(2,\infty)  pred=allrealnumbersgreaterthanorequalto2
+  [O] #185  gt=1  pred=1
+  [O] #186  gt=7  pred=7
+  [O] #187  gt=7  pred=7
+  [O] #188  gt=6  pred=6
+  [X] #189  gt=160  pred=-8
+  [O] #190  gt=\frac{13}{18}  pred=\frac{13}{18}
+  [O] #191  gt=0  pred=0
+  [O] #192  gt=30  pred=30
+  [O] #193  gt=4  pred=4
+  [X] #194  gt=\frac{1}{4}  pred=2
+  [O] #195  gt=24  pred=24
+  [O] #196  gt=1600  pred=1600
+  [O] #197  gt=6  pred=6
+  [O] #198  gt=10,\!080  pred=10080
+  [O] #199  gt=17  pred=17
+  [O] #200  gt=40  pred=40
+  [O] #201  gt=66  pred=66
+  [O] #202  gt=\frac{2}{3}  pred=\frac{2}{3}
+  [O] #203  gt=12  pred=12
+  [X] #204  gt=0  pred=6
+  [X] #205  gt=\begin{pmatrix} -2 \\ -14 \\ -7 \end{pmatrix}  pred=0
+  [O] #206  gt=\left( \frac{3}{2}, -13 \right)  pred=(\frac{3}{2},-13)
+  [O] #207  gt=28  pred=28
+  [O] #208  gt=1  pred=1
+  [O] #209  gt=16  pred=16
+  [O] #210  gt=10  pred=10
+  [O] #211  gt=5  pred=5
+  [O] #212  gt=56  pred=56
+  [X] #213  gt=2  pred=1
+  [X] #214  gt=110  pred=30
+  [O] #215  gt=2  pred=2
+  [O] #216  gt=6  pred=6
+  [X] #217  gt=11,\! 111,\! 111,\! 100  pred=1001
+  [O] #218  gt=(-1,6)  pred=(-1,6)
+  [X] #219  gt=\frac{1}{2}  pred=5
+  [O] #220  gt=\frac{16}{27}  pred=\frac{16}{27}
+  [O] #221  gt=900  pred=900
+  [O] #222  gt=54  pred=54
+  [O] #223  gt=14  pred=14
+  [X] #224  gt=\frac{9}{256}  pred=9
+  [O] #225  gt=11  pred=11
+  [O] #226  gt=3  pred=3
+  [O] #227  gt=\text{(C)}  pred=C
+  [O] #228  gt=288 \pi  pred=288\pi
+  [O] #229  gt=90  pred=90
+  [O] #230  gt=\frac{16}{5}  pred=\frac{16}{5}
+  [O] #231  gt=10  pred=10
+  [X] #232  gt=\frac{1997}{2}  pred=2
+  [O] #233  gt=30^\circ  pred=30
+  [O] #234  gt=34  pred=34
+  [O] #235  gt=\frac 59  pred=\frac{5}{9}
+  [X] #236  gt=12  pred=3
+  [O] #237  gt=22  pred=22
+  [O] #238  gt=-4  pred=-4
+  [X] #239  gt=16  pred=2
+  [X] #240  gt=116  pred=10
+  [O] #241  gt=17  pred=17
+  [X] #242  gt=\$32,\!348  pred=1.17
+  [O] #243  gt=3  pred=3
+  [O] #244  gt=8  pred=8
+  [O] #245  gt=-13x+3  pred=-13x+3
+  [X] #246  gt=8  pred=1
+  [O] #247  gt=\frac{10}{11}  pred=\frac{10}{11}
+  [X] #248  gt=\begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix}  pred=-I
+  [O] #249  gt=17  pred=17
+  [O] #250  gt=13  pred=13
+  [X] #251  gt=540  pred=544320
+  [O] #252  gt=81  pred=81
+  [O] #253  gt=\frac{1}{8}  pred=\frac{1}{8}
+  [O] #254  gt=28  pred=28
+  [O] #255  gt=\text{(E)}  pred=E
+  [O] #256  gt=\frac{8}{21}  pred=\frac{8}{21}
+  [X] #257  gt=864 \mbox{ inches}^2  pred=864
+  [O] #258  gt=16  pred=16
+  [O] #259  gt=22  pred=22
+  [O] #260  gt=120^\circ  pred=120
+  [O] #261  gt=76^\circ  pred=76
+  [O] #262  gt=4  pred=4
+  [O] #263  gt=15  pred=15
+  [X] #264  gt=1\frac{4}{5}  pred=0
+  [O] #265  gt=4005  pred=4005
+  [O] #266  gt=\dfrac{33}{100}  pred=\frac{33}{100}
+  [O] #267  gt=180^\circ  pred=180
+  [O] #268  gt=1  pred=1
+  [O] #269  gt=6  pred=6
+  [O] #270  gt=10  pred=10
+  [O] #271  gt=333  pred=333
+  [O] #272  gt=1030  pred=1030
+  [O] #273  gt=1250  pred=1250
+  [X] #274  gt=18+2\pi  pred=1
+  [O] #275  gt=7  pred=7
+  [O] #276  gt=11  pred=11
+  [O] #277  gt=\sqrt{53}  pred=\sqrt{53}
+  [O] #278  gt=255  pred=255
+  [X] #279  gt=7\pi  pred=4\pi
+  [O] #280  gt=8  pred=8
+  [X] #281  gt=36^\circ  pred=16
+  [X] #282  gt=129  pred=497
+  [O] #283  gt=1  pred=1
+  [X] #284  gt=3 \pm 2 \sqrt{2}  pred=3+2\sqrt{
+  [X] #285  gt=440  pred=6
+  [X] #286  gt=\frac{17}{21}  pred=5
+  [O] #287  gt=36  pred=36
+  [O] #288  gt=7  pred=7
+  [O] #289  gt=16  pred=16
+  [O] #290  gt=4  pred=4
+  [X] #291  gt=63  pred=4
+  [O] #292  gt=898  pred=898
+  [O] #293  gt=\left(\frac{3}{5},\frac{8}{3}\right]  pred=(\frac{3}{5},\frac{8}{3}]
+  [O] #294  gt=58  pred=58
+  [X] #295  gt=11  pred=-4
+  [O] #296  gt=\text{(B)}  pred=B
+  [O] #297  gt=103  pred=103
+  [O] #298  gt=\begin{pmatrix} -18 \\ -49 \\ 96 \end{pmatrix}  pred=\begin{pmatrix}-18\\-49\\96\end{pmatrix}
+  [O] #299  gt=63  pred=63
+  [O] #300  gt=12  pred=12
+  [O] #301  gt=5.4 \text{ cents}  pred=5.4
+  [O] #302  gt=5  pred=5
+  [O] #303  gt=28  pred=28
+  [O] #304  gt=9  pred=9
+  [O] #305  gt=\frac9{19}  pred=\frac{9}{19}
+  [X] #306  gt=6  pred=2
+  [O] #307  gt=(-\infty, 0]  pred=(-\infty,0]
+  [X] #308  gt=1+2\sqrt{3}  pred=3
+  [X] #309  gt=14  pred=2
+  [O] #310  gt=49  pred=49
+  [O] #311  gt=3  pred=3
+  [O] #312  gt=(5,\infty)  pred=(5,\infty)
+  [O] #313  gt=12\pi  pred=12\pi
+  [O] #314  gt=(2,4)  pred=(2,4)
+  [O] #315  gt=41  pred=41
+  [X] #316  gt=12  pred=48
+  [X] #317  gt=0  pred=2
+  [O] #318  gt=\frac{11+9a}{20}  pred=\frac{11+9a}{20}
+  [O] #319  gt=-128  pred=-128
+  [O] #320  gt=-\frac{24}{25}  pred=-\frac{24}{25}
+  [O] #321  gt=10  pred=10
+  [O] #322  gt=-1  pred=-1
+  [X] #323  gt=\frac{1}{3}  pred=1
+  [X] #324  gt=120  pred=100
+  [O] #325  gt=4  pred=4
+  [X] #326  gt=\frac{9}{100}  pred=-9
+  [X] #327  gt=15  pred=2
+  [O] #328  gt=3  pred=3
+  [O] #329  gt=4  pred=4
+  [O] #330  gt=1940  pred=1940
+  [O] #331  gt=\frac{13}{6}  pred=\frac{13}{6}
+  [X] #332  gt=2  pred=5.828
+  [X] #333  gt=3  pred=2
+  [O] #334  gt=-120  pred=-120
+  [O] #335  gt=3  pred=3
+  [O] #336  gt=26000  pred=26000
+  [O] #337  gt=6  pred=6
+  [X] #338  gt=4343_6  pred=4343
+  [O] #339  gt=2k  pred=2k
+  [X] #340  gt=55^\circ  pred=29
+  [O] #341  gt=-2  pred=-2
+  [O] #342  gt=2  pred=2
+  [O] #343  gt=58,500  pred=58500
+  [O] #344  gt=5  pred=5
+  [O] #345  gt=1  pred=1
+  [O] #346  gt=66  pred=66
+  [O] #347  gt=6r^2-4r-24  pred=6r^2-4r-24
+  [O] #348  gt=4495  pred=4495
+  [X] #349  gt=10080  pred=5040
+  [O] #350  gt=4  pred=4
+  [X] #351  gt=\frac{1}{16}  pred=1
+  [X] #352  gt=11 \sqrt{5} + 11  pred=11
+  [O] #353  gt=480  pred=480
+  [O] #354  gt=81  pred=81
+  [O] #355  gt=100  pred=100
+  [O] #356  gt=(-\sqrt{3}, \sqrt{3})  pred=(-\sqrt{3},\sqrt{3})
+  [O] #357  gt=4  pred=4
+  [O] #358  gt=\text{ellipse}  pred=ellipse
+  [O] #359  gt=6  pred=6
+  [O] #360  gt=\frac{7}{4}  pred=\frac{7}{4}
+  [X] #361  gt=16 \sqrt{3}  pred=16
+  [O] #362  gt=\frac14  pred=\frac{1}{4}
+  [O] #363  gt=2  pred=2
+  [O] #364  gt=(1,-16,-4,43)  pred=(1,-16,-4,43)
+  [O] #365  gt=8  pred=8
+  [O] #366  gt=4  pred=4
+  [O] #367  gt=1  pred=1
+  [O] #368  gt=31  pred=31
+  [O] #369  gt=21  pred=21
+  [O] #370  gt=-41  pred=-41
+  [X] #371  gt=17  pred=2
+  [O] #372  gt=90^\circ  pred=90
+  [O] #373  gt=1+2i  pred=1+2i
+  [O] #374  gt=4  pred=4
+  [O] #375  gt=25  pred=25
+  [O] #376  gt=(8,-2)  pred=(8,-2)
+  [O] #377  gt=6  pred=6
+  [O] #378  gt=3  pred=3
+  [O] #379  gt=12  pred=12
+  [X] #380  gt=(0,9) \cup (9,36)  pred=(0,36)
+  [X] #381  gt=\frac{1}{2}  pred=1.5
+  [X] #382  gt=\frac{20000}{\pi}  pred=arationalnumber
+  [X] #383  gt=x \in [-2,7]  pred=[-2,7]
+  [O] #384  gt=15x - 80  pred=15x-80
+  [O] #385  gt=22  pred=22
+  [O] #386  gt=11  pred=11
+  [O] #387  gt=18  pred=18
+  [O] #388  gt=\frac{11}{2}  pred=\frac{11}{2}
+  [O] #389  gt=\frac{\sqrt{21}}{5}  pred=\frac{\sqrt{21}}{5}
+  [O] #390  gt=12  pred=12
+  [O] #391  gt=0  pred=0
+  [X] #392  gt=\sqrt{66}  pred=6
+  [O] #393  gt=\frac 34  pred=\frac{3}{4}
+  [O] #394  gt=-\frac{3}{8}  pred=-\frac{3}{8}
+  [O] #395  gt=4  pred=4
+  [O] #396  gt=2  pred=2
+  [O] #397  gt=23  pred=23
+  [O] #398  gt=\text{Navin}  pred=Navin
+  [O] #399  gt=326.5  pred=326.5
+  [X] #400  gt=\frac{14}{3}  pred=supposedtobeacommonfraction
+  [X] #401  gt=\frac{13}{4}  pred=1
+  [O] #402  gt=1 - 12i  pred=1-12i
+  [O] #403  gt=3  pred=3
+  [O] #404  gt=3  pred=3
+  [O] #405  gt=60  pred=60
+  [O] #406  gt=0  pred=0
+  [O] #407  gt=9  pred=9
+  [X] #408  gt=\begin{pmatrix} 1/5 \\ -18/5 \end{pmatrix}  pred=(\frac{1}{5},-\frac{18}{5})
+  [X] #409  gt=2 \sqrt{5}  pred=47
+  [O] #410  gt=6  pred=6
+  [O] #411  gt=60  pred=60
+  [X] #412  gt=406  pred=28
+  [O] #413  gt=5r^5  pred=5r^5
+  [O] #414  gt=10  pred=10
+  [O] #415  gt=9  pred=9
+  [X] #416  gt=\frac{1}{8}  pred=1
+  [O] #417  gt=-2  pred=-2
+  [O] #418  gt=2\sqrt{5}  pred=2\sqrt{5}
+  [X] #419  gt=\begin{pmatrix} -7 \\ 16 \\ 5 \end{pmatrix}  pred=(-7,16,5)
+  [X] #420  gt=\begin{pmatrix} 16/49 \\ 48/49 \\ 24/49 \end{pmatrix}  pred=\frac{8}{7}
+  [X] #421  gt=27  pred=1
+  [X] #422  gt=\{1\pm\sqrt{5},-2\}  pred=2
+  [O] #423  gt=1440  pred=1440
+  [O] #424  gt=600  pred=600
+  [X] #425  gt=3R^2  pred=2
+  [O] #426  gt=6\sqrt{2}  pred=6\sqrt{2}
+  [O] #427  gt=29  pred=29
+  [O] #428  gt=64  pred=64
+  [O] #429  gt=50  pred=50
+  [O] #430  gt=4.5  pred=4.5
+  [O] #431  gt=\left[ \frac{\pi^2}{8}, \frac{5 \pi^2}{4} \right]  pred=[\frac{\pi^2}{8},\frac{5\pi^2}{4}]
+  [X] #432  gt=331  pred=2
+  [O] #433  gt=.35625  pred=0.35625
+  [O] #434  gt=32  pred=32
+  [O] #435  gt=(-\infty, 2) \cup (3, \infty)  pred=(-\infty,2)\cup(3,\infty)
+  [O] #436  gt=4  pred=4
+  [O] #437  gt=3  pred=3
+  [O] #438  gt=4  pred=4
+  [O] #439  gt=x^8 + x^7 + x^6 + x^5 + x^4 + x^3 + x^2 + x + 1  pred=x^8+x^7+x^6+x^5+x^4+x^3+x^2+x+1
+  [O] #440  gt=14  pred=14
+  [O] #441  gt=550  pred=550
+  [O] #442  gt=256  pred=256
+  [O] #443  gt=45  pred=45
+  [X] #444  gt=\frac{1}{2}  pred=\frac{1}{4}
+  [X] #445  gt=15  pred=0
+  [O] #446  gt=8  pred=8
+  [O] #447  gt=9  pred=9
+  [O] #448  gt=44  pred=44
+  [O] #449  gt=47  pred=47
+  [O] #450  gt=64  pred=64
+  [O] #451  gt=\frac{639}{40}  pred=\frac{639}{40}
+  [O] #452  gt=143  pred=143
+  [O] #453  gt=10  pred=10
+  [O] #454  gt=y = 2x + 3  pred=2x+3
+  [O] #455  gt=6  pred=6
+  [X] #456  gt=-2,1  pred=1
+  [O] #457  gt=0  pred=0
+  [X] #458  gt=41  pred=1
+  [X] #459  gt=\$18.90  pred=indeed18.90
+  [X] #460  gt=75^\circ  pred=105
+  [O] #461  gt=12  pred=12
+  [X] #462  gt=59  pred=
+  [O] #463  gt=2  pred=2
+  [O] #464  gt=9  pred=9
+  [O] #465  gt=121  pred=121
+  [X] #466  gt=8 \pi  pred=0
+  [X] #467  gt=15\mbox{ cm}^2  pred=15
+  [O] #468  gt=8  pred=8
+  [O] #469  gt=25  pred=25
+  [X] #470  gt=27648  pred=2
+  [O] #471  gt=84  pred=84
+  [O] #472  gt=137 \frac{1}{2}  pred=137\frac{1}{2}
+  [X] #473  gt=7  pred=2
+  [X] #474  gt=3  pred=1
+  [X] #475  gt=29  pred=consistent
+  [O] #476  gt=200  pred=200
+  [O] #477  gt=2  pred=2
+  [X] #478  gt=\frac{2}{1005}  pred=2
+  [O] #479  gt=2  pred=2
+  [O] #480  gt=1  pred=1
+  [X] #481  gt=8n^2 + 4n + 1  pred=13
+  [O] #482  gt=202  pred=202
+  [O] #483  gt=\frac{8}{15}  pred=\frac{8}{15}
+  [O] #484  gt=10  pred=10
+  [O] #485  gt=13  pred=13
+  [O] #486  gt=216  pred=216
+  [O] #487  gt=2  pred=2
+  [O] #488  gt=\$36  pred=36
+  [O] #489  gt=15  pred=15
+  [X] #490  gt=14  pred=-1
+  [X] #491  gt=64  pred=192
+  [O] #492  gt=y = -2x  pred=-2x
+  [O] #493  gt=20  pred=20
+  [X] #494  gt=\frac{1}{4}  pred=4
+  [X] #495  gt=(2,12) \cup (12,102)  pred=(2,102)
+  [O] #496  gt=\frac{5}{13}  pred=\frac{5}{13}
+  [X] #497  gt=\frac{7}{2}  pred=2
+  [O] #498  gt=-1  pred=-1
+  [O] #499  gt=106^\circ  pred=106
+
+Results saved to /anvil/scratch/x-qlan1/moule2/eval_results/base/Qwen_Qwen3-1.7B_math500_greedy.json
+Results saved to /home/x-qlan1/code/moule2/scripts/eval_base/results/Qwen_Qwen3-1.7B_math500_greedy.txt
+INFO 02-26 15:41:10 [__init__.py:216] Automatically detected platform cuda.
+Dataset: math500 (HuggingFaceH4/MATH-500), 500 problems
+INFO 02-26 15:41:18 [utils.py:233] non-default args: {'trust_remote_code': True, 'max_model_len': 8192, 'disable_log_stats': True, 'model': 'Qwen/Qwen3-1.7B'}
+INFO 02-26 15:41:18 [model.py:547] Resolved architecture: Qwen3ForCausalLM
+INFO 02-26 15:41:18 [model.py:1510] Using max model len 8192
+INFO 02-26 15:41:19 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=16384.
+WARNING 02-26 15:41:19 [__init__.py:3036] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+INFO 02-26 15:41:34 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:41:39 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:41:39 [core.py:77] Initializing a V1 LLM engine (v0.11.0) with config: model='Qwen/Qwen3-1.7B', speculative_config=None, tokenizer='Qwen/Qwen3-1.7B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen3-1.7B, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention","vllm.sparse_attn_indexer"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":[2,1],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":512,"local_cache_dir":null}
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:41:44 [parallel_state.py:1208] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:41:45 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:41:45 [gpu_model_runner.py:2602] Starting to load model Qwen/Qwen3-1.7B...
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:41:45 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:41:45 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:41:46 [weight_utils.py:392] Using model weights format ['*.safetensors']
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:41:49 [default_loader.py:267] Loading weights took 3.60 seconds
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:41:50 [gpu_model_runner.py:2653] Model loading took 3.2152 GiB and 4.103389 seconds
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:41:58 [backends.py:548] Using cache directory: /home/x-qlan1/.cache/vllm/torch_compile_cache/ad962454d7/rank_0_0/backbone for vLLM's torch.compile
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:41:58 [backends.py:559] Dynamo bytecode transform time: 7.47 s
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:42:00 [backends.py:164] Directly load the compiled graph(s) for dynamic shape from the cache, took 1.847 s
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:42:00 [monitor.py:34] torch.compile takes 7.47 s in total
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:42:02 [gpu_worker.py:298] Available KV cache memory: 65.78 GiB
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:42:03 [kv_cache_utils.py:1087] GPU KV cache size: 615,840 tokens
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:42:03 [kv_cache_utils.py:1091] Maximum concurrency for 8,192 tokens per request: 75.18x
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m All deep_gemm operations loaded successfully!
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:42:07 [gpu_model_runner.py:3480] Graph capturing finished in 5 secs, took -0.52 GiB
+[1;36m(EngineCore_DP0 pid=1703904)[0;0m INFO 02-26 15:42:07 [core.py:210] init engine (profile, create kv cache, warmup model) took 17.28 seconds
+INFO 02-26 15:42:08 [llm.py:306] Supported_tasks: ['generate']
+Mode: average, n_samples: 16, max_tokens: 4096
+Generating responses...

@@ -1,0 +1,100 @@
+{"question": "Given that the function $f(x)$ has domain $\\mathbb{R}$. When $x<0$, $f(x)=x^3-1$; when $-1 \\leqslant x \\leqslant 1$, $f(-x)=-f(x)$; when $x>\\frac{1}{2}$, $f\\left(x+\\frac{1}{2}\\right)=f\\left(x-\\frac{1}{2}\\right)$. Then $f(6)=$", "answer": "2"}
+{"question": "The graph of the even function $y=f(x)$ is symmetric about the line $x=2$, and $f(3)=3$. Then $f(-1)=$", "answer": "3"}
+{"question": "If the graph of the function $f(x)=(1-x^{2})(x^{2}+ax+b)$ is symmetric about the line $x=-2$, then the maximum value of $f(x)$ is", "answer": "16"}
+{"question": "Given the function $f(x)=\\frac{1}{1+2^{x}}$, then for any real number $x$, we have", "answer": "$f(-x)+f(x)=1$"}
+{"question": "Given that the functions $f(x), g(x)$ are both defined on $\\mathbb{R}$, and $f(x)+g(2-x)=5$, $g(x)-f(x-4)=7$. If the graph of $y=g(x)$ is symmetric about the line $x=2$, and $g(2)=4$, then $\\sum_{k=1}^{22}f(k)=$", "answer": "$-24$"}
+{"question": "Given $a \\in \\mathbb{R}$, let the function $f(x)=\\begin{cases}x^2-2ax+2a, & x \\leqslant 1 \\\\ x-a\\ln x, & x>1\\end{cases}$. If the inequality $f(x) \\geqslant 0$ holds for all $x \\in \\mathbb{R}$, then the range of values of $a$ is", "answer": "$[0, \\mathrm{e}]$"}
+{"question": "Given the function $f(x)=\\begin{cases}2\\sqrt{x}, & 0 \\leqslant x \\leqslant 1 \\\\ \\frac{1}{x}, & x>1\\end{cases}$. If the equation $f(x)=-\\frac{1}{4}x+a$ ($a \\in \\mathbb{R}$) has exactly two distinct real solutions, then the range of values of $a$ is", "answer": "$\\left[\\frac{5}{4}, \\frac{9}{4}\\right] \\cup \\{1\\}$"}
+{"question": "Let $f(x)=x^3-2x+\\mathrm{e}^x-\\frac{1}{\\mathrm{e}^x}$, where $\\mathrm{e}$ is the base of the natural logarithm. If $f(a-1)+f(2a^2) \\leqslant 0$, then the range of values of the real number $a$ is", "answer": "$[-1, \\frac{1}{2}]$"}
+{"question": "Given that the odd function $f(x)$ is increasing on $\\mathbb{R}$, and $g(x)=xf(x)$. If $a=g(-\\log_2 5.1), b=g(2^{0.8}), c=g(3)$, then the order of $a, b, c$ is", "answer": "$b<a<c$"}
+{"question": "The function $f(x)$ is monotonically decreasing on $(-\\infty, +\\infty)$ and is an odd function. If $f(1) = -1$, then the range of $x$ satisfying $-1 \\leqslant f(x-2) \\leqslant 1$ is", "answer": "$[1, 3]$"}
+{"question": "Let $f(x)=\\ln(1+|x|)-\\frac{1}{1+x^2}$, then the range of $x$ for which $f(x)>f(2x-1)$ holds is", "answer": "$(\\frac{1}{3}, 1)$"}
+{"question": "Given $2^a=5$ and $\\log_8 3=b$, then $4^{a-3b}=$", "answer": "$\\frac{25}{9}$"}
+{"question": "Given that $x, y, z$ are positive numbers and $2^x=3^y=5^z$, the order is", "answer": "$3y < 2x < 5z$"}
+{"question": "Let the function $f(x)=\\begin{cases}3x-1, & x < 1 \\\\ 2^x, & x \\geqslant 1\\end{cases}$, then the range of values of $a$ satisfying $f(f(a))=2^{f(a)}$ is", "answer": "$\\left[\\frac{2}{3}, +\\infty\\right)$"}
+{"question": "Let $a=0.1\\mathrm{e}^{0.1}, b=\\frac{1}{9}, c=-\\ln 0.9$, then the order is", "answer": "$c<a<b$"}
+{"question": "Given $a=\\log_5 2, b=\\log_8 3, c=\\frac{1}{2}$, then the order is", "answer": "$a<c<b$"}
+{"question": "Let $a=\\log_2 0.3, b=\\log_{\\frac{1}{2}} 0.4, c=0.4^{0.3}$, then the order of $a, b, c$ is", "answer": "$a<c<b$"}
+{"question": "If $2^a=5^b=10$, then $\\frac{1}{a}+\\frac{1}{b}=$", "answer": "1"}
+{"question": "Let $a \\log_3 4=2$, then $4^{-a}=$", "answer": "$\\frac{1}{9}$"}
+{"question": "If $2^a + \\log_2 a = 4^b + 2\\log_4 b$, then the order is", "answer": "$a < 2b$"}
+{"question": "The Logistic model is a commonly used mathematical model applicable in epidemiology. Based on published data, researchers established a Logistic model for the cumulative confirmed COVID-19 cases $I(t)$ (unit of $t$: days) in a certain region: $I(t)=\\frac{K}{1+\\mathrm{e}^{-0.23(t-53)}}$, where $K$ is the maximum number of confirmed cases. When $I(t^*)=0.95K$, it indicates that the epidemic has been initially contained. Then $t^*$ is approximately ($\\ln 19 \\approx 3$)", "answer": "66"}
+{"question": "Let $a=\\log_3 2, b=\\log_5 3, c=\\frac{2}{3}$, then", "answer": "$a<c<b$"}
+{"question": "Given $5^5<8^4$ and $13^4<8^5$. Let $a=\\log_5 3, b=\\log_8 5, c=\\log_{13} 8$, then", "answer": "$a<b<c$"}
+{"question": "Let $a=3^{0.7}, b=\\left(\\frac{1}{3}\\right)^{-0.8}, c=\\log_{0.7} 0.8$, then the order of $a, b, c$ is", "answer": "$c<a<b$"}
+{"question": "Given $a=\\log_5 2, b=\\log_{0.5} 0.2, c=0.5^{0.2}$, then the order of $a, b, c$ is", "answer": "$a<c<b$"}
+{"question": "Let $a=\\log_{0.2} 0.3, b=\\log_2 0.3$, then", "answer": "$ab < a+b < 0$"}
+{"question": "Among the following functions, the one whose graph is symmetric to the graph of $y=\\ln x$ about the line $x=1$ is", "answer": "$y=\\ln(2-x)$"}
+{"question": "Given the function $f(x)=\\log_2(x^2+a)$, if $f(3)=1$, then $a=$", "answer": "$-7$"}
+{"question": "Given the function $f(x)=\\ln(\\sqrt{1+x^2}-x)+1$, if $f(a)=4$, then $f(-a)=$", "answer": "-2"}
+{"question": "Given the function $f(x)=\\begin{cases}e^x, & x \\leqslant 0 \\\\ \\ln x, & x>0\\end{cases}$ and $g(x)=f(x)+x+a$. If $g(x)$ has exactly 2 zeros, then the range of values of $a$ is", "answer": "$[-1, +\\infty)$"}
+{"question": "Given $a=\\log_2 e, b=\\ln 2, c=\\log_{\\frac{1}{2}} \\frac{1}{3}$, then the order of $a, b, c$ is", "answer": "$c>a>b$"}
+{"question": "The domain of the function $f(x)=\\sqrt{\\log_2 x - 1}$ is", "answer": "$[2, +\\infty)$"}
+{"question": "The monotonically increasing interval of the function $f(x)=\\ln(x^2-2x-8)$ is", "answer": "$(4, +\\infty)$"}
+{"question": "According to relevant data, the upper bound $M$ of the state-space complexity of Go is approximately $3^{361}$, and the total number of atoms of ordinary matter in the observable universe $N$ is approximately $10^{80}$. Among the following numbers, the one closest to $\\frac{M}{N}$ is (reference data: $\\lg 3 \\approx 0.48$)", "answer": "$10^{93}$"}
+{"question": "Among the following functions, the one whose domain and range are the same as those of the function $y=10^{\\lg x}$ is", "answer": "$y=\\frac{1}{\\sqrt{x}}$"}
+{"question": "Let the function $f(x)=\\begin{cases}1+\\log_2(2-x), & x<1 \\\\ 2^{x-1}, & x \\geqslant 1\\end{cases}$, then $f(-2)+f(\\log_2 12)=$", "answer": "9"}
+{"question": "Let the graph of the function $y=f(x)$ be symmetric to the graph of $y=2^{x+a}$ about the line $y=-x$. If $f(-2)+f(-4)=1$, then $a=$", "answer": "2"}
+{"question": "Given that $y=f(x)$ is an odd function, and when $x \\geqslant 0$, $f(x)=x^{\\frac{2}{3}}$, then the value of $f(-8)$ is", "answer": "$-4$"}
+{"question": "If $a>b>1$ and $0<c<1$, then", "answer": "$a \\log_b c < b \\log_a c$"}
+{"question": "Given $a=2^{\\frac{4}{3}}, b=4^{\\frac{2}{5}}, c=25^{\\frac{1}{3}}$, then", "answer": "$b < a < c$"}
+{"question": "If $a>b>0$ and $0<c<1$, then", "answer": "$\\log_c a < \\log_c b$"}
+{"question": "Let the function $f(x)=\\begin{cases}e^{x-1}, & x<1 \\\\ x^{\\frac{1}{3}}, & x \\geqslant 1\\end{cases}$, then the range of $x$ for which $f(x) \\leqslant 2$ holds is", "answer": "$(-\\infty, 8]$"}
+{"question": "Given $a \\in \\mathbb{R}$, if there exists a function $f(x)$ defined on $\\mathbb{R}$ that simultaneously satisfies: (1) for any $x_0 \\in \\mathbb{R}$, the value of $f(x_0)$ is either $x_0$ or $x_0^2$; (2) the equation $f(x)=a$ has no real solution; then the range of values of $a$ is", "answer": "$(-\\infty, 0) \\cup (0, 1) \\cup (1, +\\infty)$"}
+{"question": "Given the function $f(x)=\\begin{cases} x^3, & x \\geqslant 0 \\\\ -x, & x < 0 \\end{cases}$. If the function $g(x)=f(x)-|kx^2-2x|$ ($k \\in \\mathbb{R}$) has exactly 4 zeros, then the range of values of $k$ is", "answer": "$(-\\infty, 0) \\cup (2\\sqrt{2}, +\\infty)$"}
+{"question": "The number of zeros of the function $f(x)=2\\sin x - \\sin 2x$ on $[0, 2\\pi]$ is", "answer": "$3$"}
+{"question": "Let $f(x), g(x)$ be two periodic functions defined on $\\mathbb{R}$, where $f(x)$ has period 4 and $g(x)$ has period 2, and $f(x)$ is an odd function. When $x \\in (0,2]$, $f(x)=\\sqrt{1-(x-1)^2}$, $g(x)=\\begin{cases}k(x+2), & 0<x \\leqslant 1 \\\\ -\\frac{1}{2}, & 1<x \\leqslant 2\\end{cases}$, where $k>0$. If on the interval $(0, 9]$, the equation $f(x)=g(x)$ has 8 different real roots, then the range of values of $k$ is", "answer": "$\\left[\\frac{1}{3}, \\frac{1}{2\\sqrt{2}}\\right)$"}
+{"question": "Given $a, b \\in \\mathbb{R}$, the function $f(x)=\\begin{cases}x, & x<0 \\\\ \\frac{1}{3}x^3-\\frac{1}{2}(a+1)x^2+ax, & x \\geqslant 0\\end{cases}$. If the function $y=f(x)-ax-b$ has exactly 3 zeros, then", "answer": "$a>-1, b<0$"}
+{"question": "The number of zeros of the function $f(x)=\\cos\\left(3x+\\frac{\\pi}{6}\\right)$ on $[0,\\pi]$ is", "answer": "3"}
+{"question": "Given $\\lambda \\in \\mathbb{R}$, the function $f(x)=\\begin{cases} x-4, & x \\geqslant \\lambda \\\\ x^2-4x+3, & x < \\lambda \\end{cases}$. When $\\lambda=2$, the solution set of the inequality $f(x)<0$ is ____. If the function $f(x)$ has exactly 2 zeros, then the range of values of $\\lambda$ is ____.", "answer": "$(1,4); (1,3] \\cup (4,+\\infty)$"}
+{"question": "Given the function $f(x)=\\begin{cases}e^x, & x \\leqslant 0 \\\\ \\ln x, & x>0\\end{cases}$ and $g(x)=f(x)+x+a$. If $g(x)$ has exactly 2 zeros, then the range of values of $a$ is", "answer": "$[-1, +\\infty)$"}
+{"question": "Given that the function $f(x)=x^2-2x+a(e^{x-1}+e^{-x+1})$ has a unique zero, then $a=$", "answer": "$\\frac{1}{2}$"}
+{"question": "Let $f(x)$ be a function defined on $\\mathbb{R}$ with period 1. On the interval $[0, 1)$, $f(x)=\\begin{cases}x^2, & x \\in D \\\\ x, & x \\notin D\\end{cases}$, where $D=\\{x \\mid x=\\frac{n-1}{n}, n \\in \\mathbb{N}^*\\}$. Then the number of solutions to the equation $f(x)-\\lg x=0$ is", "answer": "$8$"}
+{"question": "Let $a \\in \\mathbb{R}$, the function $f(x)=\\begin{cases}\\cos(2\\pi x-2\\pi a), & x < a \\\\ x^2-2(a+1)x+a^2+5, & x \\geqslant a\\end{cases}$. If $f(x)$ has exactly 6 zeros in the interval $(0, +\\infty)$, then the range of values of $a$ is", "answer": "$\\left(2, \\frac{9}{4}\\right] \\cup \\left(\\frac{5}{2}, \\frac{11}{4}\\right]$"}
+{"question": "Let the function $f(x)$ be defined on $\\mathbb{R}$ and satisfy $f(x+1)=2f(x)$. When $x \\in (0,1]$, $f(x)=x(x-1)$. If for all $x \\in (-\\infty, m]$, $f(x) \\geqslant -\\frac{8}{9}$, then the range of values of $m$ is", "answer": "$\\left(-\\infty, \\frac{7}{3}\\right]$"}
+{"question": "Given $a>0$, the function $f(x)=\\begin{cases} x^2+2ax+a, & x \\leqslant 0 \\\\ -x^2+2ax-2a, & x>0 \\end{cases}$. If the equation $f(x)=ax$ has exactly 2 distinct real solutions, then the range of values of $a$ is", "answer": "$(4, 8)$"}
+{"question": "Given the function $f(x)=\\begin{cases} x^2-x+3, & x \\leqslant 1 \\\\ x+\\frac{2}{x}, & x>1 \\end{cases}$. Let $a \\in \\mathbb{R}$. If the inequality $f(x) \\geqslant \\left| \\frac{x}{2} + a \\right|$ holds for all $x \\in \\mathbb{R}$, then the range of values of $a$ is", "answer": "$\\left[-\\frac{47}{16}, 2\\right]$"}
+{"question": "When $x \\in [0,1]$, the graphs of the function $y=(mx-1)^2$ and $y=\\sqrt{x}+m$ have exactly one intersection point. Then the range of positive values of $m$ is", "answer": "$[0,1] \\cup [3,+\\infty)$"}
+{"question": "Let $f(x)$ be a function defined on $\\mathbb{R}$ with period 1. On the interval $[0, 1)$, $f(x)=\\begin{cases}x^2, & x \\in D \\\\ x, & x \\notin D\\end{cases}$, where $D=\\{x | x=\\frac{n-1}{n}, n \\in \\mathbb{N}^*\\}$. Then the number of solutions to the equation $f(x)-\\lg x=0$ is", "answer": "$8$"}
+{"question": "Given that the function $f(x)$ ($x \\in \\mathbb{R}$) satisfies $f(x)=f(2-x)$. If the graphs of $y=|x^2-2x-3|$ and $y=f(x)$ have intersection points $(x_1, y_1), (x_2, y_2), \\cdots, (x_m, y_m)$, then $\\sum_{i=1}^m x_i=$", "answer": "$m$"}
+{"question": "Let $f(x)=\\ln(1+|x|)-\\frac{1}{1+x^2}$, then the range of $x$ for which $f(x)>f(2x-1)$ holds is", "answer": "$\\left(\\frac{1}{3}, 1\\right)$"}
+{"question": "Given the function $f(x) = \\begin{cases} -x^2+2x, & x \\leqslant 0 \\\\ \\ln(x+1), & x > 0 \\end{cases}$. If $|f(x)| \\geqslant ax$, then the range of values of $a$ is", "answer": "$[-2, 0]$"}
+{"question": "Write the equations of the tangent lines to the curve $y = \\ln|x|$ that pass through the origin:", "answer": "$y = \\frac{1}{\\mathrm{e}}x, y = -\\frac{1}{\\mathrm{e}}x$"}
+{"question": "Given the function $f(x) = |e^x - 1|$, $x_1 < 0, x_2 > 0$. The tangent lines to the graph of $f(x)$ at points $A(x_1, f(x_1))$ and $B(x_2, f(x_2))$ are perpendicular to each other and intersect the $y$-axis at points $M$ and $N$ respectively. Then the range of $\\frac{|AM|}{|BN|}$ is", "answer": "$(0, 1)$"}
+{"question": "The equation of the tangent line to the curve $y = \\frac{2x-1}{x+2}$ at the point $(-1, -3)$ is", "answer": "$5x - y + 2 = 0$"}
+{"question": "If two tangent lines to the curve $y = e^x$ can be drawn through the point $(a, b)$, then", "answer": "$0 < b < e^a$"}
+{"question": "Let the function $f(x) = \\frac{\\mathrm{e}^x}{x+a}$. If $f'(1) = \\frac{\\mathrm{e}}{4}$, then $a =$", "answer": "$1$"}
+{"question": "A tangent line to the curve $y = \\ln x + x + 1$ has slope $2$. Then the equation of this tangent line is", "answer": "$y = 2x$"}
+{"question": "The equation of the tangent line to the curve $y = 3(x^2 + x)\\mathrm{e}^x$ at the point $(0, 0)$ is", "answer": "$y = 3x$"}
+{"question": "The equation of the tangent line to the curve $y=2\\sin x + \\cos x$ at the point $(\\pi, -1)$ is", "answer": "$2x+y-2\\pi+1=0$"}
+{"question": "The slope of the tangent line to the curve $y=(ax+1)e^x$ at the point $(0,1)$ is $-2$. Then $a=$", "answer": "$-3$"}
+{"question": "The equation of the tangent line to the curve $y = 2\\ln(x+1)$ at the point $(0,0)$ is", "answer": "$y = 2x$"}
+{"question": "The equation of the tangent line to the curve $y = 2\\ln x$ at the point $(1,0)$ is", "answer": "$y = 2x - 2$"}
+{"question": "Given the function $f(x) = x^3 + (a-1)x^2 + ax$. If $f(x)$ is an odd function, then the equation of the tangent line to the curve $y = f(x)$ at the point $(0,0)$ is", "answer": "$y = x$"}
+{"question": "Given that $f(x)$ is an even function. When $x<0$, $f(x)=\\ln(-x)+3x$. Then the equation of the tangent line to the curve $y=f(x)$ at the point $(1,-3)$ is", "answer": "$y=-2x-1$"}
+{"question": "Given that $f(x)$ is an even function. When $x \\leqslant 0$, $f(x)=\\mathrm{e}^{-x-1}-x$. Then the equation of the tangent line to the curve $y=f(x)$ at the point $(1,2)$ is", "answer": "$y=2x$"}
+{"question": "Given that the graph of the function $f(x)=ax^3+x+1$ has a tangent line at the point $(1,f(1))$ that passes through the point $(2,7)$, then $a=$", "answer": "1"}
+{"question": "Given that the tangent line to the curve $y=x+\\ln x$ at the point $(1,1)$ is also tangent to the curve $y=ax^2+(a+2)x+1$, then $a=$", "answer": "8"}
+{"question": "Let the equation of the tangent line to the curve $y=ax-\\ln(x+1)$ at the point $(0,0)$ be $y=2x$, then $a=$", "answer": "3"}
+{"question": "If the tangent line to the curve $y=x^\\alpha+1$ ($\\alpha \\in \\mathbb{R}$) at the point $(1,2)$ passes through the origin, then $\\alpha=$", "answer": "2"}
+{"question": "If the function $f(x)=x-\\frac{1}{3}\\sin 2x+a\\sin x$ is monotonically increasing on $(-\\infty, +\\infty)$, then the range of values of $a$ is", "answer": "$\\left[-\\frac{1}{3}, \\frac{1}{3}\\right]$"}
+{"question": "If the function $f(x)=kx-\\ln x$ is monotonically increasing on the interval $(1, +\\infty)$, then the range of values of $k$ is", "answer": "$[1, +\\infty)$"}
+{"question": "Given that $x=x_1$ and $x=x_2$ are respectively the local minimum point and local maximum point of the function $f(x)=2a^x-ex^2$ ($a>0$ and $a \\neq 1$). If $x_1<x_2$, then the range of values of $a$ is", "answer": "$\\left(\\frac{1}{e}, 1\\right)$"}
+{"question": "If $x = -2$ is an extremum point of the function $f(x) = (x^2 + ax - 1)e^{x-1}$, then the local minimum of $f(x)$ is", "answer": "-1"}
+{"question": "The minimum value of the function $f(x) = |2x - 1| - 2\\ln x$ is", "answer": "1"}
+{"question": "When $x \\in [-2, 1]$, the inequality $ax^3 - x^2 + 4x + 3 \\geqslant 0$ always holds. Then the range of values of the real number $a$ is", "answer": "$a \\in [-6, -2]$"}
+{"question": "Let the function $f(x) = e^x(2x - 1) - ax + a$, where $a < 1$. If there exists a unique integer $x_0$ such that $f(x_0) < 0$, then the range of values of $a$ is", "answer": "$a \\in \\left[\\frac{3}{2e}, 1\\right)$"}
+{"question": "Let $f'(x)$ be the derivative of the odd function $f(x)$ ($x \\in \\mathbb{R}$), and $f(-1) = 0$. When $x > 0$, $xf'(x) - f(x) < 0$. Then the range of $x$ for which $f(x) > 0$ is", "answer": "$x \\in (-\\infty, -1) \\cup (0, 1)$"}
+{"question": "Given that the function $f(x) = x^2 - 2x + a(e^{x-1} + e^{-x+1})$ has a unique zero, then $a =$", "answer": "$\\frac{1}{2}$"}
+{"question": "Given that the function $f(x) = ax^3 - 3x^2 + 1$. If $f(x)$ has a unique zero $x_0$ and $x_0 > 0$, then the range of values of $a$ is", "answer": "$a \\in (-\\infty, -2)$"}
+{"question": "If $S_1 = \\int_1^2 x^2 \\, dx$, $S_2 = \\int_1^2 \\frac{1}{x} \\, dx$, $S_3 = \\int_1^2 e^x \\, dx$, then the order of $S_1, S_2, S_3$ is", "answer": "$S_2 < S_1 < S_3$"}
+{"question": "Evaluate $\\int_0^2 (x - 1) \\, dx$", "answer": "0"}
+{"question": "If $\\int_0^T x^2 \\, dx = 9$, then the value of the constant $T$ is", "answer": "3"}
+{"question": "Evaluate the definite integral $\\int_{-1}^1 (x^2 + \\sin x) \\, dx =$", "answer": "$\\frac{2}{3}$"}
+{"question": "Let $f(x) = \\begin{cases} \\lg x, & x > 0 \\\\ x + \\int_0^a 3t^2 \\, dt, & x \\leqslant 0 \\end{cases}$. If $f(f(1)) = 1$, then $a =$", "answer": "8.1"}
+{"question": "The area of the closed region enclosed by the line $y = 4x$ and the curve $y = x^3$ in the first quadrant is", "answer": "4"}
+{"question": "Given that the vertex of angle $\\alpha$ is at the origin, the initial side coincides with the non-negative half of the $x$-axis, and the terminal side passes through two points $A(1, a)$ and $B(2, b)$, and $\\cos 2\\alpha = \\frac{2}{3}$, then $|a - b| =$", "answer": "$\\frac{\\sqrt{5}}{5}$"}
+{"question": "If $\\tan \\theta = -2$, then $\\frac{\\sin \\theta (1 + \\sin 2\\theta)}{\\sin \\theta + \\cos \\theta} =$", "answer": "$\\frac{2}{5}$"}
+{"question": "Given $\\alpha \\in (0, \\frac{\\pi}{2})$ and $2\\sin 2\\alpha = \\cos 2\\alpha + 1$, then $\\sin \\alpha =$", "answer": "$\\frac{\\sqrt{5}}{5}$"}
+{"question": "If $\\tan \\alpha = \\frac{1}{3}$, then $\\cos 2\\alpha =$", "answer": "$\\frac{4}{5}$"}
+{"question": "Given that $\\theta$ is a fourth-quadrant angle and $\\sin(\\theta + \\frac{\\pi}{4}) = \\frac{3}{5}$, then $\\tan(\\theta - \\frac{\\pi}{4}) =$", "answer": "$-\\frac{4}{3}$"}

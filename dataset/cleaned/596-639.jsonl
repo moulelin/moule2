@@ -1,0 +1,44 @@
+{"question": "等差数列 $\\{a_n\\}$ 中，若 $a_7 = a_5 - 2$，则 $a_{17} - a_{15} = $", "answer": "-2"}
+{"question": "若实数 $x, y$ 满足 $x + 2y = 1$ 且 $x \\le 0$，则 $x^2 + y^2$ 的最小值为", "answer": "$\\frac{1}{4}$"}
+{"question": "若 $f(x)$ 是以 5 为周期的奇函数，且 $f(-3) = 1, \\tan\\alpha = 2$，则 $f(20 \\sin\\alpha \\cos\\alpha) = $", "answer": "-1"}
+{"question": "若关于 $x$ 的不等式 $-\\frac{1}{2}x^2 + 2x > mx$ 的解集为 $(0, 2)$，则实数 $m$ 的值为", "answer": "1"}
+{"question": "设集合 $M = \\{2m-1, m-3\\}$ ,若 $-3 \\in M$ ,则实数 $m$ =", "answer": "0 或 -1"}
+{"question": "知集合 $A = \\{1, a, b\\}$ , $B = \\{a^2, a, ab\\}$ ,若 $A = B$,则 $a^{2023} + b^{2022} =$", "answer": "-1"}
+{"question": "已知集合 $A = \\{x | x^2 - 2 < 0\\}$ ,且 $a \\in A$ ,则 a 可以为", "answer": "-1"}
+{"question": "已知集合 $\\mathbf{A} = \\left\\{x \\middle| ax^2 - 3x + 2 = 0\\right\\}$ 的元素只有一个,则实数 $a$ 的值为", "answer": "$\\frac{9}{8}$"}
+{"question": "已知集合 $A = \\left\\{ (x,y) \\middle| \\frac{x^2}{4} + \\frac{y^2}{2} \\le 1, x \\in \\mathbb{Z}, y \\in \\mathbb{Z} \\right\\}$ ,则 A 中元素的个数为", "answer": "11"}
+{"question": "已知 A(-2,4),C(-3,-4),且 $\\overrightarrow{CM} = 3\\overrightarrow{CA}$ ,则点 M 的坐标为 .", "answer": "(0,20)"}
+{"question": "已知函数 $f(x) = \\sin(\\omega x + \\varphi) \\left(\\omega > 0, |\\varphi| \\leq \\frac{\\pi}{2}\\right)$, $x = -\\frac{\\pi}{8}$ 是函数 $f(x)$ 的一个零点, $x = \\frac{\\pi}{8}$ 是函数 $f(x)$ 的一条对称轴,若 $f(x)$ 在区间 $\\left(\\frac{\\pi}{5}, \\frac{\\pi}{4}\\right)$ 上单调,则 $\\omega$ 的最大值是", "answer": "14"}
+{"question": "若直线 $x = \\frac{\\pi}{4}$ 是曲线 $y = \\sin\\left(\\omega x - \\frac{\\pi}{4}\\right)(\\omega > 0)$ 的一条对称轴,且函数 $y = \\sin\\left(\\omega x - \\frac{\\pi}{4}\\right)$ 在区间 $\\left[0, \\frac{\\pi}{12}\\right]$ 上不单调,则 $\\omega$ 的最小值为", "answer": "11"}
+{"question": "已知函数 $f(x) = \\sin(\\omega x + \\varphi)(\\omega > 0)$ 的一个对称中心为 $\\left(-\\frac{\\pi}{3}, 0\\right)$, $f(x)$ 在区间 $\\left(\\frac{5\\pi}{6}, \\pi\\right)$ 上不单调, 则 $\\omega$ 的最小正整数值为", "answer": "2"}
+{"question": "已知函数 $f(x) = 2\\sin(\\omega x + \\varphi)(\\omega > 0)$ 在 $x = \\frac{\\pi}{3}$ 处取得最大值,且 $f(\\pi) = 0$ ,若函数 $f(x)$ 在 $\\left(\\frac{\\pi}{3}, \\frac{5\\pi}{12}\\right)$ 上是单调的,则 $\\omega$ 的最大值为", "answer": "$\\frac{45}{4}$"}
+{"question": "对于集合 $A, B$，定义 $A - B = \\{x | x \\in A$ 且 $x \\notin B\\}$。若 $A = \\{x | x = 2k + 1, k \\in \\mathbb{N}\\}$，$B = \\{x | x = 3k + 1, k \\in \\mathbb{N}\\}$，将集合 $A - B$ 中的元素从小到大排列得到数列 $\\{a_n\\}$，则 $a_7 + a_{30} = $", "answer": "110"}
+{"question": "若关于x的不等式 $x^2 + bx + c \\ge 0 (b > 1)$ 的解集为R,则 $\\frac{1+2b+4c}{b-1}$ 的最小值为", "answer": "8"}
+{"question": "设 $a>0, b>0$，若 $a^2 + b^2 - \\sqrt{3}ab = 1$，则 $\\sqrt{3}a^2 - ab$ 的最大值为", "answer": "$2 + \\sqrt{3}$"}
+{"question": "函数 $f(x) = \\sqrt{3^{x^2+2ax-a}-1}$ 的定义域为 $\\mathbb{R}$，则实数 $a$ 的取值范围", "answer": "[-1,0]"}
+{"question": "已知函数 $f(x) = 4^x - 2^{x+2} - 1, x \\in [0,3]$ ,则其值域为", "answer": "[-5, 31]"}
+{"question": "$f(x) = a^{x-4} + 1 (a > 0 \\text{ 且 } a \\ne 1)$ 的图象恒过定点 A, 若点 A 的坐标满足关于 x, y 的方程 mx + ny = 4 (m > 0, n > 0), 则 $\\frac{1}{m} + \\frac{2}{n}$ 的最小值为", "answer": "4"}
+{"question": "已知不等式 $4^x - a \\cdot 2^x + 2 > 0$ ,对于 $a \\in (-\\infty, 3]$ 恒成立,则实数 x 的取值范围是", "answer": "$(-\\infty, 0) \\cup (1, +\\infty)$"}
+{"question": "若 $x \\in [-1, +\\infty)$, 不等式 $4^x - m \\cdot 2^x + 1 > 0$ 恒成立, 则实数 $m$ 的取值范围是", "answer": "$(-\\infty, 2)$"}
+{"question": "已知函数 $f(x) = \\begin{cases} x \\ln x, & x > 0 \\\\ 2x + 4e, & x \\leq 0 \\end{cases}$ ,若 $x_1 \\neq x_2$ 且 $f(x_1) = x \\neq 0$", "answer": ""}
+{"question": "盲盒是一种深受大众喜爱的玩具，某盲盒生产厂商要为棱长为2cm的正四面体魔方设计一款正方体的包装盒，需要保证该魔方可以在包装盒内任意转动，则包装盒的棱长最短为", "answer": "6"}
+{"question": "我们知道立体图形上的最短路径问题通常是把立体图形展开成平面图形,连接两点,根据两点之间线段最短确定最短路线.请根据此方法求函数 $f(x,y) = \\sqrt{x^2 - \\sqrt{3}x + 1} + \\sqrt{y^2 - \\sqrt{3}y + 1} + \\sqrt{x^2 - \\sqrt{3}xy + y^2} (x > 0, y > 0)$ 的最小值", "answer": "\\sqrt{2}"}
+{"question": "若三点 A(0,8), B(-4,0), C(m,-4) 共线,则实数 m 的值是", "answer": "-6"}
+{"question": "若三点M(2,2),N(a,0),Q(0,b), $(ab \\neq 0)$ 共线,则 $\\frac{1}{a} + \\frac{1}{b}$ 的值为", "answer": "$\\frac{1}{2}$"}
+{"question": "已知点 A(1,3),B(-2,-1). 若直线 l:y=k(x-2)+1 与线段 AB 相交,则k的取值范围是", "answer": "$-2 \\le k \\le \\frac{1}{2}$"}
+{"question": "已知 A(2,0), B(0,2), 若直线 y = k(x+2) 与线段 AB 有公共点, 则 k 的取值范围是", "answer": "$[0,1]$"}
+{"question": "经过点 P(-1,0) 且倾斜角为 60° 的直线的方程是", "answer": "$\\sqrt{3}x - y + \\sqrt{3} = 0$"}
+{"question": "曲线 $y=2-\\frac{1}{2}x^2$ 与 $y=\\frac{1}{4}x^3-2$ 在交点处切线的夹角是", "answer": "$\\frac{\\pi}{4}$"}
+{"question": "等腰三角形两腰所在直线的方程分别为$x+y-2=0$与$x-7y-4=0$，原点在等腰三角形的底边上，则底边所在直线的斜率为", "answer": "3"}
+{"question": "若实数 $a$、$b$、$c$ 成等差数列,则直线 $ax + by + c = 0$ 必经过一个定点,则该定点坐标为", "answer": "(1,-2)"}
+{"question": "已知直线 $l_1: x + y = 0, l_2: ax + by + 1 = 0$ , 若 $l_1 \\perp l_2$ , 则 $a + b =$", "answer": "0"}
+{"question": "若三条直线 $l_1$: 4x + y = 3, $l_2$: mx + y = 0, $l_3$: x - my = 2 不能围成三角形,则实数m的取值最多有", "answer": "4"}
+{"question": "若点 P(x,y) 在直线 2x + y - 5 = 0 上, O 是原点,则 OP 的最小值为", "answer": "$\\sqrt{5}$"}
+{"question": "已知点 $P(x_0, y_0)$ 在直线 3x - 4y - 10 = 0 上, 则 $\\sqrt{x_0^2 + y_0^2}$ 的最小值为", "answer": "2"}
+{"question": "已知点 P(a,2)、A(-2,-3)、B(1,1), 且 |PA| = |PB|, 则 a =", "answer": "$-\\frac{9}{2}$"}
+{"question": "已知点 A(2,1), B(3,4), C(-2,-1)，则 $\\triangle ABC$ 的面积为", "answer": "5"}
+{"question": "点 (0,-1) 到直线 y=k(x+2) 的距离的最大值是", "answer": "$\\sqrt{5}$"}
+{"question": "若点 P(3,1) 到直线 l:3x+4y+a=0 (a>0) 的距离为3,则a=", "answer": "2"}
+{"question": "求 $\\sqrt{(x-9)^2+4}+\\sqrt{x^2+y^2}+\\sqrt{(y-3)^2+9}$ 的最小值所属区间为", "answer": "(12,13]"}
+{"question": "已知 $x, y \\in \\mathbb{R}^+$, 满足 $2x + y = 2$, 则 $x + \\sqrt{x^2 + y^2}$ 的最小值为", "answer": "$\\frac{8}{5}$"}
+{"question": "在平面直角坐标系 xOy 中,已知点 A(0,-2),点 B(1,0),P 为直线 2x-4y+3=0 上一动点,则 |PA|+|PB| 的最小值是 ( )", "answer": "4"}

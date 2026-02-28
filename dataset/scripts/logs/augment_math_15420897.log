@@ -1,0 +1,162 @@
+INFO 02-26 13:58:03 [__init__.py:216] Automatically detected platform cuda.
+Loading dataset from /home/x-qlan1/code/moule2/dataset/cleaned/math_cleaned.csv
+Total rows: 683
+Loading model: Qwen/Qwen2.5-72B-Instruct (TP=4)
+INFO 02-26 13:58:16 [utils.py:233] non-default args: {'trust_remote_code': True, 'max_model_len': 4096, 'tensor_parallel_size': 4, 'disable_log_stats': True, 'enforce_eager': True, 'model': 'Qwen/Qwen2.5-72B-Instruct'}
+INFO 02-26 13:58:16 [model.py:547] Resolved architecture: Qwen2ForCausalLM
+INFO 02-26 13:58:16 [model.py:1510] Using max model len 4096
+INFO 02-26 13:58:18 [scheduler.py:205] Chunked prefill is enabled with max_num_batched_tokens=16384.
+INFO 02-26 13:58:18 [__init__.py:381] Cudagraph is disabled under eager mode
+WARNING 02-26 13:58:18 [__init__.py:3036] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+INFO 02-26 13:58:27 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(EngineCore_DP0 pid=3863141)[0;0m INFO 02-26 13:58:35 [core.py:644] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=3863141)[0;0m INFO 02-26 13:58:35 [core.py:77] Initializing a V1 LLM engine (v0.11.0) with config: model='Qwen/Qwen2.5-72B-Instruct', speculative_config=None, tokenizer='Qwen/Qwen2.5-72B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=4096, download_dir=None, load_format=auto, tensor_parallel_size=4, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=True, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen/Qwen2.5-72B-Instruct, enable_prefix_caching=True, chunked_prefill_enabled=True, pooler_config=None, compilation_config={"level":0,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":null,"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":0,"use_cudagraph":true,"cudagraph_num_of_warmups":0,"cudagraph_capture_sizes":[],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"use_inductor_graph_partition":false,"pass_config":{},"max_capture_size":0,"local_cache_dir":null}
+[1;36m(EngineCore_DP0 pid=3863141)[0;0m INFO 02-26 13:58:35 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0, 1, 2, 3], buffer_handle=(4, 16777216, 10, 'psm_9246de55'), local_subscribe_addr='ipc:///tmp/ced810a8-3dcf-4087-bda6-9df5aab14411', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 02-26 13:58:52 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 13:58:52 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 13:58:52 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 13:58:53 [__init__.py:216] Automatically detected platform cuda.
+INFO 02-26 13:59:19 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_5af2e760'), local_subscribe_addr='ipc:///tmp/8fb42a4e-cab9-4842-86e4-0ed3c4617046', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 02-26 13:59:19 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_eece57e1'), local_subscribe_addr='ipc:///tmp/7c562129-0a0a-4e23-92dd-cf13b76bd81a', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 02-26 13:59:19 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_35613d5e'), local_subscribe_addr='ipc:///tmp/8e9674ee-a7c0-4df9-aac2-d8321d66111b', remote_subscribe_addr=None, remote_addr_ipv6=False)
+INFO 02-26 13:59:19 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[0], buffer_handle=(1, 10485760, 10, 'psm_61c95424'), local_subscribe_addr='ipc:///tmp/572002c7-7826-460c-8df6-26ffc8e23aa3', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+INFO 02-26 13:59:20 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 02-26 13:59:20 [pynccl.py:103] vLLM is using nccl==2.27.3
+INFO 02-26 13:59:20 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 02-26 13:59:20 [pynccl.py:103] vLLM is using nccl==2.27.3
+INFO 02-26 13:59:20 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 02-26 13:59:20 [pynccl.py:103] vLLM is using nccl==2.27.3
+INFO 02-26 13:59:20 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 02-26 13:59:20 [pynccl.py:103] vLLM is using nccl==2.27.3
+WARNING 02-26 13:59:24 [symm_mem.py:90] SymmMemCommunicator: symmetric memory multicast operations are not supported.
+WARNING 02-26 13:59:24 [symm_mem.py:90] SymmMemCommunicator: symmetric memory multicast operations are not supported.
+WARNING 02-26 13:59:24 [symm_mem.py:90] SymmMemCommunicator: symmetric memory multicast operations are not supported.
+WARNING 02-26 13:59:24 [symm_mem.py:90] SymmMemCommunicator: symmetric memory multicast operations are not supported.
+INFO 02-26 13:59:24 [custom_all_reduce.py:35] Skipping P2P check and trusting the driver's P2P report.
+INFO 02-26 13:59:24 [custom_all_reduce.py:35] Skipping P2P check and trusting the driver's P2P report.
+INFO 02-26 13:59:24 [custom_all_reduce.py:35] Skipping P2P check and trusting the driver's P2P report.
+INFO 02-26 13:59:24 [custom_all_reduce.py:35] Skipping P2P check and trusting the driver's P2P report.
+INFO 02-26 13:59:24 [shm_broadcast.py:289] vLLM message queue communication handle: Handle(local_reader_ranks=[1, 2, 3], buffer_handle=(3, 4194304, 6, 'psm_422e7550'), local_subscribe_addr='ipc:///tmp/a6375069-bd14-4a33-8ef0-eb8cc45993e3', remote_subscribe_addr=None, remote_addr_ipv6=False)
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 2 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+INFO 02-26 13:59:24 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 02-26 13:59:24 [pynccl.py:103] vLLM is using nccl==2.27.3
+[Gloo] Rank 1 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+INFO 02-26 13:59:24 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 02-26 13:59:24 [pynccl.py:103] vLLM is using nccl==2.27.3
+[Gloo] Rank 0 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+INFO 02-26 13:59:24 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 02-26 13:59:24 [pynccl.py:103] vLLM is using nccl==2.27.3
+[Gloo] Rank 3 is connected to 3 peer ranks. Expected number of connected peer ranks is : 3
+INFO 02-26 13:59:24 [__init__.py:1384] Found nccl from library libnccl.so.2
+INFO 02-26 13:59:24 [pynccl.py:103] vLLM is using nccl==2.27.3
+INFO 02-26 13:59:25 [parallel_state.py:1208] rank 2 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 2, EP rank 2
+INFO 02-26 13:59:25 [parallel_state.py:1208] rank 0 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+INFO 02-26 13:59:25 [parallel_state.py:1208] rank 3 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 3, EP rank 3
+INFO 02-26 13:59:25 [parallel_state.py:1208] rank 1 in world size 4 is assigned as DP rank 0, PP rank 0, TP rank 1, EP rank 1
+INFO 02-26 13:59:26 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+INFO 02-26 13:59:26 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+INFO 02-26 13:59:26 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+INFO 02-26 13:59:26 [topk_topp_sampler.py:55] Using FlashInfer for top-p & top-k sampling.
+[1;36m(Worker_TP2 pid=3863155)[0;0m INFO 02-26 13:59:27 [gpu_model_runner.py:2602] Starting to load model Qwen/Qwen2.5-72B-Instruct...
+[1;36m(Worker_TP1 pid=3863154)[0;0m INFO 02-26 13:59:27 [gpu_model_runner.py:2602] Starting to load model Qwen/Qwen2.5-72B-Instruct...
+[1;36m(Worker_TP3 pid=3863156)[0;0m INFO 02-26 13:59:27 [gpu_model_runner.py:2602] Starting to load model Qwen/Qwen2.5-72B-Instruct...
+[1;36m(Worker_TP0 pid=3863153)[0;0m INFO 02-26 13:59:27 [gpu_model_runner.py:2602] Starting to load model Qwen/Qwen2.5-72B-Instruct...
+[1;36m(Worker_TP2 pid=3863155)[0;0m INFO 02-26 13:59:28 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(Worker_TP0 pid=3863153)[0;0m INFO 02-26 13:59:28 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(Worker_TP1 pid=3863154)[0;0m INFO 02-26 13:59:28 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(Worker_TP3 pid=3863156)[0;0m INFO 02-26 13:59:28 [gpu_model_runner.py:2634] Loading model from scratch...
+[1;36m(Worker_TP1 pid=3863154)[0;0m INFO 02-26 13:59:28 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(Worker_TP2 pid=3863155)[0;0m INFO 02-26 13:59:28 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(Worker_TP0 pid=3863153)[0;0m INFO 02-26 13:59:28 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(Worker_TP3 pid=3863156)[0;0m INFO 02-26 13:59:28 [cuda.py:366] Using Flash Attention backend on V1 engine.
+[1;36m(Worker_TP0 pid=3863153)[0;0m INFO 02-26 13:59:29 [weight_utils.py:392] Using model weights format ['*.safetensors']
+[1;36m(Worker_TP2 pid=3863155)[0;0m INFO 02-26 13:59:29 [weight_utils.py:392] Using model weights format ['*.safetensors']
+[1;36m(Worker_TP1 pid=3863154)[0;0m INFO 02-26 13:59:29 [weight_utils.py:392] Using model weights format ['*.safetensors']
+[1;36m(Worker_TP3 pid=3863156)[0;0m INFO 02-26 13:59:29 [weight_utils.py:392] Using model weights format ['*.safetensors']
+[1;36m(Worker_TP1 pid=3863154)[0;0m INFO 02-26 14:01:44 [default_loader.py:267] Loading weights took 134.70 seconds
+[1;36m(Worker_TP3 pid=3863156)[0;0m INFO 02-26 14:01:44 [default_loader.py:267] Loading weights took 134.81 seconds
+[1;36m(Worker_TP0 pid=3863153)[0;0m INFO 02-26 14:01:44 [default_loader.py:267] Loading weights took 135.05 seconds
+[1;36m(Worker_TP2 pid=3863155)[0;0m INFO 02-26 14:01:44 [default_loader.py:267] Loading weights took 134.92 seconds
+[1;36m(Worker_TP0 pid=3863153)[0;0m INFO 02-26 14:01:46 [gpu_model_runner.py:2653] Model loading took 33.9836 GiB and 136.095253 seconds
+[1;36m(Worker_TP3 pid=3863156)[0;0m INFO 02-26 14:01:46 [gpu_model_runner.py:2653] Model loading took 33.9836 GiB and 136.097542 seconds
+[1;36m(Worker_TP1 pid=3863154)[0;0m INFO 02-26 14:01:46 [gpu_model_runner.py:2653] Model loading took 33.9836 GiB and 136.084033 seconds
+[1;36m(Worker_TP2 pid=3863155)[0;0m INFO 02-26 14:01:46 [gpu_model_runner.py:2653] Model loading took 33.9836 GiB and 136.109889 seconds
+[1;36m(Worker_TP0 pid=3863153)[0;0m INFO 02-26 14:02:04 [gpu_worker.py:298] Available KV cache memory: 34.33 GiB
+[1;36m(Worker_TP2 pid=3863155)[0;0m INFO 02-26 14:02:04 [gpu_worker.py:298] Available KV cache memory: 34.33 GiB
+[1;36m(Worker_TP3 pid=3863156)[0;0m INFO 02-26 14:02:05 [gpu_worker.py:298] Available KV cache memory: 34.33 GiB
+[1;36m(Worker_TP1 pid=3863154)[0;0m INFO 02-26 14:02:05 [gpu_worker.py:298] Available KV cache memory: 34.33 GiB
+[1;36m(EngineCore_DP0 pid=3863141)[0;0m INFO 02-26 14:02:06 [kv_cache_utils.py:1087] GPU KV cache size: 449,904 tokens
+[1;36m(EngineCore_DP0 pid=3863141)[0;0m INFO 02-26 14:02:06 [kv_cache_utils.py:1091] Maximum concurrency for 4,096 tokens per request: 109.84x
+[1;36m(EngineCore_DP0 pid=3863141)[0;0m INFO 02-26 14:02:06 [kv_cache_utils.py:1087] GPU KV cache size: 449,904 tokens
+[1;36m(EngineCore_DP0 pid=3863141)[0;0m INFO 02-26 14:02:06 [kv_cache_utils.py:1091] Maximum concurrency for 4,096 tokens per request: 109.84x
+[1;36m(EngineCore_DP0 pid=3863141)[0;0m INFO 02-26 14:02:06 [kv_cache_utils.py:1087] GPU KV cache size: 449,904 tokens
+[1;36m(EngineCore_DP0 pid=3863141)[0;0m INFO 02-26 14:02:06 [kv_cache_utils.py:1091] Maximum concurrency for 4,096 tokens per request: 109.84x
+[1;36m(EngineCore_DP0 pid=3863141)[0;0m INFO 02-26 14:02:06 [kv_cache_utils.py:1087] GPU KV cache size: 449,904 tokens
+[1;36m(EngineCore_DP0 pid=3863141)[0;0m INFO 02-26 14:02:06 [kv_cache_utils.py:1091] Maximum concurrency for 4,096 tokens per request: 109.84x
+[1;36m(Worker_TP1 pid=3863154)[0;0m All deep_gemm operations loaded successfully!
+[1;36m(Worker_TP1 pid=3863154)[0;0m WARNING 02-26 14:02:07 [cudagraph_dispatcher.py:106] cudagraph dispatching keys are not initialized. No cudagraph will be used.
+[1;36m(Worker_TP3 pid=3863156)[0;0m All deep_gemm operations loaded successfully!
+[1;36m(Worker_TP3 pid=3863156)[0;0m WARNING 02-26 14:02:07 [cudagraph_dispatcher.py:106] cudagraph dispatching keys are not initialized. No cudagraph will be used.
+[1;36m(Worker_TP0 pid=3863153)[0;0m All deep_gemm operations loaded successfully!
+[1;36m(Worker_TP0 pid=3863153)[0;0m WARNING 02-26 14:02:07 [cudagraph_dispatcher.py:106] cudagraph dispatching keys are not initialized. No cudagraph will be used.
+[1;36m(Worker_TP2 pid=3863155)[0;0m All deep_gemm operations loaded successfully!
+[1;36m(Worker_TP2 pid=3863155)[0;0m WARNING 02-26 14:02:07 [cudagraph_dispatcher.py:106] cudagraph dispatching keys are not initialized. No cudagraph will be used.
+[1;36m(EngineCore_DP0 pid=3863141)[0;0m INFO 02-26 14:02:08 [core.py:210] init engine (profile, create kv cache, warmup model) took 21.98 seconds
+[1;36m(EngineCore_DP0 pid=3863141)[0;0m INFO 02-26 14:02:10 [__init__.py:381] Cudagraph is disabled under eager mode
+INFO 02-26 14:02:10 [llm.py:306] Supported_tasks: ['generate']
+Batch 1/22: 32/683 done (13.5s) | success: 26, parse_fail: 6
+Batch 2/22: 64/683 done (24.4s) | success: 41, parse_fail: 23
+Batch 3/22: 96/683 done (31.5s) | success: 56, parse_fail: 40
+Batch 4/22: 128/683 done (30.2s) | success: 68, parse_fail: 60
+Batch 5/22: 160/683 done (24.1s) | success: 79, parse_fail: 81
+Batch 6/22: 192/683 done (16.5s) | success: 93, parse_fail: 99
+Batch 7/22: 224/683 done (15.9s) | success: 103, parse_fail: 121
+Batch 8/22: 256/683 done (25.2s) | success: 103, parse_fail: 153
+Batch 9/22: 288/683 done (15.2s) | success: 106, parse_fail: 182
+Batch 10/22: 320/683 done (23.9s) | success: 108, parse_fail: 212
+Batch 11/22: 352/683 done (18.5s) | success: 109, parse_fail: 243
+Batch 12/22: 384/683 done (26.7s) | success: 114, parse_fail: 270
+Batch 13/22: 416/683 done (15.3s) | success: 121, parse_fail: 295
+Batch 14/22: 448/683 done (32.6s) | success: 127, parse_fail: 321
+Batch 15/22: 480/683 done (16.5s) | success: 137, parse_fail: 343
+Batch 16/22: 512/683 done (23.0s) | success: 159, parse_fail: 353
+Batch 17/22: 544/683 done (18.1s) | success: 183, parse_fail: 361
+Batch 18/22: 576/683 done (17.7s) | success: 205, parse_fail: 371
+Batch 19/22: 608/683 done (12.5s) | success: 226, parse_fail: 382
+Batch 20/22: 640/683 done (11.9s) | success: 239, parse_fail: 401
+Batch 21/22: 672/683 done (22.4s) | success: 250, parse_fail: 422
+[1;36m(Worker_TP0 pid=3863153)[0;0m INFO 02-26 14:09:36 [multiproc_executor.py:558] Parent process exited, terminating worker
+[1;36m(Worker_TP1 pid=3863154)[0;0m INFO 02-26 14:09:36 [multiproc_executor.py:558] Parent process exited, terminating worker
+[1;36m(Worker_TP2 pid=3863155)[0;0m INFO 02-26 14:09:36 [multiproc_executor.py:558] Parent process exited, terminating worker
+[1;36m(Worker_TP3 pid=3863156)[0;0m INFO 02-26 14:09:36 [multiproc_executor.py:558] Parent process exited, terminating worker
+Batch 22/22: 683/683 done (9.5s) | success: 258, parse_fail: 425
+
+============================================================
+Results:
+  Original rows:  683
+  Generated:      258
+  Parse failed:   425
+  Total output:   941
+============================================================
+Augmented CSV: /home/x-qlan1/code/moule2/dataset/augmented/math_augmented.csv
+Detailed log:  /home/x-qlan1/code/moule2/dataset/augmented/math_augment_log.jsonl

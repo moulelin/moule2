@@ -1,0 +1,36 @@
+Model: Qwen/Qwen3-8B
+Dataset: aime25 (opencompass/AIME2025)
+Mode: greedy
+Accuracy: 16/30 = 53.3%
+Time: 698.6s
+============================================================
+[O] # 0  gt=70  pred=70
+[O] # 1  gt=588  pred=588
+[O] # 2  gt=16  pred=16
+[O] # 3  gt=117  pred=117
+[X] # 4  gt=279  pred=3
+[O] # 5  gt=504  pred=504
+[X] # 6  gt=821  pred=271
+[O] # 7  gt=77  pred=77
+[X] # 8  gt=62  pred=44
+[X] # 9  gt=81  pred=55
+[X] #10  gt=259  pred=36
+[O] #11  gt=510  pred=510
+[X] #12  gt=204  pred=\frac{487}{3}
+[X] #13  gt=60  pred=likely63+12√3,butIneedtocheck
+[X] #14  gt=735  pred=147
+[O] #15  gt=468  pred=468
+[O] #16  gt=49  pred=49
+[O] #17  gt=82  pred=82
+[O] #18  gt=106  pred=106
+[O] #19  gt=336^\circ  pred=336
+[X] #20  gt=293  pred=224
+[X] #21  gt=237  pred=(numberofnonemptysubsetswithLCM2025)/2^15
+[X] #22  gt=610  pred=25
+[O] #23  gt=149  pred=149
+[X] #24  gt=907  pred=8
+[O] #25  gt=113  pred=113
+[O] #26  gt=19  pred=19
+[X] #27  gt=248  pred=208
+[O] #28  gt=104  pred=104
+[X] #29  gt=240  pred=188

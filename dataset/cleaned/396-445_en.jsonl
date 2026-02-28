@@ -1,0 +1,50 @@
+{"question": "If $x,y$ satisfy $\\begin{cases}x+2y-5\\ge 0\\\\x-2y+3\\ge 0\\end{cases}$, find the maximum of $z=x+y$.", "answer": "9"}
+{"question": "Let $x,y$ satisfy $\\begin{cases}2x+3y-3\\le 0\\\\2x-3y+3\\ge 0\\end{cases}$, find the range of $z=2x+y$.", "answer": "-15"}
+{"question": "Let $x,y$ satisfy $\\begin{cases}x+3y\\le 3\\\\x-y\\ge 1\\end{cases}$, find the range of $z=x+y$.", "answer": "3"}
+{"question": "Let $x,y$ satisfy $\\begin{cases}3x+2y-6\\le 0\\\\x\\ge 0\\\\y\\ge 0\\end{cases}$, find the range of $z=x-y$.", "answer": "[-3, 2]"}
+{"question": "If $x,y$ satisfy $x+y-2\\le 0$, find the minimum of $z=3x-4y$.", "answer": "-1"}
+{"question": "If $x,y$ satisfy the given constraints, find the minimum of $z=x-2y$.", "answer": "-5"}
+{"question": "If $x,y$ satisfy $x-2y\\le 0$ and $x+2y-2\\le 0$, find the maximum of $z=x+y$.", "answer": "$\\frac{3}{2}$"}
+{"question": "Let $x,y$ satisfy $\\{x-2y-1\\le 0\\}$, find the minimum of $z=2x+3y-5$.", "answer": "-10"}
+{"question": "If $x,y$ satisfy the given constraints, find the maximum of $z=3x+y$.", "answer": "4"}
+{"question": "If $x,y$ satisfy the given constraints, find the maximum of $z=2x+y$.", "answer": "8"}
+{"question": "Let $x,y$ satisfy the given constraints, find the maximum of $z=2x-y$.", "answer": "8"}
+{"question": "Let $x,y$ satisfy $x-y-1\\le 0$ and $x-3y+3\\ge 0$, find the maximum of $z=x+2y$.", "answer": "7"}
+{"question": "Let $x,y$ satisfy $\\{x+y-1\\ge 0,\\, y\\ge 0\\}$, find the minimum of $z=2x-3y$.", "answer": "$-6$"}
+{"question": "Let $x,y$ satisfy $\\begin{cases}1\\le x\\le 3\\\\y=0\\end{cases}$, find the maximum of $z=2x-y$.", "answer": "3"}
+{"question": "If $x,y$ satisfy $2x-3y\\le 9$, find the maximum of $x^2+y^2$.", "answer": "10"}
+{"question": "If $x,y$ satisfy $\\begin{cases}x-1\\ge 0\\\\x-y\\le 0\\end{cases}$ and $x+y-4\\le 0$, find the maximum of $\\frac{y}{x}$.", "answer": "3"}
+{"question": "Given circle $C:(x-a)^2+(y-b)^2=1$ and region $\\Omega=\\{(x,y)\\mid x+y-7\\le 0,\\, x-y+7\\ge 0,\\, y\\ge 0\\}$, if center $C\\in\\Omega$ and the circle is tangent to the $x$-axis, find the maximum of $a^2+b^2$.", "answer": "37"}
+{"question": "A high-tech company produces items A and B using materials X and Y. Each A requires 1.5 kg of X, 1 kg of Y, and 5 work-hours; each B requires 0.5 kg of X, 0.3 kg of Y, and 3 work-hours. Profit per A is 2100 yuan, per B is 900 yuan. Available: 150 kg of X, 90 kg of Y, at most 600 work-hours. Find the maximum total profit (in yuan).", "answer": "216000"}
+{"question": "Given $x,y$ satisfying $\\begin{cases}x-y\\ge 0\\\\x+y\\le 2\\\\y\\ge 0\\end{cases}$, if the maximum of $z=ax+y$ is 4, find $a=$", "answer": "2"}
+{"question": "Let $x,y$ satisfy $\\begin{cases}x+y-2\\le 0\\\\x-2y-2\\le 0\\\\2x-y\\ge 0\\end{cases}$. If $z=y-ax$ has a non-unique optimal solution, find $a$.", "answer": "2 or -1"}
+{"question": "If $x,y$ satisfy $\\begin{cases}x+y-2\\ge 0\\\\kx-y+2\\ge 0\\\\y\\ge 0\\end{cases}$ and the minimum of $z=y-x$ is $-4$, find $k$.", "answer": "$-\\frac{1}{2}$"}
+{"question": "Let $x,y$ satisfy $\\begin{cases}x+y\\ge a\\\\x-y\\le -1\\end{cases}$ and the minimum of $z=x+ay$ is 7. Find $a=$", "answer": "3"}
+{"question": "When $x,y$ satisfy $\\begin{cases}x+2y-4\\le 0\\\\x-y-1\\le 0\\end{cases}$, the inequality $1\\le ax+y$ holds for all such $x,y$ with $x\\ge 1$. Find the range of $a$.", "answer": "$\\left[1, \\frac{3}{2}\\right]$"}
+{"question": "If $x,y$ satisfy $\\begin{cases}y\\le x\\\\x+y\\le 4\\\\y\\ge k\\end{cases}$ and the minimum of $z=2x+y$ is $-6$, find $k=$", "answer": "-2"}
+{"question": "Given $a>0$ and $x,y$ satisfying $\\begin{cases}x\\ge 1\\\\x+y\\le 3\\\\y\\ge a(x-3)\\end{cases}$, if the minimum of $z=2x+y$ is 1, find $a=$", "answer": "$\\frac{1}{2}$"}
+{"question": "Let $z=kx+y$ where $x,y$ satisfy $\\begin{cases}x\\ge 2\\\\x-2y+4\\ge 2\\end{cases}$. If the maximum of $z$ is 12, find $k=$", "answer": "2"}
+{"question": "A cone has base radius $\\sqrt{2}$ and its lateral surface unfolds to a semicircle. Find the slant height.", "answer": "$2\\sqrt{2}$"}
+{"question": "In the BeiDou satellite system, a geostationary satellite orbits at 36000 km altitude. Treating Earth as a sphere of radius $r=6400$ km, the satellite signal covers a surface area $S=2\\pi r^2(1-\\cos\\alpha)$ where $\\alpha$ is the maximum latitude visible. Find the percentage of Earth's surface covered.", "answer": "0.42"}
+{"question": "A cone has base radius 6 and volume $30\\pi$. Find its lateral surface area.", "answer": "39π"}
+{"question": "A cone has base radius $\\sqrt{2}$ and its lateral surface unfolds to a semicircle. Find the slant height.", "answer": "$2\\sqrt{2}$"}
+{"question": "A cone's lateral surface area is $2\\pi$ and unfolds to a semicircle. Find the base radius.", "answer": "1"}
+{"question": "A cone with apex $S$: the angle between slant edges $SA$ and $SB$ has cosine $\\frac{7}{8}$, $SA$ makes a $45°$ angle with the base, and the area of $\\triangle SAB$ is $5\\sqrt{15}$. Find the lateral surface area.", "answer": "$40\\sqrt{2}\\pi$"}
+{"question": "A regular frustum has upper and lower base edges 2 and 4 respectively, and lateral edge 2. Find its volume.", "answer": "$\\frac{28}{3}\\sqrt{2}$"}
+{"question": "Points $A$, $B$, $C$ are on a sphere of radius 1. Given $AC\\perp BC$ and $AC=BC=1$, find the volume of tetrahedron $O$-$ABC$.", "answer": "$\\frac{\\sqrt{3}}{4}$"}
+{"question": "Two cones share the same base (a cross-section of a sphere of volume $\\frac{32\\pi}{3}$) and have their apices on the sphere. If the height ratio is $1:3$, find the total volume of the two cones.", "answer": "4\\pi"}
+{"question": "In cube $ABCD$-$A_1B_1C_1D_1$ with edge 2, $M$ and $N$ are midpoints of $BB_1$ and $AB$ respectively. Find the volume of tetrahedron $A$-$NMD_1$.", "answer": "$\\frac{1}{3}$"}
+{"question": "A cone has apex $S$, with $SA\\perp SB$, and $SA$ makes a $30°$ angle with the base. If the area of $\\triangle SAB$ is 8, find the volume of the cone.", "answer": "8\\pi"}
+{"question": "Points $A$, $B$, $C$ are on sphere $O$, and circle $O_1$ is the circumscribed circle of $\\triangle ABC$ with area $4\\pi$. Given $AB=BC=AC=OO_1$, find the surface area of sphere $O$.", "answer": "$64\\pi$"}
+{"question": "An equilateral triangle $\\triangle ABC$ has area $\\frac{9\\sqrt{3}}{4}$ and all vertices on sphere $O$ with surface area $16\\pi$. Find the distance from $O$ to plane $ABC$.", "answer": "1"}
+{"question": "A cube with edge $2\\sqrt{3}$ has all vertices on a sphere. Find the surface area of the sphere.", "answer": "$36\\pi$"}
+{"question": "A cone has base radius 1 and slant height 3. Find the volume of the largest sphere that fits inside the cone.", "answer": "$\\frac{\\sqrt{2}}{2}\\pi$"}
+{"question": "In right prism $ABCD$-$A_1B_1C_1D_1$ with all edges of length 2 and $\\angle BAD=60°$, find the length of the intersection of the sphere centered at $D_1$ with radius $\\sqrt{5}$ and the lateral face $BCC_1B_1$.", "answer": "$\\frac{\\sqrt{2}}{2}\\pi$"}
+{"question": "A cylinder of height 1 has both circular bases on the same sphere of diameter 2. Find the volume of the cylinder.", "answer": "$\\frac{3\\pi}{4}$"}
+{"question": "All vertices of tetrahedron $S$-$ABC$ lie on sphere $O$, with $SC$ a diameter. Given plane $SCA\\perp$ plane $SCB$, $SA=AC$, $SB=BC$, and volume of $S$-$ABC$ is 9. Find the surface area of sphere $O$.", "answer": "36\\pi"}
+{"question": "A cuboid has dimensions $3\\times 2\\times 1$ with all vertices on sphere $O$. Find the surface area of sphere $O$.", "answer": "14\\pi"}
+{"question": "A ball is enclosed in a right triangular prism $ABC$-$A_1B_1C_1$ with $AB\\perp BC$, $AB=6$, $BC=8$, $AA_1=3$. Find the maximum volume $V$ of the ball.", "answer": "$\\frac{9\\pi}{2}$"}
+{"question": "Points $A$, $B$ are on sphere $O$ with $\\angle AOB=90°$. $C$ is a moving point on the sphere. If the maximum volume of tetrahedron $O$-$ABC$ is 36, find the surface area of sphere $O$.", "answer": "$144\\pi$"}
+{"question": "Point $H$ lies on diameter $AB$ of sphere $O$ with $AH:HB=1:2$. Plane $\\alpha\\perp AB$ at $H$ cuts sphere $O$ in a cross-section of area $\\pi$. Find the surface area of sphere $O$.", "answer": "$\\frac{9\\pi}{2}$"}
+{"question": "A regular quadrilateral pyramid $O$-$ABCD$ has volume $\\frac{3\\sqrt{2}}{2}$ and base edge $\\sqrt{3}$. Find the surface area of the sphere centered at $O$ with radius $OA$.", "answer": "24π"}
+{"question": "Given $\\angle ACB=90°$ and point $P$ outside plane $ABC$ with $PC=2$. The distances from $P$ to lines $AC$ and $BC$ are both $\\sqrt{3}$. Find the distance from $P$ to plane $ABC$.", "answer": "$\\sqrt{2}$"}

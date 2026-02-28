@@ -1,0 +1,50 @@
+{"question": "若 $x,y$ 满足约束条件 $\\begin{cases} x+2y-5 \\geqslant 0 \\\\ x-2y+3 \\geqslant 0 \\end{cases}$，则 $z=x+y$ 的最大值为 .", "answer": "9"}
+{"question": "设 $x,y$ 满足约束条件 $\\begin{cases} 2x + 3y - 3 \\le 0 \\\\ 2x - 3y + 3 \\ge 0 \\end{cases}$ ,则 $z = 2x + y$", "answer": "-15$$"}
+{"question": "设 $x,y$ 满足约束条件 $\\begin{cases} x+3y \\leqslant 3 \\\\ x-y \\geqslant 1 \\end{cases}$ ,则 $z=x+y$", "answer": "3"}
+{"question": "设$x,y$满足约束条件 $\\begin{cases} 3x + 2y - 6 \\le 0 \\\\ x \\ge 0 \\\\ y \\ge 0 \\end{cases}$，则$z=x-y$的取值范围是", "answer": "[-3, 2]"}
+{"question": "若$x,y$满足约束条件 $x+y-2 \\leq 0$，则 $z=3x-4y$ 的最小值为", "answer": "-1"}
+{"question": "若$x,y$满足约束条件，则 $z = x - 2y$ 的最小值为 .", "answer": "-5"}
+{"question": "若 $x, y$ 满足约束条件 $x-2y \\leq 0$ 和 $x+2y-2 \\leqslant 0$，则 $z = x + y$ 的最大值为", "answer": "$\\frac{3}{2}$"}
+{"question": "设 $x, y$ 满足约束条件 $\\{x - 2y - 1 \\le 0\\}$，则 $z = 2x + 3y - 5$ 的最小值为", "answer": "-10"}
+{"question": "若$x$, $y$满足约束条件则 $z = 3x + y$ 的最大值为", "answer": "4"}
+{"question": "若 $x,y$ 满足约束条件 $z = 2x + y$ 的最大值为", "answer": "8"}
+{"question": "设 $x, y$ 满足约束条件 $z = 2x - y$ 的最大值为", "answer": "8"}
+{"question": "设$x,y$满足的约束条件。$x-y-1 \\leq 0$，$x - 3y + 3 \\ge 0$，则$z=x+2y$的最大值为", "answer": "7"}
+{"question": "设 $x, y$ 满足约束条件 $\\{ x + y - 1 \\geq 0, y \\geq 0 \\}$，求 $z = 2x - 3y$ 的最小值。", "answer": "$-6$"}
+{"question": "设$x, y$ 满足约束条件 $\\begin{cases} 1 \\leq x \\leq 3 \\\\ y = 0 \\end{cases}$ 则$z=2x-y$的最大值为_", "answer": "3"}
+{"question": "若变量$x,y$满足 $2x - 3y \\leq 9$，则 $x^2 + y^2$的最大值是", "answer": "10"}
+{"question": "若 $x,y$ 满足约束条件 $\\begin{cases} x-1 \\geqslant 0 \\\\ x-y \\leqslant 0 \\end{cases}$ , 则 $x+y-4 \\leqslant 0$ 时 $\\frac{y}{x}$ 的最大值为", "answer": "3"}
+{"question": "已知圆 $C:(x-a)^2+(y-b)^2=1$，设平面区域 $\\Omega=\\{(x,y) \\mid x+y-7 \\leq 0, \\begin{cases} x-y+7 \\geq 0, \\\\ x-y+7 \\geq 0, \\end{cases} y \\geq 0\\}$，若圆心 $C \\in \\Omega$，且圆 $C$ 与 $x$ 轴相切，则 $a^2 + b^2$ 的最大值为", "answer": "37"}
+{"question": "某高科技企业生产产品 A 和产品 B 需要甲、乙两种新型材料。生产一件产品 A 需要甲材料 1.5kg，乙材料 1kg，用 5 个工时；生产一件产品 B 需要甲材料 0.5kg，乙材料 0.3kg，用 3 个工时，生产一件产品 A 的利润为 2100 元，生产一件产品 B 的利润为 900 元。该企业现有甲材料 150kg，乙材料 90kg，则在不超过 600 个工时的条件下，生产产品 A、产品 B 的利润之和的最大值为 _ 元。", "answer": "216000"}
+{"question": "已知 $x,y$ 满足约束条件 $\\begin{cases} x-y \\ge 0 \\\\ x+y \\le 2 \\\\ y \\ge 0 \\end{cases}$，若 $z = ax + y$ 的最大值为4，则 $a=$ ( )", "answer": "2"}
+{"question": "x, y 满足约束条件 $\\begin{cases} x + y - 2 \\le 0 \\\\ x - 2y - 2 \\le 0 \\\\ 2x - y \\ge 0 \\end{cases}$, 若 $z = y - ax$ 取得最大值的最优解不唯一, 则实数 a 的值为", "answer": "2 或 -1"}
+{"question": "若 $x,y$ 满足 $\\begin{cases} x+y-2 \\ge 0 \\\\ kx-y+2 \\ge 0 \\\\ y \\ge 0 \\end{cases}$ 且 $z=y-x$ 的最小值为-4,则 $k$ 的值为", "answer": "$-\\frac{1}{2}$"}
+{"question": "设 $x,y$ 满足约束条件 $\\begin{cases} x+y \\geqslant a \\\\ x-y \\leqslant -1 \\end{cases}$ ,且 $z = x + ay$ 的最小值为 7, 则 $a =$", "answer": "3"}
+{"question": "当实数 $x, y$ 满足 $\\begin{cases} x + 2y - 4 \\le 0, \\\\ x - y - 1 \\le 0, \\end{cases}$ 时, $1 \\le ax + y \\le x \\ge 1$ 恒成立, 则实数 $a$ 的取值范围是", "answer": "$\\left[1, \\frac{3}{2}\\right]$"}
+{"question": "若变量 $x,y$ 满足约束条件 $\\begin{cases} y \\leqslant x \\\\ x+y \\leqslant 4 \\\\ y \\geqslant k \\end{cases}$ 且 $z = 2x+y$ 的最小值为-6,则 $k =$", "answer": "-2"}
+{"question": "已知 $a > 0$，$x, y$ 满足约束条件 $\\begin{cases} x \\ge 1 \\\\ x + y \\le 3 \\end{cases}$。若 $z = 2x + y$ 的最小值为 1，则 $a = \\begin{cases} x + y \\le 3 \\\\ y \\ge a(x - 3) \\end{cases}$", "answer": "$\\frac{1}{2}$"}
+{"question": "设 $z = kx + y$，其中实数 $x, y$ 满足 $\\begin{cases} x \\ge 2 \\\\ x - 2y + 4 \\ge 2 \\end{cases}$，若 $z$ 的最大值为 12，则实数 $k =$", "answer": "2"}
+{"question": "已知圆锥的底面半径为$\\sqrt{2}$,其侧面展开图为一个半圆,则该圆锥的母线长为 ( )", "answer": "$2\\sqrt{2}$"}
+{"question": "北斗三号全球卫星导航系统是我国航天事业的重要成果,在卫星导航系统中,地球静止同步卫星的轨道位于地球赤道所在平面,轨道高度为36000km(轨道高度是指卫星到地球表面的距离).将地球看作是一个球心为O,半径r为6400km的球,其上点A的纬度是指OA与赤道平面所成角的度数.地球表面上能直接观测到一颗地球静止同步轨道卫星点的纬度最大值为$\\alpha$,记卫星信号覆盖地球表面的表面积为$S=2\\pi r^2(1-\\cos\\alpha)$ (单位: km$^2$),则S占地球表面积的百分比约为", "answer": "0.42"}
+{"question": "已知一个圆锥的底面半径为6，其体积为30π，则该圆锥的侧面积为", "answer": "39π"}
+{"question": "已知圆锥的底面半径为 $\\sqrt{2}$ , 其侧面展开图为一个半圆, 则该圆锥的母线长为", "answer": "$2\\sqrt{2}$"}
+{"question": "已知圆锥展开图的侧面积为 $2\\pi$ , 且为半圆, 则底面半径为", "answer": "1"}
+{"question": "已知圆锥的顶点为S, 母线SA, SB所成角的余弦值为 $\\frac{7}{8}$, SA与圆锥底面所成角为 $45^\\circ$, 若 $\\Delta SAB$ 的面积为 $5\\sqrt{15}$, 则该圆锥的侧面积为", "answer": "$40\\sqrt{2}\\pi$"}
+{"question": "正四棱台的上、下底面的边长分别为2,4,侧棱长为2,则其体积为", "answer": "$\\frac{28}{3}\\sqrt{2}$"}
+{"question": "已知 A, B, C 是半径为 1 的球 O 的球面上的三个点，且 $AC \\perp BC$，$AC = BC = 1$，则三棱锥 O - ABC 的体积为", "answer": "$\\frac{\\sqrt{3}}{4}$"}
+{"question": "两个圆锥的底面是一个球的同一截面，顶点均在球面上，若球的体积为 $\\frac{32\\pi}{3}$，两个圆锥的高之比为1:3，则这两个圆锥的体积之和为", "answer": "4\\pi$"}
+{"question": "已知正方体 $ABCD - A_1B_1C_1D_1$ 的棱长为 2, $M, N$ 分别为 $BB_1, AB$ 的中点, 则三棱锥 $A - NMD_1$ 的体积为", "answer": "$\\frac{1}{3}$"}
+{"question": "已知圆锥的顶点为S, 母线SA, SB互相垂直, SA与圆锥底面所成角为30°. 若$\\Delta SAB$的面积为8, 则该圆锥的体积为", "answer": "8\\pi"}
+{"question": "已知 A, B, C 为球 O 的球面上的三个点, $\\odot O_1$ 为 $\\triangle ABC$ 的外接圆. 若 $\\odot O_1$ 的面积为 $4\\pi$, AB = BC = AC = OO_1$, 则球 O 的表面积为", "answer": "$64\\pi$"}
+{"question": "已知 $\\Delta ABC$ 是面积为 $\\frac{9\\sqrt{3}}{4}$ 的等边三角形,且其顶点都在球O的表面上,若球O的表面积为 $16\\pi$,则球O到平面 ABC的距离为 ( )", "answer": "1"}
+{"question": "若棱长为 $2\\sqrt{3}$ 的正方体的顶点都在同一球面上,则该球的表面积为 ( )", "answer": "$36\\pi$"}
+{"question": "已知圆锥的底面半径为1, 母线长为3, 则该圆锥内半径最大的球的体积为", "answer": "$\\frac{\\sqrt{2}}{2\\pi}$"}
+{"question": "已知直四棱柱 $ABCD - A_1B_1C_1D_1$ 的棱长均为 2, $\\angle BAD = 60^\\circ$ ,以 $D_1$ 为球心, $\\sqrt{5}$ 为半径的球面与侧面 $BCC_1B_1$ 的交线长为 _.", "answer": "$\\frac{\\sqrt{2}}{2}\\pi$"}
+{"question": "已知圆柱的高为1, 它的两个底面的圆周在直径为2的同一个球的球面上, 则该圆柱的体积为( )", "answer": "$\\frac{3\\pi}{4}$"}
+{"question": "已知三棱锥 S-ABC 的所有顶点都在球 O 的球面上，SC 是球 O 的直径。若平面 SCA ⊥ 平面 SCB，SA = AC，SB = BC，三棱锥 S-ABC 的体积为 9，则球 O 的表面积为", "answer": "36\\pi"}
+{"question": "长方体的长、宽、高分别为3, 2, 1, 其顶点都在球O的球面上, 则球O的表面积为 .", "answer": "14\\pi"}
+{"question": "在封闭的直三棱柱 ABC-$A_1B_1C_1$ 内有一个体积为 V 的球,若 $AB \\perp BC$, AB = 6, BC = 8, $AA_1=3$, 则 V 的最大值是", "answer": "$\\frac{9\\pi}{2}$"}
+{"question": "已知$A$,$B$是球$O$的球面上两点, $\\angle AOB = 90^\\circ$ , $C$为该球面上的动点,若三棱锥$O - ABC$体积的最大值为36,则球$O$的表面积为", "answer": "$144\\pi$"}
+{"question": "已知 H 是球 O 的直径 AB 上一点, $AH: HB=1:2$, $AB \\perp$ 平面 $\\alpha$, H 为垂足, $\\alpha$ 截球 O 所得截面的面积为 $\\pi$, 则球 O 的表面积为 .", "answer": "$\\frac{9\\pi}{2}$"}
+{"question": "已知正四棱锥 O - ABCD 的体积为 $\\frac{3\\sqrt{2}}{2}$ ,底面边长为 $\\sqrt{3}$ ,则以O为球心,OA为半径的球的表面积", "answer": "24π"}
+{"question": "已知 $\\angle ACB = 90^\\circ$，P 为平面 ABC 外一点，PC = 2，点 P 到 $\\angle ACB$ 两边 AC, BC 的距离均为 $\\sqrt{3}$，那么 P 到平面 ABC 的距离为", "answer": "$\\sqrt{2}$"}

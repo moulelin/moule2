@@ -1,0 +1,639 @@
+{"question": "If the set $A = \\{x \\in \\mathbb{R} \\mid ax^2 + ax + 1 = 0\\}$ contains exactly one element, then $a =$", "answer": "4"}
+{"question": "Given sets $A = \\{1, 2\\}$ and $B = \\{a, a^2 + 3\\}$. If $A \\cap B = \\{1\\}$, then the value of the real number $a$ is", "answer": "1"}
+{"question": "Let the universal set $U = \\{1, 2, 3, 4, 5\\}$. If set $M$ satisfies $\\complement_U M = \\{1, 3\\}$, then $M =$", "answer": "$\\{2, 4, 5\\}$"}
+{"question": "Given sets $A = \\{1, 2, 3, 5, 7, 11\\}$ and $B = \\{x \\mid 3 < x < 15\\}$, then the number of elements in $A \\cap B$ is", "answer": "3"}
+{"question": "Given sets $A = \\{(x, y) \\mid x, y \\in \\mathbb{N}^*, y \\geqslant x\\}$ and $B = \\{(x, y) \\mid x + y = 8\\}$, then the number of elements in $A \\cap B$ is", "answer": "4"}
+{"question": "Given set $A = \\{(x, y) \\mid x^2 + y^2 \\leqslant 3, x \\in \\mathbb{Z}, y \\in \\mathbb{Z}\\}$, then the number of elements in $A$ is", "answer": "9"}
+{"question": "Given sets $A = \\{(x, y) \\mid x^2 + y^2 = 1\\}$ and $B = \\{(x, y) \\mid y = x\\}$, then the number of elements in $A \\cap B$ is", "answer": "2"}
+{"question": "Given sets $A = \\{1, 2, 3, 4\\}$ and $B = \\{2, 4, 6, 8\\}$, then the number of elements in $A \\cap B$ is", "answer": "2"}
+{"question": "Given sets $A = \\{x \\mid x = 3n + 2, n \\in \\mathbb{N}\\}$ and $B = \\{6, 8, 10, 12, 14\\}$, then the number of elements in $A \\cap B$ is", "answer": "2"}
+{"question": "Given sets $A = \\{1, 2, 3\\}$ and $B = \\{2, 3\\}$, then", "answer": "$B \\subseteq A$"}
+{"question": "Given sets $A = \\{x \\mid x^2 - 2x > 0\\}$ and $B = \\{x \\mid -\\sqrt{5} < x < \\sqrt{5}\\}$, then", "answer": "$A \\cup B = \\mathbb{R}$"}
+{"question": "Given sets $A = \\{x \\mid x^2 - 3x + 2 = 0, x \\in \\mathbb{R}\\}$ and $B = \\{x \\mid 0 < x < 5, x \\in \\mathbb{N}\\}$, then the number of sets $C$ satisfying $A \\subseteq C \\subseteq B$ is", "answer": "4"}
+{"question": "Let sets $M = \\{1, 3, 5, 7, 9\\}$ and $N = \\{x \\mid 2x > 7\\}$, then $M \\cap N =$", "answer": "\\{5, 7, 9\\}"}
+{"question": "Let sets $A = \\{x \\mid -2 < x < 4\\}$ and $B = \\{2, 3, 4, 5\\}$, then $A \\cap B =$", "answer": "\\{2, 3\\}"}
+{"question": "Let sets $M = \\{x \\mid 0 < x < 4\\}$ and $N = \\{x \\mid \\frac{1}{3} \\leqslant x \\leqslant 5\\}$, then $M \\cap N =$", "answer": "\\{x \\mid \\frac{1}{3} \\leqslant x < 4\\}"}
+{"question": "Let sets $A = \\{2, 3, 5, 7\\}$ and $B = \\{1, 2, 3, 5, 8\\}$, then $A \\cap B =$", "answer": "\\{2, 3, 5\\}"}
+{"question": "Given sets $A = \\{x \\mid x - 1 \\geqslant 0\\}$ and $B = \\{0, 1, 2\\}$, then $A \\cap B =$", "answer": "\\{1, 2\\}"}
+{"question": "Given sets $A = \\{1, 2, 3\\}$ and $B = \\{2, 3, 4\\}$, then $A \\cup B =$", "answer": "\\{1, 2, 3, 4\\}"}
+{"question": "Given sets $A = \\{1, 2, 3\\}$ and $B = \\{x \\mid (x + 1)(x - 2) < 0, x \\in \\mathbb{Z}\\}$, then $A \\cup B =$", "answer": "\\{0, 1, 2, 3\\}"}
+{"question": "Given sets $A = \\{1, 2, 3\\}$ and $B = \\{x \\mid x^2 < 9\\}$, then $A \\cap B =$", "answer": "\\{1, 2\\}"}
+{"question": "Given sets $A = \\{1, 3, 5, 7\\}$ and $B = \\{x \\mid 2 \\leqslant x \\leqslant 5\\}$, then $A \\cap B =$", "answer": "\\{3, 5\\}"}
+{"question": "Given sets $A = \\{0, 2, 4, 6, 8, 10\\}$ and $B = \\{4, 8\\}$, then $\\complement_A B =$", "answer": "\\{0, 2, 6, 10\\}"}
+{"question": "Given sets $A = \\{-2, -1, 0, 1, 2\\}$ and $B = \\{x \\mid (x - 1)(x + 2) < 0\\}$, then $A \\cap B =$", "answer": "\\{-1, 0\\}"}
+{"question": "Given sets $A = \\{x \\mid -1 < x < 2\\}$ and $B = \\{x \\mid 0 < x < 3\\}$, then $A \\cup B =$", "answer": "(-1, 3)"}
+{"question": "Given sets $A = \\{-2, -1, 0, 1, 2\\}$ and $B = \\{x \\mid 0 \\leqslant x \\leqslant \\frac{5}{2}\\}$, then $A \\cap B =$", "answer": "\\{0, 1, 2\\}"}
+{"question": "Given sets $M = \\{x \\mid \\sqrt{x} < 4\\}$ and $N = \\{x \\mid 3x \\geqslant 1\\}$, then $M \\cap N =$", "answer": "\\{x \\mid \\frac{1}{3} \\leqslant x < 16\\}"}
+{"question": "Given sets $A = \\{-1, 1, 2, 4\\}$ and $B = \\{x \\mid |x - 1| \\leqslant 1\\}$, then $A \\cap B =$", "answer": "\\{1, 2\\}"}
+{"question": "Given the universal set $U = \\{1, 2, 3, 4, 5\\}$, and sets $M = \\{1, 2\\}$, $N = \\{3, 4\\}$, then $\\complement_U (M \\cup N) =$", "answer": "\\{5\\}"}
+{"question": "Given sets $S = \\{s \\mid s = 2n + 1, n \\in \\mathbb{Z}\\}$ and $T = \\{t \\mid t = 4n + 1, n \\in \\mathbb{Z}\\}$, then $S \\cap T =$", "answer": "T"}
+{"question": "Given the universal set $U = \\{1, 2, 3, 4, 5, 6\\}$, and sets $A = \\{1, 3, 6\\}$, $B = \\{2, 3, 4\\}$, then $A \\cap (\\complement_U B) =$", "answer": "\\{1, 6\\}"}
+{"question": "Given set $A = \\{x \\mid x^2 - 3x - 4 < 0\\}$ and $B = \\{-4, 1, 3, 5\\}$, then $A \\cap B =$", "answer": "\\{1, 3\\}"}
+{"question": "Given set $A = \\{x \\mid x^2 - 4 \\leqslant 0\\}$ and $B = \\{x \\mid 2x + a \\leqslant 0\\}$, and $A \\cap B = \\{x \\mid -2 \\leqslant x \\leqslant 1\\}$, then $a =$", "answer": "-2"}
+{"question": "Given set $A = \\{x \\mid |x| < 3, x \\in \\mathbb{Z}\\}$ and $B = \\{x \\mid |x| > 1, x \\in \\mathbb{Z}\\}$, then $A \\cap B =$", "answer": "\\{-2, 2\\}"}
+{"question": "Given the universal set $U = \\{-2, -1, 0, 1, 2, 3\\}$, and sets $A = \\{-1, 0, 1\\}$, $B = \\{1, 2\\}$, then $\\complement_U (A \\cup B) =$", "answer": "\\{-2, 3\\}"}
+{"question": "Given set $A = \\{x \\mid 1 \\leqslant x \\leqslant 3\\}$ and $B = \\{x \\mid 2 < x < 4\\}$, then $A \\cup B =$", "answer": "\\{x \\mid 1 \\leqslant x < 4\\}"}
+{"question": "Given the universal set $U = \\{-3, -2, -1, 0, 1, 2, 3\\}$, and sets $A = \\{-1, 0, 1, 2\\}$, $B = \\{-3, 0, 2, 3\\}$, then $A \\cap (\\complement_U B) =$", "answer": "\\{-1, 1\\}"}
+{"question": "Given set $M = \\{x \\mid -4 < x < 2\\}$ and $N = \\{x \\mid x^2 - x - 6 < 0\\}$, then $M \\cap N =$", "answer": "\\{x \\mid -2 < x < 2\\}"}
+{"question": "Given the universal set $U = \\{1, 2, 3, 4, 5, 6, 7\\}$, and sets $A = \\{2, 3, 4, 5\\}$, $B = \\{2, 3, 6, 7\\}$, then $B \\cap \\complement_U A =$", "answer": "\\{6, 7\\}"}
+{"question": "Given set $A = \\{x \\mid x^2 - 5x + 6 > 0\\}$ and $B = \\{x \\mid x < 1\\}$, then $A \\cap B =$", "answer": "\\{x \\mid x < 1\\}"}
+{"question": "Given set $A = \\{x \\mid x > -1\\}$ and $B = \\{x \\mid x < 2\\}$, then $A \\cap B =$", "answer": "(-1, 2)"}
+{"question": "Given set $A = \\{-1, 0, 1, 2\\}$ and $B = \\{x \\mid x^2 \\leqslant 1\\}$, then $A \\cap B =$", "answer": "\\{-1, 0, 1\\}"}
+{"question": "Given set $A = \\{x \\mid x^2 - x - 2 > 0\\}$, then $\\complement_R A =$", "answer": "$\\{x \\mid -1 \\leqslant x \\leqslant 2\\}$"}
+{"question": "Given set $A = \\{x \\mid x < 1\\}$ and $B = \\{x \\mid 3^x < 1\\}$, then $A \\cap B =$", "answer": "\\{x \\mid x < 0\\}"}
+{"question": "Given set $A = \\{x \\mid x < 2\\}$ and $B = \\{x \\mid 3 - 2x > 0\\}$, then $A \\cap B =$", "answer": "\\{x \\mid x < \\frac{3}{2}\\}"}
+{"question": "Given set $S = \\{x \\mid (x - 2)(x - 3) \\geqslant 0\\}$ and $T = \\{x \\mid x > 0\\}$, then $S \\cap T =$", "answer": "(0, 2] \\cup [3, +\\infty)"}
+{"question": "Given set $A = \\{1, 2, 4\\}$ and $B = \\{x \\mid x^2 - 4x + m = 0\\}$. If $A \\cap B = \\{1\\}$, then $B =$", "answer": "\\{1, 3\\}"}
+{"question": "Given set $P = \\{x \\mid x^2 \\leqslant 1\\}$ and $M = \\{a\\}$. If $P \\cup M = P$, then the range of the real number $a$ is", "answer": "[-1, 1]"}
+{"question": "Known sets $A = \\{(x, y) \\mid x^2 + y^2 \\leqslant 1, x, y \\in \\mathbb{Z}\\}$ and $B = \\{(x, y) \\mid |x| \\leqslant 2, |y| \\leqslant 2, x, y \\in \\mathbb{Z}\\}$. Define the set $A \\oplus B = \\{(x_1 + x_2, y_1 + y_2) \\mid (x_1, y_1) \\in A, (x_2, y_2) \\in B\\}$. The number of elements in $A \\oplus B$ is", "answer": "45"}
+{"question": "Given the following four propositions: $p_1$: If a complex number $z$ satisfies $\\frac{1}{z} \\in \\mathbb{R}$, then $z \\in \\mathbb{R}$; $p_2$: If a complex number $z$ satisfies $z^2 \\in \\mathbb{R}$, then $z \\in \\mathbb{R}$; $p_3$: If complex numbers $z_1, z_2$ satisfy $z_1 z_2 \\in \\mathbb{R}$, then $z_1 = \\bar{z}_2$; $p_4$: If a complex number $z \\in \\mathbb{R}$, then $\\bar{z} \\in \\mathbb{R}$. The true propositions among these are", "answer": "$p_1, p_4$"}
+{"question": "Given proposition $p: \\exists x \\in \\mathbf{R}, \\sin x < 1$; proposition $q: \\forall x \\in \\mathbf{R}, e^{|x|} \\geqslant 1$. The true proposition among the following is", "answer": "$p \\wedge q$"}
+{"question": "Given proposition $p: \\forall x > 0, \\ln(x + 1) > 0$ and proposition $q: \\text{If } a > b, \\text{ then } a^2 > b^2$. The true proposition among the following is", "answer": "$p \\wedge \\neg q$"}
+{"question": "Given function $f(x) = x^3$, then its inverse function is", "answer": "$f^{-1}(x) = \\sqrt[3]{x}$"}
+{"question": "Given that the graph of function $f(x) = ax^3 - 2x$ passes through the point $(-1, 4)$, then $a =$", "answer": "-2"}
+{"question": "Given function $f(x) = x^3 + ax^2 + bx + c$, and $0 \\leqslant f(-1) = f(-2) = f(-3) \\leqslant 3$, then the range of $c$ is", "answer": "6 < c \\leqslant 9"}
+{"question": "Given functions $f(x) = 5^{|x|}$ and $g(x) = ax^2 - x \\ (a \\in \\mathbb{R})$. If $f[g(1)] = 1$, then $a =$", "answer": "1"}
+{"question": "Given $f(x) = \\frac{x}{1+x}, x \\geqslant 0$. If $f_1(x) = f(x)$ and $f_{n+1}(x) = f(f_n(x)), n \\in \\mathbb{N}_+$, then the expression for $f_{2014}(x)$ is", "answer": "\\frac{x}{1 + 2014x}"}
+{"question": "The domain of the function $f(x) = \\frac{1}{x} + \\sqrt{1-x}$ is", "answer": "(-\\infty, 0) \\cup (0, 1]"}
+{"question": "The domain of the function $f(x) = \\frac{1}{x+1} + \\ln x$ is", "answer": "(0, +\\infty)"}
+{"question": "The domain of the function $y = \\sqrt{7 + 6x - x^2}$ is", "answer": "(-\\infty, 0]"}
+{"question": "The domain of the function $f(x) = \\frac{1}{\\sqrt{(\\log_2 x)^2 - 1}}$ is", "answer": "$(0, \\frac{1}{2}) \\cup (2, +\\infty)$"}
+{"question": "Given the function $f(x) = \\begin{cases} 2^{x-1} - 2, & x \\leqslant 1 \\\\ -\\log_2(x+1), & x > 1 \\end{cases}$. If $f(a) = -3$, then $f(6-a) =$", "answer": "-\\frac{7}{4}"}
+{"question": "Given the function $f(x) = \\begin{cases} 1 + \\log_2(2-x), & x < 1 \\\\ 2^{x-1}, & x \\geqslant 1 \\end{cases}$, then $f(-2) + f(\\log_2 12) =$", "answer": "9"}
+{"question": "Given the function $f(x) = \\begin{cases} x+1, & x \\leqslant 0 \\\\ 2^x, & x > 0 \\end{cases}$, the range of $x$ satisfying $f(x) + f(x-\\frac{1}{2}) > 1$ is", "answer": "(-\\frac{1}{4}, +\\infty)"}
+{"question": "Given the function $f(x) = \\begin{cases} e^{x-1}, & x < 1 \\\\ x^{\\frac{1}{3}}, & x \\geqslant 1 \\end{cases}$, the range of $x$ satisfying $f(x) \\leqslant 2$ is", "answer": "(-\\infty, 8]"}
+{"question": "Given the function $f(x) = \\begin{cases} -x^2 + 2, & x \\leqslant 1 \\\\ x + \\frac{1}{x} - 1, & x > 1 \\end{cases}$, then $f(f(\\frac{1}{2})) =$ ________; if $x \\in [a, b]$, and $1 \\leqslant f(x) \\leqslant 3$, then the maximum value of $b - a$ is ________.", "answer": "\\frac{37}{28}, 3 + \\sqrt{3}"}
+{"question": "Given $a \\in \\mathbb{R}$, and the function $f(x) = \\begin{cases} x^2 - 4, & x > 2 \\\\ |x - 3| + a, & x \\leqslant 2 \\end{cases}$. If $f(f(\\sqrt{6})) = 3$, then $a =$ ________.", "answer": "2"}
+{"question": "Given the function $f(x) = \\begin{cases} -x^2 + 2x, & x \\leqslant 0 \\\\ \\ln(x + 1), & x > 0 \\end{cases}$. If $|f(x)| \\geqslant ax$, then the range of the real number $a$ is", "answer": "[-2, 0]"}
+{"question": "If the maximum value of function $f(x) = x^2 + ax + b$ on the interval $[0, 1]$ is $M$ and the minimum value is $m$, then $M - m$", "answer": "Depends on $a$, but is independent of $b$"}
+{"question": "Given $a \\in \\mathbb{R}$, and the maximum value of the function $f(x) = \\left|x + \\frac{4}{x} - a\\right| + a$ on the interval $[1, 4]$ is 5, then the range of $a$ is", "answer": "(-\\infty, \\frac{9}{2}]"}
+{"question": "Among the following functions, the one that is an increasing function is ________.", "answer": "$f(x) = \\sqrt[3]{x}$"}
+{"question": "Known that the function $f(x) = \\lg(x^2 - 4x - 5)$ is monotonically increasing on the interval $(a, +\\infty)$, then the range of the real number $a$ is", "answer": "[5, +\\infty)"}
+{"question": "Let the function $f(x) = e^x + ae^{-x}$ ($a$ is a constant). If $f(x)$ is an odd function, then $a =$ ________.", "answer": "-1"}
+{"question": "Let the function $f(x) = e^x + ae^{-x}$ ($a$ is a constant). If $f(x)$ is an increasing function on $\\mathbb{R}$, then the range of $a$ is ________.", "answer": "(-\\infty, 0]"}
+{"question": "If $f(x) = \\ln\\left|a + \\frac{1}{1-x}\\right| + b$ is an odd function, then $a =$ ________, $b =$ ________.", "answer": "-\\frac{1}{2}, \\ln 2"}
+{"question": "Given function $f(x) = \\frac{1-x}{1+x}$, the odd function among the following is", "answer": "f(x - 1) + 1"}
+{"question": "Given that $f(x)$ is an odd function with domain $\\mathbb{R}$, and $f(1+x) = f(-x)$. If $f\\left(-\\frac{1}{3}\\right) = \\frac{1}{3}$, then $f\\left(\\frac{5}{3}\\right) =$", "answer": "\\frac{1}{3}"}
+{"question": "Given function $f(x) = x^3(a \\cdot 2^x - 2^{-x})$ is an even function, then $a =$", "answer": "1"}
+{"question": "Given function $f(x)$ with domain $\\mathbb{R}$, such that $f(x+1)$ is an odd function and $f(x+2)$ is an even function. When $x \\in [1, 2]$, $f(x) = ax^2 + b$. If $f(0) + f(3) = 6$, then $f\\left(\\frac{9}{2}\\right) =$", "answer": "\\frac{5}{2}"}
+{"question": "Given function $f(x) = \\frac{1-x}{1+x}$, the odd function among the following is", "answer": "f(x - 1) + 1"}
+{"question": "Given that the odd function $f(x)$ is defined on $\\mathbb{R}$, is monotonically decreasing on the interval $(-\\infty, 0)$, and satisfies $f(2) = 0$, the range of $x$ that satisfies $xf(x - 1) \\geqslant 0$ is", "answer": "[-1, 0] \\cup [1, 3]"}
+{"question": "Given that $f(x)$ is an odd function, and when $x < 0$, $f(x) = -e^{ax}$. If $f(\\ln 2) = 8$, then $a =$", "answer": "-3"}
+{"question": "Given that $f(x)$ is an odd function defined on $\\mathbb{R}$ and is monotonically decreasing on $(-\\infty, 0)$ with $f(2) = 0$, then $f(x)$ is also monotonically decreasing on $(0, +\\infty)$. Because $f(x)$ is an odd function and $f(2) = 0$, it follows that $f(-2) = 0$ and $f(0) = 0$. The values of the function are $f(x) > 0$ when $x \\in (-\\infty, -2) \\cup (0, 2)$ and $f(x) < 0$ when $x \\in (-2, 0) \\cup (2, +\\infty)$. Solving the inequality $xf(x-1) \\geqslant 0$, we find the range of $x$ is", "answer": "[-1, 0] \\cup [1, 3]"}
+{"question": "Given that $f(x)$ is an odd function defined on $\\mathbb{R}$, and for $x \\in (-\\infty, 0)$, $f(x) = 2x^3 + x^2$. To find $f(2)$, we use the odd property $f(2) = -f(-2)$. Calculating $f(-2) = 2(-2)^3 + (-2)^2 = -16 + 4 = -12$, thus $f(2) =$", "answer": "12"}
+{"question": "Given that $f(x) = x \\ln(x + \\sqrt{a + x^2})$ is an even function, by the definition of even functions $f(x) = f(-x)$, we have $x \\ln(x + \\sqrt{a + x^2}) = -x \\ln(-x + \\sqrt{a + x^2})$. This implies $\\ln(x + \\sqrt{a + x^2}) + \\ln(\\sqrt{a + x^2} - x) = 0$, which leads to $\\ln(a + x^2 - x^2) = \\ln a = 0$. Therefore $a =$", "answer": "1"}
+{"question": "Given that the even function $f(x)$ has a graph symmetric about the line $x = 2$, we have $f(x) = f(4 - x)$. Since $f(x)$ is even, $f(-1) = f(1)$. Using the symmetry about $x = 2$, $f(1) = f(4 - 1) = f(3)$. Given $f(3) = 3$, then $f(-1) =$", "answer": "3"}
+{"question": "Given that the even function $f(x)$ is monotonically decreasing on $[0, +\\infty)$ and $f(2) = 0$. The inequality $f(x - 1) > 0$ is equivalent to $f(|x - 1|) > f(2)$. Due to the monotonicity on the positive axis, this implies $|x - 1| < 2$, which leads to $-2 < x - 1 < 2$. Thus, the range for $x$ is", "answer": "(-1, 3)"}
+{"question": "Given $f(x) = \\ln(\\sqrt{1 + 9x^2} - 3x) + 1$, let $g(x) = \\ln(\\sqrt{1 + 9x^2} - 3x)$. Since $g(x) + g(-x) = \\ln(1 + 9x^2 - 9x^2) = 0$, $g(x)$ is an odd function. Therefore, $f(x) + f(-x) = g(x) + 1 + g(-x) + 1 = 2$. Given that $\\lg 2 + \\lg \\frac{1}{2} = 0$, then $f(\\lg 2) + f(\\lg \\frac{1}{2}) =$", "answer": "2"}
+{"question": "Given that $f(x)$ is an odd function, and when $x > 0$, $f(x) = x^2 + \\frac{1}{x}$, then $f(-1) =$", "answer": "-2"}
+{"question": "Given that $f(x)$ is an odd function and $g(x)$ is an even function, and $f(-1) + g(1) = 2$, $f(1) + g(-1) = 4$, then $g(1)$ equals", "answer": "3"}
+{"question": "Given function $f(x) = ax^3 + b\\sin x + 4$ ($a, b \\in \\mathbb{R}$). If $f(\\lg(\\log_2 10)) = 5$, then $f(\\lg(\\lg 2)) =$", "answer": "3"}
+{"question": "Given that the domain of function $f(x)$ is $\\mathbb{R}$, and $f(x + y) + f(x - y) = f(x)f(y)$, $f(1) = 1$, then $\\sum_{k=1}^{22} f(k) =$", "answer": "-3"}
+{"question": "Given function $f(x)$ with domain $\\mathbb{R}$, such that $f(x + 1)$ is an odd function and $f(x + 2)$ is an even function. When $x \\in [1, 2]$, $f(x) = ax^2 + b$. If $f(0) + f(3) = 6$, then $f\\left(\\frac{9}{2}\\right) =$", "answer": "\\frac{5}{2}"}
+{"question": "Given function $f(x)$ with domain $\\mathbb{R}$, such that $f(x+2)$ is an even function and $f(2x+1)$ is an odd function. Then", "answer": "$f(-1) = 0$"}
+{"question": "Given $f(x)$ is an odd function defined on $(-\\infty, +\\infty)$ satisfying $f(1-x) = f(1+x)$. If $f(1) = 2$, then $f(1) + f(2) + f(3) + \\dots + f(50) =$", "answer": "2"}
+{"question": "Given function $f(x)$ satisfies $f(x+4) = f(x)$ for all $x \\in \\mathbb{R}$. On the interval $(-2, 2]$, the function is defined as $f(x) = \\begin{cases} \\cos \\frac{\\pi x}{2}, & 0 < x \\leqslant 2 \\\\ |x + \\frac{1}{2}|, & -2 < x \\leqslant 0 \\end{cases}$. Then the value of $f(f(15)) =$", "answer": "\\frac{\\sqrt{2}}{2}"}
+{"question": "Given that the function $f(x)$ has domain $\\mathbb{R}$. When $x<0$, $f(x)=x^3-1$; when $-1 \\leqslant x \\leqslant 1$, $f(-x)=-f(x)$; when $x>\\frac{1}{2}$, $f\\left(x+\\frac{1}{2}\\right)=f\\left(x-\\frac{1}{2}\\right)$. Then $f(6)=$", "answer": "2"}
+{"question": "The graph of the even function $y=f(x)$ is symmetric about the line $x=2$, and $f(3)=3$. Then $f(-1)=$", "answer": "3"}
+{"question": "If the graph of the function $f(x)=(1-x^{2})(x^{2}+ax+b)$ is symmetric about the line $x=-2$, then the maximum value of $f(x)$ is", "answer": "16"}
+{"question": "Given the function $f(x)=\\frac{1}{1+2^{x}}$, then for any real number $x$, we have", "answer": "$f(-x)+f(x)=1$"}
+{"question": "Given that the functions $f(x), g(x)$ are both defined on $\\mathbb{R}$, and $f(x)+g(2-x)=5$, $g(x)-f(x-4)=7$. If the graph of $y=g(x)$ is symmetric about the line $x=2$, and $g(2)=4$, then $\\sum_{k=1}^{22}f(k)=$", "answer": "$-24$"}
+{"question": "Given $a \\in \\mathbb{R}$, let the function $f(x)=\\begin{cases}x^2-2ax+2a, & x \\leqslant 1 \\\\ x-a\\ln x, & x>1\\end{cases}$. If the inequality $f(x) \\geqslant 0$ holds for all $x \\in \\mathbb{R}$, then the range of values of $a$ is", "answer": "$[0, \\mathrm{e}]$"}
+{"question": "Given the function $f(x)=\\begin{cases}2\\sqrt{x}, & 0 \\leqslant x \\leqslant 1 \\\\ \\frac{1}{x}, & x>1\\end{cases}$. If the equation $f(x)=-\\frac{1}{4}x+a$ ($a \\in \\mathbb{R}$) has exactly two distinct real solutions, then the range of values of $a$ is", "answer": "$\\left[\\frac{5}{4}, \\frac{9}{4}\\right] \\cup \\{1\\}$"}
+{"question": "Let $f(x)=x^3-2x+\\mathrm{e}^x-\\frac{1}{\\mathrm{e}^x}$, where $\\mathrm{e}$ is the base of the natural logarithm. If $f(a-1)+f(2a^2) \\leqslant 0$, then the range of values of the real number $a$ is", "answer": "$[-1, \\frac{1}{2}]$"}
+{"question": "Given that the odd function $f(x)$ is increasing on $\\mathbb{R}$, and $g(x)=xf(x)$. If $a=g(-\\log_2 5.1), b=g(2^{0.8}), c=g(3)$, then the order of $a, b, c$ is", "answer": "$b<a<c$"}
+{"question": "The function $f(x)$ is monotonically decreasing on $(-\\infty, +\\infty)$ and is an odd function. If $f(1) = -1$, then the range of $x$ satisfying $-1 \\leqslant f(x-2) \\leqslant 1$ is", "answer": "$[1, 3]$"}
+{"question": "Let $f(x)=\\ln(1+|x|)-\\frac{1}{1+x^2}$, then the range of $x$ for which $f(x)>f(2x-1)$ holds is", "answer": "$(\\frac{1}{3}, 1)$"}
+{"question": "Given $2^a=5$ and $\\log_8 3=b$, then $4^{a-3b}=$", "answer": "$\\frac{25}{9}$"}
+{"question": "Given that $x, y, z$ are positive numbers and $2^x=3^y=5^z$, the order is", "answer": "$3y < 2x < 5z$"}
+{"question": "Let the function $f(x)=\\begin{cases}3x-1, & x < 1 \\\\ 2^x, & x \\geqslant 1\\end{cases}$, then the range of values of $a$ satisfying $f(f(a))=2^{f(a)}$ is", "answer": "$\\left[\\frac{2}{3}, +\\infty\\right)$"}
+{"question": "Let $a=0.1\\mathrm{e}^{0.1}, b=\\frac{1}{9}, c=-\\ln 0.9$, then the order is", "answer": "$c<a<b$"}
+{"question": "Given $a=\\log_5 2, b=\\log_8 3, c=\\frac{1}{2}$, then the order is", "answer": "$a<c<b$"}
+{"question": "Let $a=\\log_2 0.3, b=\\log_{\\frac{1}{2}} 0.4, c=0.4^{0.3}$, then the order of $a, b, c$ is", "answer": "$a<c<b$"}
+{"question": "If $2^a=5^b=10$, then $\\frac{1}{a}+\\frac{1}{b}=$", "answer": "1"}
+{"question": "Let $a \\log_3 4=2$, then $4^{-a}=$", "answer": "$\\frac{1}{9}$"}
+{"question": "If $2^a + \\log_2 a = 4^b + 2\\log_4 b$, then the order is", "answer": "$a < 2b$"}
+{"question": "The Logistic model is a commonly used mathematical model applicable in epidemiology. Based on published data, researchers established a Logistic model for the cumulative confirmed COVID-19 cases $I(t)$ (unit of $t$: days) in a certain region: $I(t)=\\frac{K}{1+\\mathrm{e}^{-0.23(t-53)}}$, where $K$ is the maximum number of confirmed cases. When $I(t^*)=0.95K$, it indicates that the epidemic has been initially contained. Then $t^*$ is approximately ($\\ln 19 \\approx 3$)", "answer": "66"}
+{"question": "Let $a=\\log_3 2, b=\\log_5 3, c=\\frac{2}{3}$, then", "answer": "$a<c<b$"}
+{"question": "Given $5^5<8^4$ and $13^4<8^5$. Let $a=\\log_5 3, b=\\log_8 5, c=\\log_{13} 8$, then", "answer": "$a<b<c$"}
+{"question": "Let $a=3^{0.7}, b=\\left(\\frac{1}{3}\\right)^{-0.8}, c=\\log_{0.7} 0.8$, then the order of $a, b, c$ is", "answer": "$c<a<b$"}
+{"question": "Given $a=\\log_5 2, b=\\log_{0.5} 0.2, c=0.5^{0.2}$, then the order of $a, b, c$ is", "answer": "$a<c<b$"}
+{"question": "Let $a=\\log_{0.2} 0.3, b=\\log_2 0.3$, then", "answer": "$ab < a+b < 0$"}
+{"question": "Among the following functions, the one whose graph is symmetric to the graph of $y=\\ln x$ about the line $x=1$ is", "answer": "$y=\\ln(2-x)$"}
+{"question": "Given the function $f(x)=\\log_2(x^2+a)$, if $f(3)=1$, then $a=$", "answer": "$-7$"}
+{"question": "Given the function $f(x)=\\ln(\\sqrt{1+x^2}-x)+1$, if $f(a)=4$, then $f(-a)=$", "answer": "-2"}
+{"question": "Given the function $f(x)=\\begin{cases}e^x, & x \\leqslant 0 \\\\ \\ln x, & x>0\\end{cases}$ and $g(x)=f(x)+x+a$. If $g(x)$ has exactly 2 zeros, then the range of values of $a$ is", "answer": "$[-1, +\\infty)$"}
+{"question": "Given $a=\\log_2 e, b=\\ln 2, c=\\log_{\\frac{1}{2}} \\frac{1}{3}$, then the order of $a, b, c$ is", "answer": "$c>a>b$"}
+{"question": "The domain of the function $f(x)=\\sqrt{\\log_2 x - 1}$ is", "answer": "$[2, +\\infty)$"}
+{"question": "The monotonically increasing interval of the function $f(x)=\\ln(x^2-2x-8)$ is", "answer": "$(4, +\\infty)$"}
+{"question": "According to relevant data, the upper bound $M$ of the state-space complexity of Go is approximately $3^{361}$, and the total number of atoms of ordinary matter in the observable universe $N$ is approximately $10^{80}$. Among the following numbers, the one closest to $\\frac{M}{N}$ is (reference data: $\\lg 3 \\approx 0.48$)", "answer": "$10^{93}$"}
+{"question": "Among the following functions, the one whose domain and range are the same as those of the function $y=10^{\\lg x}$ is", "answer": "$y=\\frac{1}{\\sqrt{x}}$"}
+{"question": "Let the function $f(x)=\\begin{cases}1+\\log_2(2-x), & x<1 \\\\ 2^{x-1}, & x \\geqslant 1\\end{cases}$, then $f(-2)+f(\\log_2 12)=$", "answer": "9"}
+{"question": "Let the graph of the function $y=f(x)$ be symmetric to the graph of $y=2^{x+a}$ about the line $y=-x$. If $f(-2)+f(-4)=1$, then $a=$", "answer": "2"}
+{"question": "Given that $y=f(x)$ is an odd function, and when $x \\geqslant 0$, $f(x)=x^{\\frac{2}{3}}$, then the value of $f(-8)$ is", "answer": "$-4$"}
+{"question": "If $a>b>1$ and $0<c<1$, then", "answer": "$a \\log_b c < b \\log_a c$"}
+{"question": "Given $a=2^{\\frac{4}{3}}, b=4^{\\frac{2}{5}}, c=25^{\\frac{1}{3}}$, then", "answer": "$b < a < c$"}
+{"question": "If $a>b>0$ and $0<c<1$, then", "answer": "$\\log_c a < \\log_c b$"}
+{"question": "Let the function $f(x)=\\begin{cases}e^{x-1}, & x<1 \\\\ x^{\\frac{1}{3}}, & x \\geqslant 1\\end{cases}$, then the range of $x$ for which $f(x) \\leqslant 2$ holds is", "answer": "$(-\\infty, 8]$"}
+{"question": "Given $a \\in \\mathbb{R}$, if there exists a function $f(x)$ defined on $\\mathbb{R}$ that simultaneously satisfies: (1) for any $x_0 \\in \\mathbb{R}$, the value of $f(x_0)$ is either $x_0$ or $x_0^2$; (2) the equation $f(x)=a$ has no real solution; then the range of values of $a$ is", "answer": "$(-\\infty, 0) \\cup (0, 1) \\cup (1, +\\infty)$"}
+{"question": "Given the function $f(x)=\\begin{cases} x^3, & x \\geqslant 0 \\\\ -x, & x < 0 \\end{cases}$. If the function $g(x)=f(x)-|kx^2-2x|$ ($k \\in \\mathbb{R}$) has exactly 4 zeros, then the range of values of $k$ is", "answer": "$(-\\infty, 0) \\cup (2\\sqrt{2}, +\\infty)$"}
+{"question": "The number of zeros of the function $f(x)=2\\sin x - \\sin 2x$ on $[0, 2\\pi]$ is", "answer": "$3$"}
+{"question": "Let $f(x), g(x)$ be two periodic functions defined on $\\mathbb{R}$, where $f(x)$ has period 4 and $g(x)$ has period 2, and $f(x)$ is an odd function. When $x \\in (0,2]$, $f(x)=\\sqrt{1-(x-1)^2}$, $g(x)=\\begin{cases}k(x+2), & 0<x \\leqslant 1 \\\\ -\\frac{1}{2}, & 1<x \\leqslant 2\\end{cases}$, where $k>0$. If on the interval $(0, 9]$, the equation $f(x)=g(x)$ has 8 different real roots, then the range of values of $k$ is", "answer": "$\\left[\\frac{1}{3}, \\frac{1}{2\\sqrt{2}}\\right)$"}
+{"question": "Given $a, b \\in \\mathbb{R}$, the function $f(x)=\\begin{cases}x, & x<0 \\\\ \\frac{1}{3}x^3-\\frac{1}{2}(a+1)x^2+ax, & x \\geqslant 0\\end{cases}$. If the function $y=f(x)-ax-b$ has exactly 3 zeros, then", "answer": "$a>-1, b<0$"}
+{"question": "The number of zeros of the function $f(x)=\\cos\\left(3x+\\frac{\\pi}{6}\\right)$ on $[0,\\pi]$ is", "answer": "3"}
+{"question": "Given $\\lambda \\in \\mathbb{R}$, the function $f(x)=\\begin{cases} x-4, & x \\geqslant \\lambda \\\\ x^2-4x+3, & x < \\lambda \\end{cases}$. When $\\lambda=2$, the solution set of the inequality $f(x)<0$ is ____. If the function $f(x)$ has exactly 2 zeros, then the range of values of $\\lambda$ is ____.", "answer": "$(1,4); (1,3] \\cup (4,+\\infty)$"}
+{"question": "Given the function $f(x)=\\begin{cases}e^x, & x \\leqslant 0 \\\\ \\ln x, & x>0\\end{cases}$ and $g(x)=f(x)+x+a$. If $g(x)$ has exactly 2 zeros, then the range of values of $a$ is", "answer": "$[-1, +\\infty)$"}
+{"question": "Given that the function $f(x)=x^2-2x+a(e^{x-1}+e^{-x+1})$ has a unique zero, then $a=$", "answer": "$\\frac{1}{2}$"}
+{"question": "Let $f(x)$ be a function defined on $\\mathbb{R}$ with period 1. On the interval $[0, 1)$, $f(x)=\\begin{cases}x^2, & x \\in D \\\\ x, & x \\notin D\\end{cases}$, where $D=\\{x \\mid x=\\frac{n-1}{n}, n \\in \\mathbb{N}^*\\}$. Then the number of solutions to the equation $f(x)-\\lg x=0$ is", "answer": "$8$"}
+{"question": "Let $a \\in \\mathbb{R}$, the function $f(x)=\\begin{cases}\\cos(2\\pi x-2\\pi a), & x < a \\\\ x^2-2(a+1)x+a^2+5, & x \\geqslant a\\end{cases}$. If $f(x)$ has exactly 6 zeros in the interval $(0, +\\infty)$, then the range of values of $a$ is", "answer": "$\\left(2, \\frac{9}{4}\\right] \\cup \\left(\\frac{5}{2}, \\frac{11}{4}\\right]$"}
+{"question": "Let the function $f(x)$ be defined on $\\mathbb{R}$ and satisfy $f(x+1)=2f(x)$. When $x \\in (0,1]$, $f(x)=x(x-1)$. If for all $x \\in (-\\infty, m]$, $f(x) \\geqslant -\\frac{8}{9}$, then the range of values of $m$ is", "answer": "$\\left(-\\infty, \\frac{7}{3}\\right]$"}
+{"question": "Given $a>0$, the function $f(x)=\\begin{cases} x^2+2ax+a, & x \\leqslant 0 \\\\ -x^2+2ax-2a, & x>0 \\end{cases}$. If the equation $f(x)=ax$ has exactly 2 distinct real solutions, then the range of values of $a$ is", "answer": "$(4, 8)$"}
+{"question": "Given the function $f(x)=\\begin{cases} x^2-x+3, & x \\leqslant 1 \\\\ x+\\frac{2}{x}, & x>1 \\end{cases}$. Let $a \\in \\mathbb{R}$. If the inequality $f(x) \\geqslant \\left| \\frac{x}{2} + a \\right|$ holds for all $x \\in \\mathbb{R}$, then the range of values of $a$ is", "answer": "$\\left[-\\frac{47}{16}, 2\\right]$"}
+{"question": "When $x \\in [0,1]$, the graphs of the function $y=(mx-1)^2$ and $y=\\sqrt{x}+m$ have exactly one intersection point. Then the range of positive values of $m$ is", "answer": "$[0,1] \\cup [3,+\\infty)$"}
+{"question": "Let $f(x)$ be a function defined on $\\mathbb{R}$ with period 1. On the interval $[0, 1)$, $f(x)=\\begin{cases}x^2, & x \\in D \\\\ x, & x \\notin D\\end{cases}$, where $D=\\{x | x=\\frac{n-1}{n}, n \\in \\mathbb{N}^*\\}$. Then the number of solutions to the equation $f(x)-\\lg x=0$ is", "answer": "$8$"}
+{"question": "Given that the function $f(x)$ ($x \\in \\mathbb{R}$) satisfies $f(x)=f(2-x)$. If the graphs of $y=|x^2-2x-3|$ and $y=f(x)$ have intersection points $(x_1, y_1), (x_2, y_2), \\cdots, (x_m, y_m)$, then $\\sum_{i=1}^m x_i=$", "answer": "$m$"}
+{"question": "Let $f(x)=\\ln(1+|x|)-\\frac{1}{1+x^2}$, then the range of $x$ for which $f(x)>f(2x-1)$ holds is", "answer": "$\\left(\\frac{1}{3}, 1\\right)$"}
+{"question": "Given the function $f(x) = \\begin{cases} -x^2+2x, & x \\leqslant 0 \\\\ \\ln(x+1), & x > 0 \\end{cases}$. If $|f(x)| \\geqslant ax$, then the range of values of $a$ is", "answer": "$[-2, 0]$"}
+{"question": "Write the equations of the tangent lines to the curve $y = \\ln|x|$ that pass through the origin:", "answer": "$y = \\frac{1}{\\mathrm{e}}x, y = -\\frac{1}{\\mathrm{e}}x$"}
+{"question": "Given the function $f(x) = |e^x - 1|$, $x_1 < 0, x_2 > 0$. The tangent lines to the graph of $f(x)$ at points $A(x_1, f(x_1))$ and $B(x_2, f(x_2))$ are perpendicular to each other and intersect the $y$-axis at points $M$ and $N$ respectively. Then the range of $\\frac{|AM|}{|BN|}$ is", "answer": "$(0, 1)$"}
+{"question": "The equation of the tangent line to the curve $y = \\frac{2x-1}{x+2}$ at the point $(-1, -3)$ is", "answer": "$5x - y + 2 = 0$"}
+{"question": "If two tangent lines to the curve $y = e^x$ can be drawn through the point $(a, b)$, then", "answer": "$0 < b < e^a$"}
+{"question": "Let the function $f(x) = \\frac{\\mathrm{e}^x}{x+a}$. If $f'(1) = \\frac{\\mathrm{e}}{4}$, then $a =$", "answer": "$1$"}
+{"question": "A tangent line to the curve $y = \\ln x + x + 1$ has slope $2$. Then the equation of this tangent line is", "answer": "$y = 2x$"}
+{"question": "The equation of the tangent line to the curve $y = 3(x^2 + x)\\mathrm{e}^x$ at the point $(0, 0)$ is", "answer": "$y = 3x$"}
+{"question": "The equation of the tangent line to the curve $y=2\\sin x + \\cos x$ at the point $(\\pi, -1)$ is", "answer": "$2x+y-2\\pi+1=0$"}
+{"question": "The slope of the tangent line to the curve $y=(ax+1)e^x$ at the point $(0,1)$ is $-2$. Then $a=$", "answer": "$-3$"}
+{"question": "The equation of the tangent line to the curve $y = 2\\ln(x+1)$ at the point $(0,0)$ is", "answer": "$y = 2x$"}
+{"question": "The equation of the tangent line to the curve $y = 2\\ln x$ at the point $(1,0)$ is", "answer": "$y = 2x - 2$"}
+{"question": "Given the function $f(x) = x^3 + (a-1)x^2 + ax$. If $f(x)$ is an odd function, then the equation of the tangent line to the curve $y = f(x)$ at the point $(0,0)$ is", "answer": "$y = x$"}
+{"question": "Given that $f(x)$ is an even function. When $x<0$, $f(x)=\\ln(-x)+3x$. Then the equation of the tangent line to the curve $y=f(x)$ at the point $(1,-3)$ is", "answer": "$y=-2x-1$"}
+{"question": "Given that $f(x)$ is an even function. When $x \\leqslant 0$, $f(x)=\\mathrm{e}^{-x-1}-x$. Then the equation of the tangent line to the curve $y=f(x)$ at the point $(1,2)$ is", "answer": "$y=2x$"}
+{"question": "Given that the graph of the function $f(x)=ax^3+x+1$ has a tangent line at the point $(1,f(1))$ that passes through the point $(2,7)$, then $a=$", "answer": "1"}
+{"question": "Given that the tangent line to the curve $y=x+\\ln x$ at the point $(1,1)$ is also tangent to the curve $y=ax^2+(a+2)x+1$, then $a=$", "answer": "8"}
+{"question": "Let the equation of the tangent line to the curve $y=ax-\\ln(x+1)$ at the point $(0,0)$ be $y=2x$, then $a=$", "answer": "3"}
+{"question": "If the tangent line to the curve $y=x^\\alpha+1$ ($\\alpha \\in \\mathbb{R}$) at the point $(1,2)$ passes through the origin, then $\\alpha=$", "answer": "2"}
+{"question": "If the function $f(x)=x-\\frac{1}{3}\\sin 2x+a\\sin x$ is monotonically increasing on $(-\\infty, +\\infty)$, then the range of values of $a$ is", "answer": "$\\left[-\\frac{1}{3}, \\frac{1}{3}\\right]$"}
+{"question": "If the function $f(x)=kx-\\ln x$ is monotonically increasing on the interval $(1, +\\infty)$, then the range of values of $k$ is", "answer": "$[1, +\\infty)$"}
+{"question": "Given that $x=x_1$ and $x=x_2$ are respectively the local minimum point and local maximum point of the function $f(x)=2a^x-ex^2$ ($a>0$ and $a \\neq 1$). If $x_1<x_2$, then the range of values of $a$ is", "answer": "$\\left(\\frac{1}{e}, 1\\right)$"}
+{"question": "If $x = -2$ is an extremum point of the function $f(x) = (x^2 + ax - 1)e^{x-1}$, then the local minimum of $f(x)$ is", "answer": "-1"}
+{"question": "The minimum value of the function $f(x) = |2x - 1| - 2\\ln x$ is", "answer": "1"}
+{"question": "When $x \\in [-2, 1]$, the inequality $ax^3 - x^2 + 4x + 3 \\geqslant 0$ always holds. Then the range of values of the real number $a$ is", "answer": "$a \\in [-6, -2]$"}
+{"question": "Let the function $f(x) = e^x(2x - 1) - ax + a$, where $a < 1$. If there exists a unique integer $x_0$ such that $f(x_0) < 0$, then the range of values of $a$ is", "answer": "$a \\in \\left[\\frac{3}{2e}, 1\\right)$"}
+{"question": "Let $f'(x)$ be the derivative of the odd function $f(x)$ ($x \\in \\mathbb{R}$), and $f(-1) = 0$. When $x > 0$, $xf'(x) - f(x) < 0$. Then the range of $x$ for which $f(x) > 0$ is", "answer": "$x \\in (-\\infty, -1) \\cup (0, 1)$"}
+{"question": "Given that the function $f(x) = x^2 - 2x + a(e^{x-1} + e^{-x+1})$ has a unique zero, then $a =$", "answer": "$\\frac{1}{2}$"}
+{"question": "Given that the function $f(x) = ax^3 - 3x^2 + 1$. If $f(x)$ has a unique zero $x_0$ and $x_0 > 0$, then the range of values of $a$ is", "answer": "$a \\in (-\\infty, -2)$"}
+{"question": "If $S_1 = \\int_1^2 x^2 \\, dx$, $S_2 = \\int_1^2 \\frac{1}{x} \\, dx$, $S_3 = \\int_1^2 e^x \\, dx$, then the order of $S_1, S_2, S_3$ is", "answer": "$S_2 < S_1 < S_3$"}
+{"question": "Evaluate $\\int_0^2 (x - 1) \\, dx$", "answer": "0"}
+{"question": "If $\\int_0^T x^2 \\, dx = 9$, then the value of the constant $T$ is", "answer": "3"}
+{"question": "Evaluate the definite integral $\\int_{-1}^1 (x^2 + \\sin x) \\, dx =$", "answer": "$\\frac{2}{3}$"}
+{"question": "Let $f(x) = \\begin{cases} \\lg x, & x > 0 \\\\ x + \\int_0^a 3t^2 \\, dt, & x \\leqslant 0 \\end{cases}$. If $f(f(1)) = 1$, then $a =$", "answer": "8.1"}
+{"question": "The area of the closed region enclosed by the line $y = 4x$ and the curve $y = x^3$ in the first quadrant is", "answer": "4"}
+{"question": "Given that the vertex of angle $\\alpha$ is at the origin, the initial side coincides with the non-negative half of the $x$-axis, and the terminal side passes through two points $A(1, a)$ and $B(2, b)$, and $\\cos 2\\alpha = \\frac{2}{3}$, then $|a - b| =$", "answer": "$\\frac{\\sqrt{5}}{5}$"}
+{"question": "If $\\tan \\theta = -2$, then $\\frac{\\sin \\theta (1 + \\sin 2\\theta)}{\\sin \\theta + \\cos \\theta} =$", "answer": "$\\frac{2}{5}$"}
+{"question": "Given $\\alpha \\in (0, \\frac{\\pi}{2})$ and $2\\sin 2\\alpha = \\cos 2\\alpha + 1$, then $\\sin \\alpha =$", "answer": "$\\frac{\\sqrt{5}}{5}$"}
+{"question": "If $\\tan \\alpha = \\frac{1}{3}$, then $\\cos 2\\alpha =$", "answer": "$\\frac{4}{5}$"}
+{"question": "Given that $\\theta$ is a fourth-quadrant angle and $\\sin(\\theta + \\frac{\\pi}{4}) = \\frac{3}{5}$, then $\\tan(\\theta - \\frac{\\pi}{4}) =$", "answer": "$-\\frac{4}{3}$"}
+{"question": "If $\\theta$ is an angle in the second quadrant and $\\tan(\\theta + \\frac{\\pi}{4}) = \\frac{1}{2}$, then $\\sin \\theta + \\cos \\theta =$", "answer": "$-\\frac{\\sqrt{10}}{5}$"}
+{"question": "If $\\alpha \\in (0, \\frac{\\pi}{2})$ and $\\tan 2\\alpha = \\frac{\\cos \\alpha}{2 - \\sin \\alpha}$, then $\\tan \\alpha =$", "answer": "$\\frac{\\sqrt{15}}{15}$"}
+{"question": "If $\\tan \\theta = -2$, then $\\frac{\\sin \\theta (1 + \\sin 2\\theta)}{\\sin \\theta + \\cos \\theta} =$", "answer": "$\\frac{2}{5}$"}
+{"question": "$\\cos^2 \\frac{\\pi}{12} - \\cos^2 \\frac{5\\pi}{12} =$", "answer": "$\\frac{\\sqrt{3}}{2}$"}
+{"question": "Given $\\sin x = -\\frac{2}{3}$, find $\\cos 2x =$", "answer": "$\\frac{1}{9}$"}
+{"question": "Given $\\sin^2\\!\\left(\\frac{\\pi}{4} + \\alpha\\right) = \\frac{2}{3}$, the value of $\\sin 2\\alpha$ is", "answer": "$\\frac{1}{3}$"}
+{"question": "Given $\\tan \\theta = 2$, find $\\cos 2\\theta =$ ; $\\tan(\\theta - \\frac{\\pi}{4}) =$", "answer": "$-\\frac{3}{5} ; \\frac{1}{3}$"}
+{"question": "If the maximum value of the function $f(x) = \\sin(x + \\varphi) + \\cos x$ is $2$, then one possible value of the constant $\\varphi$ is", "answer": "$\\frac{\\pi}{2}$"}
+{"question": "Given $\\alpha \\in (0, \\frac{\\pi}{2})$ and $2\\sin 2\\alpha = \\cos 2\\alpha + 1$, find $\\sin \\alpha =$", "answer": "$\\frac{\\sqrt{5}}{5}$"}
+{"question": "The number of zeros of the function $f(x) = 2\\sin x - \\sin 2x$ on $[0, 2\\pi]$ is", "answer": "3"}
+{"question": "$\\tan 255^\\circ = $", "answer": "$2 + \\sqrt{3}$"}
+{"question": "If $\\sin \\alpha = \\frac{1}{3}$, then $\\cos 2\\alpha =$", "answer": "$\\frac{7}{9}$"}
+{"question": "Given $\\sin \\alpha + \\cos \\beta = 1$ and $\\cos \\alpha + \\sin \\beta = 0$, find $\\sin(\\alpha + \\beta) =$", "answer": "$-\\frac{1}{2}$"}
+{"question": "Given $\\tan(\\alpha - \\frac{5\\pi}{4}) = \\frac{1}{5}$, find $\\tan \\alpha =$", "answer": "$\\frac{3}{2}$"}
+{"question": "Given $\\alpha \\in (0, \\frac{\\pi}{2})$ and $\\tan \\alpha = 2$, find $\\cos(\\alpha - \\frac{\\pi}{4}) =$", "answer": "$\\frac{3\\sqrt{10}}{10}$"}
+{"question": "Given $\\sin \\alpha - \\cos \\alpha = \\frac{4}{3}$, find $\\sin 2\\alpha =$", "answer": "$-\\frac{7}{9}$"}
+{"question": "If $\\cos\\!\\left(\\frac{\\pi}{4} - \\alpha\\right) = \\frac{3}{5}$, then $\\sin 2\\alpha =$", "answer": "$\\frac{7}{25}$"}
+{"question": "$\\sin 20^\\circ \\cos 10^\\circ - \\cos 160^\\circ \\sin 10^\\circ =$", "answer": "$\\frac{1}{2}$"}
+{"question": "Let $\\alpha \\in (0, \\frac{\\pi}{2})$ and $\\beta \\in (0, \\frac{\\pi}{2})$ with $\\tan \\alpha = \\frac{1 + \\sin \\beta}{\\cos \\beta}$. Then", "answer": "$2\\alpha - \\beta = \\frac{\\pi}{2}$"}
+{"question": "Given $\\sin 2\\alpha = \\frac{2}{3}$, find $\\cos^2\\!(\\alpha + \\frac{\\pi}{4}) =$", "answer": "$\\frac{1}{6}$"}
+{"question": "The minimum and maximum values of the function $f(x) = \\cos x + (x + 1)\\sin x + 1$ on $[0, 2\\pi]$ are, respectively,", "answer": "$-\\frac{3\\pi}{2}, \\frac{\\pi}{2} + 2$"}
+{"question": "Let $T$ denote the minimum positive period of the function $f(x) = \\cos(\\omega x + \\varphi)$ $(\\omega > 0,\\, 0 < \\varphi < \\pi)$. If $f(T) = \\frac{\\sqrt{3}}{2}$ and $x = \\frac{\\pi}{9}$ is a zero of $f(x)$, then the minimum value of $\\omega$ is", "answer": "3"}
+{"question": "Let $T$ denote the minimum positive period of the function $f(x) = \\sin(\\omega x + \\frac{\\pi}{4}) + b$ $(\\omega > 0)$. If $\\frac{2\\pi}{3} < T < \\pi$ and the graph of $y = f(x)$ is centrally symmetric about the point $\\left(\\frac{3\\pi}{2},\\, 2\\right)$, then $f\\!\\left(\\frac{\\pi}{2}\\right) =$", "answer": "1"}
+{"question": "Among the following intervals, the one on which the function $f(x) = 7\\sin(x - \\frac{\\pi}{6})$ is monotonically increasing is", "answer": "$(0, \\frac{\\pi}{2})$"}
+{"question": "Given that part of the graph of the function $f(x) = 2\\cos(\\omega x + \\varphi)$ is shown in the figure, find $f\\!\\left(\\frac{\\pi}{2}\\right) =$", "answer": "$-\\sqrt{3}$"}
+{"question": "Among the following functions, the one that has period $\\frac{\\pi}{2}$ and is monotonically increasing on $\\left(\\frac{\\pi}{4},\\, \\frac{\\pi}{2}\\right)$ is", "answer": "$f(x) = |\\cos 2x|$"}
+{"question": "If $x_1 = \\frac{\\pi}{4}$ and $x_2 = \\frac{3\\pi}{4}$ are two adjacent extreme points of the function $f(x) = \\sin \\omega x$ $(\\omega > 0)$, then $\\omega =$", "answer": "2"}
+{"question": "The minimum value of the function $f(x) = \\sin(2x + \\frac{3\\pi}{2}) - 3\\cos x$ is", "answer": "$-4$"}
+{"question": "The number of zeros of the function $f(x) = \\cos(3x + \\frac{\\pi}{6})$ on $[0, \\pi]$ is", "answer": "3"}
+{"question": "If $f(x) = \\cos x - \\sin x$ is a decreasing function on $[-a, a]$, then the maximum value of $a$ is", "answer": "$\\frac{\\pi}{4}$"}
+{"question": "If $f(x) = \\cos x - \\sin x$ is a decreasing function on $[0, a]$, then the maximum value of $a$ is", "answer": "$\\frac{3\\pi}{4}$"}
+{"question": "The minimum positive period of the function $f(x) = \\frac{\\tan x}{1 + \\tan^2 x}$ is", "answer": "$\\pi$"}
+{"question": "The minimum positive period of the function $f(x) = \\sin(2x + \\frac{\\pi}{3})$ is", "answer": "$\\pi$"}
+{"question": "The graph of $f(x) = \\sin(\\omega x + \\frac{\\pi}{3})$ $(\\omega > 0)$ is shifted $\\frac{\\pi}{2}$ units to the left to obtain curve $C$. If $C$ is symmetric about the $y$-axis, then the minimum value of $\\omega$ is", "answer": "$\\frac{1}{3}$"}
+{"question": "Suppose the function $f(x) = \\sin(\\omega x + \\frac{\\pi}{3})$ has exactly three extreme points and two zeros on the interval $(0, \\pi)$. Then the range of $\\omega$ is", "answer": "$(\\frac{13}{6}, \\frac{8}{3}]$"}
+{"question": "If one zero of the function $f(x) = A\\sin x - \\sqrt{3}\\cos x$ is $\\frac{\\pi}{3}$, then $A =$ ______; $f\\!\\left(\\frac{\\pi}{2}\\right) =$ ______.", "answer": "① $1$ ; ② $-\\sqrt{2}$"}
+{"question": "The graph of $f(x) = \\sin(\\omega x + \\frac{\\pi}{3})$ $(\\omega > 0)$ is shifted $\\frac{\\pi}{2}$ units to the left to obtain curve $C$. If $C$ is symmetric about the $y$-axis, then the minimum value of $\\omega$ is", "answer": "$\\frac{1}{3}$"}
+{"question": "The $x$-coordinates of all points on the graph of $y = f(x)$ are compressed to $\\frac{1}{2}$ of their original values (the $y$-coordinates remain unchanged), and the resulting curve is then shifted $\\frac{\\pi}{3}$ units to the right to obtain the graph of $y = \\sin(x - \\frac{\\pi}{4})$. Then $f(x) =$", "answer": "$\\sin\\left(\\frac{x}{2} + \\frac{\\pi}{12}\\right)$"}
+{"question": "The graph of $y = 3\\sin(2x + \\frac{\\pi}{4})$ is shifted $\\frac{\\pi}{6}$ units to the right. The equation of the axis of symmetry of the resulting graph that is closest to the $y$-axis is", "answer": "$x = -\\frac{5\\pi}{24}$"}
+{"question": "Given that $f(x) = A\\sin(\\omega x + \\varphi)$ $(A > 0,\\, \\omega > 0,\\, |\\varphi| < \\pi)$ is an odd function, the $x$-coordinates of all points on the graph of $y = f(x)$ are stretched to twice their original values (the $y$-coordinates remain unchanged) to obtain the function $g(x)$. If the minimum positive period of $g(x)$ is $2\\pi$ and $g\\!\\left(\\frac{\\pi}{4}\\right) = \\sqrt{2}$, then $f\\!\\left(\\frac{3\\pi}{8}\\right) =$", "answer": "$\\sqrt{2}$"}
+{"question": "After shifting the graph of $y = 2\\sin(2x + \\frac{\\pi}{6})$ to the right by $\\frac{1}{4}$ of its period, the resulting function is", "answer": "$y = 2\\sin(2x - \\frac{\\pi}{3})$"}
+{"question": "The graph of $y = \\sin x - \\sqrt{3}\\cos x$ can be obtained from the graph of $y = \\sin x + \\sqrt{3}\\cos x$ by shifting it at least ______ units to the right.", "answer": "$\\frac{2\\pi}{3}$"}
+{"question": "The graph of $y = \\sin x - \\sqrt{3}\\cos x$ can be obtained from the graph of $y = 2\\sin x$ by shifting it at least ______ units to the right.", "answer": "$\\frac{\\pi}{3}$"}
+{"question": "After shifting the graph of $y = \\cos(2x + \\varphi)$ $(-\\pi \\le \\varphi \\le \\pi)$ to the right by $\\frac{\\pi}{2}$ units, it coincides with the graph of $y = \\sin(2x + \\frac{\\pi}{3})$. Then $\\varphi =$", "answer": "$\\frac{5\\pi}{6}$"}
+{"question": "The minimum positive period and maximum value of the function $f(x) = \\sin \\frac{x}{3} + \\cos \\frac{x}{3}$ are, respectively,", "answer": "$6\\pi$ and $\\sqrt{2}$"}
+{"question": "Given $f(x) = 2\\sin x + \\sin 2x$, the minimum value of $f(x)$ is", "answer": "$-\\frac{3\\sqrt{3}}{2}$"}
+{"question": "The maximum value of the function $f(x) = 2\\cos x + \\sin x$ is", "answer": "$\\sqrt{5}$"}
+{"question": "The maximum value of the function $f(x) = \\sin^2 x + \\sqrt{3}\\cos x - \\frac{3}{4}$ for $x \\in [0, \\frac{\\pi}{2}]$ is", "answer": "1"}
+{"question": "The maximum value of the function $f(x) = \\frac{1}{5}\\sin\\!\\left(x + \\frac{\\pi}{3}\\right) + \\cos\\!\\left(x - \\frac{\\pi}{6}\\right)$ is", "answer": "$\\frac{6}{5}$"}
+{"question": "The maximum value of the function $f(x) = \\cos 2x + 6\\cos\\!\\left(\\frac{\\pi}{2} - x\\right)$ is", "answer": "5"}
+{"question": "The maximum value of the function $f(x) = \\sin(x + 2\\varphi) - 2\\sin \\varphi \\cos(x + \\varphi)$ is", "answer": "1"}
+{"question": "Suppose the function $f(x) = \\sin x - 2\\cos x$ attains its maximum value at $x = \\theta$. Then $\\cos \\theta =$", "answer": "$-\\frac{2\\sqrt{5}}{5}$"}
+{"question": "Let $f(x) = \\sqrt{3}\\sin 3x + \\cos 3x$. If $|f(x)| \\le a$ holds for all real $x$, then the range of $a$ is", "answer": "$a \\ge 2$"}
+{"question": "The minimum and maximum values of the function $f(x) = \\cos x + (x + 1)\\sin x + 1$ on $[0, 2\\pi]$ are, respectively,", "answer": "$-\\frac{3\\pi}{2}, \\frac{\\pi}{2} + 2$"}
+{"question": "Let $T$ denote the minimum positive period of $f(x) = \\sin(\\omega x + \\frac{\\pi}{4}) + b$ $(\\omega > 0)$. If $\\frac{2\\pi}{3} < T < \\pi$ and the graph of $y = f(x)$ is centrally symmetric about $\\left(\\frac{3\\pi}{2},\\, 2\\right)$, then $f\\!\\left(\\frac{\\pi}{2}\\right) =$", "answer": "1"}
+{"question": "Given $f(x) = \\sin(\\omega x + \\varphi)$ $(\\omega > 0,\\, |\\varphi| \\le \\frac{\\pi}{2})$, where $x = -\\frac{\\pi}{4}$ is a zero of $f(x)$, $x = \\frac{\\pi}{4}$ is an axis of symmetry of $y = f(x)$, and $f(x)$ is monotonic on $\\left(\\frac{\\pi}{18},\\, \\frac{5\\pi}{36}\\right)$, then the maximum value of $\\omega$ is", "answer": "9"}
+{"question": "If the graph of $y = 2\\sin 2x$ is shifted $\\frac{\\pi}{12}$ units to the left, the axes of symmetry of the resulting graph are", "answer": "$x = \\frac{k\\pi}{2} + \\frac{\\pi}{6} (k \\in \\mathbb{Z})$"}
+{"question": "In $\\triangle ABC$, point $D$ lies on side $BC$ with $\\angle ADB = 120°$, $AD = 2$, and $CD = 2BD$. When $\\frac{AC}{AB}$ attains its minimum value, $BD =$", "answer": "$\\sqrt{3} - 1$"}
+{"question": "In $\\triangle ABC$, let $a, b, c$ be the sides opposite to $A, B, C$ respectively. The area is $\\sqrt{3}$, $B = 60°$, and $a^2 + c^2 = 3ac$. Find $b =$", "answer": "$2\\sqrt{2}$"}
+{"question": "In $\\triangle ABC$, let $a, b, c$ be the sides opposite to $A, B, C$. Given $a\\sin A - b\\sin B = 4c\\sin C$ and $\\cos A = -\\frac{1}{4}$, find $\\frac{b}{c} =$", "answer": "6"}
+{"question": "In $\\triangle ABC$, let $a, b, c$ be the sides opposite to $A, B, C$. If $b = 6$, $a = 2c$, and $B = \\frac{\\pi}{3}$, find the area of $\\triangle ABC$.", "answer": "$6\\sqrt{3}$"}
+{"question": "In $\\triangle ABC$, let $a, b, c$ be the sides opposite to $A, B, C$. Given $b\\sin C + c\\sin B = 4a\\sin B\\sin C$ and $b^2 + c^2 - a^2 = 8$, find the area of $\\triangle ABC$.", "answer": "$\\frac{2\\sqrt{3}}{3}$"}
+{"question": "In $\\triangle ABC$, let $a, b, c$ be the sides opposite to $A, B, C$. If the area equals $\\frac{a^2 + b^2 - c^2}{4}$, find $C =$", "answer": "$\\frac{\\pi}{4}$"}
+{"question": "In $\\triangle ABC$, let $a, b, c$ be the sides opposite to $A, B, C$. If $2b\\cos B = a\\cos C + c\\cos A$, find $B =$", "answer": "$\\frac{\\pi}{3}$"}
+{"question": "In $\\triangle ABC$, let $a, b, c$ be the sides opposite to $A, B, C$. Given $a = \\sqrt{5}$, $c = 2$, $\\cos A = \\frac{2}{3}$, find $b =$", "answer": "3"}
+{"question": "In $\\triangle ABC$, let $a, b, c$ be the sides opposite to $A, B, C$. If $\\cos A = \\frac{4}{5}$, $\\cos C = \\frac{5}{13}$, and $a = 1$, find $b =$", "answer": "$\\frac{21}{13}$"}
+{"question": "An obtuse triangle $ABC$ has area $\\frac{1}{2}$, $AB = 1$, and $BC = \\sqrt{2}$. Find $AC =$", "answer": "$\\sqrt{5}$"}
+{"question": "In $\\triangle ABC$, let $a, b, c$ be the sides opposite to $A, B, C$. Given $a = 2$ and $(2 + b)(\\sin A - \\sin B) = (c - b)\\sin C$, find the maximum area of $\\triangle ABC$.", "answer": "$\\sqrt{3}$"}
+{"question": "In the acute triangle $\\triangle ABC$, let $a, b, c$ be the sides opposite to $A, B, C$. Given $23\\cos^2 A + \\cos 2A = 0$, $a = 7$, $c = 6$, find $b =$", "answer": "5"}
+{"question": "The famous Southern Song Dynasty mathematician Qin Jiushao discovered a formula for the area of a triangle from its three sides, which he called 'Sanxie Qiuji'. Written as a formula: $S = \\sqrt{\\frac{1}{4}\\!\\left[c^2a^2 - \\left(\\frac{c^2 + a^2 - b^2}{2}\\right)^2\\right]}$, where $a, b, c$ are the sides and $S$ is the area. For a triangle with $a = \\sqrt{2}$, $b = \\sqrt{3}$, $c = 2$, find $S =$", "answer": "$\\frac{\\sqrt{23}}{4}$"}
+{"question": "In $\\triangle ABC$, $\\cos C = \\frac{2}{3}$, $AC = 4$, $BC = 3$. Find $\\tan B =$", "answer": "$4\\sqrt{5}$"}
+{"question": "In $\\triangle ABC$, $\\cos C = \\frac{2}{3}$, $AC = 4$, $BC = 3$. Find $\\cos B =$", "answer": "$\\frac{1}{9}$"}
+{"question": "According to Al-Kashi's method, an approximation for $\\pi$ is given by", "answer": "$3n\\left(\\sin \\frac{30^\\circ}{n} + \\tan \\frac{30^\\circ}{n}\\right)$"}
+{"question": "In $\\triangle ABC$, $\\angle ABC = 90°$, $AB = 4$, $BC = 3$. Point $D$ lies on segment $AC$ with $\\angle BDC = 45°$. Find", "answer": "$BD = \\frac{12\\sqrt{2}}{5}, \\cos \\angle ABD = \\frac{7\\sqrt{2}}{10}$"}
+{"question": "In $\\triangle ABC$, $\\cos \\frac{C}{2} = \\frac{\\sqrt{5}}{5}$, $BC = 1$, $AC = 5$. Find $AB =$", "answer": "$4\\sqrt{2}$"}
+{"question": "In $\\triangle ABC$, let $a, b, c$ be the sides opposite to $A, B, C$. If $\\cos A = \\frac{4}{5}$, $\\cos C = \\frac{5}{13}$, and $a = 1$, find $b =$ ________.", "answer": "$\\frac{21}{13}$"}
+{"question": "In $\\triangle ABC$, $B = \\frac{\\pi}{4}$ and the altitude to side $BC$ equals $\\frac{1}{3}BC$. Find $\\cos A =$", "answer": "$-\\frac{\\sqrt{10}}{10}$"}
+{"question": "In $\\triangle ABC$, $B = \\frac{\\pi}{4}$ and the altitude to side $BC$ equals $\\frac{1}{3}BC$. Find $\\sin A =$", "answer": "$\\frac{3\\sqrt{10}}{10}$"}
+{"question": "In planar quadrilateral $ABCD$, $\\angle A = \\angle B = \\angle C = 75°$ and $BC = 2$. Then the range of $AB$ is ________.", "answer": "$(\\sqrt{6} - \\sqrt{2}, \\sqrt{6} + \\sqrt{2})$"}
+{"question": "In $\\triangle ABC$, point $D$ lies on side $AB$ with $BD = 2DA$. Let $\\vec{CA} = \\vec{m}$ and $\\vec{CD} = \\vec{n}$. Then $\\vec{CB} =$ A. $3\\vec{m} - 2\\vec{n}$ B. $-2\\vec{m} + 3\\vec{n}$ C. $3\\vec{m} + 2\\vec{n}$ D. $2\\vec{m} + 3\\vec{n}$", "answer": "$-2\\vec{m} + 3\\vec{n}$"}
+{"question": "Let the cosine of the angle between $\\vec{a}$ and $\\vec{b}$ be $\\frac{1}{3}$, with $|\\vec{a}| = 1$ and $|\\vec{b}| = 3$. Find $(2\\vec{a} + \\vec{b}) \\cdot \\vec{b} =$ ________.", "answer": "11"}
+{"question": "Given $\\vec{a} = (2, 1)$ and $\\vec{b} = (-2, 4)$, find $|\\vec{a} - \\vec{b}| =$ A. 2 B. 3 C. 4 D. 5", "answer": "5"}
+{"question": "In $\\triangle ABC$, $D$ is the midpoint of side $AB$. Then $\\vec{CB} =$ A. $2\\vec{CD} + \\vec{CA}$ B. $\\vec{CD} - 2\\vec{CA}$ C. $2\\vec{CD} - \\vec{CA}$ D. $\\vec{CD} + 2\\vec{CA}$", "answer": "$2\\vec{CD} - \\vec{CA}$"}
+{"question": "Let $D$, $E$, $F$ be the midpoints of sides $BC$, $CA$, $AB$ of $\\triangle ABC$ respectively. Then $\\vec{EB} + \\vec{FC} =$ A. $\\vec{BC}$ B. $\\frac{1}{2}\\vec{AD}$ C. $\\vec{AD}$ D. $\\frac{1}{2}\\vec{BC}$", "answer": "$\\vec{AD}$"}
+{"question": "In $\\triangle ABC$, $AD$ is the median to $BC$ and $E$ is the midpoint of $AD$. Then $\\vec{EB} =$ A. $\\frac{3}{4}\\vec{AB} - \\frac{1}{4}\\vec{AC}$ B. $\\frac{1}{4}\\vec{AB} - \\frac{3}{4}\\vec{AC}$ C. $\\frac{3}{4}\\vec{AB} + \\frac{1}{4}\\vec{AC}$ D. $\\frac{1}{4}\\vec{AB} + \\frac{3}{4}\\vec{AC}$", "answer": "$\\frac{3}{4}\\vec{AB} - \\frac{1}{4}\\vec{AC}$"}
+{"question": "In $\\triangle ABC$, points $M$ and $N$ satisfy $\\vec{AM} = 2\\vec{MC}$ and $\\vec{BN} = \\vec{NC}$. If $\\vec{MN} = x\\vec{AB} + y\\vec{AC}$, find $x =$ ________; $y =$ ________.", "answer": "$\\frac{1}{2}$  $-\\frac{1}{6}$"}
+{"question": "Let $D$ be a point in the plane of $\\triangle ABC$ with $\\vec{BC} = 3\\vec{CD}$. Then A. $\\vec{AD} = -\\frac{1}{3}\\vec{AB} + \\frac{4}{3}\\vec{AC}$ B. $\\vec{AD} = \\frac{1}{3}\\vec{AB} - \\frac{4}{3}\\vec{AC}$ C. $\\vec{AD} = \\frac{4}{3}\\vec{AB} + \\frac{1}{3}\\vec{AC}$ D. $\\vec{AD} = \\frac{4}{3}\\vec{AB} - \\frac{1}{3}\\vec{AC}$", "answer": "$\\vec{AD} = -\\frac{1}{3}\\vec{AB} + \\frac{4}{3}\\vec{AC}$"}
+{"question": "In square $ABCD$ with side length 2, $E$ is the midpoint of $CD$. Find $\\vec{AE} \\cdot \\vec{BD} =$ ________.", "answer": "2"}
+{"question": "Given $\\vec{a} = (3, 4)$, $\\vec{b} = (1, 0)$, $\\vec{c} = \\vec{a} + t\\vec{b}$. If the angle between $\\vec{a}$ and $\\vec{c}$ equals the angle between $\\vec{b}$ and $\\vec{c}$, then $t =$ A. $-6$ B. $-5$ C. $5$ D. $6$", "answer": "5"}
+{"question": "Given $\\vec{a} = (2, 5)$ and $\\vec{b} = (\\lambda, 4)$, if $\\vec{a} \\parallel \\vec{b}$, find $\\lambda =$ ________.", "answer": "$\\frac{8}{5}$"}
+{"question": "If $|\\vec{a}| = 3$, $|\\vec{a} - \\vec{b}| = 5$, and $\\vec{a} \\cdot \\vec{b} = 1$, find $|\\vec{b}| =$ ________.", "answer": "$3\\sqrt{2}$"}
+{"question": "Given $\\vec{a} = (3, 1)$, $\\vec{b} = (1, 0)$, $\\vec{c} = \\vec{a} + k\\vec{b}$. If $\\vec{a} \\perp \\vec{c}$, find $k =$ ________.", "answer": "$-\\frac{10}{3}$"}
+{"question": "Given $\\vec{a} = (2, 3)$ and $\\vec{b} = (3, 2)$, find $|\\vec{a} - \\vec{b}| =$ A. $\\sqrt{2}$ B. 2 C. $5\\sqrt{2}$ D. 50", "answer": "$\\sqrt{2}$"}
+{"question": "Given $\\vec{a} = (1, 2)$, $\\vec{b} = (2, -2)$, $\\vec{c} = (1, \\lambda)$. If $\\vec{c} \\parallel (2\\vec{a} + \\vec{b})$, find $\\lambda =$ ________.", "answer": "$\\frac{1}{2}$"}
+{"question": "Given $\\vec{a} = (m, 4)$ and $\\vec{b} = (3, -2)$ with $\\vec{a} \\parallel \\vec{b}$, find $m =$ ________.", "answer": "$-6$"}
+{"question": "Let $\\vec{a}$ and $\\vec{b}$ be non-parallel vectors. If $\\lambda\\vec{a} + \\vec{b}$ is parallel to $\\vec{a} + 2\\vec{b}$, find $\\lambda =$ ________.", "answer": "$\\frac{1}{2}$"}
+{"question": "Given $|\\vec{a}| = 1$, $|\\vec{b}| = \\sqrt{3}$, and $|\\vec{a} - 2\\vec{b}| = 3$, find $\\vec{a} \\cdot \\vec{b} =$ A. $-2$ B. $-1$ C. 1 D. 2", "answer": "1"}
+{"question": "Given $|\\vec{a}| = 5$, $|\\vec{b}| = 6$, and $\\vec{a} \\cdot \\vec{b} = -6$, find $\\cos\\langle \\vec{a},\\, \\vec{a} + \\vec{b} \\rangle =$", "answer": "$\\frac{19}{35}$"}
+{"question": "Given that the angle between unit vectors $\\vec{a}$ and $\\vec{b}$ is $45°$, and $k\\vec{a} - \\vec{b}$ is perpendicular to $\\vec{a}$, find $k =$ ________.", "answer": "$\\frac{\\sqrt{2}}{2}$"}
+{"question": "Let $\\vec{a}$ and $\\vec{b}$ be unit vectors with $|\\vec{a} + \\vec{b}| = 1$. Find $|\\vec{a} - \\vec{b}| =$ ________.", "answer": "$\\sqrt{3}$"}
+{"question": "Let $P$ be a point inside regular hexagon $ABCDEF$ with side length 2. The range of $\\vec{AP} \\cdot \\vec{AB}$ is A. $(-2, 6)$ B. $(-6, 2)$ C. $(-2, 4)$ D. $(-4, 6)$", "answer": "$(-2, 6)$"}
+{"question": "Given $\\vec{a} = (2, 2)$ and $\\vec{b} = (-8, 6)$, find $\\cos\\langle \\vec{a}, \\vec{b} \\rangle =$ ________.", "answer": "$-\\frac{\\sqrt{2}}{10}$"}
+{"question": "Given $|\\vec{a}| = 1$ and $\\vec{a} \\cdot \\vec{b} = -1$, find $\\vec{a} \\cdot (2\\vec{a} - \\vec{b}) =$ A. 4 B. 3 C. 2 D. 0", "answer": "3"}
+{"question": "Let $\\vec{m}$ and $\\vec{n}$ be nonzero vectors. The condition 'there exists a negative number $\\lambda$ such that $\\vec{m} = \\lambda\\vec{n}$' is a ______ condition for '$\\vec{m} \\cdot \\vec{n} < 0$'. A. Sufficient but not necessary B. Necessary but not sufficient C. Sufficient and necessary D. Neither sufficient nor necessary", "answer": "A"}
+{"question": "In square $ABCD$ with side length 2, $E$ is the midpoint of $CD$. Find $\\vec{AE} \\cdot \\vec{BD} =$ ________.", "answer": "2"}
+{"question": "Given $\\vec{a} + \\vec{b} + \\vec{c} = \\vec{0}$, $|\\vec{a}| = 1$, $|\\vec{b}| = |\\vec{c}| = 2$, find $\\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{c} + \\vec{c} \\cdot \\vec{a} =$ ________.", "answer": "$-\\frac{9}{2}$"}
+{"question": "Let $\\vec{a}$ and $\\vec{b}$ be unit vectors with $\\vec{a} \\cdot \\vec{b} = 0$. If $\\vec{c} = 2\\vec{a} - \\sqrt{5}\\vec{b}$, find $\\cos\\langle \\vec{a}, \\vec{c} \\rangle =$ ________.", "answer": "$\\frac{2}{3}$"}
+{"question": "Given nonzero vectors $\\vec{a}$ and $\\vec{b}$ with $|\\vec{a}| = 2|\\vec{b}|$ and $(\\vec{a} - \\vec{b}) \\perp \\vec{b}$, the angle between $\\vec{a}$ and $\\vec{b}$ is A. $\\frac{\\pi}{6}$ B. $\\frac{\\pi}{3}$ C. $\\frac{2\\pi}{3}$ D. $\\frac{5\\pi}{6}$", "answer": "B"}
+{"question": "Let $\\vec{a}$ and $\\vec{b}$ be unit vectors. The condition '$|\\vec{a} - 3\\vec{b}| = |3\\vec{a} + \\vec{b}|$' is a ______ condition for '$\\vec{a} \\perp \\vec{b}$'. A. Sufficient but not necessary B. Necessary but not sufficient C. Sufficient and necessary D. Neither sufficient nor necessary", "answer": "C"}
+{"question": "Given mutually perpendicular unit vectors $\\vec{e_1}$ and $\\vec{e_2}$, if the angle between $\\sqrt{3}\\vec{e_1} - \\vec{e_2}$ and $\\vec{e_1} + \\lambda\\vec{e_2}$ is $60°$, find $\\lambda =$ ________.", "answer": "$\\frac{\\sqrt{3}}{3}$"}
+{"question": "Let nonzero vectors $\\vec{a}$ and $\\vec{b}$ satisfy $|\\vec{a} + \\vec{b}| = |\\vec{a} - \\vec{b}|$. Then A. $\\vec{a} \\perp \\vec{b}$ B. $|\\vec{a}| = |\\vec{b}|$ C. $\\vec{a} \\parallel \\vec{b}$ D. $|\\vec{a}| > |\\vec{b}|$", "answer": "A"}
+{"question": "The angle between $\\vec{a}$ and $\\vec{b}$ is $60°$, $|\\vec{a}| = 2$, $|\\vec{b}| = 1$. Find $|\\vec{a} + 2\\vec{b}| =$ ________.", "answer": "$2\\sqrt{3}$"}
+{"question": "Given $\\vec{a} = (-1, 2)$ and $\\vec{b} = (m, 1)$, if $\\vec{a} + \\vec{b}$ is perpendicular to $\\vec{a}$, find $m =$ ________.", "answer": "7"}
+{"question": "Given $\\vec{a} = (1, m)$ and $\\vec{b} = (3, -2)$ with $(\\vec{a} + \\vec{b}) \\perp \\vec{b}$, find $m =$", "answer": "8"}
+{"question": "Let $\\vec{a} = (m, 1)$ and $\\vec{b} = (1, 2)$ with $|\\vec{a} + \\vec{b}|^2 = |\\vec{a}|^2 + |\\vec{b}|^2$. Find $m =$ ________.", "answer": "$-2$"}
+{"question": "Given $(\\vec{a} + \\vec{b})^2 = 10$ and $(\\vec{a} - \\vec{b})^2 = 6$, find $\\vec{a} \\cdot \\vec{b} =$ A. 1 B. 2 C. 3 D. 5", "answer": "1"}
+{"question": "Let $P$ be a point on side $A_1A_2$ of a regular octagon $A_1A_2\\cdots A_8$ inscribed in the unit circle. Find the range of $\\overrightarrow{PA_1}^2 + \\overrightarrow{PA_2}^2 + \\cdots + \\overrightarrow{PA_8}^2 =$ ________.", "answer": "$[12 + 2\\sqrt{2}, 16]$"}
+{"question": "In $\\triangle ABC$, $AC = 3$, $BC = 4$, $\\angle C = 90°$. $P$ is a moving point in the plane with $PC = 1$. The range of $\\vec{PA} \\cdot \\vec{PB}$ is A. $[-5, 3]$ B. $[-3, 5]$ C. $[-6, 4]$ D. $[-4, 6]$", "answer": "D"}
+{"question": "In equilateral triangle $ABC$ with side length 1, $D$ is a moving point on $BC$. $DE \\perp AB$ meets $AB$ at $E$, and $DF \\parallel AB$ meets $AC$ at $F$. Find: $|2\\vec{BE} + \\vec{DF}| =$ ________; the minimum value of $(\\vec{DE} + \\vec{DF}) \\cdot \\vec{DA} =$ ________.", "answer": "1  $\\frac{11}{20}$"}
+{"question": "Let $\\vec{e_1}$ and $\\vec{e_2}$ be unit vectors satisfying $|2\\vec{e_1} - \\vec{e_2}| \\le \\sqrt{2}$. Let $\\vec{a} = \\vec{e_1} + \\vec{e_2}$ and $\\vec{b} = 3\\vec{e_1} + \\vec{e_2}$. If $\\theta$ is the angle between $\\vec{a}$ and $\\vec{b}$, find the minimum value of $\\cos^2\\theta =$ ________.", "answer": "$\\frac{28}{29}$"}
+{"question": "In square $ABCD$ with side length 2, point $P$ satisfies $\\vec{AP} = \\frac{1}{2}(\\vec{AB} + \\vec{AC})$. Find $|\\vec{PD}| =$ ________; $\\vec{PB} \\cdot \\vec{PD} =$ ________.", "answer": "$\\sqrt{5}$  $-1$"}
+{"question": "Let $\\vec{a_1}, \\vec{a_2}, \\vec{b_1}, \\vec{b_2}, \\ldots, \\vec{b_k}$ $(k \\in \\mathbb{N}^*)$ be pairwise distinct plane vectors satisfying $|\\vec{a_1} - \\vec{a_2}| = 1$ and $|\\vec{a_i} - \\vec{b_j}| \\in \\{1, 2\\}$ for $i = 1, 2$ and $j = 1, 2, \\ldots, k$. Find the maximum value of $k =$ ________.", "answer": "6"}
+{"question": "In quadrilateral $ABCD$, $AD \\parallel BC$, $AB = 2\\sqrt{3}$, $AD = 5$, $\\angle A = 30°$. Point $E$ lies on the extension of $CB$ with $AE = BE$. Find $\\vec{BD} \\cdot \\vec{AE} =$ ________.", "answer": "$-1$"}
+{"question": "Let $\\vec{a}$, $\\vec{b}$, $\\vec{e}$ be plane vectors with $\\vec{e}$ a unit vector. The angle between nonzero vector $\\vec{a}$ and $\\vec{e}$ is $\\frac{\\pi}{3}$, and $\\vec{b}$ satisfies $|\\vec{b}|^2 - 4\\vec{e} \\cdot \\vec{b} + 3 = 0$. The minimum value of $|\\vec{a} - \\vec{b}|$ is A. $\\sqrt{3} - 1$ B. $\\sqrt{3} + 1$ C. 2 D. $2 - \\sqrt{3}$", "answer": "$\\sqrt{3} - 1$"}
+{"question": "In the Cartesian plane, $A(-1, 0)$ and $B(2, 0)$ are fixed. $E$ and $F$ are moving points on the $y$-axis with $|\\vec{EF}| = 2$. Find the minimum value of $\\vec{AE} \\cdot \\vec{BF} =$ ________.", "answer": "$-3$"}
+{"question": "Given $|\\vec{a}| = 1$ and $|\\vec{b}| = 2$, find the minimum value and maximum value of $|\\vec{a} + \\vec{b}| + |\\vec{a} - \\vec{b}|$: minimum = ________, maximum = ________.", "answer": "4, 2\\sqrt{5}"}
+{"question": "In rectangle $ABCD$ with $AB = 1$ and $AD = 2$, moving point $P$ lies on the circle centered at $C$ and tangent to diagonal $BD$. If $\\vec{AP} = \\lambda\\vec{AB} + \\mu\\vec{AD}$, the maximum value of $\\lambda + \\mu$ is A. 3 B. $2\\sqrt{2}$ C. $\\sqrt{5}$ D. 2", "answer": "3"}
+{"question": "Let $\\triangle ABC$ be equilateral with side length 2, and $P$ a point in the plane. The minimum value of $\\vec{PA} \\cdot (\\vec{PB} + \\vec{PC})$ is A. $-2$ B. $-\\frac{3}{2}$ C. $-\\frac{4}{3}$ D. $-1$", "answer": "$-\\frac{3}{2}$"}
+{"question": "Let $M(x_0, y_0)$ be a point on the hyperbola $C:\\, \\frac{x^2}{2} - y^2 = 1$, and $F_1$, $F_2$ its foci. If $\\vec{MF_1} \\cdot \\vec{MF_2} < 0$, the range of $y_0$ is A. $\\left(-\\frac{\\sqrt{3}}{3},\\, \\frac{\\sqrt{3}}{3}\\right)$ B. $\\left(-\\frac{\\sqrt{3}}{6},\\, \\frac{\\sqrt{3}}{6}\\right)$ C. $\\left(-\\frac{2\\sqrt{2}}{3},\\, \\frac{2\\sqrt{2}}{3}\\right)$ D. $\\left(-\\frac{2\\sqrt{3}}{3},\\, \\frac{2\\sqrt{3}}{3}\\right)$", "answer": "(-\\frac{\\sqrt{3}}{3}, \\frac{\\sqrt{3}}{3})"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the arithmetic sequence $\\{a_n\\}$. Given $a_2 = 3$ and $a_5 = 9$, find $S_{10} =$ ________.", "answer": "$\\frac{20}{11}$"}
+{"question": "The sequence $\\{a_n\\}$ satisfies $a_{n+1} = \\frac{1}{1 - a_n}$ and $a_8 = 2$. Find $a_1 =$ ________.", "answer": "$\\frac{1}{2}$"}
+{"question": "If the sum of the first $n$ terms of $\\{a_n\\}$ is $S_n = \\frac{2}{3}a_n + \\frac{1}{3}$, find the general term $a_n =$ ________.", "answer": "$(-2)^{n-1}$"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of $\\{a_n\\}$. If $S_n = 2a_n + 1$, find $S_6 =$ ________.", "answer": "$-63$"}
+{"question": "After completing its lunar mission, China's Chang'e-2 satellite became China's first artificial planet orbiting the Sun. To study the ratio of its orbital period to Earth's, the sequence $\\{b_n\\}$ is used: $b_1 = 1 + \\frac{1}{\\alpha_1}$, $b_2 = 1 + \\frac{1}{\\alpha_1 + \\frac{1}{\\alpha_2}}$, $b_3 = 1 + \\frac{1}{\\alpha_1 + \\frac{1}{\\alpha_2 + \\frac{1}{\\alpha_3}}}$, and so on, where $\\alpha_k \\in \\mathbb{N}^*$. Then A. $b_1 < b_5$ B. $b_3 < b_8$ C. $b_6 < b_2$ D. $b_4 < b_7$", "answer": "D"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the arithmetic sequence $\\{a_n\\}$. If $2S_3 = 3S_2 + 6$, find the common difference $d =$ ________.", "answer": "2"}
+{"question": "The Circular Mound Altar at the Temple of Heaven in Beijing has three tiers used for heaven worship. The top tier has a central 'Heaven Heart Stone' surrounded by a first ring of 9 fan-shaped slabs; each outward ring adds 9 more. The first ring of each lower tier has 9 more slabs than the last ring of the tier above, and each outward ring also adds 9. Given each tier has the same number of rings and the bottom tier has 729 more slabs than the middle tier, the total number of fan-shaped slabs (excluding the Heaven Heart Stone) is A. 3699 B. 3474 C. 3402 D. 3339", "answer": "3402"}
+{"question": "In the arithmetic sequence $\\{a_n\\}$, $a_1 \\neq 0$ and $a_1 + a_{10} = a_9$. Find $\\frac{a_1 + a_2 + \\cdots + a_9}{a_{10}} =$ ________.", "answer": "$\\frac{27}{8}$"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the arithmetic sequence $\\{a_n\\}$. If $a_1 \\neq 0$ and $a_2 = 3a_1$, find $\\frac{S_{10}}{S_5} =$ ________.", "answer": "4"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the arithmetic sequence $\\{a_n\\}$. Given $S_4 = 0$ and $a_5 = 5$, then A. $a_n = 2n - 5$ B. $a_n = 3n - 10$ C. $S_n = 2n^2 - 8n$ D. $S_n = \\frac{1}{2}n^2 - 2n$", "answer": "$a_n = 2n - 5$"}
+{"question": "(i) In the arithmetic sequence $\\{a_n\\}$, $a_1 \\neq 0$ and $a_1 + a_{10} = a_9$. Find $\\frac{a_1 + a_2 + \\cdots + a_9}{a_{10}} =$ ________. (ii) Let $\\{a_n\\}$ $(n \\in \\mathbb{N}^*)$ be arithmetic with partial sums $S_n$. If $a_2 a_5 + a_8 = 0$ and $S_9 = 27$, find $S_8 =$ ________.", "answer": "16"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the arithmetic sequence $\\{a_n\\}$. Given $a_2 = -3$ and $S_5 = -10$, find $a_5 =$ ________; the minimum value of $S_n =$ ________.", "answer": "0  $-10$"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the arithmetic sequence $\\{a_n\\}$. If $3S_3 = S_2 + S_4$ and $a_1 = 2$, find $a_5 =$ A. $-12$ B. $-10$ C. 10 D. 12", "answer": "$-10$"}
+{"question": "Let $\\{a_n\\}$ be a geometric sequence with $a_1 = 3$ and $a_2 + a_5 = 36$. Find the sum of the first 7 terms $S_7 =$ ________.", "answer": "14"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the arithmetic sequence $\\{a_n\\}$. Given $a_3 = 0$ and $a_6 + a_7 = 14$, find $S_7 =$ ________; general term $a_n =$ ________.", "answer": "21  $6n - 3$"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the arithmetic sequence $\\{a_n\\}$. If $a_1 + a_5 = 24$ and $S_6 = 48$, the common difference is A. 1 B. 2 C. 4 D. 8", "answer": "4"}
+{"question": "The arithmetic sequence $\\{a_n\\}$ has first term 1 and nonzero common difference. If $a_2$, $a_3$, $a_6$ form a geometric sequence, the sum of the first 6 terms is A. $-24$ B. $-3$ C. 3 D. 8", "answer": "$-24$"}
+{"question": "In the arithmetic sequence $\\{a_n\\}$, the sum of the first 9 terms is 27 and $a_{10} = 8$. Find $a_{100} =$", "answer": "98"}
+{"question": "Let $\\{a_n\\}$ be an arithmetic sequence with common difference 1 and partial sums $S_n$. If $S_8 = 4S_4$, find $a_{10} =$ A. $\\frac{17}{2}$ B. $\\frac{19}{2}$ C. 10 D. 12", "answer": "$\\frac{19}{2}$"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the arithmetic sequence $\\{a_n\\}$. If $a_1 + a_3 + a_5 = 3$, find $S_5 =$ A. 5 B. 7 C. 9 D. 11", "answer": "5"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of $\\{a_n\\}$ with $a_1 = -1$ and $a_{n+1} = S_{n+1}S_n$. Find $S_n =$ ________.", "answer": "$-\\frac{1}{n}$"}
+{"question": "The arithmetic sequence $\\{a_n\\}$ has common difference 2. If $a_2$, $a_4$, $a_8$ form a geometric sequence, then $S_n =$ A. $n(n+1)$ B. $n(n-1)$ C. $\\frac{n(n+1)}{2}$ D. $\\frac{n(n-1)}{2}$", "answer": "$n(n+1)$"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the geometric sequence $\\{a_n\\}$. If $S_2=4$ and $S_4=6$, then $S_6=$ A. 7 B. 8 C. 9 D. 10", "answer": "7"}
+{"question": "Let $\\{a_n\\}$ be a geometric sequence with $a_1+a_2+a_3=1$ and $a_2+a_3+a_4=2$. Then $a_6+a_7+a_8=$ A. 12 B. 24 C. 30 D. 32", "answer": "32"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the geometric sequence $\\{a_n\\}$. If $a_5-a_3=12$ and $a_6-a_4=24$, then $\\frac{S_n}{a_n}=$ A. $2^n-1$ B. $2-2^{1-n}$ C. $2-2^{n-1}$ D. $2^{1-n}-1$", "answer": "2 - 2^{1-n}"}
+{"question": "In the sequence $\\{a_n\\}$, $a_1=2$ and $a_{m+n}=a_m a_n$. If $a_{k+1}+a_{k+2}+\\cdots+a_{k+10}=2^{15}-2^5$, then $k=$", "answer": "4"}
+{"question": "In the geometric sequence $\\{a_n\\}$ with all positive terms, the sum of the first 4 terms is 15 and $a_5=3a_3+4a_1$. Find $a_3=$", "answer": "4"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the geometric sequence $\\{a_n\\}$. If $a_1=\\frac{1}{3}$ and $a_4^2=a_6$, then $S_5=$ ________.", "answer": "$\\frac{121}{3}$"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the geometric sequence $\\{a_n\\}$. If $a_1=1$ and $S_3=\\frac{3}{4}$, then $S_4=$ ________.", "answer": "$\\frac{5}{8}$"}
+{"question": "The twelve-tone equal temperament divides an octave into 12 equal parts to obtain 13 notes, where each note's frequency is $\\sqrt[12]{2}$ times the previous. If the first note has frequency $f$, the frequency of the eighth note is A. $\\sqrt[3]{2}f$ B. $\\sqrt[12]{2^2}f$ C. $\\sqrt[12]{2^5}f$ D. $\\sqrt[12]{2^7}f$", "answer": "$\\sqrt[12]{2^7}f$"}
+{"question": "Given $a_1, a_2, a_3, a_4$ form a geometric sequence and $a_1+a_2+a_3+a_4=\\ln(a_1+a_2+a_3)$. If $a_1>1$, then", "answer": "$a_1 > a_3, a_2 < a_4$"}
+{"question": "An ancient Chinese math problem: a 7-story pagoda has 381 lanterns in total, and each lower story has twice as many lanterns as the story above it. The number of lanterns at the top story is A. 1 B. 3 C. 5 D. 9", "answer": "3"}
+{"question": "In the sequence $\\{a_n\\}$, $a_1=2$ and $a_{n+1}=2a_n$. If $S_n=126$, then $n=$ ________.", "answer": "6"}
+{"question": "The geometric sequence $\\{a_n\\}$ satisfies $a_1=3$ and $a_1+a_3+a_5=21$. Then $a_3+a_5+a_7=$ A. 21 B. 42 C. 63 D. 84", "answer": "42"}
+{"question": "The geometric sequence $\\{a_n\\}$ satisfies $a_1=\\frac{1}{4}$ and $a_3 a_5=4(a_4-1)$. Then $a_2=$ A. 2 B. 1 C. $\\frac{1}{2}$ D. $\\frac{1}{8}$", "answer": "$\\frac{1}{2}$"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the geometric sequence $\\{a_n\\}$. Given $S_3=a_2+10a_1$ and $a_5=9$, find $a_1=$", "answer": "$\\frac{1}{9}$"}
+{"question": "The sequence $\\{a_n\\}$ satisfies $3a_{n+1}+a_n=0$ and $a_2=-\\frac{4}{3}$. The sum of the first 10 terms is", "answer": "$3(1 - 3^{-10})$"}
+{"question": "Let $\\{a_n\\}$ be arithmetic with common difference $d$, and $\\{b_n\\}$ geometric with common ratio $g$. The sum of the first $n$ terms of $\\{a_n+b_n\\}$ is $S_n=n^2-n+2^n-1$ $(n\\in\\mathbb{N}^*)$. Find $d+g$.", "answer": "3"}
+{"question": "A geometric sequence satisfies $a_1+a_3=10$ and $a_2+a_4=5$. Find $a_1 a_2\\cdots a_5$.", "answer": "64"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the arithmetic sequence $\\{a_n\\}$. If $a_1=-2$ and $a_2+a_6=2$, find $S_{10}=$", "answer": "25"}
+{"question": "Given the sequence $\\{a_n\\}$ with $a_n=\\frac{n(n+1)}{2}$, find $S_3=$", "answer": "10"}
+{"question": "The common terms of $\\{2n-1\\}$ and $\\{3n-2\\}$ arranged in increasing order form a sequence $\\{a_n\\}$. The sum of the first $n$ terms is", "answer": "$3n^2-2n$"}
+{"question": "The sequence $\\{a_n\\}$ satisfies $a_1=1$ and $a_{n+1}=\\frac{a_n}{1+\\sqrt{a_n}}$ $(n\\in\\mathbb{N}^*)$. Denoting the sum of the first $n$ terms by $S_n$, then", "answer": "$\\frac{3}{2} < S_{100} < 3$"}
+{"question": "The arithmetic sequence $\\{a_n\\}$ has $a_3=3$ and $S_4=10$. Find $\\sum_{k=1}^n \\frac{1}{S_k}=$", "answer": "$\\frac{2n}{n+1}$"}
+{"question": "If the general term of $\\{a_n\\}$ is $a_n=(-1)^n(3n-2)$, then $a_1+a_2+\\cdots+a_{10}=$", "answer": "15"}
+{"question": "Define a 'canonical 01 sequence' $\\{a_n\\}$ of $2m$ terms ($m$ zeros and $m$ ones) such that for any $k\\le 2m$, the number of 0's among $a_1,\\ldots,a_k$ is no less than the number of 1's. For $m=4$, the number of distinct such sequences is", "answer": "14"}
+{"question": "The arithmetic sequence $\\{a_n\\}$ has $S_{10}=0$ and $S_{15}=25$. Find the minimum value of $nS_n$.", "answer": "-49"}
+{"question": "Let $a=0.1e^{0.1}$, $b=\\frac{1}{9}$, $c=-\\ln 0.9$. Determine the size relationship.", "answer": "c < a < b"}
+{"question": "Let $a=\\frac{31}{32}$, $b=\\cos\\frac{1}{4}$, $c=4\\sin\\frac{1}{4}$. Determine the size relationship.", "answer": "c > b > a"}
+{"question": "If $2^a+\\log_2 a=4^b+2\\log_4 b$, determine the relationship between $a$ and $2b$.", "answer": "a < 2b"}
+{"question": "Let $a=3^{0.7}$, $b=\\left(\\frac{1}{3}\\right)^{-0.8}$, $c=\\log_{0.7}0.8$. Determine the size relationship among $a$, $b$, $c$.", "answer": "c < a < b"}
+{"question": "Let $f(x)=\\begin{cases}x+1, & x\\le 0 \\\\ 2^x, & x>0\\end{cases}$. Find the range of $x$ satisfying $f(x)+f\\!\\left(x-\\frac{1}{2}\\right)>1$.", "answer": "$\\left(-\\frac{1}{4}, +\\infty\\right)$"}
+{"question": "Let $f(x)=\\begin{cases}e^{x-1}, & x<1 \\\\ x^{1/3}, & x\\ge 1\\end{cases}$. Find the range of $x$ satisfying $f(x)<2$.", "answer": "(-∞,8]"}
+{"question": "For all real $x,y$ satisfying $x^2+y^2-xy=1$, determine", "answer": "$x + y \\ge -2$ \n$x^2 + y^2 \\le 2$"}
+{"question": "Let $\\alpha,\\beta,\\gamma$ be pairwise distinct acute angles. Among $\\sin\\alpha\\cos\\beta$, $\\sin\\beta\\cos\\gamma$, $\\sin\\gamma\\cos\\alpha$, the maximum number that can exceed $\\frac{1}{2}$ is", "answer": "2"}
+{"question": "For $a>0$ and $b>0$, find the minimum value of $\\frac{1}{a}+\\frac{a}{b^2}+b$.", "answer": "$2\\sqrt{2}$"}
+{"question": "Let $a>0$, $b>0$ with $ab=1$. Find the minimum value of $\\frac{1}{2a}+\\frac{1}{2b}+\\frac{8}{a+b}$.", "answer": "4"}
+{"question": "Let $x>0$, $y>0$, $x+2y=5$. Find the minimum value of $\\frac{(x+1)(2y+1)}{\\sqrt{xy}}$.", "answer": "$4\\sqrt{3}$"}
+{"question": "Given $a,b\\in\\mathbb{R}$ with $a-3b+6=0$, find the minimum value of $2^a+\\frac{1}{8^b}$.", "answer": "$\\left[\\frac{1}{2},1\\right]$"}
+{"question": "For $a,b\\in\\mathbb{R}$ with $ab>0$, find the minimum value of $\\frac{a^4+4b^4+1}{ab}$.", "answer": "4"}
+{"question": "Given $a\\in\\mathbb{R}$, the function $f(x)=\\left|x+\\frac{4}{x}-a\\right|+a$ has maximum value 5 on $[1,4]$. Find the range of $a$.", "answer": "$\\left(-\\infty, \\frac{9}{2}\\right)$"}
+{"question": "Given plane vectors $\\vec{a},\\vec{b},\\vec{c}$ $(\\vec{c}\\ne\\vec{0})$ with $|\\vec{a}|=1$, $|\\vec{b}|=2$, $\\vec{a}\\cdot\\vec{b}=0$, $(\\vec{a}-\\vec{b})\\cdot\\vec{c}=0$. Let $x,y$ be the projections of $\\vec{d}$ in the directions of $\\vec{a}$, $\\vec{b}$, and $z$ the projection of $\\vec{d}-\\vec{a}$ in the direction of $\\vec{c}$. Find the minimum value of $x^2+y^2+z^2$.", "answer": "$\\frac{2}{\\kappa}$"}
+{"question": "A number is chosen at random from $(0,1)$ and another from $(1,2)$. Find the probability that their sum exceeds $\\frac{7}{4}$.", "answer": "$\\frac{23}{32}$"}
+{"question": "If $x,y$ satisfy $\\{x-y-1\\ge 0\\}$, find the maximum of $x+7y$.", "answer": "1"}
+{"question": "If $x,y$ satisfy $\\{2x-y\\ge 0,\\, y\\ge 3\\}$, find the maximum of $2x+2y$.", "answer": "7"}
+{"question": "If $x,y$ satisfy $\\begin{cases}x+y\\ge -1\\\\x-y\\ge -1\\\\y\\ge -1\\end{cases}$ and $z=2x-y\\le 1$, find the maximum of $x+2y$.", "answer": "8"}
+{"question": "If $x,y$ satisfy $\\begin{cases}x+y\\ge 0\\\\2x-y\\ge 0\\\\x\\le 1\\end{cases}$, find the maximum of $x+2y$.", "answer": "7"}
+{"question": "If $x,y$ satisfy $\\begin{cases}2x+y-2\\le 0\\\\x-y-1\\ge 0\\\\y+1\\ge 0\\end{cases}$, find the maximum of $x+7y$.", "answer": "1"}
+{"question": "Given $x,y$ satisfying $\\begin{cases}x+y\\ge 2\\\\y\\ge 0\\\\x+2y-3\\le 0\\end{cases}$, find the maximum of $z=y-2x$.", "answer": "-1"}
+{"question": "If $x,y$ satisfy $\\begin{cases}2x+3y-6\\ge 0\\\\x+y-3\\le 0\\end{cases}$, find the maximum of $z=3x-y$.", "answer": "9"}
+{"question": "If $x,y$ satisfy $\\begin{cases}x-2y-2\\le 0\\\\x-y+1\\ge 0\\end{cases}$, find the maximum of $z=3x+2y$.", "answer": "6"}
+{"question": "If $x,y$ satisfy $\\begin{cases}x+2y-5\\ge 0\\\\x-2y+3\\ge 0\\end{cases}$, find the maximum of $z=x+y$.", "answer": "9"}
+{"question": "Let $x,y$ satisfy $\\begin{cases}2x+3y-3\\le 0\\\\2x-3y+3\\ge 0\\end{cases}$, find the range of $z=2x+y$.", "answer": "-15"}
+{"question": "Let $x,y$ satisfy $\\begin{cases}x+3y\\le 3\\\\x-y\\ge 1\\end{cases}$, find the range of $z=x+y$.", "answer": "3"}
+{"question": "Let $x,y$ satisfy $\\begin{cases}3x+2y-6\\le 0\\\\x\\ge 0\\\\y\\ge 0\\end{cases}$, find the range of $z=x-y$.", "answer": "[-3, 2]"}
+{"question": "If $x,y$ satisfy $x+y-2\\le 0$, find the minimum of $z=3x-4y$.", "answer": "-1"}
+{"question": "If $x,y$ satisfy the given constraints, find the minimum of $z=x-2y$.", "answer": "-5"}
+{"question": "If $x,y$ satisfy $x-2y\\le 0$ and $x+2y-2\\le 0$, find the maximum of $z=x+y$.", "answer": "$\\frac{3}{2}$"}
+{"question": "Let $x,y$ satisfy $\\{x-2y-1\\le 0\\}$, find the minimum of $z=2x+3y-5$.", "answer": "-10"}
+{"question": "If $x,y$ satisfy the given constraints, find the maximum of $z=3x+y$.", "answer": "4"}
+{"question": "If $x,y$ satisfy the given constraints, find the maximum of $z=2x+y$.", "answer": "8"}
+{"question": "Let $x,y$ satisfy the given constraints, find the maximum of $z=2x-y$.", "answer": "8"}
+{"question": "Let $x,y$ satisfy $x-y-1\\le 0$ and $x-3y+3\\ge 0$, find the maximum of $z=x+2y$.", "answer": "7"}
+{"question": "Let $x,y$ satisfy $\\{x+y-1\\ge 0,\\, y\\ge 0\\}$, find the minimum of $z=2x-3y$.", "answer": "$-6$"}
+{"question": "Let $x,y$ satisfy $\\begin{cases}1\\le x\\le 3\\\\y=0\\end{cases}$, find the maximum of $z=2x-y$.", "answer": "3"}
+{"question": "If $x,y$ satisfy $2x-3y\\le 9$, find the maximum of $x^2+y^2$.", "answer": "10"}
+{"question": "If $x,y$ satisfy $\\begin{cases}x-1\\ge 0\\\\x-y\\le 0\\end{cases}$ and $x+y-4\\le 0$, find the maximum of $\\frac{y}{x}$.", "answer": "3"}
+{"question": "Given circle $C:(x-a)^2+(y-b)^2=1$ and region $\\Omega=\\{(x,y)\\mid x+y-7\\le 0,\\, x-y+7\\ge 0,\\, y\\ge 0\\}$, if center $C\\in\\Omega$ and the circle is tangent to the $x$-axis, find the maximum of $a^2+b^2$.", "answer": "37"}
+{"question": "A high-tech company produces items A and B using materials X and Y. Each A requires 1.5 kg of X, 1 kg of Y, and 5 work-hours; each B requires 0.5 kg of X, 0.3 kg of Y, and 3 work-hours. Profit per A is 2100 yuan, per B is 900 yuan. Available: 150 kg of X, 90 kg of Y, at most 600 work-hours. Find the maximum total profit (in yuan).", "answer": "216000"}
+{"question": "Given $x,y$ satisfying $\\begin{cases}x-y\\ge 0\\\\x+y\\le 2\\\\y\\ge 0\\end{cases}$, if the maximum of $z=ax+y$ is 4, find $a=$", "answer": "2"}
+{"question": "Let $x,y$ satisfy $\\begin{cases}x+y-2\\le 0\\\\x-2y-2\\le 0\\\\2x-y\\ge 0\\end{cases}$. If $z=y-ax$ has a non-unique optimal solution, find $a$.", "answer": "2 or -1"}
+{"question": "If $x,y$ satisfy $\\begin{cases}x+y-2\\ge 0\\\\kx-y+2\\ge 0\\\\y\\ge 0\\end{cases}$ and the minimum of $z=y-x$ is $-4$, find $k$.", "answer": "$-\\frac{1}{2}$"}
+{"question": "Let $x,y$ satisfy $\\begin{cases}x+y\\ge a\\\\x-y\\le -1\\end{cases}$ and the minimum of $z=x+ay$ is 7. Find $a=$", "answer": "3"}
+{"question": "When $x,y$ satisfy $\\begin{cases}x+2y-4\\le 0\\\\x-y-1\\le 0\\end{cases}$, the inequality $1\\le ax+y$ holds for all such $x,y$ with $x\\ge 1$. Find the range of $a$.", "answer": "$\\left[1, \\frac{3}{2}\\right]$"}
+{"question": "If $x,y$ satisfy $\\begin{cases}y\\le x\\\\x+y\\le 4\\\\y\\ge k\\end{cases}$ and the minimum of $z=2x+y$ is $-6$, find $k=$", "answer": "-2"}
+{"question": "Given $a>0$ and $x,y$ satisfying $\\begin{cases}x\\ge 1\\\\x+y\\le 3\\\\y\\ge a(x-3)\\end{cases}$, if the minimum of $z=2x+y$ is 1, find $a=$", "answer": "$\\frac{1}{2}$"}
+{"question": "Let $z=kx+y$ where $x,y$ satisfy $\\begin{cases}x\\ge 2\\\\x-2y+4\\ge 2\\end{cases}$. If the maximum of $z$ is 12, find $k=$", "answer": "2"}
+{"question": "A cone has base radius $\\sqrt{2}$ and its lateral surface unfolds to a semicircle. Find the slant height.", "answer": "$2\\sqrt{2}$"}
+{"question": "In the BeiDou satellite system, a geostationary satellite orbits at 36000 km altitude. Treating Earth as a sphere of radius $r=6400$ km, the satellite signal covers a surface area $S=2\\pi r^2(1-\\cos\\alpha)$ where $\\alpha$ is the maximum latitude visible. Find the percentage of Earth's surface covered.", "answer": "0.42"}
+{"question": "A cone has base radius 6 and volume $30\\pi$. Find its lateral surface area.", "answer": "39π"}
+{"question": "A cone has base radius $\\sqrt{2}$ and its lateral surface unfolds to a semicircle. Find the slant height.", "answer": "$2\\sqrt{2}$"}
+{"question": "A cone's lateral surface area is $2\\pi$ and unfolds to a semicircle. Find the base radius.", "answer": "1"}
+{"question": "A cone with apex $S$: the angle between slant edges $SA$ and $SB$ has cosine $\\frac{7}{8}$, $SA$ makes a $45°$ angle with the base, and the area of $\\triangle SAB$ is $5\\sqrt{15}$. Find the lateral surface area.", "answer": "$40\\sqrt{2}\\pi$"}
+{"question": "A regular frustum has upper and lower base edges 2 and 4 respectively, and lateral edge 2. Find its volume.", "answer": "$\\frac{28}{3}\\sqrt{2}$"}
+{"question": "Points $A$, $B$, $C$ are on a sphere of radius 1. Given $AC\\perp BC$ and $AC=BC=1$, find the volume of tetrahedron $O$-$ABC$.", "answer": "$\\frac{\\sqrt{3}}{4}$"}
+{"question": "Two cones share the same base (a cross-section of a sphere of volume $\\frac{32\\pi}{3}$) and have their apices on the sphere. If the height ratio is $1:3$, find the total volume of the two cones.", "answer": "4\\pi"}
+{"question": "In cube $ABCD$-$A_1B_1C_1D_1$ with edge 2, $M$ and $N$ are midpoints of $BB_1$ and $AB$ respectively. Find the volume of tetrahedron $A$-$NMD_1$.", "answer": "$\\frac{1}{3}$"}
+{"question": "A cone has apex $S$, with $SA\\perp SB$, and $SA$ makes a $30°$ angle with the base. If the area of $\\triangle SAB$ is 8, find the volume of the cone.", "answer": "8\\pi"}
+{"question": "Points $A$, $B$, $C$ are on sphere $O$, and circle $O_1$ is the circumscribed circle of $\\triangle ABC$ with area $4\\pi$. Given $AB=BC=AC=OO_1$, find the surface area of sphere $O$.", "answer": "$64\\pi$"}
+{"question": "An equilateral triangle $\\triangle ABC$ has area $\\frac{9\\sqrt{3}}{4}$ and all vertices on sphere $O$ with surface area $16\\pi$. Find the distance from $O$ to plane $ABC$.", "answer": "1"}
+{"question": "A cube with edge $2\\sqrt{3}$ has all vertices on a sphere. Find the surface area of the sphere.", "answer": "$36\\pi$"}
+{"question": "A cone has base radius 1 and slant height 3. Find the volume of the largest sphere that fits inside the cone.", "answer": "$\\frac{\\sqrt{2}}{2}\\pi$"}
+{"question": "In right prism $ABCD$-$A_1B_1C_1D_1$ with all edges of length 2 and $\\angle BAD=60°$, find the length of the intersection of the sphere centered at $D_1$ with radius $\\sqrt{5}$ and the lateral face $BCC_1B_1$.", "answer": "$\\frac{\\sqrt{2}}{2}\\pi$"}
+{"question": "A cylinder of height 1 has both circular bases on the same sphere of diameter 2. Find the volume of the cylinder.", "answer": "$\\frac{3\\pi}{4}$"}
+{"question": "All vertices of tetrahedron $S$-$ABC$ lie on sphere $O$, with $SC$ a diameter. Given plane $SCA\\perp$ plane $SCB$, $SA=AC$, $SB=BC$, and volume of $S$-$ABC$ is 9. Find the surface area of sphere $O$.", "answer": "36\\pi"}
+{"question": "A cuboid has dimensions $3\\times 2\\times 1$ with all vertices on sphere $O$. Find the surface area of sphere $O$.", "answer": "14\\pi"}
+{"question": "A ball is enclosed in a right triangular prism $ABC$-$A_1B_1C_1$ with $AB\\perp BC$, $AB=6$, $BC=8$, $AA_1=3$. Find the maximum volume $V$ of the ball.", "answer": "$\\frac{9\\pi}{2}$"}
+{"question": "Points $A$, $B$ are on sphere $O$ with $\\angle AOB=90°$. $C$ is a moving point on the sphere. If the maximum volume of tetrahedron $O$-$ABC$ is 36, find the surface area of sphere $O$.", "answer": "$144\\pi$"}
+{"question": "Point $H$ lies on diameter $AB$ of sphere $O$ with $AH:HB=1:2$. Plane $\\alpha\\perp AB$ at $H$ cuts sphere $O$ in a cross-section of area $\\pi$. Find the surface area of sphere $O$.", "answer": "$\\frac{9\\pi}{2}$"}
+{"question": "A regular quadrilateral pyramid $O$-$ABCD$ has volume $\\frac{3\\sqrt{2}}{2}$ and base edge $\\sqrt{3}$. Find the surface area of the sphere centered at $O$ with radius $OA$.", "answer": "24π"}
+{"question": "Given $\\angle ACB=90°$ and point $P$ outside plane $ABC$ with $PC=2$. The distances from $P$ to lines $AC$ and $BC$ are both $\\sqrt{3}$. Find the distance from $P$ to plane $ABC$.", "answer": "$\\sqrt{2}$"}
+{"question": "In cube $ABCD$-$A_1B_1C_1D_1$, $E$ is the midpoint of edge $CD$. Then", "answer": "$A_1E \\perp BC_1$"}
+{"question": "A unit cube has all edges making equal angles with plane $\\alpha$. Find the maximum area of the cross-section cut by $\\alpha$.", "answer": "$\\frac{3\\sqrt{3}}{4}$"}
+{"question": "In cube $ABCD$-$A_1B_1C_1D_1$, $P$ is the midpoint of $B_1D_1$. Find the angle between lines $PB$ and $AD$.", "answer": "$\\frac{\\pi}{2}$"}
+{"question": "In cuboid $ABCD$-$A_1B_1C_1D_1$ with $AB=BC=1$ and $AA_1=\\sqrt{3}$, find the cosine of the angle between skew lines $AD_1$ and $DB_1$.", "answer": "$\\frac{\\sqrt{5}}{5}$"}
+{"question": "In cube $ABCD$-$A_1B_1C_1D_1$, $E$ is the midpoint of $CC_1$. Find the tangent of the angle between skew lines $AE$ and $CD$.", "answer": "$\\frac{\\sqrt{5}}{2}$"}
+{"question": "In right prism $ABC$-$A_1B_1C_1$ with $\\angle ABC=120°$, $AB=2$, $BC=CC_1=1$, find the cosine of the angle between skew lines $AB_1$ and $BC_1$.", "answer": "$\\frac{\\sqrt{10}}{5}$"}
+{"question": "Plane $\\alpha$ passes through vertex $A$ of cube $ABCD$-$A_1B_1C_1D_1$ and is parallel to face $CB_1D_1$. It intersects face $ABCD$ in line $m$ and face $ABB_1A_1$ in line $n$. Find the sine of the angle between $m$ and $n$.", "answer": "$\\frac{\\sqrt{3}}{2}$"}
+{"question": "In pyramid $S$-$ABCD$ with square base and equal lateral edges, $E$ is a point on $AB$ (not an endpoint). Let $\\theta_1$ be the angle between $SE$ and $BC$, $\\theta_2$ the angle between $SE$ and plane $ABCD$, and $\\theta_3$ the dihedral angle $S$-$AB$-$C$. Then", "answer": "$\\theta_2 \\leq \\theta_3 \\leq \\theta_1$"}
+{"question": "If the line $2x+y-1=0$ is an axis of symmetry of the circle $(x-a)^2+y^2=1$, find $a=$", "answer": "$\\frac{1}{2}$"}
+{"question": "Find the maximum distance from point $(0,-1)$ to the line $y=k(x+1)$.", "answer": "$\\sqrt{2}$"}
+{"question": "Find the equation of the circle passing through $(0,0)$, $(1,1)$, and $(2,0)$.", "answer": "$x^2 + y^2 - 2x = 0$"}
+{"question": "Find the distance between parallel lines $l_1: 2x+y-1=0$ and $l_2: 2x+y+1=0$.", "answer": "$\\frac{2\\sqrt{5}}{5}$"}
+{"question": "Given $A(-2,3)$ and $B(0,a)$, if the reflection of line $AB$ about $y=a$ intersects the circle $(x+3)^2+(y+2)^2=1$, find the range of $a$.", "answer": "$\\left[\\frac{1}{3}, \\frac{3}{2}\\right]$"}
+{"question": "A line with slope $\\sqrt{3}$ meets the $y$-axis at $A$ and is tangent to the circle $x^2+(y-1)^2=1$ at $B$. Find $|AB|=$", "answer": "$\\sqrt{3}$"}
+{"question": "Given circle $M: x^2+y^2-2x-2y-2=0$ and line $l: 2x+y+2=0$, with $P$ a moving point on $l$. Tangent lines $PA$, $PB$ touch circle $M$ at $A$, $B$. When $|PM|\\cdot|AB|$ is minimized, find the equation of line $AB$.", "answer": "$2x + y + 1 = 0$"}
+{"question": "If a circle passing through $(2,1)$ is tangent to both coordinate axes, find the distance from its center to the line $2x-y-3=0$.", "answer": "$\\frac{2\\sqrt{5}}{5}$"}
+{"question": "Given circle $x^2+y^2-6x=0$, find the minimum length of a chord through $(1,2)$.", "answer": "2"}
+{"question": "Line $l: y=kx+b$ ($k>0$) is tangent to circles $C_1: x^2+y^2=1$ and $C_2: (x-4)^2+y^2=1$. Find $k=$ ; $b=$", "answer": "$\\frac{\\sqrt{3}}{3}$; $-\\frac{2\\sqrt{3}}{3}$"}
+{"question": "Line $x-\\sqrt{3}y+8=0$ intersects circle $x^2+y^2=r^2$ ($r>0$) at $A$, $B$ with $|AB|=6$. Find $r=$", "answer": "5"}
+{"question": "A circle of radius 1 passes through $(3,4)$. Find the minimum distance from its center to the origin.", "answer": "4"}
+{"question": "Circle $C$ has center $(0,m)$ and radius $r$. If line $2x-y+3=0$ is tangent to $C$ at $A(-2,-1)$, find $m=$ , $r=$", "answer": "-2, $\\sqrt{5}$"}
+{"question": "Line $y=x+1$ intersects circle $x^2+y^2+2y-3=0$ at $A$, $B$. Find $|AB|=$", "answer": "2\\sqrt{2}"}
+{"question": "Line $x+y+2=0$ meets the $x$-axis at $A$ and $y$-axis at $B$. Point $P$ lies on circle $(x-2)^2+y^2=2$. Find the range of the area of $\\triangle ABP$.", "answer": "[2, 6]"}
+{"question": "Let $A=\\{(x,y)\\mid x^2+y^2\\le 3,\\, x\\in\\mathbb{Z},\\, y\\in\\mathbb{Z}\\}$. Find the number of elements in $A$.", "answer": "9"}
+{"question": "Let $d$ be the distance from $P(\\cos\\theta,\\sin\\theta)$ to line $x-my-2=0$. Find the maximum value of $d$ as $\\theta$ and $m$ vary.", "answer": "3"}
+{"question": "In rectangle $ABCD$ with $AB=1$ and $AD=2$, moving point $P$ lies on the circle centered at $C$ and tangent to diagonal $BD$. If $\\vec{AP}=\\lambda\\vec{AB}+\\mu\\vec{AD}$, find the maximum of $\\lambda+\\mu$.", "answer": "3"}
+{"question": "Line $l: x-\\sqrt{3}y+6=0$ intersects circle $x^2+y^2=12$ at $A$, $B$. Perpendiculars to $l$ at $A$ and $B$ meet the $x$-axis at $C$ and $D$. Find $|CD|=$", "answer": "4"}
+{"question": "Line $y=x+2a$ intersects circle $C: x^2+y^2-2ay-2=0$ at $A$, $B$ with $|AB|=2\\sqrt{3}$. Find the area of circle $C$.", "answer": "4\\pi"}
+{"question": "Given $A(1,0)$, $B(0,\\sqrt{3})$, $C(2,\\sqrt{3})$, find the distance from the circumcenter of $\\triangle ABC$ to the origin.", "answer": "$\\frac{\\sqrt{21}}{2}$"}
+{"question": "The circle through $A(1,3)$, $B(4,2)$, $C(1,-7)$ meets the $y$-axis at $M$, $N$. Find $|MN|=$", "answer": "4\\sqrt{6}"}
+{"question": "Let $M(x_0,1)$. If there exists a point $N$ on circle $O: x^2+y^2=1$ such that $\\angle OMN=45°$, find the range of $x_0$.", "answer": "$$[-1,1]$$"}
+{"question": "Given $A(-1,0)$, $B(1,0)$, $C(0,1)$, the line $y=ax+b$ ($a>0$) divides $\\triangle ABC$ into two equal areas. Find the range of $b$.", "answer": "$\\left(1 - \\frac{\\sqrt{2}}{2}, \\frac{1}{2}\\right)$"}
+{"question": "Ellipse $C: \\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ ($a>b>0$) has eccentricity $\\frac{1}{3}$, left vertex $A_1$, right vertex $A_2$, upper vertex $B$. If $\\overrightarrow{BA_1}\\cdot\\overrightarrow{BA_2}=-1$, find the equation of $C$.", "answer": "$\\frac{x^2}{9} + \\frac{y^2}{8} = 1$"}
+{"question": "Ellipse $C$ has foci $F_1(-1,0)$, $F_2(1,0)$. A line through $F_2$ meets $C$ at $A$, $B$ with $|AF_2|=2|F_2B|$ and $|AB|=|BF_1|$. Find the equation of $C$.", "answer": "$\\frac{x^2}{3} + \\frac{y^2}{2} = 1$"}
+{"question": "Let $P$ be a moving point on the ellipse $\\frac{x^2}{5}+\\frac{y^2}{3}=1$. Find the sum of distances from $P$ to the two foci.", "answer": "\\frac{25}{4}"}
+{"question": "Ellipse $C: \\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ ($a>b>0$) has left vertex $A$. Points $P$, $Q$ on $C$ are symmetric about the $y$-axis. If the product of the slopes of $AP$ and $AQ$ is $\\frac{1}{4}$, find the eccentricity of $C$.", "answer": "$\\frac{\\sqrt{3}}{2}$"}
+{"question": "Ellipse $C: \\frac{x^2}{a^2}+\\frac{y^2}{4}=1$ has foci $F_1$, $F_2$, and $M$ is on $C$. Find the maximum of $|MF_1|\\cdot|MF_2|$.", "answer": "9"}
+{"question": "Ellipse $C: \\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ ($a>b>0$) has upper vertex $B$. If every point $P$ on $C$ satisfies $|PB|\\le 2b$, find the range of the eccentricity.", "answer": "\\left(0,\\frac{\\sqrt{2}}{2}\\right]"}
+{"question": "Ellipse $\\frac{x^2}{16}+\\frac{y^2}{4}=1$ has foci $F_1$, $F_2$. $P$, $Q$ are symmetric about the origin with $|PQ|=|F_1F_2|$. Find the area of quadrilateral $PF_1QF_2$.", "answer": "8"}
+{"question": "Ellipse $C$ has foci $F_1(-1,0)$, $F_2(1,0)$. A line through $F_2$ meets $C$ at $A$, $B$ with $|AF_2|=2|F_2B|$ and $|AB|=|BF_1|$. Find the equation of $C$.", "answer": "$\\frac{x^2}{3} + \\frac{y^2}{2} = 1$"}
+{"question": "Ellipse $C: \\frac{x^2}{36}+\\frac{y^2}{20}=1$ has foci $F_1$, $F_2$. Point $M$ is on $C$ in the first quadrant. If $\\triangle MF_1F_2$ is isosceles, find the coordinates of $M$.", "answer": "$(3,\\sqrt{15})$"}
+{"question": "The ellipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ ($a>b>0$) has eccentricity $\\frac{1}{2}$. Then", "answer": "$3a^2 = 4b^2$"}
+{"question": "Ellipse $\\frac{x^2}{9}+\\frac{y^2}{5}=1$ has left focus $F$. Point $P$ is on the ellipse above the $x$-axis. If the midpoint of $PF$ lies on the circle centered at $O$ with radius $|OF|$, find the slope of $PF$.", "answer": "\\sqrt{15}"}
+{"question": "Foci $F_1$, $F_2$ of ellipse $C$, point $P$ on $C$ with $PF_1\\perp PF_2$ and $\\angle PF_2F_1=60°$. Find the eccentricity of $C$.", "answer": "$\\sqrt{3} - 1$"}
+{"question": "Ellipse $C: \\frac{x^2}{a^2}+\\frac{y^2}{4}=1$ has focus $(2,0)$. Find its eccentricity.", "answer": "$\\frac{\\sqrt{2}}{2}$"}
+{"question": "Let $P$ be a moving point on $\\frac{x^2}{5}+\\frac{y^2}{3}=1$. Find the sum of distances from $P$ to the two foci.", "answer": "$2\\sqrt{5}$"}
+{"question": "Find the eccentricity of $\\frac{x^2}{9}+\\frac{y^2}{4}=1$.", "answer": "$\\frac{\\sqrt{5}}{3}$"}
+{"question": "Ellipse $E$ has center at origin, eccentricity $\\frac{1}{2}$, and right focus coincides with the focus of parabola $y^2=8x$. $A$, $B$ are the intersections of the directrix of $E$ with $E$. Find $|AB|=$", "answer": "6"}
+{"question": "Ellipse $C: \\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ ($a>b>0$) has upper vertex $A$, foci $F_1$, $F_2$, eccentricity $\\frac{1}{2}$. A line through $F_1$ perpendicular to $AF_2$ meets $C$ at $D$, $E$ with $|DE|=6$. Find the perimeter of $\\triangle ADE$.", "answer": "13"}
+{"question": "Ellipse $\\frac{x^2}{6}+\\frac{y^2}{3}=1$: line $l$ meets the ellipse in the first quadrant at $A$, $B$, meets the $x$-axis at $M$ and $y$-axis at $N$ with $|MA|=|NB|$ and $|MN|=2\\sqrt{3}$. Find the equation of $l$.", "answer": "$x + \\sqrt{2}y - 2\\sqrt{2} = 0$"}
+{"question": "Ellipse $C: \\frac{x^2}{4}+\\frac{y^2}{3}=1$. Line $l$ passes through right focus $F$, meets $C$ at $P$ (in the second quadrant) and $Q$. If $Q'$ is the reflection of $Q$ about the $y$-axis, find the equation of $l$.", "answer": "y = -x + 1"}
+{"question": "Point $P(0,1)$. Points $A$, $B$ on ellipse $\\frac{x^2}{4}+y^2=m$ ($m>1$) satisfy $\\overrightarrow{AP}=2\\overrightarrow{PB}$. Find the value of $m$ that maximizes $|x_B|$.", "answer": "5"}
+{"question": "Ellipse $C: \\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ ($a>b>0$) has left and right vertices $A_1$, $A_2$. The circle with diameter $A_1A_2$ is tangent to $bx+ay+2ab=0$. Find the eccentricity.", "answer": "\\frac{\\sqrt{6}}{3}"}
+{"question": "A line through a vertex and a focus of an ellipse has center-to-line distance equal to $\\frac{1}{4}$ of the minor axis length. Find the eccentricity.", "answer": "$\\frac{1}{2}$"}
+{"question": "Ellipse $C: \\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ ($a>b>0$), left focus $F$, vertices $A$ (left), $B$ (right), $P$ on $C$ with $PF\\perp x$-axis. Line $l$ through $A$ meets $PF$ at $M$ and the $y$-axis at $E$. If line $BM$ passes through the midpoint of $OE$, find the eccentricity.", "answer": "$\\frac{1}{3}$"}
+{"question": "Ellipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ ($a>b>0$) has right focus $F(3,0)$. A line through $F$ meets the ellipse at $A$, $B$ with midpoint $(1,-1)$. Find the equation of the ellipse.", "answer": "$\\frac{x^2}{18} + \\frac{y^2}{9} = 1$"}
+{"question": "The asymptotes of hyperbola $y^2-\\frac{x^2}{m^2}=1$ ($m>0$) are tangent to circle $x^2+y^2-4y+3=0$. Find $m=$", "answer": "\\frac{\\sqrt{3}}{3}"}
+{"question": "The asymptotes of hyperbola $y^2+\\frac{x^2}{m}=1$ are $y=\\pm\\frac{\\sqrt{3}}{3}x$. Find $m=$", "answer": "-3"}
+{"question": "Let $a,b\\in\\mathbb{R}$ with $ab>0$ and $f(x)=ax^2+b$. If $f(s-t)$, $f(s)$, $f(s+t)$ form a geometric sequence, the locus of $(s,t)$ is", "answer": "a line and a hyperbola"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has asymptote $y=\\frac{\\sqrt{5}}{2}x$ and shares foci with ellipse $\\frac{x^2}{12}+\\frac{y^2}{3}=1$. Find the equation of $C$.", "answer": "\\frac{x^2}{4} - \\frac{y^2}{5} = 1"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has right focus $F$. Point $A$ is on an asymptote. $\\triangle OAF$ is equilateral with side 2 ($O$ is the origin). Find the equation.", "answer": "$x^2 - \\frac{y^2}{3} = 1$"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has left focus $F$, eccentricity $\\sqrt{2}$. The line through $F$ and $P(0,4)$ is parallel to an asymptote. Find the equation.", "answer": "$\\frac{x^2}{8} - \\frac{y^2}{8} = 1$"}
+{"question": "A hyperbola passes through $(4,\\sqrt{3})$ and has asymptotes $y=\\pm\\frac{1}{2}x$. Find its standard equation.", "answer": "$$\\frac{x^2}{4} - y^2 = 1$$"}
+{"question": "Hyperbola $C: \\frac{x^2}{m}-y^2=1$ ($m>0$) has an asymptote $\\sqrt{3}x+my=0$. Find the focal length.", "answer": "4"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has eccentricity $\\sqrt{5}$, $P$ on $C$ with $F_1P\\perp F_2P$, and area of $\\triangle PF_1F_2=4$. Find $a=$", "answer": "1"}
+{"question": "Line $x=a$ meets the two asymptotes of hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ at $D$, $E$. If the area of $\\triangle ODE$ is 8, find the minimum focal length.", "answer": "8"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-y^2=1$ ($a>0$) has eccentricity $\\sqrt{5}$. Find $a=$", "answer": "\\frac{1}{2}"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{9}=1$ ($a>0$) has an asymptote $y=\\frac{3}{5}x$. Find $a=$ ________.", "answer": "5"}
+{"question": "If hyperbola $x^2-\\frac{y^2}{m}=1$ has eccentricity $\\sqrt{3}$, find $m=$", "answer": "2"}
+{"question": "Equation $\\frac{x^2}{m^2+n}-\\frac{y^2}{3m^2-n}=1$ represents a hyperbola with focal distance 4. Find the range of $n$.", "answer": "(-1, 3)"}
+{"question": "Hyperbola $C$ has foci $F_1$, $F_2$. Circle $D$ has the real axis as diameter. A tangent from $F_1$ to $D$ meets both branches of $C$ at $M$, $N$ with $\\cos\\angle F_1NF_2=\\frac{3}{5}$. Find the eccentricity.", "answer": "$\\frac{\\sqrt{13}}{2}$"}
+{"question": "For hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$), write a value of eccentricity $e$ such that line $y=2x$ has no intersection with $C$.", "answer": "$2"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$), left focus $F$. A line with slope $\\frac{b}{4a}$ through $F$ meets the hyperbola at $A(x_1,y_1)$ and the asymptote at $B(x_2,y_2)$ with $x_1<0<x_2$. If $|FB|=3|FA|$, find the eccentricity.", "answer": "3√6"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$): right focus coincides with focus of parabola $y^2=2px$ ($p>0$). Directrix of parabola meets hyperbola at $A$, $B$ and asymptotes at $C$, $D$ with $|CD|=\\sqrt{2}|AB|$. Find the eccentricity.", "answer": "$\\sqrt{2}$"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has asymptote $y=\\sqrt{2}x$. Find the eccentricity.", "answer": "\\sqrt{3}"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{5}=1$ ($a>0$) has asymptote $y=\\frac{\\sqrt{5}}{2}x$. Find the eccentricity.", "answer": "$\\frac{3}{2}$"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$): right focus $F$, right vertex $A$, $B$ on $C$ with $BF\\perp x$-axis. If the slope of $AB$ is 3, find the eccentricity.", "answer": "2"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$): foci $F_1$, $F_2$. Line through $F_1$ meets both asymptotes at $A$, $B$ with $\\overrightarrow{F_1A}=\\overrightarrow{AB}$ and $\\overrightarrow{F_1B}\\cdot\\overrightarrow{F_2B}=0$. Find the eccentricity.", "answer": "2"}
+{"question": "Parabola $y^2=4x$ has focus $F$ and directrix $l$. $l$ meets the asymptotes of $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ at $A$, $B$ with $|AB|=4|OF|$. Find the eccentricity.", "answer": "$\\sqrt{5}$"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$): right focus $F$, origin $O$. Circle with $OF$ as diameter meets circle $x^2+y^2=a^2$ at $P$, $Q$ with $|PQ|=|OF|$. Find the eccentricity.", "answer": "$\\sqrt{2}$"}
+{"question": "Find the eccentricity of the hyperbola with asymptotes $x\\pm y=0$.", "answer": "$\\sqrt{2}$"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has an asymptote with inclination angle $130°$. Find the eccentricity.", "answer": "$\\frac{1}{\\cos 50^\\circ}$"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$): foci $F_1$, $F_2$, origin $O$. From $F_2$, draw a perpendicular to an asymptote with foot $P$. If $|PF_2|=\\sqrt{6}|OP|$, find the eccentricity.", "answer": "\\sqrt{3}"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$): right focus $F(c,0)$ has distance $\\frac{\\sqrt{3}}{2}c$ to an asymptote. Find the eccentricity.", "answer": "2"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$): an asymptote is cut by circle $(x-2)^2+y^2=4$ in a chord of length 2. Find the eccentricity.", "answer": "$\\frac{2\\sqrt{3}}{3}$"}
+{"question": "If $a>1$, find the range of the eccentricity of hyperbola $\\frac{x^2}{a^2}-y^2=1$.", "answer": "$(1,\\sqrt{2})$"}
+{"question": "Hyperbola $E: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$: foci $F_1$, $F_2$, $M$ on $E$ with $MF_1\\perp x$-axis, $\\sin\\angle MF_2F_1=\\frac{1}{3}$. Find the eccentricity.", "answer": "$\\sqrt{2}$"}
+{"question": "Find the distance from $(3,0)$ to an asymptote of $\\frac{x^2}{16}-\\frac{y^2}{9}=1$.", "answer": "$\\frac{9}{5}$"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has eccentricity 2. Find its asymptote equations.", "answer": "$y = \\pm \\sqrt{3}x$"}
+{"question": "Hyperbola $C: \\frac{x^2}{6}-\\frac{y^2}{3}=1$: find the right focus and the distance from the focus to an asymptote.", "answer": "(3,0), \\sqrt{3}"}
+{"question": "Hyperbola $x^2-\\frac{y^2}{t^2}=1$ ($b>0$) passes through $(3,4)$. Find its asymptote equations.", "answer": "$y = \\pm \\sqrt{2}x$"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has eccentricity $\\sqrt{3}$. Find its asymptote equations.", "answer": "$y = \\pm \\sqrt{2}x$"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has eccentricity $\\sqrt{2}$. Find the distance from $(4,0)$ to an asymptote.", "answer": "2\\sqrt{2}"}
+{"question": "Hyperbola $C: x^2-my^2=3m$ ($m>0$) has focus $F$. Find the distance from $F$ to an asymptote.", "answer": "$y = \\pm \\frac{1}{2}x$"}
+{"question": "Hyperbola $x^2-\\frac{y^2}{3}=1$: foci $F_1$, $F_2$, $P$ on hyperbola, $\\triangle F_1PF_2$ is an acute triangle. Find the range of $|PF_1|+|PF_2|$.", "answer": "$(2\\sqrt{7},8)$"}
+{"question": "The line through the right focus of $x^2-\\frac{y^2}{3}=1$ perpendicular to the $x$-axis meets both asymptotes at $A$, $B$. Find $|AB|=$", "answer": "$4\\sqrt{3}$"}
+{"question": "Hyperbola $E: \\frac{x^2}{a^2}-\\frac{y^2}{16}=1$: foci $F_1$, $F_2$, $P$ on $E$ with $|PF_1|=3$. Find $|PF_2|=$", "answer": "9"}
+{"question": "In the plane, $P$ is a moving point on $y=x+\\frac{4}{x}$ ($x>0$). Find the minimum distance from $P$ to line $x+y=0$.", "answer": "4"}
+{"question": "Hyperbola $C: x^2-\\frac{y^2}{3}=1$: foci $F_1$, $F_2$, $O$ origin, $P$ on $C$ with $|OP|=2$. Find the area of $\\triangle PF_1F_2$.", "answer": "3"}
+{"question": "Hyperbola $C: \\frac{x^2}{4}-\\frac{y^2}{2}=1$: right focus $F$, $P$ on an asymptote, $O$ origin with $|PO|=|PF|$. Find the area of $\\triangle PFO$.", "answer": "$\\frac{3\\sqrt{2}}{4}$"}
+{"question": "Hyperbola $C: \\frac{x^2}{4}-\\frac{y^2}{5}=1$: focus $F$, $P$ on $C$, $O$ origin, $|OP|=|OF|$. Find the area of $\\triangle OPF$.", "answer": "$\\frac{5}{2}$"}
+{"question": "Hyperbola $C: \\frac{x^2}{3}-y^2=1$: right focus $F$, $O$ origin. Line through $F$ meets both asymptotes at $M$, $N$. If $\\triangle OMN$ is a right triangle, find $|MN|=$", "answer": "3"}
+{"question": "Hyperbola $C: x^2-\\frac{y^2}{3}=1$: right focus $F$, $P$ on $C$ with $PF\\perp x$-axis, $A(1,3)$. Find the area of $\\triangle APF$.", "answer": "$\\frac{3}{2}$"}
+{"question": "Hyperbola $C: x^2-\\frac{y^2}{8}=1$: right focus $F$, $P$ on the left branch, $A(0,6\\sqrt{6})$. When the perimeter of $\\triangle APF$ is minimized, find the area.", "answer": "12\\sqrt{6}"}
+{"question": "Find the distance from the right focus of $\\frac{x^2}{4}-\\frac{y^2}{5}=1$ to line $x+2y-8=0$.", "answer": "$\\sqrt{5}$"}
+{"question": "Given $O(0,0)$, $A(-2,0)$, $B(2,0)$. Point $P$ satisfies $|PA|-|PB|=2$ and lies on $y=3\\sqrt{4-x^2}$. Find $|OP|=$", "answer": "$\\sqrt{10}$"}
+{"question": "Find the foci of hyperbola $\\frac{x^2}{3}-y^2=1$.", "answer": "(-2,0),(2,0)"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{5}=1$ ($a>0$) has asymptote $y=\\frac{\\sqrt{5}}{2}x$. Find the eccentricity.", "answer": "$\\frac{3}{2}$"}
+{"question": "Hyperbola $\\frac{x^2}{3}-y^2=1$: right directrix meets both asymptotes at $P$, $Q$; foci are $F_1$, $F_2$. Find the area of quadrilateral $F_1PF_2Q$.", "answer": "2\\sqrt{3}"}
+{"question": "Parabola $C: y^2=2px$ ($p>0$) has focus $F$. $P$ on $C$ with $PF\\perp x$-axis, $Q$ on $x$-axis with $PQ\\perp OP$, $O$ origin. If $|FQ|=6$, find the directrix equation.", "answer": "$x = -\\frac{3}{2}$"}
+{"question": "Parabola $C: y^2=4x$ has focus $F$. Curve $y=\\frac{k}{x}$ ($k>0$) meets $C$ at $P$ with $PF\\perp x$-axis. Find $k=$", "answer": "2"}
+{"question": "Point $A$ on parabola $C: y^2=2px$ ($p>0$) has distance 12 to the focus and distance 9 to the $y$-axis. Find $p=$", "answer": "6"}
+{"question": "If the focus of parabola $y^2=2px$ ($p>0$) coincides with a focus of ellipse $\\frac{x^2}{3p}+\\frac{y^2}{p}=1$, find $p=$", "answer": "8"}
+{"question": "A circle centered at the vertex of parabola $C$ meets $C$ at $A$, $B$ and meets the directrix at $D$, $E$. Given $|AB|=4\\sqrt{2}$ and $|DE|=2\\sqrt{5}$, find the distance from the focus to the directrix.", "answer": "4"}
+{"question": "Parabola $C: y^2=4\\sqrt{2}x$: $O$ origin, $F$ focus, $P$ on $C$ with $|PF|=4\\sqrt{2}$. Find the area of $\\triangle POF$.", "answer": "$2\\sqrt{3}$"}
+{"question": "Parabola $C: y^2=2px$ ($p>0$): line $x=2$ meets $C$ at $D$, $E$ with $OD\\perp OE$. Find the focus coordinates.", "answer": "$\\left(\\frac{1}{2}, 0\\right)$"}
+{"question": "A line with slope $\\sqrt{3}$ passes through the focus of $C: y^2=4x$ and meets $C$ at $A$, $B$. Find $|AB|=$", "answer": "$\\frac{16}{3}$"}
+{"question": "Parabola $y^2=4x$ has focus $F$ and directrix $l$. Find the equation of the circle centered at $F$ and tangent to $l$.", "answer": "$(x-1)^2 + y^2 = 4$"}
+{"question": "Non-collinear non-zero vectors $\\vec{e_1}$, $\\vec{e_2}$: if $(k\\vec{e_1}+\\vec{e_2})\\parallel(\\vec{e_1}+k\\vec{e_2})$, find $k=$", "answer": "$\\pm 1$"}
+{"question": "From the letters of 'education', 5 different letters are arranged in a row. Find the probability that the arrangement contains 'at' (consecutive and in order).", "answer": "$\\frac{1}{18}$"}
+{"question": "A regular icosahedron has all faces as equilateral triangles. Find its number of vertices.", "answer": "12"}
+{"question": "In the expansion of $(x+1)^6(ax-1)^2$, the coefficient of $x^3$ is 56. Find $a=$", "answer": "6 or -1"}
+{"question": "Find the minimum positive period of $y=\\cos^2\\frac{x}{2}-1$.", "answer": "$2\\pi$"}
+{"question": "The focus of parabola $(x-2)^2=2(y-m+2)$ lies on the $x$-axis. Find $m=$", "answer": "$\\frac{3}{2}$"}
+{"question": "In a county, per-capita income follows a normal distribution with $\\mu=500$, $\\sigma=20$. Find the percentage of people with income between 500 and 520 yuan.", "answer": "0.3415"}
+{"question": "$\\lim_{x\\to 1}\\frac{x+x^2+\\cdots+x^n-n}{x-1}=$", "answer": "$\\frac{n(n+1)}{2}$"}
+{"question": "A cube has total surface area 24. A sphere $O$ is tangent to all edges of the cube. Find the volume of sphere $O$.", "answer": "$\\frac{8\\sqrt{2}}{3}\\pi$"}
+{"question": "Circle $O$ has radius $\\sqrt{3}$. Points $A$, $B$ on the circle form an equilateral triangle with $O$. Find $\\vec{OA}\\cdot\\vec{OB}=$", "answer": "$\\frac{3}{2}$"}
+{"question": "Given $\\tan(\\alpha-\\frac{\\pi}{3})=-\\frac{\\sqrt{3}}{5}$, find $\\tan\\alpha=$ ________; $\\frac{\\sin\\alpha\\cos\\alpha}{3\\cos^2\\alpha-2\\sin^2\\alpha}=$ ________.", "answer": "$\\frac{\\sqrt{3}}{2}$ , $\\frac{\\sqrt{3}}{3}$"}
+{"question": "Equilateral triangle $ABC$ with side 1 is folded along altitude $AD$ to form a right dihedral angle $B$-$AD$-$C$. Find the cosine of the angle between lines $AC$ and $AB$.", "answer": "$\\frac{3}{4}$"}
+{"question": "Count the sets $M$ satisfying $\\varnothing\\subsetneq M\\subsetneq\\{0,1,2\\}$.", "answer": "6"}
+{"question": "Arithmetic sequence $\\{a_n\\}$: $a_1+a_4+a_7=39$ and $a_3+a_6+a_9=27$. Find $S_9=$", "answer": "99"}
+{"question": "In the expansion of $\\left(2^x-\\frac{\\sqrt{2}}{2}\\right)^9$, the 7th term is $\\frac{21}{4}$. Find $x=$", "answer": "$-\\frac{1}{3}$"}
+{"question": "In the expansion of $\\left(2^x-\\frac{\\sqrt{2}}{2}\\right)^9$ ($x\\in\\mathbb{R}$), the 7th term is $\\frac{21}{4}$. Find $\\lim_{n\\to\\infty}(x+x^2+\\cdots+x^n)=$", "answer": "-\\frac{1}{4}"}
+{"question": "Given $z=1-i$, find $|z^3|=$", "answer": "$2\\sqrt{2}$"}
+{"question": "Arithmetic sequence $\\{a_n\\}$ has $\\frac{S_4}{S_8}=\\frac{1}{3}$. Find $\\frac{S_8}{S_{16}}=$", "answer": "$\\frac{3}{10}$"}
+{"question": "A sphere of radius $R$ is tangent to all faces of a regular triangular prism. Find the ratio of the sphere's volume to the prism's volume.", "answer": "$\\frac{2\\sqrt{3}}{27}\\pi$"}
+{"question": "A circle centered at the origin passes through the foci of hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) and is divided by the right directrix into two arcs with length ratio $2:1$. Find the eccentricity.", "answer": "$\\sqrt{2}$"}
+{"question": "Find the constant term in the expansion of $\\left(x^3-\\frac{1}{2x^2}\\right)^{10}$.", "answer": "$\\frac{105}{32}$"}
+{"question": "If the solution set of $|x^2-8x+a|\\le x-4$ is $[4,5]$, find $a=$", "answer": "16"}
+{"question": "Sequence $\\{a_n\\}$: $S_n=1-5+9-13+17-21+\\cdots+(-1)^{n-1}(4n-3)$. Find $S_{15}+S_{22}-S_{31}=$", "answer": "-76"}
+{"question": "In a population of 30 individuals, a sample of size 5 is drawn. Find the probability that individual $a$ is selected.", "answer": "$\\frac{1}{6}$"}
+{"question": "Find the range of $y=\\sqrt{x-4}+\\sqrt{15-3x}$.", "answer": "$[1, 2]$"}
+{"question": "Function $f(x)$ and $g(x)=(\\sqrt{7}-\\sqrt{6})^x$ have graphs symmetric about $y=x$. Find the monotone increasing interval of $f(4-x^2)$.", "answer": "$(0, 2)$"}
+{"question": "Geometric sequence $\\{a_n\\}$ has partial sums $S_n$, and three consecutive terms coincide with the 1st, 5th, 6th terms of an arithmetic sequence $\\{b_n\\}$. Find $\\lim_{n\\to\\infty}\\frac{S_{n+2}}{na_1}=$", "answer": "$1$ or $0$"}
+{"question": "If $\\lim_{x\\to -\\infty}(\\sqrt{x^2-x+1}+x-k)=1$, find $k=$", "answer": "$\\frac{1}{2}$"}
+{"question": "Count the pairs of sets $(A,B)$ satisfying $A\\cup B=\\{a,b\\}$.", "answer": "9"}
+{"question": "Find one center of symmetry of $y=\\cos 2x$.", "answer": "$\\left(\\frac{\\pi}{4}, 0\\right)$"}
+{"question": "If $|x-2|+|x-a|\\ge a$ holds for all $x\\in\\mathbb{R}$, find the maximum value of $a$.", "answer": "1"}
+{"question": "$\\lim_{x\\to 0}\\frac{\\sqrt{1+x}-1}{x}=$", "answer": "$\\frac{1}{2}$"}
+{"question": "Arithmetic sequence $\\{a_n\\}$: if $a_7=a_5-2$, find $a_{17}-a_{15}=$", "answer": "-2"}
+{"question": "Real numbers $x,y$ satisfy $x+2y=1$ and $x\\le 0$. Find the minimum of $x^2+y^2$.", "answer": "$\\frac{1}{4}$"}
+{"question": "$f(x)$ is an odd function with period 5 and $f(-3)=1$. Given $\\tan\\alpha=2$, find $f(20\\sin\\alpha\\cos\\alpha)=$", "answer": "-1"}
+{"question": "The solution set of $-\\frac{1}{2}x^2+2x>mx$ is $(0,2)$. Find $m=$", "answer": "1"}
+{"question": "Set $M=\\{2m-1,\\, m-3\\}$. If $-3\\in M$, find $m=$", "answer": "0 or -1"}
+{"question": "Sets $A=\\{1,a,b\\}$ and $B=\\{a^2,a,ab\\}$ satisfy $A=B$. Find $a^{2023}+b^{2022}=$", "answer": "-1"}
+{"question": "Set $A=\\{x\\mid x^2-2<0\\}$ and $a\\in A$. A possible value of $a$ is", "answer": "-1"}
+{"question": "Set $A=\\left\\{x\\mid ax^2-3x+2=0\\right\\}$ has exactly one element. Find all possible values of $a$.", "answer": "$\\frac{9}{8}$"}
+{"question": "Let $A=\\left\\{(x,y)\\mid\\frac{x^2}{4}+\\frac{y^2}{2}\\le 1,\\, x\\in\\mathbb{Z},\\, y\\in\\mathbb{Z}\\right\\}$. Find the number of elements in $A$.", "answer": "11"}
+{"question": "Given $A(-2,4)$, $C(-3,-4)$ and $\\overrightarrow{CM}=3\\overrightarrow{CA}$, find the coordinates of $M$.", "answer": "(0,20)"}
+{"question": "Given $f(x)=\\sin(\\omega x+\\varphi)$ $(\\omega>0,\\,|\\varphi|\\le\\frac{\\pi}{2})$: $x=-\\frac{\\pi}{8}$ is a zero and $x=\\frac{\\pi}{8}$ is an axis of symmetry. If $f(x)$ is monotonic on $\\left(\\frac{\\pi}{5},\\frac{\\pi}{4}\\right)$, find the maximum value of $\\omega$.", "answer": "14"}
+{"question": "If $x=\\frac{\\pi}{4}$ is an axis of symmetry of $y=\\sin\\!\\left(\\omega x-\\frac{\\pi}{4}\\right)$ $(\\omega>0)$ and $y$ is not monotonic on $\\left[0,\\frac{\\pi}{12}\\right]$, find the minimum value of $\\omega$.", "answer": "11"}
+{"question": "Given $f(x)=\\sin(\\omega x+\\varphi)$ $(\\omega>0)$: one center of symmetry is $\\left(-\\frac{\\pi}{3},0\\right)$ and $f(x)$ is not monotonic on $\\left(\\frac{5\\pi}{6},\\pi\\right)$. Find the minimum positive integer value of $\\omega$.", "answer": "2"}
+{"question": "Given $f(x)=2\\sin(\\omega x+\\varphi)$ $(\\omega>0)$: maximum at $x=\\frac{\\pi}{3}$, $f(\\pi)=0$, and $f(x)$ is monotonic on $\\left(\\frac{\\pi}{3},\\frac{5\\pi}{12}\\right)$. Find the maximum value of $\\omega$.", "answer": "$\\frac{45}{4}$"}
+{"question": "Define $A-B=\\{x\\mid x\\in A\\text{ and }x\\notin B\\}$. Let $A=\\{x\\mid x=2k+1,\\,k\\in\\mathbb{N}\\}$ and $B=\\{x\\mid x=3k+1,\\,k\\in\\mathbb{N}\\}$. Arrange the elements of $A-B$ in increasing order as $\\{a_n\\}$. Find $a_7+a_{30}=$", "answer": "110"}
+{"question": "If $x^2+bx+c\\ge 0$ ($b>1$) holds for all $x\\in\\mathbb{R}$, find the minimum of $\\frac{1+2b+4c}{b-1}$.", "answer": "8"}
+{"question": "Let $a>0$, $b>0$ with $a^2+b^2-\\sqrt{3}ab=1$. Find the maximum of $\\sqrt{3}a^2-ab$.", "answer": "$2 + \\sqrt{3}$"}
+{"question": "The domain of $f(x)=\\sqrt{3^{x^2+2ax-a}-1}$ is $\\mathbb{R}$. Find the range of $a$.", "answer": "[-1,0]"}
+{"question": "Let $f(x)=4^x-2^{x+2}-1$ for $x\\in[0,3]$. Find the range of $f$.", "answer": "[-5, 31]"}
+{"question": "The graph of $f(x)=a^{x-4}+1$ ($a>0$, $a\\ne 1$) always passes through a fixed point $A$. If $A$ satisfies $mx+ny=4$ ($m>0$, $n>0$), find the minimum of $\\frac{1}{m}+\\frac{2}{n}$.", "answer": "4"}
+{"question": "The inequality $4^x-a\\cdot 2^x+2>0$ holds for all $a\\in(-\\infty,3]$. Find the range of $x$.", "answer": "$(-\\infty, 0) \\cup (1, +\\infty)$"}
+{"question": "For $x\\in[-1,+\\infty)$, the inequality $4^x-m\\cdot 2^x+1>0$ holds for all such $x$. Find the range of $m$.", "answer": "$(-\\infty, 2)$"}
+{"question": "Piecewise function $f(x)$: if $x_1\\ne x_2$ and $f(x_1)=f(x_2)\\ne 0$, find the value.", "answer": ""}
+{"question": "A regular tetrahedron with edge 2 cm must fit in a cube and be free to rotate in any direction. Find the minimum edge length of the cube.", "answer": "6"}
+{"question": "Using the shortest-path unfolding method, find the minimum of $f(x,y)=\\sqrt{x^2-\\sqrt{3}x+1}+\\sqrt{y^2-\\sqrt{3}y+1}+\\sqrt{x^2-\\sqrt{3}xy+y^2}$ for $x>0$, $y>0$.", "answer": "\\sqrt{2}"}
+{"question": "If points $A(0,8)$, $B(-4,0)$, $C(m,-4)$ are collinear, find $m=$", "answer": "-6"}
+{"question": "If $M(2,2)$, $N(a,0)$, $Q(0,b)$ are collinear ($ab\\ne 0$), find $\\frac{1}{a}+\\frac{1}{b}=$", "answer": "$\\frac{1}{2}$"}
+{"question": "Given $A(1,3)$ and $B(-2,-1)$. If line $l: y=k(x-2)+1$ intersects segment $AB$, find the range of $k$.", "answer": "$-2 \\le k \\le \\frac{1}{2}$"}
+{"question": "Given $A(2,0)$ and $B(0,2)$. If line $y=k(x+2)$ has a common point with segment $AB$, find the range of $k$.", "answer": "$[0,1]$"}
+{"question": "Find the equation of the line through $P(-1,0)$ with inclination angle $60°$.", "answer": "$\\sqrt{3}x - y + \\sqrt{3} = 0$"}
+{"question": "Curves $y=2-\\frac{1}{2}x^2$ and $y=\\frac{1}{4}x^3-2$ intersect. Find the angle between their tangents at the intersection.", "answer": "$\\frac{\\pi}{4}$"}
+{"question": "An isosceles triangle has its two equal legs on lines $x+y-2=0$ and $x-7y-4=0$. The origin lies on the base. Find the slope of the base.", "answer": "3"}
+{"question": "If real numbers $a$, $b$, $c$ form an arithmetic sequence, the line $ax+by+c=0$ always passes through a fixed point. Find the coordinates.", "answer": "(1,-2)"}
+{"question": "Given $l_1: x+y=0$ and $l_2: ax+by+1=0$ with $l_1\\perp l_2$, find $a+b=$", "answer": "0"}
+{"question": "Lines $l_1: 4x+y=3$, $l_2: mx+y=0$, $l_3: x-my=2$ cannot form a triangle. Find the maximum number of possible values of $m$.", "answer": "4"}
+{"question": "Point $P(x,y)$ lies on $2x+y-5=0$ and $O$ is the origin. Find the minimum value of $|OP|$.", "answer": "$\\sqrt{5}$"}
+{"question": "Point $P(x_0,y_0)$ lies on $3x-4y-10=0$. Find the minimum of $\\sqrt{x_0^2+y_0^2}$.", "answer": "2"}
+{"question": "Given $P(a,2)$, $A(-2,-3)$, $B(1,1)$ with $|PA|=|PB|$, find $a=$", "answer": "$-\\frac{9}{2}$"}
+{"question": "Given $A(2,1)$, $B(3,4)$, $C(-2,-1)$, find the area of $\\triangle ABC$.", "answer": "5"}
+{"question": "Find the maximum distance from $(0,-1)$ to line $y=k(x+2)$.", "answer": "$\\sqrt{5}$"}
+{"question": "Point $P(3,1)$ has distance 3 to line $l: 3x+4y+a=0$ ($a>0$). Find $a=$", "answer": "2"}
+{"question": "Find the interval containing the minimum of $\\sqrt{(x-9)^2+4}+\\sqrt{x^2+y^2}+\\sqrt{(y-3)^2+9}$.", "answer": "(12,13]"}
+{"question": "Let $x,y\\in\\mathbb{R}^+$ with $2x+y=2$. Find the minimum of $x+\\sqrt{x^2+y^2}$.", "answer": "$\\frac{8}{5}$"}
+{"question": "Given $A(0,-2)$, $B(1,0)$, and $P$ a moving point on line $2x-4y+3=0$, find the minimum of $|PA|+|PB|$.", "answer": "4"}

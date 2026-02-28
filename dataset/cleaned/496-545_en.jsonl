@@ -1,0 +1,50 @@
+{"question": "Ellipse $C: \\frac{x^2}{4}+\\frac{y^2}{3}=1$. Line $l$ passes through right focus $F$, meets $C$ at $P$ (in the second quadrant) and $Q$. If $Q'$ is the reflection of $Q$ about the $y$-axis, find the equation of $l$.", "answer": "y = -x + 1"}
+{"question": "Point $P(0,1)$. Points $A$, $B$ on ellipse $\\frac{x^2}{4}+y^2=m$ ($m>1$) satisfy $\\overrightarrow{AP}=2\\overrightarrow{PB}$. Find the value of $m$ that maximizes $|x_B|$.", "answer": "5"}
+{"question": "Ellipse $C: \\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ ($a>b>0$) has left and right vertices $A_1$, $A_2$. The circle with diameter $A_1A_2$ is tangent to $bx+ay+2ab=0$. Find the eccentricity.", "answer": "\\frac{\\sqrt{6}}{3}"}
+{"question": "A line through a vertex and a focus of an ellipse has center-to-line distance equal to $\\frac{1}{4}$ of the minor axis length. Find the eccentricity.", "answer": "$\\frac{1}{2}$"}
+{"question": "Ellipse $C: \\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ ($a>b>0$), left focus $F$, vertices $A$ (left), $B$ (right), $P$ on $C$ with $PF\\perp x$-axis. Line $l$ through $A$ meets $PF$ at $M$ and the $y$-axis at $E$. If line $BM$ passes through the midpoint of $OE$, find the eccentricity.", "answer": "$\\frac{1}{3}$"}
+{"question": "Ellipse $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ ($a>b>0$) has right focus $F(3,0)$. A line through $F$ meets the ellipse at $A$, $B$ with midpoint $(1,-1)$. Find the equation of the ellipse.", "answer": "$\\frac{x^2}{18} + \\frac{y^2}{9} = 1$"}
+{"question": "The asymptotes of hyperbola $y^2-\\frac{x^2}{m^2}=1$ ($m>0$) are tangent to circle $x^2+y^2-4y+3=0$. Find $m=$", "answer": "\\frac{\\sqrt{3}}{3}"}
+{"question": "The asymptotes of hyperbola $y^2+\\frac{x^2}{m}=1$ are $y=\\pm\\frac{\\sqrt{3}}{3}x$. Find $m=$", "answer": "-3"}
+{"question": "Let $a,b\\in\\mathbb{R}$ with $ab>0$ and $f(x)=ax^2+b$. If $f(s-t)$, $f(s)$, $f(s+t)$ form a geometric sequence, the locus of $(s,t)$ is", "answer": "a line and a hyperbola"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has asymptote $y=\\frac{\\sqrt{5}}{2}x$ and shares foci with ellipse $\\frac{x^2}{12}+\\frac{y^2}{3}=1$. Find the equation of $C$.", "answer": "\\frac{x^2}{4} - \\frac{y^2}{5} = 1"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has right focus $F$. Point $A$ is on an asymptote. $\\triangle OAF$ is equilateral with side 2 ($O$ is the origin). Find the equation.", "answer": "$x^2 - \\frac{y^2}{3} = 1$"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has left focus $F$, eccentricity $\\sqrt{2}$. The line through $F$ and $P(0,4)$ is parallel to an asymptote. Find the equation.", "answer": "$\\frac{x^2}{8} - \\frac{y^2}{8} = 1$"}
+{"question": "A hyperbola passes through $(4,\\sqrt{3})$ and has asymptotes $y=\\pm\\frac{1}{2}x$. Find its standard equation.", "answer": "$$\\frac{x^2}{4} - y^2 = 1$$"}
+{"question": "Hyperbola $C: \\frac{x^2}{m}-y^2=1$ ($m>0$) has an asymptote $\\sqrt{3}x+my=0$. Find the focal length.", "answer": "4"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has eccentricity $\\sqrt{5}$, $P$ on $C$ with $F_1P\\perp F_2P$, and area of $\\triangle PF_1F_2=4$. Find $a=$", "answer": "1"}
+{"question": "Line $x=a$ meets the two asymptotes of hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ at $D$, $E$. If the area of $\\triangle ODE$ is 8, find the minimum focal length.", "answer": "8"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-y^2=1$ ($a>0$) has eccentricity $\\sqrt{5}$. Find $a=$", "answer": "\\frac{1}{2}"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{9}=1$ ($a>0$) has an asymptote $y=\\frac{3}{5}x$. Find $a=$ ________.", "answer": "5"}
+{"question": "If hyperbola $x^2-\\frac{y^2}{m}=1$ has eccentricity $\\sqrt{3}$, find $m=$", "answer": "2"}
+{"question": "Equation $\\frac{x^2}{m^2+n}-\\frac{y^2}{3m^2-n}=1$ represents a hyperbola with focal distance 4. Find the range of $n$.", "answer": "(-1, 3)"}
+{"question": "Hyperbola $C$ has foci $F_1$, $F_2$. Circle $D$ has the real axis as diameter. A tangent from $F_1$ to $D$ meets both branches of $C$ at $M$, $N$ with $\\cos\\angle F_1NF_2=\\frac{3}{5}$. Find the eccentricity.", "answer": "$\\frac{\\sqrt{13}}{2}$"}
+{"question": "For hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$), write a value of eccentricity $e$ such that line $y=2x$ has no intersection with $C$.", "answer": "$2"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$), left focus $F$. A line with slope $\\frac{b}{4a}$ through $F$ meets the hyperbola at $A(x_1,y_1)$ and the asymptote at $B(x_2,y_2)$ with $x_1<0<x_2$. If $|FB|=3|FA|$, find the eccentricity.", "answer": "3√6"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$): right focus coincides with focus of parabola $y^2=2px$ ($p>0$). Directrix of parabola meets hyperbola at $A$, $B$ and asymptotes at $C$, $D$ with $|CD|=\\sqrt{2}|AB|$. Find the eccentricity.", "answer": "$\\sqrt{2}$"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has asymptote $y=\\sqrt{2}x$. Find the eccentricity.", "answer": "\\sqrt{3}"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{5}=1$ ($a>0$) has asymptote $y=\\frac{\\sqrt{5}}{2}x$. Find the eccentricity.", "answer": "$\\frac{3}{2}$"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$): right focus $F$, right vertex $A$, $B$ on $C$ with $BF\\perp x$-axis. If the slope of $AB$ is 3, find the eccentricity.", "answer": "2"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$): foci $F_1$, $F_2$. Line through $F_1$ meets both asymptotes at $A$, $B$ with $\\overrightarrow{F_1A}=\\overrightarrow{AB}$ and $\\overrightarrow{F_1B}\\cdot\\overrightarrow{F_2B}=0$. Find the eccentricity.", "answer": "2"}
+{"question": "Parabola $y^2=4x$ has focus $F$ and directrix $l$. $l$ meets the asymptotes of $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ at $A$, $B$ with $|AB|=4|OF|$. Find the eccentricity.", "answer": "$\\sqrt{5}$"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$): right focus $F$, origin $O$. Circle with $OF$ as diameter meets circle $x^2+y^2=a^2$ at $P$, $Q$ with $|PQ|=|OF|$. Find the eccentricity.", "answer": "$\\sqrt{2}$"}
+{"question": "Find the eccentricity of the hyperbola with asymptotes $x\\pm y=0$.", "answer": "$\\sqrt{2}$"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has an asymptote with inclination angle $130°$. Find the eccentricity.", "answer": "$\\frac{1}{\\cos 50^\\circ}$"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$): foci $F_1$, $F_2$, origin $O$. From $F_2$, draw a perpendicular to an asymptote with foot $P$. If $|PF_2|=\\sqrt{6}|OP|$, find the eccentricity.", "answer": "\\sqrt{3}"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$): right focus $F(c,0)$ has distance $\\frac{\\sqrt{3}}{2}c$ to an asymptote. Find the eccentricity.", "answer": "2"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$): an asymptote is cut by circle $(x-2)^2+y^2=4$ in a chord of length 2. Find the eccentricity.", "answer": "$\\frac{2\\sqrt{3}}{3}$"}
+{"question": "If $a>1$, find the range of the eccentricity of hyperbola $\\frac{x^2}{a^2}-y^2=1$.", "answer": "$(1,\\sqrt{2})$"}
+{"question": "Hyperbola $E: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$: foci $F_1$, $F_2$, $M$ on $E$ with $MF_1\\perp x$-axis, $\\sin\\angle MF_2F_1=\\frac{1}{3}$. Find the eccentricity.", "answer": "$\\sqrt{2}$"}
+{"question": "Find the distance from $(3,0)$ to an asymptote of $\\frac{x^2}{16}-\\frac{y^2}{9}=1$.", "answer": "$\\frac{9}{5}$"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has eccentricity 2. Find its asymptote equations.", "answer": "$y = \\pm \\sqrt{3}x$"}
+{"question": "Hyperbola $C: \\frac{x^2}{6}-\\frac{y^2}{3}=1$: find the right focus and the distance from the focus to an asymptote.", "answer": "(3,0), \\sqrt{3}"}
+{"question": "Hyperbola $x^2-\\frac{y^2}{t^2}=1$ ($b>0$) passes through $(3,4)$. Find its asymptote equations.", "answer": "$y = \\pm \\sqrt{2}x$"}
+{"question": "Hyperbola $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has eccentricity $\\sqrt{3}$. Find its asymptote equations.", "answer": "$y = \\pm \\sqrt{2}x$"}
+{"question": "Hyperbola $C: \\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ ($a>0,b>0$) has eccentricity $\\sqrt{2}$. Find the distance from $(4,0)$ to an asymptote.", "answer": "2\\sqrt{2}"}
+{"question": "Hyperbola $C: x^2-my^2=3m$ ($m>0$) has focus $F$. Find the distance from $F$ to an asymptote.", "answer": "$y = \\pm \\frac{1}{2}x$"}
+{"question": "Hyperbola $x^2-\\frac{y^2}{3}=1$: foci $F_1$, $F_2$, $P$ on hyperbola, $\\triangle F_1PF_2$ is an acute triangle. Find the range of $|PF_1|+|PF_2|$.", "answer": "$(2\\sqrt{7},8)$"}
+{"question": "The line through the right focus of $x^2-\\frac{y^2}{3}=1$ perpendicular to the $x$-axis meets both asymptotes at $A$, $B$. Find $|AB|=$", "answer": "$4\\sqrt{3}$"}
+{"question": "Hyperbola $E: \\frac{x^2}{a^2}-\\frac{y^2}{16}=1$: foci $F_1$, $F_2$, $P$ on $E$ with $|PF_1|=3$. Find $|PF_2|=$", "answer": "9"}
+{"question": "In the plane, $P$ is a moving point on $y=x+\\frac{4}{x}$ ($x>0$). Find the minimum distance from $P$ to line $x+y=0$.", "answer": "4"}
+{"question": "Hyperbola $C: x^2-\\frac{y^2}{3}=1$: foci $F_1$, $F_2$, $O$ origin, $P$ on $C$ with $|OP|=2$. Find the area of $\\triangle PF_1F_2$.", "answer": "3"}
+{"question": "Hyperbola $C: \\frac{x^2}{4}-\\frac{y^2}{2}=1$: right focus $F$, $P$ on an asymptote, $O$ origin with $|PO|=|PF|$. Find the area of $\\triangle PFO$.", "answer": "$\\frac{3\\sqrt{2}}{4}$"}

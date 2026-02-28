@@ -1,0 +1,50 @@
+{"question": "The arithmetic sequence $\\{a_n\\}$ has common difference 2. If $a_2$, $a_4$, $a_8$ form a geometric sequence, then $S_n =$ A. $n(n+1)$ B. $n(n-1)$ C. $\\frac{n(n+1)}{2}$ D. $\\frac{n(n-1)}{2}$", "answer": "$n(n+1)$"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the geometric sequence $\\{a_n\\}$. If $S_2=4$ and $S_4=6$, then $S_6=$ A. 7 B. 8 C. 9 D. 10", "answer": "7"}
+{"question": "Let $\\{a_n\\}$ be a geometric sequence with $a_1+a_2+a_3=1$ and $a_2+a_3+a_4=2$. Then $a_6+a_7+a_8=$ A. 12 B. 24 C. 30 D. 32", "answer": "32"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the geometric sequence $\\{a_n\\}$. If $a_5-a_3=12$ and $a_6-a_4=24$, then $\\frac{S_n}{a_n}=$ A. $2^n-1$ B. $2-2^{1-n}$ C. $2-2^{n-1}$ D. $2^{1-n}-1$", "answer": "2 - 2^{1-n}"}
+{"question": "In the sequence $\\{a_n\\}$, $a_1=2$ and $a_{m+n}=a_m a_n$. If $a_{k+1}+a_{k+2}+\\cdots+a_{k+10}=2^{15}-2^5$, then $k=$", "answer": "4"}
+{"question": "In the geometric sequence $\\{a_n\\}$ with all positive terms, the sum of the first 4 terms is 15 and $a_5=3a_3+4a_1$. Find $a_3=$", "answer": "4"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the geometric sequence $\\{a_n\\}$. If $a_1=\\frac{1}{3}$ and $a_4^2=a_6$, then $S_5=$ ________.", "answer": "$\\frac{121}{3}$"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the geometric sequence $\\{a_n\\}$. If $a_1=1$ and $S_3=\\frac{3}{4}$, then $S_4=$ ________.", "answer": "$\\frac{5}{8}$"}
+{"question": "The twelve-tone equal temperament divides an octave into 12 equal parts to obtain 13 notes, where each note's frequency is $\\sqrt[12]{2}$ times the previous. If the first note has frequency $f$, the frequency of the eighth note is A. $\\sqrt[3]{2}f$ B. $\\sqrt[12]{2^2}f$ C. $\\sqrt[12]{2^5}f$ D. $\\sqrt[12]{2^7}f$", "answer": "$\\sqrt[12]{2^7}f$"}
+{"question": "Given $a_1, a_2, a_3, a_4$ form a geometric sequence and $a_1+a_2+a_3+a_4=\\ln(a_1+a_2+a_3)$. If $a_1>1$, then", "answer": "$a_1 > a_3, a_2 < a_4$"}
+{"question": "An ancient Chinese math problem: a 7-story pagoda has 381 lanterns in total, and each lower story has twice as many lanterns as the story above it. The number of lanterns at the top story is A. 1 B. 3 C. 5 D. 9", "answer": "3"}
+{"question": "In the sequence $\\{a_n\\}$, $a_1=2$ and $a_{n+1}=2a_n$. If $S_n=126$, then $n=$ ________.", "answer": "6"}
+{"question": "The geometric sequence $\\{a_n\\}$ satisfies $a_1=3$ and $a_1+a_3+a_5=21$. Then $a_3+a_5+a_7=$ A. 21 B. 42 C. 63 D. 84", "answer": "42"}
+{"question": "The geometric sequence $\\{a_n\\}$ satisfies $a_1=\\frac{1}{4}$ and $a_3 a_5=4(a_4-1)$. Then $a_2=$ A. 2 B. 1 C. $\\frac{1}{2}$ D. $\\frac{1}{8}$", "answer": "$\\frac{1}{2}$"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the geometric sequence $\\{a_n\\}$. Given $S_3=a_2+10a_1$ and $a_5=9$, find $a_1=$", "answer": "$\\frac{1}{9}$"}
+{"question": "The sequence $\\{a_n\\}$ satisfies $3a_{n+1}+a_n=0$ and $a_2=-\\frac{4}{3}$. The sum of the first 10 terms is", "answer": "$3(1 - 3^{-10})$"}
+{"question": "Let $\\{a_n\\}$ be arithmetic with common difference $d$, and $\\{b_n\\}$ geometric with common ratio $g$. The sum of the first $n$ terms of $\\{a_n+b_n\\}$ is $S_n=n^2-n+2^n-1$ $(n\\in\\mathbb{N}^*)$. Find $d+g$.", "answer": "3"}
+{"question": "A geometric sequence satisfies $a_1+a_3=10$ and $a_2+a_4=5$. Find $a_1 a_2\\cdots a_5$.", "answer": "64"}
+{"question": "Let $S_n$ be the sum of the first $n$ terms of the arithmetic sequence $\\{a_n\\}$. If $a_1=-2$ and $a_2+a_6=2$, find $S_{10}=$", "answer": "25"}
+{"question": "Given the sequence $\\{a_n\\}$ with $a_n=\\frac{n(n+1)}{2}$, find $S_3=$", "answer": "10"}
+{"question": "The common terms of $\\{2n-1\\}$ and $\\{3n-2\\}$ arranged in increasing order form a sequence $\\{a_n\\}$. The sum of the first $n$ terms is", "answer": "$3n^2-2n$"}
+{"question": "The sequence $\\{a_n\\}$ satisfies $a_1=1$ and $a_{n+1}=\\frac{a_n}{1+\\sqrt{a_n}}$ $(n\\in\\mathbb{N}^*)$. Denoting the sum of the first $n$ terms by $S_n$, then", "answer": "$\\frac{3}{2} < S_{100} < 3$"}
+{"question": "The arithmetic sequence $\\{a_n\\}$ has $a_3=3$ and $S_4=10$. Find $\\sum_{k=1}^n \\frac{1}{S_k}=$", "answer": "$\\frac{2n}{n+1}$"}
+{"question": "If the general term of $\\{a_n\\}$ is $a_n=(-1)^n(3n-2)$, then $a_1+a_2+\\cdots+a_{10}=$", "answer": "15"}
+{"question": "Define a 'canonical 01 sequence' $\\{a_n\\}$ of $2m$ terms ($m$ zeros and $m$ ones) such that for any $k\\le 2m$, the number of 0's among $a_1,\\ldots,a_k$ is no less than the number of 1's. For $m=4$, the number of distinct such sequences is", "answer": "14"}
+{"question": "The arithmetic sequence $\\{a_n\\}$ has $S_{10}=0$ and $S_{15}=25$. Find the minimum value of $nS_n$.", "answer": "-49"}
+{"question": "Let $a=0.1e^{0.1}$, $b=\\frac{1}{9}$, $c=-\\ln 0.9$. Determine the size relationship.", "answer": "c < a < b"}
+{"question": "Let $a=\\frac{31}{32}$, $b=\\cos\\frac{1}{4}$, $c=4\\sin\\frac{1}{4}$. Determine the size relationship.", "answer": "c > b > a"}
+{"question": "If $2^a+\\log_2 a=4^b+2\\log_4 b$, determine the relationship between $a$ and $2b$.", "answer": "a < 2b"}
+{"question": "Let $a=3^{0.7}$, $b=\\left(\\frac{1}{3}\\right)^{-0.8}$, $c=\\log_{0.7}0.8$. Determine the size relationship among $a$, $b$, $c$.", "answer": "c < a < b"}
+{"question": "Let $f(x)=\\begin{cases}x+1, & x\\le 0 \\\\ 2^x, & x>0\\end{cases}$. Find the range of $x$ satisfying $f(x)+f\\!\\left(x-\\frac{1}{2}\\right)>1$.", "answer": "$\\left(-\\frac{1}{4}, +\\infty\\right)$"}
+{"question": "Let $f(x)=\\begin{cases}e^{x-1}, & x<1 \\\\ x^{1/3}, & x\\ge 1\\end{cases}$. Find the range of $x$ satisfying $f(x)<2$.", "answer": "(-∞,8]"}
+{"question": "For all real $x,y$ satisfying $x^2+y^2-xy=1$, determine", "answer": "$x + y \\ge -2$ \n$x^2 + y^2 \\le 2$"}
+{"question": "Let $\\alpha,\\beta,\\gamma$ be pairwise distinct acute angles. Among $\\sin\\alpha\\cos\\beta$, $\\sin\\beta\\cos\\gamma$, $\\sin\\gamma\\cos\\alpha$, the maximum number that can exceed $\\frac{1}{2}$ is", "answer": "2"}
+{"question": "For $a>0$ and $b>0$, find the minimum value of $\\frac{1}{a}+\\frac{a}{b^2}+b$.", "answer": "$2\\sqrt{2}$"}
+{"question": "Let $a>0$, $b>0$ with $ab=1$. Find the minimum value of $\\frac{1}{2a}+\\frac{1}{2b}+\\frac{8}{a+b}$.", "answer": "4"}
+{"question": "Let $x>0$, $y>0$, $x+2y=5$. Find the minimum value of $\\frac{(x+1)(2y+1)}{\\sqrt{xy}}$.", "answer": "$4\\sqrt{3}$"}
+{"question": "Given $a,b\\in\\mathbb{R}$ with $a-3b+6=0$, find the minimum value of $2^a+\\frac{1}{8^b}$.", "answer": "$\\left[\\frac{1}{2},1\\right]$"}
+{"question": "For $a,b\\in\\mathbb{R}$ with $ab>0$, find the minimum value of $\\frac{a^4+4b^4+1}{ab}$.", "answer": "4"}
+{"question": "Given $a\\in\\mathbb{R}$, the function $f(x)=\\left|x+\\frac{4}{x}-a\\right|+a$ has maximum value 5 on $[1,4]$. Find the range of $a$.", "answer": "$\\left(-\\infty, \\frac{9}{2}\\right)$"}
+{"question": "Given plane vectors $\\vec{a},\\vec{b},\\vec{c}$ $(\\vec{c}\\ne\\vec{0})$ with $|\\vec{a}|=1$, $|\\vec{b}|=2$, $\\vec{a}\\cdot\\vec{b}=0$, $(\\vec{a}-\\vec{b})\\cdot\\vec{c}=0$. Let $x,y$ be the projections of $\\vec{d}$ in the directions of $\\vec{a}$, $\\vec{b}$, and $z$ the projection of $\\vec{d}-\\vec{a}$ in the direction of $\\vec{c}$. Find the minimum value of $x^2+y^2+z^2$.", "answer": "$\\frac{2}{\\kappa}$"}
+{"question": "A number is chosen at random from $(0,1)$ and another from $(1,2)$. Find the probability that their sum exceeds $\\frac{7}{4}$.", "answer": "$\\frac{23}{32}$"}
+{"question": "If $x,y$ satisfy $\\{x-y-1\\ge 0\\}$, find the maximum of $x+7y$.", "answer": "1"}
+{"question": "If $x,y$ satisfy $\\{2x-y\\ge 0,\\, y\\ge 3\\}$, find the maximum of $2x+2y$.", "answer": "7"}
+{"question": "If $x,y$ satisfy $\\begin{cases}x+y\\ge -1\\\\x-y\\ge -1\\\\y\\ge -1\\end{cases}$ and $z=2x-y\\le 1$, find the maximum of $x+2y$.", "answer": "8"}
+{"question": "If $x,y$ satisfy $\\begin{cases}x+y\\ge 0\\\\2x-y\\ge 0\\\\x\\le 1\\end{cases}$, find the maximum of $x+2y$.", "answer": "7"}
+{"question": "If $x,y$ satisfy $\\begin{cases}2x+y-2\\le 0\\\\x-y-1\\ge 0\\\\y+1\\ge 0\\end{cases}$, find the maximum of $x+7y$.", "answer": "1"}
+{"question": "Given $x,y$ satisfying $\\begin{cases}x+y\\ge 2\\\\y\\ge 0\\\\x+2y-3\\le 0\\end{cases}$, find the maximum of $z=y-2x$.", "answer": "-1"}
+{"question": "If $x,y$ satisfy $\\begin{cases}2x+3y-6\\ge 0\\\\x+y-3\\le 0\\end{cases}$, find the maximum of $z=3x-y$.", "answer": "9"}
+{"question": "If $x,y$ satisfy $\\begin{cases}x-2y-2\\le 0\\\\x-y+1\\ge 0\\end{cases}$, find the maximum of $z=3x+2y$.", "answer": "6"}

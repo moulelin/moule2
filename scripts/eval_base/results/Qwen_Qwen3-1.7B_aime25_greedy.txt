@@ -1,0 +1,36 @@
+Model: Qwen/Qwen3-1.7B
+Dataset: aime25 (opencompass/AIME2025)
+Mode: greedy
+Accuracy: 6/30 = 20.0%
+Time: 764.1s
+============================================================
+[O] # 0  gt=70  pred=70
+[O] # 1  gt=588  pred=588
+[O] # 2  gt=16  pred=16
+[X] # 3  gt=117  pred=98
+[X] # 4  gt=279  pred=1929
+[O] # 5  gt=504  pred=504
+[X] # 6  gt=821  pred=10+11=21
+[X] # 7  gt=77  pred=8
+[X] # 8  gt=62  pred=6
+[X] # 9  gt=81  pred=19
+[X] #10  gt=259  pred=\frac{4}{17}
+[X] #11  gt=510  pred=65
+[X] #12  gt=204  pred=145
+[X] #13  gt=60  pred=24
+[X] #14  gt=735  pred=147
+[O] #15  gt=468  pred=468
+[X] #16  gt=49  pred=12
+[X] #17  gt=82  pred=8
+[X] #18  gt=106  pred=supposedtobeafractionm/nwheremnarecoprime,weneedtofindm+n
+[X] #19  gt=336^\circ  pred=180
+[X] #20  gt=293  pred=73
+[X] #21  gt=237  pred=8631
+[X] #22  gt=610  pred=800
+[X] #23  gt=149  pred=225
+[X] #24  gt=907  pred=894
+[X] #25  gt=113  pred=12
+[X] #26  gt=19  pred=488131
+[X] #27  gt=248  pred=0
+[O] #28  gt=104  pred=104
+[X] #29  gt=240  pred=188
